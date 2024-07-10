@@ -12,5 +12,8 @@
   "dependencies": {
     "ts-morph": "^23.0.0",
     "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10"
   }
 }
