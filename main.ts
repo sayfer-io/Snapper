@@ -1,5 +1,7 @@
-import {Project, SyntaxKind} from "ts-morph";
+import {Project} from "ts-morph";
 import {argv} from 'process';
+import {detectConsoleLog} from "./detectors/ConsoleLog";
+import {Finding} from "./detectors/types";
 
 
 // grab from cmd line arg
@@ -10,17 +12,15 @@ const project = new Project({
 
 const files = project.addSourceFilesAtPaths(`${projectPath}/**/*.ts`);
 
-files.forEach(file => {
-    const consoleLogs = file.getDescendantsOfKind(SyntaxKind.CallExpression).filter(expression => {
-        const expressionText = expression.getExpression().getText();
-        return expressionText === "console.log" || expressionText.startsWith("console.");
-    });
+const allFindings: Finding[] = [];
 
-    if (consoleLogs.length > 0) {
-        console.log(`File: ${file.getFilePath()}`);
-        consoleLogs.forEach(log => {
-            const line = log.getStartLineNumber();
-            console.log(`  Console log at line ${line}`);
-        });
-    }
+files.forEach(file => {
+    let findings = detectConsoleLog(file);
+    allFindings.push(...findings);
+});
+
+console.log(`Found ${allFindings.length} console logs in ${files.length} files`);
+allFindings.forEach(finding => {
+    console.log(finding.description);
+    console.log(`\t${finding.position.filePath}:${finding.position.lineNum}`);
 });
