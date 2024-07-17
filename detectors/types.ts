@@ -1,5 +1,5 @@
 export type Finding = {
-    Type: String;
+    type: String;
     description: string;
     position: {
         filePath: string;

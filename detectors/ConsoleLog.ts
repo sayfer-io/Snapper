@@ -11,7 +11,7 @@ export function detectConsoleLog(file: SourceFile): Finding[] {
     return consoleLogs.map(log => {
         const line = log.getStartLineNumber();
         return {
-            Type: "ConsoleLog",
+            type: "ConsoleLog",
             description: `Console log at line ${line}`,
             position: {
                 filePath: file.getFilePath(),

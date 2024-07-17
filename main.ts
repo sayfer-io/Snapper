@@ -21,6 +21,6 @@ files.forEach(file => {
 
 console.log(`Found ${allFindings.length} console logs in ${files.length} files`);
 allFindings.forEach(finding => {
-    console.log(finding.description);
+    console.log(finding.type);
     console.log(`\t${finding.position.filePath}:${finding.position.lineNum}`);
 });
