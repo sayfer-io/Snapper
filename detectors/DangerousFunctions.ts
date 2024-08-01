@@ -2,17 +2,17 @@ import {SourceFile, SyntaxKind} from "ts-morph";
 
 import { Finding } from "./types";
 
-export function detectConsoleLog(file: SourceFile): Finding[] {
+export function detectDangerousFunctions(file: SourceFile): Finding[] {
     const consoleLogs = file.getDescendantsOfKind(SyntaxKind.CallExpression).filter(expression => {
         const expressionText = expression.getExpression().getText();
-        return expressionText === "console.log" || expressionText.startsWith("console.");
+        return expressionText === "dangerouslySetInnerHTML";
     });
 
     return consoleLogs.map(log => {
         const line = log.getStartLineNumber();
         return {
-            type: "ConsoleLog",
-            description: `Console log at line ${line}`,
+            type: "DangerousFunction",
+            description: `A dangerous command is being used at line ${line}`,
             position: {
                 filePath: file.getFilePath(),
                 lineNum: line
