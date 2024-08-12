@@ -6,7 +6,7 @@ from parsers.base_parser import BaseParser
 class ConsensysParser(BaseParser):
 
     def __init__(self, url: str):
-        super().__init__(url)
+        super().__init__(url, body_type="html")
 
     def get_vulnerabilities(self) -> list:
         vulnerabilities = []

@@ -1,3 +1,4 @@
 requests
 tldextract
 beautifulsoup4
+PyMuPDF

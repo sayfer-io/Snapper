@@ -1,0 +1,2178 @@
+{
+    "A Malicious Actor Can Terminate the Recovery Process": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "A Trusted Website Can Add Any Address to the Snaps Address Storage; No Control Over Added Addresses; Confirmation Is a Notification": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "API Design - Consider Using Consistent RPC Method Names": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "API endpoint call is missing recipient address": [
+        {
+            "date": "2024-08-12 23:59:56.645549",
+            "provider": "veridise",
+            "report": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
+            "snap": "npm:@quickintel/quickintel-snap"
+        }
+    ],
+    "API misuse with disallowed chain ID": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "An Attacker Can Flood the Support by Creating Many Tickets for Arbitrary Addresses": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "Any Website Connected to the Snap Can Access the Address and API Key and Impersonate the User": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "Arbitrary DApp can retrieve access token": [
+        {
+            "date": "2023-07-12 00:00:00",
+            "provider": "cure53",
+            "report": "https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link",
+            "snap": "npm:walletchat-metamask-snap"
+        }
+    ],
+    "Arsnap/Adapter": [
+        {
+            "date": "2023-09-13 17:18:23+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/pianity-snap",
+            "snap": "npm:@pianity/arsnap"
+        }
+    ],
+    "AssetChangeComponent Displays  a Change With Value 0 if fiatValue < 0.005": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "Assumptions about chain ID": [
+        {
+            "date": "2024-08-12 23:59:47.824222",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/06/VAR-Kleros-Scout.pdf",
+            "snap": "npm:@kleros/scout-snap"
+        }
+    ],
+    "Asynchronicity Might Lead to an Undefined Ethereum Provider": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "Avalanche RPC Endpoints avax_* Are Enabled in the Snap but Disabled in the Sandbox App": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "Avoid Hardcoding the Local Snap ID": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "Backup flow exports private keys as plaintext": [
+        {
+            "date": "2024-01-18 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_safeheron-snap.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Broken Authorization Scheme": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "Chain ID is read from node instead of transaction information": [
+        {
+            "date": "2024-08-12 23:59:56.645549",
+            "provider": "veridise",
+            "report": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
+            "snap": "npm:@quickintel/quickintel-snap"
+        }
+    ],
+    "Check for Mainnet chain ID should be moved up": [
+        {
+            "date": "2024-08-13 00:00:00.981674",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2024/03/VAR_Onthis-V2.pdf",
+            "snap": "npm:onthis-snap"
+        }
+    ],
+    "Commented Code and Leftover TODOs": [
+        {
+            "date": "2023-12-05 13:56:05+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
+            "snap": "npm:@galactica-net/snap"
+        }
+    ],
+    "Conformations for Key Features are not Handled When Rejected": [
+        {
+            "date": "2023-09-17 14:19:27+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
+            "snap": "npm:@chainsafe/polkadot-snap"
+        }
+    ],
+    "Confusing variable use": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "Consider Moving to TypeScript": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "Consider Prefixing RPC Calls With solana_*, sui_*, aptos_*": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "Consider Submitting Snap Version With Backend API Requests": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "Consider Using @metamask/detect-provider": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "Consider enabling GitHub security scanning": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "Control Character and Markdown Injection in snap_dialog": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "CtrlChar/Markdown Injection": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "CtrlChar/Markdown Injection in renderSignTransaction, renderSignAllTransactions": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "DApp origin not displayed in the Snap UI": [
+        {
+            "date": "2023-08-04 00:00:00",
+            "provider": "cure53",
+            "report": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
+            "snap": "npm:@tuum-tech/identify"
+        }
+    ],
+    "DKL+19 Does Not Support Key Refresh": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "DKL+19 Does Not Support Key Refresh (Second Review)": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Dapp May Force a Sign Approval Dialog Without Showing the Message to Be Signed": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "Dapp May Suppress User Confirmation on Request to Extract Pubkey; May Extract Any Net-Key": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "Dead Code popup": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "Dependencies Are not Pinned to Exact Versions": [
+        {
+            "date": "2024-04-18 14:02:14+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
+            "snap": "npm:@xtreamly/xtreamly_slippage_predictor"
+        }
+    ],
+    "Dependencies Should Be Pinned To Exact Versions": [
+        {
+            "date": "2024-08-12 23:59:46.203703",
+            "provider": "halborn",
+            "report": "https://github.com/casper-ecosystem/casper-manager/blob/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
+            "snap": "npm:casper-manager"
+        },
+        {
+            "date": "2024-08-12 23:59:52.606954",
+            "provider": "halborn",
+            "report": "https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf",
+            "snap": "npm:@rarimo/rarime"
+        }
+    ],
+    "Dependencies with Known Vulnerabilities": [
+        {
+            "date": "2023-12-08 15:56:28+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "snap": "npm:@amax/amaxsnap"
+        }
+    ],
+    "Dependency with Outstanding Vulnerability": [
+        {
+            "date": "2023-12-12 17:12:21+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
+            "snap": "npm:azero-wallet"
+        }
+    ],
+    "Directly Exposed Private Key Export": [
+        {
+            "date": "2023-08-14 09:57:02+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
+            "snap": "npm:filsnap"
+        }
+    ],
+    "Disable Debug Log for Production Build": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "Documentation Contains Incorrect Instructions": [
+        {
+            "date": "2023-09-17 14:19:24+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
+            "snap": "npm:@chainsafe/aleo-snap"
+        }
+    ],
+    "Duplicated error handling": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "Dysfunctional Image Link": [
+        {
+            "date": "2023-11-07 08:55:57+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
+            "snap": "npm:@astar-network/snap"
+        }
+    ],
+    "Egress Traffic Is Allowed to Any Instance": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Entropy / Signature Handling & Hardening": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "Error handling on login exposes user secrets": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "Error message needs additional details": [
+        {
+            "date": "2024-08-12 23:59:57.184161",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/11/VAR-Web3AntivirusSnap.pdf",
+            "snap": "npm:@web3-antivirus/web3-antivirus-snap"
+        }
+    ],
+    "Every RPC Request Leads to the Creation of a New Signer Object": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "Example dApp Only Has One Functionality Implemented": [
+        {
+            "date": "2023-12-08 15:56:28+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "snap": "npm:@amax/amaxsnap"
+        }
+    ],
+    "External/User Input Sanitization": [
+        {
+            "date": "2024-04-09 13:39:49+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
+            "snap": "npm:@tezoroproject/snap"
+        }
+    ],
+    "Extra \u2018If\u2019 Statement": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "Fix token docstrings to align with naming": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "Floating Dependency Versions": [
+        {
+            "date": "2024-07-09 20:40:16+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-harbour/",
+            "snap": "npm:@harbour-fi/ramp-snap"
+        },
+        {
+            "date": "2024-05-15 14:23:43+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/",
+            "snap": "npm:@nufi/cardano-metamask-snap"
+        }
+    ],
+    "General Design and Performance Considerations: Data Fetching/Caching and State Update": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "GraphQL HTTP response code not checked": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "HTTP Traffic to Services Is Allowed": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Hardcoded API key": [
+        {
+            "date": "2024-08-12 23:59:56.645549",
+            "provider": "veridise",
+            "report": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
+            "snap": "npm:@quickintel/quickintel-snap"
+        }
+    ],
+    "IDOR in sendMessage's Cloud Functions API": [
+        {
+            "date": "2023-09-07 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_silencelabs-apps.pdf",
+            "snap": "npm:@silencelaboratories/silent-shard-snap"
+        }
+    ],
+    "If Statement Could Be Simplified": [
+        {
+            "date": "2023-11-07 08:55:57+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
+            "snap": "npm:@astar-network/snap"
+        }
+    ],
+    "Imprecise ETH address validation": [
+        {
+            "date": "2024-02-22 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_rubic-snap.pdf",
+            "snap": "npm:rubic-snap"
+        }
+    ],
+    "Imprecise conversion of Chain ID to URI": [
+        {
+            "date": "2024-02-02 00:00:00",
+            "provider": "cure53",
+            "report": "https://github.com/Eulith/eulith-metamask-snap/blob/master/audit-report.pdf",
+            "snap": "npm:defi-armor-snap"
+        }
+    ],
+    "Imprecise user message": [
+        {
+            "date": "2024-08-13 00:00:00.981674",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2024/03/VAR_Onthis-V2.pdf",
+            "snap": "npm:onthis-snap"
+        }
+    ],
+    "Improper Paramater Sanitization in fetchAllTicketCommentsCount(), updateTicket(), and parseTicketComments()": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "Inaccurate Return Value in checkTokens()": [
+        {
+            "date": "2024-04-09 13:39:49+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
+            "snap": "npm:@tezoroproject/snap"
+        }
+    ],
+    "Incomplete NatSpec and General Documentation": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "Incomplete Unit Test Coverage": [
+        {
+            "date": "2024-02-26 11:47:58+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkagate-snap/",
+            "snap": "npm:@polkagate/snap"
+        }
+    ],
+    "Inconsistent Naming Conventions and Misleading Function/Variable Names": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "Inconsistent or Blank Fields in package.json": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "Incorrect Cofactor Handling in PubKeyRecovery": [
+        {
+            "date": "2024-02-05 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Incorrect Dependency Version": [
+        {
+            "date": "2024-04-18 14:02:14+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
+            "snap": "npm:@xtreamly/xtreamly_slippage_predictor"
+        }
+    ],
+    "Incorrect HTTP response error handling for API endpoint": [
+        {
+            "date": "2024-08-12 23:59:56.645549",
+            "provider": "veridise",
+            "report": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
+            "snap": "npm:@quickintel/quickintel-snap"
+        }
+    ],
+    "Incorrect assumption about chain id": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "Incorrect chain ID": [
+        {
+            "date": "2024-08-13 00:00:00.981674",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2024/03/VAR_Onthis-V2.pdf",
+            "snap": "npm:onthis-snap"
+        }
+    ],
+    "Incorrect comments": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "Incorrect rounding evokes balance misinterpretation": [
+        {
+            "date": "2023-12-15 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_dedaub-metamask-snap.pdf",
+            "snap": "npm:dedaub-metamask-snap"
+        }
+    ],
+    "Initialization Vector Used Does Not Meet Recommended Best": [
+        {
+            "date": "2023-09-12 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
+            "snap": "npm:@web3mq/snap"
+        }
+    ],
+    "Initialization Vector Used Does Not Meet Recommended Best Practices": [
+        {
+            "date": "2023-09-12 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
+            "snap": "npm:@web3mq/snap"
+        }
+    ],
+    "Instance of outdated cryptography": [
+        {
+            "date": "2024-02-24 00:00:00",
+            "provider": "cure53",
+            "report": "https://github.com/bob-collective/bob-snap/blob/master/docs/audit.pdf",
+            "snap": "npm:@gobob/bob-snap"
+        }
+    ],
+    "Insufficient Input Validation deriveKeyPair()": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "Insufficient Test Coverage": [
+        {
+            "date": "2023-12-08 15:56:28+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "snap": "npm:@amax/amaxsnap"
+        },
+        {
+            "date": "2024-02-01 10:14:30+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
+            "snap": "npm:@fioprotocol/fio-wallet-snap"
+        }
+    ],
+    "Key generation overwrites previous MPC account": [
+        {
+            "date": "2024-01-18 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_safeheron-snap.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Keypairs Generated by Dapps Might Be Unrecoverable Which Could Result in Loss of Funds": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "Lack of Documentation and Commenting": [
+        {
+            "date": "2023-12-08 15:56:28+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "snap": "npm:@amax/amaxsnap"
+        },
+        {
+            "date": "2023-12-12 17:12:21+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
+            "snap": "npm:azero-wallet"
+        }
+    ],
+    "Lack of High-Level and Inline Documentation": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "Lack of Inline Code Documentation": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "Lack of Origin Check on RPC Requests": [
+        {
+            "date": "2024-04-09 13:39:49+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
+            "snap": "npm:@tezoroproject/snap"
+        }
+    ],
+    "Lack of Signature Dialog Context and RPC Origin": [
+        {
+            "date": "2023-08-14 09:57:02+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
+            "snap": "npm:filsnap"
+        }
+    ],
+    "Lack of Unit Test Coverage": [
+        {
+            "date": "2024-04-18 14:02:14+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
+            "snap": "npm:@xtreamly/xtreamly_slippage_predictor"
+        }
+    ],
+    "Lack of Validation in uint8ArrayFromHex(string)": [
+        {
+            "date": "2023-12-12 17:12:21+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
+            "snap": "npm:azero-wallet"
+        }
+    ],
+    "Lack of error handling when sending GraphQL query": [
+        {
+            "date": "2024-08-12 23:59:47.824222",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/06/VAR-Kleros-Scout.pdf",
+            "snap": "npm:@kleros/scout-snap"
+        }
+    ],
+    "Lack of payload validation in Snaps": [
+        {
+            "date": "2024-01-18 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_safeheron-snap.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Lack of transaction payload validation": [
+        {
+            "date": "2024-08-12 23:59:53.042766",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Partisia-Blockchain-Snap.pdf",
+            "snap": "npm:@partisiablockchain/snap"
+        }
+    ],
+    "Lax Input Validation, Control Char, URI, and Markdown Injection": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "Lax Validation Using@starknet::validateAndParseAddress Allows Short Addresses and Does Not Verify Checksums": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "Leftover Testing Code": [
+        {
+            "date": "2024-04-18 14:02:14+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
+            "snap": "npm:@xtreamly/xtreamly_slippage_predictor"
+        }
+    ],
+    "Length Field in CSafeHash256/512::Write Can Overflow": [
+        {
+            "date": "2024-02-05 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Low Log Limit": [
+        {
+            "date": "2023-09-13 17:18:23+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/pianity-snap",
+            "snap": "npm:@pianity/arsnap"
+        }
+    ],
+    "Markdown Injection in Snaps UI Components": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "Markdown and Control Character Injection": [
+        {
+            "date": "2023-08-14 09:57:02+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
+            "snap": "npm:filsnap"
+        }
+    ],
+    "Minor Typos": [
+        {
+            "date": "2024-02-01 10:14:30+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
+            "snap": "npm:@fioprotocol/fio-wallet-snap"
+        }
+    ],
+    "Misleading Comment": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "Misleading Error Message (Copy-Paste)": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "Misleading HTML Entity and Function Name getPrivkey": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "Misleading Return Value": [
+        {
+            "date": "2023-09-13 17:18:23+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/pianity-snap",
+            "snap": "npm:@pianity/arsnap"
+        }
+    ],
+    "Misleading message displayed on API request error": [
+        {
+            "date": "2024-08-12 23:59:57.184161",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/11/VAR-Web3AntivirusSnap.pdf",
+            "snap": "npm:@web3-antivirus/web3-antivirus-snap"
+        }
+    ],
+    "Missing Address Protection": [
+        {
+            "date": "2023-08-14 09:57:02+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
+            "snap": "npm:filsnap"
+        }
+    ],
+    "Missing Check in Feldman\u2019s Secret Sharing Allows for Threshold": [
+        {
+            "date": "2024-02-05 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Missing Check in Feldman\u2019s Secret Sharing Allows for Threshold Escalation [Known": [
+        {
+            "date": "2024-02-05 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Missing Checks in ECDSA Signature Verification": [
+        {
+            "date": "2024-02-05 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Missing Domain Separation for Session Identifier": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Missing Input Validation for WalletAddress": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "Missing Notifications in Case Multiple Tickets Are Updated": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "Missing Summary Field in CreateOperation": [
+        {
+            "date": "2023-09-13 17:18:23+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/pianity-snap",
+            "snap": "npm:@pianity/arsnap"
+        }
+    ],
+    "Missing Timeout in RPC.call": [
+        {
+            "date": "2023-08-14 09:57:02+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
+            "snap": "npm:filsnap"
+        }
+    ],
+    "Missing URL Validation": [
+        {
+            "date": "2023-12-05 13:56:05+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
+            "snap": "npm:@galactica-net/snap"
+        }
+    ],
+    "Missing Unit Tests": [
+        {
+            "date": "2024-02-13 13:49:49+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-fexcash/",
+            "snap": "npm:bch-snap"
+        }
+    ],
+    "Multiple GraphQL queries can be batched": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "No Confirmation Dialogue when Sending": [
+        {
+            "date": "2023-09-17 14:19:27+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
+            "snap": "npm:@chainsafe/polkadot-snap"
+        }
+    ],
+    "No Explanation of the Risk Associated with exportSeed()": [
+        {
+            "date": "2023-11-07 08:55:57+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
+            "snap": "npm:@astar-network/snap"
+        }
+    ],
+    "No Unstake / Stake Operations in Request Handler": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "No Warning When Signing Arbitrary Data": [
+        {
+            "date": "2024-02-26 11:47:58+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkagate-snap/",
+            "snap": "npm:@polkagate/snap"
+        }
+    ],
+    "No Warning on Signing Arbitrary Data": [
+        {
+            "date": "2024-05-15 14:23:43+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/",
+            "snap": "npm:@nufi/cardano-metamask-snap"
+        }
+    ],
+    "No Way to Disable Approvals Checking, and Transaction Analytics": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "No notification shown in submitZkAppTx()": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "No user confirmation dialog in GDrive configuration": [
+        {
+            "date": "2023-08-04 00:00:00",
+            "provider": "cure53",
+            "report": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
+            "snap": "npm:@tuum-tech/identify"
+        }
+    ],
+    "No user-email displayed in sync dialog for GDrive": [
+        {
+            "date": "2023-08-04 00:00:00",
+            "provider": "cure53",
+            "report": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
+            "snap": "npm:@tuum-tech/identify"
+        }
+    ],
+    "No-results message suggests that there are no false negatives": [
+        {
+            "date": "2024-08-12 23:59:57.184161",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/11/VAR-Web3AntivirusSnap.pdf",
+            "snap": "npm:@web3-antivirus/web3-antivirus-snap"
+        }
+    ],
+    "Non-Existent Base Config (Eslint, Tsconfig)": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "Non-Functional Tests": [
+        {
+            "date": "2023-09-17 14:19:24+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
+            "snap": "npm:@chainsafe/aleo-snap"
+        }
+    ],
+    "Non-Uniform Private Key Generation": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Non-Working Demo": [
+        {
+            "date": "2023-09-17 14:19:27+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
+            "snap": "npm:@chainsafe/polkadot-snap"
+        }
+    ],
+    "Non-compliance with BIP44 account discovery algorithm": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "Non-functional Demo Samples": [
+        {
+            "date": "2023-12-05 13:56:05+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
+            "snap": "npm:@galactica-net/snap"
+        }
+    ],
+    "Non-functioning Example": [
+        {
+            "date": "2024-02-13 13:49:49+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-fexcash/",
+            "snap": "npm:bch-snap"
+        }
+    ],
+    "Non-null assertions might cause run-time errors": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "Notify on Chain Switches and Allow Users to Restrict Access to Chain Specific Functionality and Data": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "Opaque user confirmation message": [
+        {
+            "date": "2024-08-12 23:59:53.042766",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Partisia-Blockchain-Snap.pdf",
+            "snap": "npm:@partisiablockchain/snap"
+        }
+    ],
+    "Outdated Documentation": [
+        {
+            "date": "2023-11-07 08:55:57+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
+            "snap": "npm:@astar-network/snap"
+        }
+    ],
+    "Overly broad permission on RPC endowment": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "Performance - await in for Loop": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "Potential Generation Of Arbitrary Proofs": [
+        {
+            "date": "2024-08-12 23:59:52.606954",
+            "provider": "halborn",
+            "report": "https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf",
+            "snap": "npm:@rarimo/rarime"
+        }
+    ],
+    "Potential Markdown Injection in snap_notify": [
+        {
+            "date": "2024-04-09 13:39:49+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
+            "snap": "npm:@tezoroproject/snap"
+        }
+    ],
+    "Potential Save Of Arbitrary Credentials": [
+        {
+            "date": "2024-08-12 23:59:52.606954",
+            "provider": "halborn",
+            "report": "https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf",
+            "snap": "npm:@rarimo/rarime"
+        }
+    ],
+    "Potential URL query injection when building link for full audit": [
+        {
+            "date": "2024-08-12 23:59:56.645549",
+            "provider": "veridise",
+            "report": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
+            "snap": "npm:@quickintel/quickintel-snap"
+        }
+    ],
+    "Potential race condition when modifying snap configuration": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "Potentially vulnerable dependencies": [
+        {
+            "date": "2024-04-18 14:02:14+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
+            "snap": "npm:@xtreamly/xtreamly_slippage_predictor"
+        }
+    ],
+    "Private key logged in the console": [
+        {
+            "date": "2024-01-18 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_safeheron-snap.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Production Builds Allow Development and Localhost Origins; Snap Does Not Enforce Transport Security": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "Prompt User When Requesting Public Keys": [
+        {
+            "date": "2024-08-12 23:59:46.203703",
+            "provider": "halborn",
+            "report": "https://github.com/casper-ecosystem/casper-manager/blob/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
+            "snap": "npm:casper-manager"
+        }
+    ],
+    "Properties of the transaction Object Might Be Undefined": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "Protected (Administrative Origin) RPC Methods and Consent Management": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "Protected_handleAddAssetAccount - Should Verify name, symbol Matches assetId": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "Protected_handleIdentityLogin - Unchecked withIdentityId": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "Public RPC Methods and Consent Management": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "Query constraint for targetAddresses checks containment": [
+        {
+            "date": "2024-08-12 23:59:47.824222",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/06/VAR-Kleros-Scout.pdf",
+            "snap": "npm:@kleros/scout-snap"
+        }
+    ],
+    "Query injection pitfalls for future link feature": [
+        {
+            "date": "2024-08-12 23:59:47.824222",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/06/VAR-Kleros-Scout.pdf",
+            "snap": "npm:@kleros/scout-snap"
+        }
+    ],
+    "RPC *_signTransaction Endpoints Should Display Human Readable Transaction Data": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "RPC URLs are defined as wsRpcUrl while using HTTP": [
+        {
+            "date": "2023-09-17 14:19:27+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
+            "snap": "npm:@chainsafe/polkadot-snap"
+        }
+    ],
+    "RPC [eth|avax]_signMessage Endpoints Return Errors": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "RPC eth_getAddress Undermines MetaMask Security Features by Exposing All Accounts W/O Explicit User Consent": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "RPC eth_signMessage Allows Linked Dapps to Sign Messages With Any Wallet Account and W/O Explicit User Consent": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "RPC method parameters are not validated": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "RPC starkNet_addErc20Token - Should Ask for User Confirmation": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "RPC starkNet_addNetwork - Not Implemented, No User Confirmation": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "RPC starkNet_extractPrivateKey - Should Be Renamed to starkNet_displayPrivateKey": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "RPC starkNet_getStoredTransactions - Lax or Missing Input Validation": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "RPC starkNet_sendTransaction - The User Displayed Message Generated With getSigningTxnText() Is Prone to Markdown/Control Chars Injection From contractCallData": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "RPC starkNet_signMessage - Fails to Display the User Account That Is Used for Signing the Message": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "RPC starkNet_signMessage - Inconsistency When Previewing the Signed Message (Markdown Injection)": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "Request signatures require no user-modal interaction": [
+        {
+            "date": "2024-01-18 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_safeheron-snap.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Restrict Sites": [
+        {
+            "date": "2024-08-12 23:59:46.203703",
+            "provider": "halborn",
+            "report": "https://github.com/casper-ecosystem/casper-manager/blob/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
+            "snap": "npm:casper-manager"
+        },
+        {
+            "date": "2024-08-12 23:59:52.606954",
+            "provider": "halborn",
+            "report": "https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf",
+            "snap": "npm:@rarimo/rarime"
+        }
+    ],
+    "Restrict Snap RPC access to trusted origins": [
+        {
+            "date": "2023-07-12 00:00:00",
+            "provider": "cure53",
+            "report": "https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link",
+            "snap": "npm:walletchat-metamask-snap"
+        }
+    ],
+    "Sanity Check Assertions Are Compiled Away in Release Mode": [
+        {
+            "date": "2024-02-05 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Secret Used to Encrypt Shares Sent Over Network": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Security Groups and Security Group Rules Are Both Used for": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Security Groups and Security Group Rules Are Both Used for Traffic": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Security Groups and Security Group Rules Are Both Used for Traffic Access Control": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Seed phrase leakage in mobile application memory": [
+        {
+            "date": "2023-09-07 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_silencelabs-apps.pdf",
+            "snap": "npm:@silencelaboratories/silent-shard-snap"
+        }
+    ],
+    "Seed phrase leakage via dynamic instrumentation": [
+        {
+            "date": "2023-09-07 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_silencelabs-apps.pdf",
+            "snap": "npm:@silencelaboratories/silent-shard-snap"
+        }
+    ],
+    "Sensitive API Calls Are Not Restricted": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Sensitive Flag Is Not Set To True for Secret Variables": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Server Should Not Rely on Clients\u2019 Randomness": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "ShapeShift Manages MetaMasks Ethereum Private Keys": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "Shared/hexToBytes - Incorrect Hex String Handling": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "Sign request popup handles newlines incorrectly": [
+        {
+            "date": "2023-09-07 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_silencelabs-snap.pdf",
+            "snap": "npm:@silencelaboratories/silent-shard-snap"
+        }
+    ],
+    "Sign request screen handles newlines incorrectly": [
+        {
+            "date": "2023-09-07 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_silencelabs-apps.pdf",
+            "snap": "npm:@silencelaboratories/silent-shard-snap"
+        }
+    ],
+    "Signing Request Fails to Display Origin and User Account on Confirmation Message": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "Simulation of Multihop Swaps May Be Inaccurate": [
+        {
+            "date": "2024-04-18 14:02:14+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
+            "snap": "npm:@xtreamly/xtreamly_slippage_predictor"
+        }
+    ],
+    "Some RPCs are never used by the front end": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "Some values fetched by query are unused": [
+        {
+            "date": "2024-08-12 23:59:47.824222",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/06/VAR-Kleros-Scout.pdf",
+            "snap": "npm:@kleros/scout-snap"
+        }
+    ],
+    "Suboptimal state follows request flow": [
+        {
+            "date": "2024-01-18 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_safeheron-snap.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "Superfluous Permission endowment:ethereum-provider": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "Superfluous Permission endowment:network-access": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "TODOs in the Code": [
+        {
+            "date": "2023-09-13 17:18:23+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/pianity-snap",
+            "snap": "npm:@pianity/arsnap"
+        }
+    ],
+    "The sendZkAppTx() prompt has misleading information": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "Timestamp Logic Flaws in Snap\u2019s Caching Mechanism": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "Transaction submit failureReason not checked": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "Type Checking Is not Uniform": [
+        {
+            "date": "2023-12-08 15:56:28+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "snap": "npm:@amax/amaxsnap"
+        },
+        {
+            "date": "2023-12-12 17:12:21+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
+            "snap": "npm:azero-wallet"
+        }
+    ],
+    "Type mismatch in function return": [
+        {
+            "date": "2024-08-13 00:00:00.981674",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2024/03/VAR_Onthis-V2.pdf",
+            "snap": "npm:onthis-snap"
+        }
+    ],
+    "TypeScript Errors": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "Typo in Module Name": [
+        {
+            "date": "2024-02-01 10:14:30+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
+            "snap": "npm:@fioprotocol/fio-wallet-snap"
+        }
+    ],
+    "Typos": [
+        {
+            "date": "2024-02-13 13:49:49+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-fexcash/",
+            "snap": "npm:bch-snap"
+        }
+    ],
+    "UI/AlertView - Unnecessary Use of dangerouslySetInnerHTML": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "UI/hooks - detectEthereumProvider() Should Require mustBeMetaMask": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "URL domain regex captures too much": [
+        {
+            "date": "2024-08-12 23:59:47.824222",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/06/VAR-Kleros-Scout.pdf",
+            "snap": "npm:@kleros/scout-snap"
+        }
+    ],
+    "Unhandled notification failure can cause snap to be terminated": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "Unhelpful Error Message": [
+        {
+            "date": "2023-09-13 17:18:23+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/pianity-snap",
+            "snap": "npm:@pianity/arsnap"
+        }
+    ],
+    "Uninformative Confirmation Popup": [
+        {
+            "date": "2023-12-08 15:56:28+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "snap": "npm:@amax/amaxsnap"
+        }
+    ],
+    "Unnecessary Distribution of Private Key Information": [
+        {
+            "date": "2023-08-14 09:57:02+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
+            "snap": "npm:filsnap"
+        }
+    ],
+    "Unnecessary RPC permission": [
+        {
+            "date": "2024-08-12 23:59:56.645549",
+            "provider": "veridise",
+            "report": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
+            "snap": "npm:@quickintel/quickintel-snap"
+        }
+    ],
+    "Unnecessary Usage of Non-Standard Libraries": [
+        {
+            "date": "2023-09-12 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
+            "snap": "npm:@web3mq/snap"
+        }
+    ],
+    "Unnecessary use of private key": [
+        {
+            "date": "2024-08-12 23:59:53.042766",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Partisia-Blockchain-Snap.pdf",
+            "snap": "npm:@partisiablockchain/snap"
+        }
+    ],
+    "Unsafe wild card targetOrigin usage in postMessage": [
+        {
+            "date": "2023-07-12 00:00:00",
+            "provider": "cure53",
+            "report": "https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link",
+            "snap": "npm:walletchat-metamask-snap"
+        }
+    ],
+    "Unsuccessfully revoked tokens can be reused": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "Unsupported UI elements are silently dropped": [
+        {
+            "date": "2024-08-12 23:59:57.184161",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/11/VAR-Web3AntivirusSnap.pdf",
+            "snap": "npm:@web3-antivirus/web3-antivirus-snap"
+        }
+    ],
+    "Unused Functions": [
+        {
+            "date": "2023-12-05 13:56:05+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
+            "snap": "npm:@galactica-net/snap"
+        },
+        {
+            "date": "2023-12-12 17:12:21+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
+            "snap": "npm:azero-wallet"
+        }
+    ],
+    "Unused Import ethers, @metamask/snaps-ui": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "Unused Imports": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "Unused Imports, Inconsistent Coding Style and Unsafe Patterns": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "Unused Interface Declaration": [
+        {
+            "date": "2023-07-24 08:35:44+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "snap": "npm:@shapeshiftoss/metamask-snaps"
+        }
+    ],
+    "Update and Replace Vulnerable Dependencies": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Usage Of Vulnerable Packages": [
+        {
+            "date": "2023-09-13 17:18:23+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/pianity-snap",
+            "snap": "npm:@pianity/arsnap"
+        }
+    ],
+    "Usage of Deprecated Functions": [
+        {
+            "date": "2023-09-13 17:18:23+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/pianity-snap",
+            "snap": "npm:@pianity/arsnap"
+        }
+    ],
+    "Usage of Unmaintained Cryptographic Library": [
+        {
+            "date": "2024-02-13 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "snap": "npm:@usecapsule/account-snap"
+        }
+    ],
+    "Usage of \u201cMagic Numbers\u201d": [
+        {
+            "date": "2023-09-17 14:19:24+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
+            "snap": "npm:@chainsafe/aleo-snap"
+        }
+    ],
+    "Use of Outdated snap.config.json Instead of snap.config.js": [
+        {
+            "date": "2023-08-21 10:55:22+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
+            "snap": "npm:@solflare-wallet/solana-snap"
+        }
+    ],
+    "Use of deprecated MetaMask permissions in Snaps": [
+        {
+            "date": "2024-01-18 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_safeheron-snap.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "User Flow - Request to Sign Message Does Not Provide Security Guarantee": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "Users cannot be removed from role": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "Valid JWT forgery containing arbitrary user IDs": [
+        {
+            "date": "2023-09-07 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_silencelabs-apps.pdf",
+            "snap": "npm:@silencelaboratories/silent-shard-snap"
+        }
+    ],
+    "Vault": [
+        {
+            "date": "2023-09-13 17:18:23+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/pianity-snap",
+            "snap": "npm:@pianity/arsnap"
+        }
+    ],
+    "Vulnerable and Unused Dependencies Detected in the Codebase": [
+        {
+            "date": "2023-09-12 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
+            "snap": "npm:@web3mq/snap"
+        }
+    ],
+    "Wallet Monitoring Improvements": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "Weak Key Derivation Algorithm Used": [
+        {
+            "date": "2023-09-12 00:00:00",
+            "provider": "leastauthority",
+            "report": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
+            "snap": "npm:@web3mq/snap"
+        }
+    ],
+    "createAccount() is inefficiently implemented": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "cronJob checkTokens Might Flood User Notifications": [
+        {
+            "date": "2024-04-09 13:39:49+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
+            "snap": "npm:@tezoroproject/snap"
+        }
+    ],
+    "cronJob checkTokens Return Value Is Not Necessary": [
+        {
+            "date": "2024-04-09 13:39:49+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
+            "snap": "npm:@tezoroproject/snap"
+        }
+    ],
+    "currentepoch  - Unnecesary Conversion From/to String": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "deleteToken Should Prompt User for Its Consent": [
+        {
+            "date": "2024-04-09 13:39:49+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
+            "snap": "npm:@tezoroproject/snap"
+        }
+    ],
+    "devDependencies Erroneously Listed as dependencies": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "enablePolkadotSnap Returns an Error When Using the Default networkName ": [
+        {
+            "date": "2023-09-17 14:19:27+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
+            "snap": "npm:@chainsafe/polkadot-snap"
+        }
+    ],
+    "fetchAddress  - Inaccurate Function Name": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "fetchAllTicketCommentsCount()  Is Unoptimized, Overly Complex, and Lacks Untrusted Input Validation": [
+        {
+            "date": "2023-12-15 10:52:50+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "snap": "npm:@consensys/web3tickets-snap"
+        }
+    ],
+    "fil_configure Allows Anyone to Change the Snap\u2019s Configuration": [
+        {
+            "date": "2023-08-14 09:57:02+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
+            "snap": "npm:filsnap"
+        }
+    ],
+    "formatFiatValue() Can Be Simplified": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "getAccounts() performs O(N) HTTP queries": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "getErrorMessage() Returns an Empty String": [
+        {
+            "date": "2023-10-02 08:28:52+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-kunalabs/",
+            "snap": "npm:@kunalabs-io/sui-metamask-snap"
+        }
+    ],
+    "getKeysFromAddress - Possible Unchecked Null Dereference When Looking Up Private Key": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "getMinaClient() does not check for invalid networks": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "getPriceOfAssetQuotedInUSD Might Return Flawed Asset Prices": [
+        {
+            "date": "2024-04-09 13:39:49+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
+            "snap": "npm:@tezoroproject/snap"
+        }
+    ],
+    "localhost string included on the allow-list": [
+        {
+            "date": "2024-01-18 00:00:00",
+            "provider": "cure53",
+            "report": "https://cure53.de/pentest-report_safeheron-snap.pdf",
+            "snap": "npm:@safeheron/mpcsnap"
+        }
+    ],
+    "makeAvatarSvgCustom - Potential SVG HTML Injection, React innerHTML": [
+        {
+            "date": "2024-03-13 11:38:18+01:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
+            "snap": "npm:@fort-major/msq"
+        }
+    ],
+    "mina_changeAccount does not confirm user intentions": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "mina_changeNetwork silently no-ops on invalid network": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "mina_exportPrivateKey does not obtain user\u2019s authorization": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "mina_exportPrivateKey logs the private key to console": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "mina_resetSnapConfig does not prompt for user confirmation": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "package.json - Dependecy Mixup": [
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "package.json - Invalid License": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        },
+        {
+            "date": "2023-06-28 16:26:59+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
+            "snap": "npm:@consensys/starknet-snap"
+        }
+    ],
+    "package.json - Missing Author": [
+        {
+            "date": "2023-07-17 10:41:29+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "snap": "npm:wallet-guard-snap"
+        }
+    ],
+    "persistedData Race Where snap_manageState.get Returnsnull": [
+        {
+            "date": "2023-07-03 11:46:54+02:00",
+            "provider": "consensysdiligence",
+            "report": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
+            "snap": "npm:@pushprotocol/snap"
+        }
+    ],
+    "sendPayment() and sendStakeDelegation() hard-codes \u201cMINA\u201d as the token": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "sendStakeDelegation() dialog title is too vague": [
+        {
+            "date": "2024-08-12 23:59:49.103262",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/08/VAR-Mina-Snap-V101.pdf",
+            "snap": "npm:mina-portal"
+        }
+    ],
+    "setName function does not set anything": [
+        {
+            "date": "2024-08-12 23:59:53.655694",
+            "provider": "veridise",
+            "report": "https://f8t2x8b2.rocketcdn.me/wp-content/uploads/2023/09/VAR-Cubist-Snap4.pdf",
+            "snap": "npm:@cubist-labs/cubesigner-snap"
+        }
+    ],
+    "signData() Will Soon Be Deprecated": [
+        {
+            "date": "2023-10-02 08:28:52+00:00",
+            "provider": "sayfer",
+            "report": "https://sayfer.io/audits/metamask-snap-audit-report-for-kunalabs/",
+            "snap": "npm:@kunalabs-io/sui-metamask-snap"
+        }
+    ]
+}
