@@ -1,22 +1,43 @@
-import {SourceFile, SyntaxKind} from "ts-morph";
-
+import { SourceFile, SyntaxKind, CallExpression } from "ts-morph";
+import { RiskRating } from "./structures";
 import { Finding } from "./types";
 
-export function detectConsoleLog(file: SourceFile): Finding[] {
-    const consoleLogs = file.getDescendantsOfKind(SyntaxKind.CallExpression).filter(expression => {
-        const expressionText = expression.getExpression().getText();
-        return expressionText === "console.log" || expressionText.startsWith("console.");
-    });
+/**
+ * Filters and returns console log expressions from the given file.
+ * @param {SourceFile} file - The source file to analyze.
+ * @returns {CallExpression[]} - Array of console log call expressions.
+ */
+function getConsoleLogExpressions(file: SourceFile): CallExpression[] {
+    return file
+        .getDescendantsOfKind(SyntaxKind.CallExpression)
+        .filter((expression) => {
+            const expressionText = expression.getExpression().getText();
+            return (
+                expressionText === "console.log" ||
+                expressionText.startsWith("console.")
+            );
+        });
+}
 
-    return consoleLogs.map(log => {
+/**
+ * Detects console log statements in the given file.
+ * @param {SourceFile} file - The source file to analyze.
+ * @returns {Finding[]} - Array of findings with console log details.
+ */
+export function detectConsoleLog(file: SourceFile): Finding[] {
+    const consoleLogExpressions = getConsoleLogExpressions(file);
+
+    return consoleLogExpressions.map((log) => {
         const line = log.getStartLineNumber();
         return {
             type: "ConsoleLog",
-            description: `Console log at line ${line}`,
+            description: "Presence of console log function detected.",
             position: {
                 filePath: file.getFilePath(),
-                lineNum: line
-            }
+                lineNum: line,
+            },
+            riskRating: RiskRating.Low,
+            weight: 1,
         };
     });
 }
