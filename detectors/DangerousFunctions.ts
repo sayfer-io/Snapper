@@ -6,8 +6,10 @@ import { Finding } from "./types";
  * Structure to hold dangerous functions with their names and weights.
  */
 const dangerousFunctions = [
-    { name: "dangerouslySetInnerHTML", weight: 10 },
-    { name: "eval", weight: 9 },
+    { name: "dangerouslySetInnerHTML", weight: 6 },
+    { name: "eval", weight: 10 },
+    { name: "signData", weight: 1 },
+    
     // ... more dangerous functions as needed
 ];
 
