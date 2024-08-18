@@ -1,4 +1,4 @@
-import { SourceFile, SyntaxKind, ObjectLiteralExpression, PropertyAssignment } from "ts-morph";
+import { SourceFile, SyntaxKind, PropertyAssignment, ObjectLiteralElementLike } from "ts-morph";
 import { RiskRating } from "./structures";
 import { Finding } from "./types";
 
@@ -28,12 +28,13 @@ export function detectNonExactDependencies(file: SourceFile): Finding[] {
 
 /**
  * Checks if a property assignment is a non-exact dependency.
- * @param {PropertyAssignment} prop - The property assignment to check.
+ * @param {ObjectLiteralElementLike} prop - The property assignment to check.
  * @returns {boolean} - True if the property is a non-exact dependency, false otherwise.
  */
-function isNonExactDependency(prop: PropertyAssignment): boolean {
+function isNonExactDependency(prop: ObjectLiteralElementLike): boolean {
     if (prop.getKind() !== SyntaxKind.PropertyAssignment) return false;
-    const initializer = prop.getInitializer();
+    const assignment = prop as PropertyAssignment;
+    const initializer = assignment.getInitializer();
     if (!initializer || SyntaxKind[initializer.getKind()] !== "StringLiteral") return false;
     const version = initializer.getText().replace(/['"]/g, "");
     return /^[\^~]/.test(version);
