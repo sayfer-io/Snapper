@@ -1,5 +1,7 @@
 # Issue Gatherer
 
+Current coverage: 
+
 ## Introduction
 
 ## Usage
