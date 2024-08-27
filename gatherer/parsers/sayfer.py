@@ -39,7 +39,8 @@ class SayferParser(BaseParser):
             return self.get_vulnerabilities_html()
 
     def get_vulnerabilities_pdf(self) -> list:
-        raise NotImplementedError
+        print(self.url)
+        return []
 
     def get_vulnerabilities_html(self) -> list:
         vulnerabilities = []
@@ -56,7 +57,8 @@ class SayferParser(BaseParser):
             return self.get_date_html()
 
     def get_date_pdf(self) -> datetime:
-        raise NotImplementedError
+        print(self.url)
+        return datetime.now()
 
     def get_date_html(self) -> datetime:
         modified_date = self.soup.find("meta", property="article:modified_time")

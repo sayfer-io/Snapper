@@ -166,7 +166,7 @@ def parse_audits(verified_snaps, start_date, end_date):
         audits = details["metadata"].get("audits", [])
         for audit in audits:
             auditor = audit.get("auditor")
-            report_url = audit.get("url")
+            report_url = audit.get("report")
             audit_findings = process_audit(auditor, report_url, start_date, end_date)
             if audit_findings:
                 findings[name].extend(audit_findings)

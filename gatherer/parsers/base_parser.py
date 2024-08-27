@@ -15,8 +15,12 @@ class BaseParser(ABC):
         self.url = url
         if body_type == "html":
             self.soup = self._fetch_and_parse_html(url)
+            if not self.soup:
+                raise Exception("Soup object is not initialized")
         elif body_type == "pdf":
             self.body = self._fetch_and_parse_pdf(url)
+            if not self.body:
+                raise Exception("Soup object is not initialized")
         else:
             raise Exception("Unsupported body type")
 
