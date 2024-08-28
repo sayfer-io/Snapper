@@ -1,4 +1,33 @@
-## Injection
+# Checlist of Metamask Findings
+
+Listed below are all the findings from previous snap audit reports grouped into several categories.
+
+## Table of Contents
+
+- [Checklist of Metamask Findings](#checlist-of-metamask-findings)
+- [Table of Contents](#table-of-contents)
+- [Injection Flaws](#injection-flaws)
+- [Authentication Flaws](#authentication-flaws)
+- [Sensitive Data Exposure](#sensitive-data-exposure)
+- [Access Control Flaws](#access-control-flaws)
+- [Use of Deprecated or Insecure Software Libraries](#use-of-deprecated-or-insecure-software-libraries)
+- [Insufficient Logging and Monitoring](#insufficient-logging-and-monitoring)
+- [Security Misconfiguration](#security-misconfiguration)
+- [Weak Cryptography](#weak-cryptography)
+- [User Interface and Usability Flaws](#user-interface-and-usability-flaws)
+- [Configuration and Permission Flaws](#configuration-and-permission-flaws)
+- [Insecure or Unsafe Dependency Management](#insecure-or-unsafe-dependency-management)
+- [Poor Coding Practices](#poor-coding-practices)
+- [Improper Input Validation](#improper-input-validation)
+- [Inadequate Documentation and Comments](#inadequate-documentation-and-comments)
+- [Misleading or Inconsistent Information](#misleading-or-inconsistent-information)
+- [Lack of Testing and Quality Assurance](#lack-of-testing-and-quality-assurance)
+- [Inadequate Security Measures](#inadequate-security-measures)
+- [UI and UX Flaws](#ui-and-ux-flaws)
+- [Error Handling Issues](#error-handling-issues)
+- [Uncategorized](#uncategorized)
+
+## Injection Flaws
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -15,8 +44,7 @@
 | Markdown And Control Character Injection | 14/08/2023 | npm:filsnap | https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/ | TODO | Consensys Diligence | TODO | - |
 | Potential URL query injection when building link for full audit | 10/10/2023 | npm:@quickintel/quickintel-snap | https://raw.githubusercontent.com/Quick-Intel/quickintel-snap/main/VAR_quickintel_snap.pdf | TODO | Quick intel | Low | - |
 
-
-## Broken Authentication
+## Authentication Flaws
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -35,7 +63,6 @@
 | POTENTIAL SAVE OF ARBITRARY CREDENTIALS | 28/08/2023 | npm:@rarimo/rarime | https://raw.githubusercontent.com/rarimo/rarime/main/audits/halborn_2023-08-28.pdf | TODO | Halborn | Critical | - |
 | tokenToString is Used Before Defined | 13/08/2023 | npm:@leapwallet/metamask-cosmos-snap | https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf | TODO | Sayfer | Informational | - |
 
-
 ## Sensitive Data Exposure
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
@@ -50,16 +77,14 @@
 | Unnecessary Distribution Of Private Key Information | 14/08/2023 | npm:filsnap | https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/ | TODO | Consensys Diligence | Critical | - |
 | Directly Exposed Private Key Export | 14/08/2023 | npm:filsnap | https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/ | TODO | Consensys Diligence | Critical | - |
 
-
-## Broken Access Control
+## Access Control Flaws
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Security Groups And Security Group Rules Are Both Used For Traffic Access Control | 13/02/2024 | npm:@usecapsule/account-snap | https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf | TODO | Least Authority | TODO | - |
 | Missing Check In Feldman’s Secret Sharing Allows For Threshold Escalation [known | 05/02/2024 | npm:@safeheron/mpcsnap | https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf | TODO | Least Authority | Low | - |
 
-
-## Using Components with Known Vulnerabilities
+## Use of Deprecated or Insecure Software Libraries
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -73,13 +98,11 @@
 | Usage Of Unmaintained Cryptographic Library | 13/02/2024 | npm:@usecapsule/account-snap | https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf | TODO | Least Authority | TODO | - |
 | Incorrect Dependency Version | 18/04/2024 | npm:@xtreamly/xtreamly_slippage_predictor | https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/ | TODO | Sayfer | TODO | - |
 
-
 ## Insufficient Logging and Monitoring
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Wallet Monitoring Improvements | 17/07/2023 | npm:wallet-guard-snap | https://consensys.io/diligence/audits/2023/07/wallet-guard/ | TODO | Consensys Diligence | TODO | - |
-
 
 ## Security Misconfiguration
 
@@ -87,7 +110,6 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Enablepolkadotsnap Returns An Error When Using The Default Networkname | 17/09/2023 | npm:@chainsafe/polkadot-snap | https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/ | TODO | Sayfer | TODO | - |
 | formatAllowanceOption Function is Missing a Default Case | 13/08/2023 | npm:@leapwallet/metamask-cosmos-snap | https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf | TODO | Sayfer | Low | - |
-
 
 ## Weak Cryptography
 
@@ -97,8 +119,7 @@
 | Length Field In Csafehash256/512::write Can Overflow | 05/02/2024 | npm:@safeheron/mpcsnap | https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf | TODO | Least Authority | Low | - |
 | Instance of outdated cryptography | 24/02/2024 | npm:@gobob/bob-snap | https://raw.githubusercontent.com/bob-collective/bob-snap/master/docs/audit.pdf | TODO | Cure53 | Low | - |
 
-
-## User Interface and Usability Issues
+## User Interface and Usability Flaws
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -107,13 +128,11 @@
 | No Warning On Signing Arbitrary Data | 15/05/2024 | npm:@nufi/cardano-metamask-snap | https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/ | TODO | Sayfer | Critical | - |
 | No Warning When Signing Arbitrary Data | 26/02/2024 | npm:@polkagate/snap | https://sayfer.io/audits/metamask-snap-audit-report-for-polkagate-snap/ | TODO | Sayfer | Critical | - |
 
-
-## Configuration and Permission Problems
+## Configuration and Permission Flaws
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Fil_configure Allows Anyone To Change The Snap’s Configuration | 14/08/2023 | npm:filsnap | https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/ | TODO | Consensys Diligence | Low | - |
-
 
 ## Insecure or Unsafe Dependency Management
 
@@ -126,7 +145,6 @@
 | DEPENDENCIES SHOULD BE PINNED TO EXACT VERSIONS | 20/06/2023 | npm:casper-manager | https://raw.githubusercontent.com/casper-ecosystem/casper-manager/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf | TODO | Halborn | Low | - |
 | DEPENDENCIES SHOULD BE PINNED TO EXACT VERSIONS | 28/08/2023 | npm:@rarimo/rarime | https://raw.githubusercontent.com/rarimo/rarime/main/audits/halborn_2023-08-28.pdf | TODO | Halborn | Low | - |
 
-
 ## Poor Coding Practices
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
@@ -134,7 +152,6 @@
 | Unused Imports, Inconsistent Coding Style And Unsafe Patterns | 15/12/2023 | npm:@consensys/web3tickets-snap | https://consensys.io/diligence/audits/2023/12/web3-tickets/ | TODO | Consensys Diligence | Low | - |
 | Improper Paramater Sanitization In Fetchallticketcommentscount(), Updateticket(), And Parseticketcomments() | 15/12/2023 | npm:@consensys/web3tickets-snap | https://consensys.io/diligence/audits/2023/12/web3-tickets/ | TODO | Consensys Diligence | TODO | - |
 | If Statement Could Be Simplified | 07/11/2023 | npm:@astar-network/snap | https://sayfer.io/audits/metamask-snap-audit-report-for-astar/ | TODO | Sayfer | TODO | - |
-
 
 ## Uncategorized
 
@@ -311,7 +328,6 @@
 | Unused Parameter | 30/08/2023 | npm:web3-security-snap | https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf | TODO | Sayfer | Low | - |
 | Missing Unit Tests | 30/08/2023 | npm:web3-security-snap | https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf | TODO | Sayfer | Informational | - |
 
-
 ## Improper Input Validation
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
@@ -321,7 +337,6 @@
 | Insufficient Input Validation Derivekeypair() | 21/08/2023 | npm:@solflare-wallet/solana-snap | https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/ | TODO | Consensys Diligence | TODO | - |
 | Imprecise Eth Address Validation | 22/02/2024 | npm:rubic-snap | https://cure53.de/pentest-report_rubic-snap.pdf | TODO | Cure53 | TODO | - |
 | Missing Input Validation For Walletaddress | 17/07/2023 | npm:wallet-guard-snap | https://consensys.io/diligence/audits/2023/07/wallet-guard/ | TODO | Consensys Diligence | TODO | - |
-
 
 ## Inadequate Documentation and Comments
 
@@ -334,7 +349,6 @@
 | Lack Of High-level And Inline Documentation | 24/07/2023 | npm:@shapeshiftoss/metamask-snaps | https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/ | TODO | Consensys Diligence | High | - |
 | Lack Of Documentation And Commenting | 12/12/2023 | npm:azero-wallet | https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/ | TODO | Sayfer | Low | - |
 
-
 ## Misleading or Inconsistent Information
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
@@ -343,7 +357,6 @@
 | No Explanation Of The Risk Associated With Exportseed() | 07/11/2023 | npm:@astar-network/snap | https://sayfer.io/audits/metamask-snap-audit-report-for-astar/ | TODO | Sayfer | TODO | - |
 | Misleading Error Message | 15/08/2023 | npm:@tenderly/metamask-snap | https://raw.githubusercontent.com/Tenderly/tenderly-snap/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf | TODO | Sayfer | Informational | - |
 | Misleading Error Message | 15/08/2023 | npm:@tenderly/metamask-snap | https://github.com/Tenderly/tenderly-snap/blob/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf | TODO | Sayfer | Informational | - |
-
 
 ## Lack of Testing and Quality Assurance
 
@@ -355,7 +368,6 @@
 | Insufficient Test Coverage | 01/02/2024 | npm:@fioprotocol/fio-wallet-snap | https://sayfer.io/audits/metamask-snap-audit-report-for-fio/ | TODO | Sayfer | TODO | - |
 | No Tests Found | 13/08/2023 | npm:@leapwallet/metamask-cosmos-snap | https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf | TODO | Sayfer | Medium | - |
 
-
 ## Inadequate Security Measures
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
@@ -366,7 +378,6 @@
 | Restrict Snap Rpc Access To Trusted Origins | 12/07/2023 | npm:walletchat-metamask-snap | https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link | TODO | Cure53 | TODO | - |
 | Unsafe Wild Card Targetorigin Usage In Postmessage | 12/07/2023 | npm:walletchat-metamask-snap | https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link | TODO | Cure53 | TODO | - |
 
-
 ## UI and UX Flaws
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
@@ -374,10 +385,8 @@
 | No User-email Displayed In Sync Dialog For Gdrive | 04/08/2023 | npm:@tuum-tech/identify | https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf | TODO | Cure53 | TODO | - |
 | Alarming Metamask Prompt | 23/06/2023 | npm:tezos-metamask-snap | https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf | TODO | Sayfer | Informational | - |
 
-
 ## Error Handling Issues
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Unexpected Success Message | 30/08/2023 | npm:web3-security-snap | https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf | TODO | Sayfer | Medium | - |
-
