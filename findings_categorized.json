@@ -202,10 +202,10 @@
         },
         {
             "title": "Arbitrary DApp can retrieve access token",
-            "date": "07/12/2023",
+            "date": "12/07/2023",
             "snap": "npm:walletchat-metamask-snap",
             "report_url": "https://drive.google.com/uc?export=download&id=1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec",
             "auditor": "Cure53",
             "severity": "Critical"
         },
@@ -232,7 +232,7 @@
             "date": "13/08/2023",
             "snap": "npm:@leapwallet/metamask-cosmos-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf",
-            "code_url": "TODO",
+            "code_url": "undefined",
             "auditor": "Sayfer",
             "severity": "Informational"
         }
@@ -335,7 +335,7 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "Low"
         }
@@ -449,7 +449,7 @@
             "date": "13/08/2023",
             "snap": "npm:@leapwallet/metamask-cosmos-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf",
-            "code_url": "TODO",
+            "code_url": "undefined",
             "auditor": "Sayfer",
             "severity": "Low"
         }
@@ -460,7 +460,7 @@
             "date": "24/02/2024",
             "snap": "npm:@gobob/bob-snap",
             "report_url": "https://github.com/bob-collective/bob-snap/blob/master/docs/audit.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/bob-collective/bob-snap/tree/ad88a73fe378321173fbc9574357bf76b322a2eb",
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -469,7 +469,7 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "Low"
         },
@@ -489,7 +489,7 @@
             "date": "04/08/2023",
             "snap": "npm:@tuum-tech/identify",
             "report_url": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119",
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -547,7 +547,7 @@
             "date": "12/09/2023",
             "snap": "npm:@web3mq/snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a",
             "auditor": "Least Authority",
             "severity": "Medium"
         },
@@ -1280,7 +1280,7 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "Low"
         },
@@ -1289,7 +1289,7 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1298,7 +1298,7 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1307,7 +1307,7 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1568,7 +1568,7 @@
             "date": "04/08/2023",
             "snap": "npm:@tuum-tech/identify",
             "report_url": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119",
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -1667,7 +1667,7 @@
             "date": "12/09/2023",
             "snap": "npm:@web3mq/snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1676,7 +1676,7 @@
             "date": "12/09/2023",
             "snap": "npm:@web3mq/snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1685,7 +1685,7 @@
             "date": "12/09/2023",
             "snap": "npm:@web3mq/snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1694,7 +1694,7 @@
             "date": "12/09/2023",
             "snap": "npm:@web3mq/snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1802,7 +1802,7 @@
             "date": "02/02/2024",
             "snap": "npm:defi-armor-snap",
             "report_url": "https://github.com/Eulith/eulith-metamask-snap/blob/master/audit-report.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Eulith/eulith-metamask-snap/tree/d47f88f62e90cd7f2130057e8e59d216e5d09dcc",
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -1910,7 +1910,7 @@
             "date": "07/12/2023",
             "snap": "npm:walletchat-metamask-snap",
             "report_url": "https://drive.google.com/uc?export=download&id=1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec",
             "auditor": "Cure53",
             "severity": "Medium"
         },
@@ -1919,7 +1919,7 @@
             "date": "07/12/2023",
             "snap": "npm:walletchat-metamask-snap",
             "report_url": "https://drive.google.com/uc?export=download&id=1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec",
             "auditor": "Cure53",
             "severity": "Low"
         },
@@ -2332,7 +2332,7 @@
             "date": "13/08/2023",
             "snap": "npm:@leapwallet/metamask-cosmos-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf",
-            "code_url": "TODO",
+            "code_url": "undefined",
             "auditor": "Sayfer",
             "severity": "Medium"
         }
@@ -2390,7 +2390,7 @@
             "date": "04/08/2023",
             "snap": "npm:@tuum-tech/identify",
             "report_url": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119",
             "auditor": "Cure53",
             "severity": "TODO"
         },
