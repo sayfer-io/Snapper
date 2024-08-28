@@ -4,8 +4,6 @@ Listed below are all the findings from previous snap audit reports grouped into 
 
 ## Table of Contents
 
-- [Checklist of Metamask Findings](#checlist-of-metamask-findings)
-- [Table of Contents](#table-of-contents)
 - [Injection Flaws](#injection-flaws)
 - [Authentication Flaws](#authentication-flaws)
 - [Sensitive Data Exposure](#sensitive-data-exposure)
@@ -67,9 +65,9 @@ Listed below are all the findings from previous snap audit reports grouped into 
 
 | Title | Date | Snap | Report URL | Code URL | Auditor | Severity | Coverage |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Backup Flow Exports Private Keys As Plaintext | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | TODO | Cure53 | Critical | - |
+| Backup Flow Exports Private Keys As Plaintext | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba | Cure53 | Critical | - |
 | Getkeysfromaddress - Possible Unchecked Null Dereference When Looking Up Private Key | 28/06/2023 | npm:@consensys/starknet-snap | https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/ | TODO | Consensys Diligence | Critical | - |
-| Private Key Logged In The Console | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | TODO | Cure53 | Critical | - |
+| Private Key Logged In The Console | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba | Cure53 | Critical | - |
 | Shapeshift Manages Metamasks Ethereum Private Keys | 24/07/2023 | npm:@shapeshiftoss/metamask-snaps | https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/ | TODO | Consensys Diligence | Critical | - |
 | Seed Phrase Leakage In Mobile Application Memory | 07/09/2023 | npm:@silencelaboratories/silent-shard-snap | https://cure53.de/pentest-report_silencelabs-apps.pdf | TODO | Cure53 | TODO | - |
 | Seed Phrase Leakage Via Dynamic Instrumentation | 07/09/2023 | npm:@silencelaboratories/silent-shard-snap | https://cure53.de/pentest-report_silencelabs-apps.pdf | TODO | Cure53 | TODO | - |
@@ -91,7 +89,7 @@ Listed below are all the findings from previous snap audit reports grouped into 
 | Signdata() Will Soon Be Deprecated | 02/10/2023 | npm:@kunalabs-io/sui-metamask-snap | https://sayfer.io/audits/metamask-snap-audit-report-for-kunalabs/ | TODO | Sayfer | Low | - |
 | Usage Of Vulnerable Packages | 13/09/2023 | npm:@pianity/arsnap | https://sayfer.io/audits/pianity-snap | TODO | Sayfer | Medium | - |
 | Usage Of Deprecated Functions | 13/09/2023 | npm:@pianity/arsnap | https://sayfer.io/audits/pianity-snap | TODO | Sayfer | Low | - |
-| Use Of Deprecated Metamask Permissions In Snaps | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | TODO | Cure53 | Low | - |
+| Use Of Deprecated Metamask Permissions In Snaps | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba | Cure53 | Low | - |
 | Dependency With Outstanding Vulnerability | 12/12/2023 | npm:azero-wallet | https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/ | TODO | Sayfer | TODO | - |
 | Floating Dependency Versions | 09/07/2024 | npm:@harbour-fi/ramp-snap | https://sayfer.io/audits/metamask-snap-audit-report-for-harbour/ | TODO | Sayfer | TODO | - |
 | Floating Dependency Versions | 15/05/2024 | npm:@nufi/cardano-metamask-snap | https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/ | TODO | Sayfer | TODO | - |
@@ -162,7 +160,7 @@ Listed below are all the findings from previous snap audit reports grouped into 
 | Typos | 13/02/2024 | npm:bch-snap | https://sayfer.io/audits/metamask-snap-audit-report-for-fexcash/ | TODO | Sayfer | Low | - |
 | Fetchallticketcommentscount() Is Unoptimized, Overly Complex, And Lacks Untrusted Input Validation | 15/12/2023 | npm:@consensys/web3tickets-snap | https://consensys.io/diligence/audits/2023/12/web3-tickets/ | TODO | Consensys Diligence | TODO | - |
 | Missing Url Validation | 05/12/2023 | npm:@galactica-net/snap | https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/ | TODO | Sayfer | TODO | - |
-| Lack Of Payload Validation In Snaps | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | TODO | Cure53 | TODO | - |
+| Lack Of Payload Validation In Snaps | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba | Cure53 | TODO | - |
 | Lack Of Validation In Uint8arrayfromhex(string) | 12/12/2023 | npm:azero-wallet | https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/ | TODO | Sayfer | TODO | - |
 | Lack Of Inline Code Documentation | 15/12/2023 | npm:@consensys/web3tickets-snap | https://consensys.io/diligence/audits/2023/12/web3-tickets/ | TODO | Consensys Diligence | Low | - |
 | Incomplete Natspec And General Documentation | 17/07/2023 | npm:wallet-guard-snap | https://consensys.io/diligence/audits/2023/07/wallet-guard/ | TODO | Consensys Diligence | Low | - |
@@ -226,10 +224,10 @@ Listed below are all the findings from previous snap audit reports grouped into 
 | Api Endpoint Call Is Missing Recipient Address | 27/08/2024 | npm:@quickintel/quickintel-snap | https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf | TODO | Veridise | TODO | - |
 | Dependencies Should Be Pinned To Exact Versions | 27/08/2024 | npm:@rarimo/rarime | https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf | TODO | Halborn | TODO | - |
 | Potential Generation Of Arbitrary Proofs | 27/08/2024 | npm:@rarimo/rarime | https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf | TODO | Halborn | Critical | - |
-| Localhost String Included On The Allow-list | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | TODO | Cure53 | Low | - |
-| Key Generation Overwrites Previous Mpc Account | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | TODO | Cure53 | TODO | - |
-| Suboptimal State Follows Request Flow | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | TODO | Cure53 | Low | - |
-| Request Signatures Require No User-modal Interaction | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | TODO | Cure53 | TODO | - |
+| Localhost String Included On The Allow-list | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba | Cure53 | Low | - |
+| Key Generation Overwrites Previous Mpc Account | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba | Cure53 | TODO | - |
+| Suboptimal State Follows Request Flow | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba | Cure53 | Low | - |
+| Request Signatures Require No User-modal Interaction | 18/01/2024 | npm:@safeheron/mpcsnap | https://cure53.de/pentest-report_safeheron-snap.pdf | https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba | Cure53 | TODO | - |
 | Missing Check In Feldman’s Secret Sharing Allows For Threshold | 05/02/2024 | npm:@safeheron/mpcsnap | https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf | TODO | Least Authority | Low | - |
 | Incorrect Cofactor Handling In Pubkeyrecovery | 05/02/2024 | npm:@safeheron/mpcsnap | https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf | TODO | Least Authority | TODO | - |
 | Sanity Check Assertions Are Compiled Away In Release Mode | 05/02/2024 | npm:@safeheron/mpcsnap | https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf | TODO | Least Authority | TODO | - |
