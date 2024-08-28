@@ -346,7 +346,7 @@
             "date": "02/10/2023",
             "snap": "npm:@kunalabs-io/sui-metamask-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-kunalabs/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/kunalabs-io/sui-snap/tree/9e2c05ed91d9724851687ffd32a40d8ce35a869f",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -355,7 +355,7 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "TODO",
+            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
             "auditor": "Sayfer",
             "severity": "Medium"
         },
@@ -364,7 +364,7 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "TODO",
+            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -382,7 +382,7 @@
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -418,7 +418,7 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
             "auditor": "Sayfer",
             "severity": "TODO"
         }
@@ -440,7 +440,7 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/polkadot-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -498,7 +498,7 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -516,14 +516,14 @@
             "date": "26/02/2024",
             "snap": "npm:@polkagate/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkagate-snap/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/PolkaGate/snap/tree/11bd667863e43b5901c7628e4737e80ba6f16930",
             "auditor": "Sayfer",
             "severity": "Critical"
         }
     ],
     "Configuration and Permission Issues": [
         {
-            "title": "Fil_configure Allows Anyone To Change The Snap\u2019s Configuration",
+            "title": "Fil_configure Allows Anyone To Change The Snap's Configuration",
             "date": "14/08/2023",
             "snap": "npm:filsnap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
@@ -556,7 +556,7 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
             "auditor": "Sayfer",
             "severity": "Medium"
         },
@@ -565,7 +565,7 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -612,7 +612,7 @@
             "date": "07/11/2023",
             "snap": "npm:@astar-network/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589",
             "auditor": "Sayfer",
             "severity": "TODO"
         }
@@ -623,7 +623,7 @@
             "date": "01/02/2024",
             "snap": "npm:@fioprotocol/fio-wallet-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/fioprotocol/fio-wallet-snap/tree/835567442e0fe5f210a814d8ad1c68d9d8ffdf45",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -641,7 +641,7 @@
             "date": "13/02/2024",
             "snap": "npm:bch-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fexcash/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/fex-cash/bch-snap/tree/233d1531cd665942c963c4f6d150dc7cf4eb7940",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -659,7 +659,7 @@
             "date": "05/12/2023",
             "snap": "npm:@galactica-net/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -677,7 +677,7 @@
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -704,7 +704,7 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -713,16 +713,16 @@
             "date": "07/11/2023",
             "snap": "npm:@astar-network/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
         {
-            "title": "Usage Of \u201cmagic Numbers\u201d",
+            "title": "Usage Of 'magic Numbers'",
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/aleo-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/ChainSafe/aleo-snap/tree/e367a29dd354484f764785d6c9362aa6b0d73b17",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -731,7 +731,7 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/polkadot-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -740,7 +740,7 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/polkadot-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -749,7 +749,7 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/polkadot-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -758,7 +758,7 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/polkadot-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -884,7 +884,7 @@
             "date": "01/02/2024",
             "snap": "npm:@fioprotocol/fio-wallet-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/fioprotocol/fio-wallet-snap/tree/835567442e0fe5f210a814d8ad1c68d9d8ffdf45",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -965,7 +965,7 @@
             "date": "05/12/2023",
             "snap": "npm:@galactica-net/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -974,7 +974,7 @@
             "date": "05/12/2023",
             "snap": "npm:@galactica-net/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -983,7 +983,7 @@
             "date": "02/10/2023",
             "snap": "npm:@kunalabs-io/sui-metamask-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-kunalabs/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/kunalabs-io/sui-snap/tree/9e2c05ed91d9724851687ffd32a40d8ce35a869f",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -992,7 +992,7 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "TODO",
+            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -1001,7 +1001,7 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "TODO",
+            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1010,7 +1010,7 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "TODO",
+            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1019,7 +1019,7 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "TODO",
+            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1028,7 +1028,7 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "TODO",
+            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1037,7 +1037,7 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "TODO",
+            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1046,7 +1046,7 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "TODO",
+            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1055,7 +1055,7 @@
             "date": "26/02/2024",
             "snap": "npm:@polkagate/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkagate-snap/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/PolkaGate/snap/tree/11bd667863e43b5901c7628e4737e80ba6f16930",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1703,7 +1703,7 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1712,7 +1712,7 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1721,7 +1721,7 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1730,7 +1730,7 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1739,7 +1739,7 @@
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -1748,7 +1748,7 @@
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1757,7 +1757,7 @@
             "date": "13/02/2024",
             "snap": "npm:bch-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fexcash/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/fex-cash/bch-snap/tree/233d1531cd665942c963c4f6d150dc7cf4eb7940",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1766,7 +1766,7 @@
             "date": "13/02/2024",
             "snap": "npm:bch-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fexcash/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/fex-cash/bch-snap/tree/233d1531cd665942c963c4f6d150dc7cf4eb7940",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2072,7 +2072,7 @@
             "date": "23/06/2023",
             "snap": "npm:tezos-metamask-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2081,7 +2081,7 @@
             "date": "23/06/2023",
             "snap": "npm:tezos-metamask-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26",
             "auditor": "Sayfer",
             "severity": "Informational"
         },
@@ -2090,7 +2090,7 @@
             "date": "23/06/2023",
             "snap": "npm:tezos-metamask-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26",
             "auditor": "Sayfer",
             "severity": "Informational"
         },
@@ -2099,7 +2099,7 @@
             "date": "15/08/2023",
             "snap": "npm:@tenderly/metamask-snap",
             "report_url": "https://github.com/Tenderly/tenderly-snap/blob/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Tenderly/tenderly-snap/tree/6ef8b6bef49b2e82e25372d703625cb4b74e1f14",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2202,7 +2202,7 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2211,7 +2211,7 @@
             "date": "07/11/2023",
             "snap": "npm:@astar-network/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2220,7 +2220,7 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/aleo-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/ChainSafe/aleo-snap/tree/e367a29dd354484f764785d6c9362aa6b0d73b17",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2229,7 +2229,7 @@
             "date": "05/12/2023",
             "snap": "npm:@galactica-net/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2247,7 +2247,7 @@
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274",
             "auditor": "Sayfer",
             "severity": "Low"
         }
@@ -2267,7 +2267,7 @@
             "date": "07/11/2023",
             "snap": "npm:@astar-network/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2285,7 +2285,7 @@
             "date": "15/08/2023",
             "snap": "npm:@tenderly/metamask-snap",
             "report_url": "https://github.com/Tenderly/tenderly-snap/blob/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/Tenderly/tenderly-snap/tree/6ef8b6bef49b2e82e25372d703625cb4b74e1f14",
             "auditor": "Sayfer",
             "severity": "Informational"
         }
@@ -2296,7 +2296,7 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2305,7 +2305,7 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2314,7 +2314,7 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/aleo-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/ChainSafe/aleo-snap/tree/e367a29dd354484f764785d6c9362aa6b0d73b17",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2323,7 +2323,7 @@
             "date": "01/02/2024",
             "snap": "npm:@fioprotocol/fio-wallet-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/fioprotocol/fio-wallet-snap/tree/835567442e0fe5f210a814d8ad1c68d9d8ffdf45",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2399,7 +2399,7 @@
             "date": "23/06/2023",
             "snap": "npm:tezos-metamask-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26",
             "auditor": "Sayfer",
             "severity": "Informational"
         }
