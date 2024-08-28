@@ -340,7 +340,150 @@
             "severity": "Low"
         }
     ],
-    "Other": [
+    "Using Components with Known Vulnerabilities": [
+        {
+            "title": "Signdata() Will Soon Be Deprecated",
+            "date": "02/10/2023",
+            "snap": "npm:@kunalabs-io/sui-metamask-snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-kunalabs/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Low"
+        },
+        {
+            "title": "Usage Of Vulnerable Packages",
+            "date": "13/09/2023",
+            "snap": "npm:@pianity/arsnap",
+            "report_url": "https://sayfer.io/audits/pianity-snap",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Medium"
+        },
+        {
+            "title": "Usage Of Deprecated Functions",
+            "date": "13/09/2023",
+            "snap": "npm:@pianity/arsnap",
+            "report_url": "https://sayfer.io/audits/pianity-snap",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Low"
+        },
+        {
+            "title": "Use Of Deprecated Metamask Permissions In Snaps",
+            "date": "18/01/2024",
+            "snap": "npm:@safeheron/mpcsnap",
+            "report_url": "https://cure53.de/pentest-report_safeheron-snap.pdf",
+            "code_url": "TODO",
+            "auditor": "Cure53",
+            "severity": "Low"
+        },
+        {
+            "title": "Dependency With Outstanding Vulnerability",
+            "date": "12/12/2023",
+            "snap": "npm:azero-wallet",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "Floating Dependency Versions",
+            "date": "09/07/2024",
+            "snap": "npm:@harbour-fi/ramp-snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-harbour/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "Floating Dependency Versions",
+            "date": "15/05/2024",
+            "snap": "npm:@nufi/cardano-metamask-snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "Usage Of Unmaintained Cryptographic Library",
+            "date": "13/02/2024",
+            "snap": "npm:@usecapsule/account-snap",
+            "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
+            "code_url": "TODO",
+            "auditor": "Least Authority",
+            "severity": "TODO"
+        },
+        {
+            "title": "Incorrect Dependency Version",
+            "date": "18/04/2024",
+            "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        }
+    ],
+    "Insufficient Logging and Monitoring": [
+        {
+            "title": "Wallet Monitoring Improvements",
+            "date": "17/07/2023",
+            "snap": "npm:wallet-guard-snap",
+            "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "code_url": "TODO",
+            "auditor": "Consensys Diligence",
+            "severity": "TODO"
+        }
+    ],
+    "Security Misconfiguration": [
+        {
+            "title": "Enablepolkadotsnap Returns An Error When Using The Default Networkname",
+            "date": "17/09/2023",
+            "snap": "npm:@chainsafe/polkadot-snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "formatAllowanceOption Function is Missing a Default Case",
+            "date": "13/08/2023",
+            "snap": "npm:@leapwallet/metamask-cosmos-snap",
+            "report_url": "https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Low"
+        }
+    ],
+    "Weak Cryptography": [
+        {
+            "title": "Instance Of Outdated Cryptography",
+            "date": "24/02/2024",
+            "snap": "npm:@gobob/bob-snap",
+            "report_url": "https://github.com/bob-collective/bob-snap/blob/master/docs/audit.pdf",
+            "code_url": "TODO",
+            "auditor": "Cure53",
+            "severity": "TODO"
+        },
+        {
+            "title": "Length Field In Csafehash256/512::write Can Overflow",
+            "date": "05/02/2024",
+            "snap": "npm:@safeheron/mpcsnap",
+            "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
+            "code_url": "TODO",
+            "auditor": "Least Authority",
+            "severity": "Low"
+        },
+        {
+            "title": "Instance of outdated cryptography",
+            "date": "24/02/2024",
+            "snap": "npm:@gobob/bob-snap",
+            "report_url": "https://raw.githubusercontent.com/bob-collective/bob-snap/master/docs/audit.pdf",
+            "code_url": "TODO",
+            "auditor": "Cure53",
+            "severity": "Low"
+        }
+    ],
+    "User Interface and Usability Issues": [
         {
             "title": "No User Confirmation Dialog In Gdrive Configuration",
             "date": "04/08/2023",
@@ -351,6 +494,35 @@
             "severity": "TODO"
         },
         {
+            "title": "Uninformative Confirmation Popup",
+            "date": "08/12/2023",
+            "snap": "npm:@amax/amaxsnap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "No Warning On Signing Arbitrary Data",
+            "date": "15/05/2024",
+            "snap": "npm:@nufi/cardano-metamask-snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Critical"
+        },
+        {
+            "title": "No Warning When Signing Arbitrary Data",
+            "date": "26/02/2024",
+            "snap": "npm:@polkagate/snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkagate-snap/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Critical"
+        }
+    ],
+    "Configuration and Permission Problems": [
+        {
             "title": "Fil_configure Allows Anyone To Change The Snap\u2019s Configuration",
             "date": "14/08/2023",
             "snap": "npm:filsnap",
@@ -358,7 +530,9 @@
             "code_url": "TODO",
             "auditor": "Consensys Diligence",
             "severity": "Low"
-        },
+        }
+    ],
+    "Insecure or Unsafe Dependency Management": [
         {
             "title": "Update And Replace Vulnerable Dependencies",
             "date": "13/02/2024",
@@ -387,6 +561,35 @@
             "severity": "Medium"
         },
         {
+            "title": "Dependencies With Known Vulnerabilities",
+            "date": "08/12/2023",
+            "snap": "npm:@amax/amaxsnap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "DEPENDENCIES SHOULD BE PINNED TO EXACT VERSIONS",
+            "date": "20/06/2023",
+            "snap": "npm:casper-manager",
+            "report_url": "https://raw.githubusercontent.com/casper-ecosystem/casper-manager/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
+            "code_url": "TODO",
+            "auditor": "Halborn",
+            "severity": "Low"
+        },
+        {
+            "title": "DEPENDENCIES SHOULD BE PINNED TO EXACT VERSIONS",
+            "date": "28/08/2023",
+            "snap": "npm:@rarimo/rarime",
+            "report_url": "https://raw.githubusercontent.com/rarimo/rarime/main/audits/halborn_2023-08-28.pdf",
+            "code_url": "TODO",
+            "auditor": "Halborn",
+            "severity": "Low"
+        }
+    ],
+    "Poor Coding Practices": [
+        {
             "title": "Unused Imports, Inconsistent Coding Style And Unsafe Patterns",
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
@@ -395,6 +598,26 @@
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
+        {
+            "title": "Improper Paramater Sanitization In Fetchallticketcommentscount(), Updateticket(), And Parseticketcomments()",
+            "date": "15/12/2023",
+            "snap": "npm:@consensys/web3tickets-snap",
+            "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
+            "code_url": "TODO",
+            "auditor": "Consensys Diligence",
+            "severity": "TODO"
+        },
+        {
+            "title": "If Statement Could Be Simplified",
+            "date": "07/11/2023",
+            "snap": "npm:@astar-network/snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        }
+    ],
+    "Uncategorized": [
         {
             "title": "Minor Typos",
             "date": "01/02/2024",
@@ -421,24 +644,6 @@
             "code_url": "TODO",
             "auditor": "Sayfer",
             "severity": "Low"
-        },
-        {
-            "title": "Lax Validation Using@starknet::validateandparseaddress Allows Short Addresses And Does Not Verify Checksums",
-            "date": "28/06/2023",
-            "snap": "npm:@consensys/starknet-snap",
-            "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "TODO",
-            "auditor": "Consensys Diligence",
-            "severity": "Low"
-        },
-        {
-            "title": "Rpc Starknet_getstoredtransactions - Lax Or Missing Input Validation",
-            "date": "28/06/2023",
-            "snap": "npm:@consensys/starknet-snap",
-            "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "TODO",
-            "auditor": "Consensys Diligence",
-            "severity": "TODO"
         },
         {
             "title": "Fetchallticketcommentscount() Is Unoptimized, Overly Complex, And Lacks Untrusted Input Validation",
@@ -468,75 +673,12 @@
             "severity": "TODO"
         },
         {
-            "title": "Insufficient Input Validation Derivekeypair()",
-            "date": "21/08/2023",
-            "snap": "npm:@solflare-wallet/solana-snap",
-            "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
-            "auditor": "Consensys Diligence",
-            "severity": "TODO"
-        },
-        {
             "title": "Lack Of Validation In Uint8arrayfromhex(string)",
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
             "code_url": "TODO",
             "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
-            "title": "Imprecise Eth Address Validation",
-            "date": "22/02/2024",
-            "snap": "npm:rubic-snap",
-            "report_url": "https://cure53.de/pentest-report_rubic-snap.pdf",
-            "code_url": "TODO",
-            "auditor": "Cure53",
-            "severity": "TODO"
-        },
-        {
-            "title": "Missing Input Validation For Walletaddress",
-            "date": "17/07/2023",
-            "snap": "npm:wallet-guard-snap",
-            "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "TODO",
-            "auditor": "Consensys Diligence",
-            "severity": "TODO"
-        },
-        {
-            "title": "Lack Of Documentation And Commenting",
-            "date": "08/12/2023",
-            "snap": "npm:@amax/amaxsnap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Low"
-        },
-        {
-            "title": "Outdated Documentation",
-            "date": "07/11/2023",
-            "snap": "npm:@astar-network/snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Low"
-        },
-        {
-            "title": "Documentation Contains Incorrect Instructions",
-            "date": "17/09/2023",
-            "snap": "npm:@chainsafe/aleo-snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Low"
-        },
-        {
-            "title": "Improper Paramater Sanitization In Fetchallticketcommentscount(), Updateticket(), And Parseticketcomments()",
-            "date": "15/12/2023",
-            "snap": "npm:@consensys/web3tickets-snap",
-            "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "TODO",
-            "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
         {
@@ -549,33 +691,6 @@
             "severity": "Low"
         },
         {
-            "title": "Commented Code And Leftover Todos",
-            "date": "05/12/2023",
-            "snap": "npm:@galactica-net/snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
-            "title": "Lack Of High-level And Inline Documentation",
-            "date": "24/07/2023",
-            "snap": "npm:@shapeshiftoss/metamask-snaps",
-            "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "TODO",
-            "auditor": "Consensys Diligence",
-            "severity": "High"
-        },
-        {
-            "title": "Lack Of Documentation And Commenting",
-            "date": "12/12/2023",
-            "snap": "npm:azero-wallet",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Low"
-        },
-        {
             "title": "Incomplete Natspec And General Documentation",
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
@@ -583,33 +698,6 @@
             "code_url": "TODO",
             "auditor": "Consensys Diligence",
             "severity": "Low"
-        },
-        {
-            "title": "Misleading Comment",
-            "date": "17/07/2023",
-            "snap": "npm:wallet-guard-snap",
-            "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "TODO",
-            "auditor": "Consensys Diligence",
-            "severity": "TODO"
-        },
-        {
-            "title": "Insufficient Test Coverage",
-            "date": "08/12/2023",
-            "snap": "npm:@amax/amaxsnap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
-            "title": "Example Dapp Only Has One Functionality Implemented",
-            "date": "08/12/2023",
-            "snap": "npm:@amax/amaxsnap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
         },
         {
             "title": "Type Checking Is Not Uniform",
@@ -621,55 +709,10 @@
             "severity": "TODO"
         },
         {
-            "title": "Dependencies With Known Vulnerabilities",
-            "date": "08/12/2023",
-            "snap": "npm:@amax/amaxsnap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
-            "title": "Uninformative Confirmation Popup",
-            "date": "08/12/2023",
-            "snap": "npm:@amax/amaxsnap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
-            "title": "If Statement Could Be Simplified",
-            "date": "07/11/2023",
-            "snap": "npm:@astar-network/snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
             "title": "Dysfunctional Image Link",
             "date": "07/11/2023",
             "snap": "npm:@astar-network/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
-            "title": "No Explanation Of The Risk Associated With Exportseed()",
-            "date": "07/11/2023",
-            "snap": "npm:@astar-network/snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
-            "title": "Non-functional Tests",
-            "date": "17/09/2023",
-            "snap": "npm:@chainsafe/aleo-snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
             "code_url": "TODO",
             "auditor": "Sayfer",
             "severity": "TODO"
@@ -846,15 +889,6 @@
             "severity": "Low"
         },
         {
-            "title": "Insufficient Test Coverage",
-            "date": "01/02/2024",
-            "snap": "npm:@fioprotocol/fio-wallet-snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
             "title": "Protected_handleaddassetaccount - Should Verify Name, Symbol Matches Assetid",
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
@@ -954,15 +988,6 @@
             "severity": "TODO"
         },
         {
-            "title": "No Warning On Signing Arbitrary Data",
-            "date": "15/05/2024",
-            "snap": "npm:@nufi/cardano-metamask-snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Critical"
-        },
-        {
             "title": "Low Log Limit",
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
@@ -1024,15 +1049,6 @@
             "code_url": "TODO",
             "auditor": "Sayfer",
             "severity": "TODO"
-        },
-        {
-            "title": "No Warning When Signing Arbitrary Data",
-            "date": "26/02/2024",
-            "snap": "npm:@polkagate/snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkagate-snap/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Critical"
         },
         {
             "title": "Incomplete Unit Test Coverage",
@@ -1203,15 +1219,6 @@
             "report_url": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
             "code_url": "TODO",
             "auditor": "Veridise",
-            "severity": "TODO"
-        },
-        {
-            "title": "Restrict Sites",
-            "date": "27/08/2024",
-            "snap": "npm:@rarimo/rarime",
-            "report_url": "https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf",
-            "code_url": "TODO",
-            "auditor": "Halborn",
             "severity": "TODO"
         },
         {
@@ -1557,15 +1564,6 @@
             "severity": "TODO"
         },
         {
-            "title": "No User-email Displayed In Sync Dialog For Gdrive",
-            "date": "04/08/2023",
-            "snap": "npm:@tuum-tech/identify",
-            "report_url": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
-            "code_url": "TODO",
-            "auditor": "Cure53",
-            "severity": "TODO"
-        },
-        {
             "title": "Dapp Origin Not Displayed In The Snap Ui",
             "date": "04/08/2023",
             "snap": "npm:@tuum-tech/identify",
@@ -1773,15 +1771,6 @@
             "severity": "TODO"
         },
         {
-            "title": "Restrict Sites",
-            "date": "27/08/2024",
-            "snap": "npm:casper-manager",
-            "report_url": "https://github.com/casper-ecosystem/casper-manager/blob/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
-            "code_url": "TODO",
-            "auditor": "Halborn",
-            "severity": "TODO"
-        },
-        {
             "title": "Prompt User When Requesting Public Keys",
             "date": "27/08/2024",
             "snap": "npm:casper-manager",
@@ -1819,15 +1808,6 @@
         },
         {
             "title": "Missing Timeout In Rpc.call",
-            "date": "14/08/2023",
-            "snap": "npm:filsnap",
-            "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
-            "code_url": "TODO",
-            "auditor": "Consensys Diligence",
-            "severity": "TODO"
-        },
-        {
-            "title": "Missing Address Protection",
             "date": "14/08/2023",
             "snap": "npm:filsnap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
@@ -1926,24 +1906,6 @@
             "severity": "TODO"
         },
         {
-            "title": "Restrict Snap Rpc Access To Trusted Origins",
-            "date": "12/07/2023",
-            "snap": "npm:walletchat-metamask-snap",
-            "report_url": "https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link",
-            "code_url": "TODO",
-            "auditor": "Cure53",
-            "severity": "TODO"
-        },
-        {
-            "title": "Unsafe Wild Card Targetorigin Usage In Postmessage",
-            "date": "12/07/2023",
-            "snap": "npm:walletchat-metamask-snap",
-            "report_url": "https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link",
-            "code_url": "TODO",
-            "auditor": "Cure53",
-            "severity": "TODO"
-        },
-        {
             "title": "Restrict Snap RPC access to trusted origins",
             "date": "07/12/2023",
             "snap": "npm:walletchat-metamask-snap",
@@ -1977,15 +1939,6 @@
             "report_url": "https://drive.google.com/uc?export=download&id=1dixJw4G4ekcO40GpbH7VmizLTINS5gUL",
             "code_url": "TODO",
             "auditor": "Cure53",
-            "severity": "Low"
-        },
-        {
-            "title": "DEPENDENCIES SHOULD BE PINNED TO EXACT VERSIONS",
-            "date": "20/06/2023",
-            "snap": "npm:casper-manager",
-            "report_url": "https://raw.githubusercontent.com/casper-ecosystem/casper-manager/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
-            "code_url": "TODO",
-            "auditor": "Halborn",
             "severity": "Low"
         },
         {
@@ -2043,15 +1996,6 @@
             "severity": "Low"
         },
         {
-            "title": "Misleading Error Message",
-            "date": "15/08/2023",
-            "snap": "npm:@tenderly/metamask-snap",
-            "report_url": "https://raw.githubusercontent.com/Tenderly/tenderly-snap/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Informational"
-        },
-        {
             "title": "POTENTIAL GENERATION OF ARBITRARY PROOFS",
             "date": "28/08/2023",
             "snap": "npm:@rarimo/rarime",
@@ -2059,15 +2003,6 @@
             "code_url": "TODO",
             "auditor": "Halborn",
             "severity": "Critical"
-        },
-        {
-            "title": "DEPENDENCIES SHOULD BE PINNED TO EXACT VERSIONS",
-            "date": "28/08/2023",
-            "snap": "npm:@rarimo/rarime",
-            "report_url": "https://raw.githubusercontent.com/rarimo/rarime/main/audits/halborn_2023-08-28.pdf",
-            "code_url": "TODO",
-            "auditor": "Halborn",
-            "severity": "Low"
         },
         {
             "title": "RESTRICT SITES",
@@ -2151,15 +2086,6 @@
             "severity": "Informational"
         },
         {
-            "title": "Alarming Metamask Prompt",
-            "date": "23/06/2023",
-            "snap": "npm:tezos-metamask-snap",
-            "report_url": "https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Informational"
-        },
-        {
             "title": "Comment About Unresolved Issue",
             "date": "23/06/2023",
             "snap": "npm:tezos-metamask-snap",
@@ -2178,24 +2104,6 @@
             "severity": "Low"
         },
         {
-            "title": "Misleading Error Message",
-            "date": "15/08/2023",
-            "snap": "npm:@tenderly/metamask-snap",
-            "report_url": "https://github.com/Tenderly/tenderly-snap/blob/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Informational"
-        },
-        {
-            "title": "No Tests Found",
-            "date": "13/08/2023",
-            "snap": "npm:@leapwallet/metamask-cosmos-snap",
-            "report_url": "https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Medium"
-        },
-        {
             "title": "Snap Hosted Locally",
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
@@ -2203,15 +2111,6 @@
             "code_url": "TODO",
             "auditor": "Sayfer",
             "severity": "High"
-        },
-        {
-            "title": "Unexpected Success Message",
-            "date": "30/08/2023",
-            "snap": "npm:web3-security-snap",
-            "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Medium"
         },
         {
             "title": "Lack of Documentation",
@@ -2250,92 +2149,45 @@
             "severity": "Informational"
         }
     ],
-    "Using Components with Known Vulnerabilities": [
+    "Improper Input Validation": [
         {
-            "title": "Signdata() Will Soon Be Deprecated",
-            "date": "02/10/2023",
-            "snap": "npm:@kunalabs-io/sui-metamask-snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-kunalabs/",
+            "title": "Lax Validation Using@starknet::validateandparseaddress Allows Short Addresses And Does Not Verify Checksums",
+            "date": "28/06/2023",
+            "snap": "npm:@consensys/starknet-snap",
+            "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
             "code_url": "TODO",
-            "auditor": "Sayfer",
+            "auditor": "Consensys Diligence",
             "severity": "Low"
         },
         {
-            "title": "Usage Of Vulnerable Packages",
-            "date": "13/09/2023",
-            "snap": "npm:@pianity/arsnap",
-            "report_url": "https://sayfer.io/audits/pianity-snap",
+            "title": "Rpc Starknet_getstoredtransactions - Lax Or Missing Input Validation",
+            "date": "28/06/2023",
+            "snap": "npm:@consensys/starknet-snap",
+            "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
             "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Medium"
+            "auditor": "Consensys Diligence",
+            "severity": "TODO"
         },
         {
-            "title": "Usage Of Deprecated Functions",
-            "date": "13/09/2023",
-            "snap": "npm:@pianity/arsnap",
-            "report_url": "https://sayfer.io/audits/pianity-snap",
+            "title": "Insufficient Input Validation Derivekeypair()",
+            "date": "21/08/2023",
+            "snap": "npm:@solflare-wallet/solana-snap",
+            "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
             "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "Low"
+            "auditor": "Consensys Diligence",
+            "severity": "TODO"
         },
         {
-            "title": "Use Of Deprecated Metamask Permissions In Snaps",
-            "date": "18/01/2024",
-            "snap": "npm:@safeheron/mpcsnap",
-            "report_url": "https://cure53.de/pentest-report_safeheron-snap.pdf",
+            "title": "Imprecise Eth Address Validation",
+            "date": "22/02/2024",
+            "snap": "npm:rubic-snap",
+            "report_url": "https://cure53.de/pentest-report_rubic-snap.pdf",
             "code_url": "TODO",
             "auditor": "Cure53",
-            "severity": "Low"
-        },
-        {
-            "title": "Dependency With Outstanding Vulnerability",
-            "date": "12/12/2023",
-            "snap": "npm:azero-wallet",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
             "severity": "TODO"
         },
         {
-            "title": "Floating Dependency Versions",
-            "date": "09/07/2024",
-            "snap": "npm:@harbour-fi/ramp-snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-harbour/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
-            "title": "Floating Dependency Versions",
-            "date": "15/05/2024",
-            "snap": "npm:@nufi/cardano-metamask-snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        },
-        {
-            "title": "Usage Of Unmaintained Cryptographic Library",
-            "date": "13/02/2024",
-            "snap": "npm:@usecapsule/account-snap",
-            "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
-            "auditor": "Least Authority",
-            "severity": "TODO"
-        },
-        {
-            "title": "Incorrect Dependency Version",
-            "date": "18/04/2024",
-            "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "TODO",
-            "auditor": "Sayfer",
-            "severity": "TODO"
-        }
-    ],
-    "Insufficient Logging and Monitoring": [
-        {
-            "title": "Wallet Monitoring Improvements",
+            "title": "Missing Input Validation For Walletaddress",
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
@@ -2344,53 +2196,223 @@
             "severity": "TODO"
         }
     ],
-    "Security Misconfiguration": [
+    "Inadequate Documentation and Comments": [
         {
-            "title": "Enablepolkadotsnap Returns An Error When Using The Default Networkname",
+            "title": "Lack Of Documentation And Commenting",
+            "date": "08/12/2023",
+            "snap": "npm:@amax/amaxsnap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Low"
+        },
+        {
+            "title": "Outdated Documentation",
+            "date": "07/11/2023",
+            "snap": "npm:@astar-network/snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Low"
+        },
+        {
+            "title": "Documentation Contains Incorrect Instructions",
             "date": "17/09/2023",
-            "snap": "npm:@chainsafe/polkadot-snap",
-            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
+            "snap": "npm:@chainsafe/aleo-snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Low"
+        },
+        {
+            "title": "Commented Code And Leftover Todos",
+            "date": "05/12/2023",
+            "snap": "npm:@galactica-net/snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
             "code_url": "TODO",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
         {
-            "title": "formatAllowanceOption Function is Missing a Default Case",
-            "date": "13/08/2023",
-            "snap": "npm:@leapwallet/metamask-cosmos-snap",
-            "report_url": "https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf",
+            "title": "Lack Of High-level And Inline Documentation",
+            "date": "24/07/2023",
+            "snap": "npm:@shapeshiftoss/metamask-snaps",
+            "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
+            "code_url": "TODO",
+            "auditor": "Consensys Diligence",
+            "severity": "High"
+        },
+        {
+            "title": "Lack Of Documentation And Commenting",
+            "date": "12/12/2023",
+            "snap": "npm:azero-wallet",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
             "code_url": "TODO",
             "auditor": "Sayfer",
             "severity": "Low"
         }
     ],
-    "Weak Cryptography": [
+    "Misleading or Inconsistent Information": [
         {
-            "title": "Instance Of Outdated Cryptography",
-            "date": "24/02/2024",
-            "snap": "npm:@gobob/bob-snap",
-            "report_url": "https://github.com/bob-collective/bob-snap/blob/master/docs/audit.pdf",
+            "title": "Misleading Comment",
+            "date": "17/07/2023",
+            "snap": "npm:wallet-guard-snap",
+            "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
+            "code_url": "TODO",
+            "auditor": "Consensys Diligence",
+            "severity": "TODO"
+        },
+        {
+            "title": "No Explanation Of The Risk Associated With Exportseed()",
+            "date": "07/11/2023",
+            "snap": "npm:@astar-network/snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "Misleading Error Message",
+            "date": "15/08/2023",
+            "snap": "npm:@tenderly/metamask-snap",
+            "report_url": "https://raw.githubusercontent.com/Tenderly/tenderly-snap/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Informational"
+        },
+        {
+            "title": "Misleading Error Message",
+            "date": "15/08/2023",
+            "snap": "npm:@tenderly/metamask-snap",
+            "report_url": "https://github.com/Tenderly/tenderly-snap/blob/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Informational"
+        }
+    ],
+    "Lack of Testing and Quality Assurance": [
+        {
+            "title": "Insufficient Test Coverage",
+            "date": "08/12/2023",
+            "snap": "npm:@amax/amaxsnap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "Example Dapp Only Has One Functionality Implemented",
+            "date": "08/12/2023",
+            "snap": "npm:@amax/amaxsnap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "Non-functional Tests",
+            "date": "17/09/2023",
+            "snap": "npm:@chainsafe/aleo-snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "Insufficient Test Coverage",
+            "date": "01/02/2024",
+            "snap": "npm:@fioprotocol/fio-wallet-snap",
+            "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "TODO"
+        },
+        {
+            "title": "No Tests Found",
+            "date": "13/08/2023",
+            "snap": "npm:@leapwallet/metamask-cosmos-snap",
+            "report_url": "https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Medium"
+        }
+    ],
+    "Inadequate Security Measures": [
+        {
+            "title": "Restrict Sites",
+            "date": "27/08/2024",
+            "snap": "npm:@rarimo/rarime",
+            "report_url": "https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf",
+            "code_url": "TODO",
+            "auditor": "Halborn",
+            "severity": "TODO"
+        },
+        {
+            "title": "Restrict Sites",
+            "date": "27/08/2024",
+            "snap": "npm:casper-manager",
+            "report_url": "https://github.com/casper-ecosystem/casper-manager/blob/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
+            "code_url": "TODO",
+            "auditor": "Halborn",
+            "severity": "TODO"
+        },
+        {
+            "title": "Missing Address Protection",
+            "date": "14/08/2023",
+            "snap": "npm:filsnap",
+            "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
+            "code_url": "TODO",
+            "auditor": "Consensys Diligence",
+            "severity": "TODO"
+        },
+        {
+            "title": "Restrict Snap Rpc Access To Trusted Origins",
+            "date": "12/07/2023",
+            "snap": "npm:walletchat-metamask-snap",
+            "report_url": "https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link",
             "code_url": "TODO",
             "auditor": "Cure53",
             "severity": "TODO"
         },
         {
-            "title": "Length Field In Csafehash256/512::write Can Overflow",
-            "date": "05/02/2024",
-            "snap": "npm:@safeheron/mpcsnap",
-            "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "TODO",
-            "auditor": "Least Authority",
-            "severity": "Low"
-        },
-        {
-            "title": "Instance of outdated cryptography",
-            "date": "24/02/2024",
-            "snap": "npm:@gobob/bob-snap",
-            "report_url": "https://raw.githubusercontent.com/bob-collective/bob-snap/master/docs/audit.pdf",
+            "title": "Unsafe Wild Card Targetorigin Usage In Postmessage",
+            "date": "12/07/2023",
+            "snap": "npm:walletchat-metamask-snap",
+            "report_url": "https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link",
             "code_url": "TODO",
             "auditor": "Cure53",
-            "severity": "Low"
+            "severity": "TODO"
+        }
+    ],
+    "UI and UX Flaws": [
+        {
+            "title": "No User-email Displayed In Sync Dialog For Gdrive",
+            "date": "04/08/2023",
+            "snap": "npm:@tuum-tech/identify",
+            "report_url": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
+            "code_url": "TODO",
+            "auditor": "Cure53",
+            "severity": "TODO"
+        },
+        {
+            "title": "Alarming Metamask Prompt",
+            "date": "23/06/2023",
+            "snap": "npm:tezos-metamask-snap",
+            "report_url": "https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Informational"
+        }
+    ],
+    "Error Handling Issues": [
+        {
+            "title": "Unexpected Success Message",
+            "date": "30/08/2023",
+            "snap": "npm:web3-security-snap",
+            "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
+            "code_url": "TODO",
+            "auditor": "Sayfer",
+            "severity": "Medium"
         }
     ]
 }
