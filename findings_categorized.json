@@ -77,7 +77,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -187,7 +187,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -297,7 +297,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "Critical"
         },
@@ -326,12 +326,12 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
         {
-            "title": "Missing Check In Feldman\u2019s Secret Sharing Allows For Threshold Escalation [known",
+            "title": "Missing Check In Feldman's Secret Sharing Allows For Threshold Escalation [known",
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
@@ -391,7 +391,7 @@
             "date": "09/07/2024",
             "snap": "npm:@harbour-fi/ramp-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-harbour/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/harbour-tech/app-web-ramp/tree/9b1a02215b7b3388185d86c103fea47de744805b",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -400,7 +400,7 @@
             "date": "15/05/2024",
             "snap": "npm:@nufi/cardano-metamask-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/nufi-official/nufi-snap/tree/972263e670d90dfb02f66e29d311b7ef74a936a9",
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -409,7 +409,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -507,7 +507,7 @@
             "date": "15/05/2024",
             "snap": "npm:@nufi/cardano-metamask-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/",
-            "code_url": "TODO",
+            "code_url": "https://github.com/nufi-official/nufi-snap/tree/972263e670d90dfb02f66e29d311b7ef74a936a9",
             "auditor": "Sayfer",
             "severity": "Critical"
         },
@@ -538,7 +538,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "Medium"
         },
@@ -898,7 +898,7 @@
             "severity": "TODO"
         },
         {
-            "title": "Timestamp Logic Flaws In Snap\u2019s Caching Mechanism",
+            "title": "Timestamp Logic Flaws In Snap's Caching Mechanism",
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
@@ -1276,7 +1276,7 @@
             "severity": "TODO"
         },
         {
-            "title": "Missing Check In Feldman\u2019s Secret Sharing Allows For Threshold",
+            "title": "Missing Check In Feldman's Secret Sharing Allows For Threshold",
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
@@ -1460,7 +1460,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1469,7 +1469,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1478,7 +1478,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1487,7 +1487,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1496,7 +1496,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1505,7 +1505,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -1514,7 +1514,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1523,7 +1523,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1532,7 +1532,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1577,7 +1577,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1586,7 +1586,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1595,7 +1595,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "Medium"
         },
@@ -1604,7 +1604,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1613,7 +1613,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1622,7 +1622,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "Medium"
         },
@@ -1631,7 +1631,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "Low"
         },
@@ -1640,7 +1640,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1649,7 +1649,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1658,7 +1658,7 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Least Authority",
             "severity": "Low"
         },
@@ -1879,7 +1879,7 @@
             "severity": "TODO"
         },
         {
-            "title": "Server Should Not Rely On Clients\u2019 Randomness",
+            "title": "Server Should Not Rely On Clients' Randomness",
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
@@ -1897,7 +1897,7 @@
             "severity": "TODO"
         },
         {
-            "title": "Extra \u2018if\u2019 Statement",
+            "title": "Extra 'if' Statement",
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
@@ -2108,7 +2108,7 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
             "auditor": "Sayfer",
             "severity": "High"
         },
@@ -2117,7 +2117,7 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2126,7 +2126,7 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2135,7 +2135,7 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2144,7 +2144,7 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
             "auditor": "Sayfer",
             "severity": "Informational"
         }
@@ -2173,7 +2173,7 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "TODO",
+            "code_url": "multiple",
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -2410,7 +2410,7 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "TODO",
+            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
             "auditor": "Sayfer",
             "severity": "Medium"
         }
