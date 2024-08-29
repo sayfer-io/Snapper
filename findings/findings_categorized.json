@@ -5,7 +5,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -14,7 +16,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -23,7 +27,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -32,7 +38,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -41,7 +49,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -50,7 +60,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -59,7 +71,9 @@
             "date": "27/08/2024",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
-            "code_url": "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Veridise",
             "severity": "TODO"
         },
@@ -68,7 +82,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -77,7 +93,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -86,7 +106,9 @@
             "date": "09/04/2024",
             "snap": "npm:@tezoroproject/snap",
             "report_url": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
-            "code_url": "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8",
+            "code_urls": [
+                "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -95,7 +117,9 @@
             "date": "14/08/2023",
             "snap": "npm:filsnap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
-            "code_url": "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f",
+            "code_urls": [
+                "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -104,7 +128,9 @@
             "date": "10/10/2023",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://raw.githubusercontent.com/Quick-Intel/quickintel-snap/main/VAR_quickintel_snap.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Quick intel",
             "severity": "Low"
         }
@@ -115,7 +141,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -124,7 +152,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -133,7 +163,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -142,7 +174,9 @@
             "date": "27/08/2024",
             "snap": "npm:@rarimo/rarime",
             "report_url": "https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "deleted"
+            ],
             "auditor": "Halborn",
             "severity": "Critical"
         },
@@ -151,7 +185,9 @@
             "date": "09/04/2024",
             "snap": "npm:@tezoroproject/snap",
             "report_url": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
-            "code_url": "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8",
+            "code_urls": [
+                "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -160,7 +196,9 @@
             "date": "09/04/2024",
             "snap": "npm:@tezoroproject/snap",
             "report_url": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
-            "code_url": "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8",
+            "code_urls": [
+                "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -169,7 +207,9 @@
             "date": "09/04/2024",
             "snap": "npm:@tezoroproject/snap",
             "report_url": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
-            "code_url": "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8",
+            "code_urls": [
+                "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -178,7 +218,9 @@
             "date": "09/04/2024",
             "snap": "npm:@tezoroproject/snap",
             "report_url": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
-            "code_url": "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8",
+            "code_urls": [
+                "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -187,7 +229,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -196,7 +240,9 @@
             "date": "12/07/2023",
             "snap": "npm:walletchat-metamask-snap",
             "report_url": "https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec"
+            ],
             "auditor": "Cure53",
             "severity": "Critical"
         },
@@ -205,16 +251,9 @@
             "date": "12/07/2023",
             "snap": "npm:walletchat-metamask-snap",
             "report_url": "https://drive.google.com/uc?export=download&id=1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f",
-            "code_url": "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec",
-            "auditor": "Cure53",
-            "severity": "Critical"
-        },
-        {
-            "title": "Arbitrary DApp can retrieve access token",
-            "date": "12/07/2023",
-            "snap": "npm:walletchat-metamask-snap",
-            "report_url": "https://drive.google.com/uc?export=download&id=1dixJw4G4ekcO40GpbH7VmizLTINS5gUL",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec"
+            ],
             "auditor": "Cure53",
             "severity": "Critical"
         },
@@ -223,7 +262,9 @@
             "date": "28/08/2023",
             "snap": "npm:@rarimo/rarime",
             "report_url": "https://raw.githubusercontent.com/rarimo/rarime/main/audits/halborn_2023-08-28.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "deleted"
+            ],
             "auditor": "Halborn",
             "severity": "Critical"
         },
@@ -232,7 +273,9 @@
             "date": "13/08/2023",
             "snap": "npm:@leapwallet/metamask-cosmos-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf",
-            "code_url": "undefined",
+            "code_urls": [
+                "undefined"
+            ],
             "auditor": "Sayfer",
             "severity": "Informational"
         }
@@ -243,7 +286,9 @@
             "date": "18/01/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://cure53.de/pentest-report_safeheron-snap.pdf",
-            "code_url": "https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba",
+            "code_urls": [
+                "https://github.com/Safeheron/multi-mpc-snap-monorepo/tree/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba"
+            ],
             "auditor": "Cure53",
             "severity": "Critical"
         },
@@ -252,7 +297,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Critical"
         },
@@ -261,7 +308,9 @@
             "date": "18/01/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://cure53.de/pentest-report_safeheron-snap.pdf",
-            "code_url": "https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba",
+            "code_urls": [
+                "https://github.com/Safeheron/multi-mpc-snap-monorepo/tree/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba"
+            ],
             "auditor": "Cure53",
             "severity": "Critical"
         },
@@ -270,7 +319,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Critical"
         },
@@ -279,7 +330,9 @@
             "date": "07/09/2023",
             "snap": "npm:@silencelaboratories/silent-shard-snap",
             "report_url": "https://cure53.de/pentest-report_silencelabs-apps.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -288,7 +341,9 @@
             "date": "07/09/2023",
             "snap": "npm:@silencelaboratories/silent-shard-snap",
             "report_url": "https://cure53.de/pentest-report_silencelabs-apps.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -297,7 +352,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "Critical"
         },
@@ -306,7 +363,9 @@
             "date": "14/08/2023",
             "snap": "npm:filsnap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
-            "code_url": "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f",
+            "code_urls": [
+                "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Critical"
         },
@@ -315,7 +374,9 @@
             "date": "14/08/2023",
             "snap": "npm:filsnap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
-            "code_url": "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f",
+            "code_urls": [
+                "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Critical"
         }
@@ -326,7 +387,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -335,7 +398,9 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "Low"
         }
@@ -346,7 +411,9 @@
             "date": "02/10/2023",
             "snap": "npm:@kunalabs-io/sui-metamask-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-kunalabs/",
-            "code_url": "https://github.com/kunalabs-io/sui-snap/tree/9e2c05ed91d9724851687ffd32a40d8ce35a869f",
+            "code_urls": [
+                "https://github.com/kunalabs-io/sui-snap/tree/9e2c05ed91d9724851687ffd32a40d8ce35a869f"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -355,7 +422,9 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
+            "code_urls": [
+                "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157"
+            ],
             "auditor": "Sayfer",
             "severity": "Medium"
         },
@@ -364,7 +433,9 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
+            "code_urls": [
+                "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -373,7 +444,9 @@
             "date": "18/01/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://cure53.de/pentest-report_safeheron-snap.pdf",
-            "code_url": "https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba",
+            "code_urls": [
+                "https://github.com/Safeheron/multi-mpc-snap-monorepo/tree/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba"
+            ],
             "auditor": "Cure53",
             "severity": "Low"
         },
@@ -382,7 +455,9 @@
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274",
+            "code_urls": [
+                "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -391,7 +466,9 @@
             "date": "09/07/2024",
             "snap": "npm:@harbour-fi/ramp-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-harbour/",
-            "code_url": "https://github.com/harbour-tech/app-web-ramp/tree/9b1a02215b7b3388185d86c103fea47de744805b",
+            "code_urls": [
+                "https://github.com/harbour-tech/app-web-ramp/tree/9b1a02215b7b3388185d86c103fea47de744805b"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -400,7 +477,9 @@
             "date": "15/05/2024",
             "snap": "npm:@nufi/cardano-metamask-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/",
-            "code_url": "https://github.com/nufi-official/nufi-snap/tree/972263e670d90dfb02f66e29d311b7ef74a936a9",
+            "code_urls": [
+                "https://github.com/nufi-official/nufi-snap/tree/972263e670d90dfb02f66e29d311b7ef74a936a9"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -409,7 +488,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -418,7 +499,9 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
+            "code_urls": [
+                "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         }
@@ -429,7 +512,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         }
@@ -440,7 +525,9 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/polkadot-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
-            "code_url": "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092",
+            "code_urls": [
+                "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -449,7 +536,9 @@
             "date": "13/08/2023",
             "snap": "npm:@leapwallet/metamask-cosmos-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf",
-            "code_url": "undefined",
+            "code_urls": [
+                "undefined"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         }
@@ -460,7 +549,9 @@
             "date": "24/02/2024",
             "snap": "npm:@gobob/bob-snap",
             "report_url": "https://github.com/bob-collective/bob-snap/blob/master/docs/audit.pdf",
-            "code_url": "https://github.com/bob-collective/bob-snap/tree/ad88a73fe378321173fbc9574357bf76b322a2eb",
+            "code_urls": [
+                "https://github.com/bob-collective/bob-snap/tree/ad88a73fe378321173fbc9574357bf76b322a2eb"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -469,7 +560,9 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "Low"
         },
@@ -478,7 +571,9 @@
             "date": "24/02/2024",
             "snap": "npm:@gobob/bob-snap",
             "report_url": "https://raw.githubusercontent.com/bob-collective/bob-snap/master/docs/audit.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/bob-collective/bob-snap/tree/ad88a73fe378321173fbc9574357bf76b322a2eb"
+            ],
             "auditor": "Cure53",
             "severity": "Low"
         }
@@ -489,7 +584,9 @@
             "date": "04/08/2023",
             "snap": "npm:@tuum-tech/identify",
             "report_url": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
-            "code_url": "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119",
+            "code_urls": [
+                "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -498,7 +595,9 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
+            "code_urls": [
+                "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -507,7 +606,9 @@
             "date": "15/05/2024",
             "snap": "npm:@nufi/cardano-metamask-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-nufi/",
-            "code_url": "https://github.com/nufi-official/nufi-snap/tree/972263e670d90dfb02f66e29d311b7ef74a936a9",
+            "code_urls": [
+                "https://github.com/nufi-official/nufi-snap/tree/972263e670d90dfb02f66e29d311b7ef74a936a9"
+            ],
             "auditor": "Sayfer",
             "severity": "Critical"
         },
@@ -516,7 +617,9 @@
             "date": "26/02/2024",
             "snap": "npm:@polkagate/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkagate-snap/",
-            "code_url": "https://github.com/PolkaGate/snap/tree/11bd667863e43b5901c7628e4737e80ba6f16930",
+            "code_urls": [
+                "https://github.com/PolkaGate/snap/tree/11bd667863e43b5901c7628e4737e80ba6f16930"
+            ],
             "auditor": "Sayfer",
             "severity": "Critical"
         }
@@ -527,7 +630,9 @@
             "date": "14/08/2023",
             "snap": "npm:filsnap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
-            "code_url": "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f",
+            "code_urls": [
+                "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         }
@@ -538,7 +643,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "Medium"
         },
@@ -547,7 +654,9 @@
             "date": "12/09/2023",
             "snap": "npm:@web3mq/snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
-            "code_url": "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a",
+            "code_urls": [
+                "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a"
+            ],
             "auditor": "Least Authority",
             "severity": "Medium"
         },
@@ -556,7 +665,9 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
+            "code_urls": [
+                "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2"
+            ],
             "auditor": "Sayfer",
             "severity": "Medium"
         },
@@ -565,7 +676,9 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
+            "code_urls": [
+                "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -574,7 +687,9 @@
             "date": "20/06/2023",
             "snap": "npm:casper-manager",
             "report_url": "https://raw.githubusercontent.com/casper-ecosystem/casper-manager/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/casper-ecosystem/casper-manager/tree/c19720a4612eb5224d5d6603917ea3162c2c07d4"
+            ],
             "auditor": "Halborn",
             "severity": "Low"
         },
@@ -583,7 +698,9 @@
             "date": "28/08/2023",
             "snap": "npm:@rarimo/rarime",
             "report_url": "https://raw.githubusercontent.com/rarimo/rarime/main/audits/halborn_2023-08-28.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "deleted"
+            ],
             "auditor": "Halborn",
             "severity": "Low"
         }
@@ -594,7 +711,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -603,7 +722,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -612,7 +733,9 @@
             "date": "07/11/2023",
             "snap": "npm:@astar-network/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589",
+            "code_urls": [
+                "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         }
@@ -623,7 +746,9 @@
             "date": "01/02/2024",
             "snap": "npm:@fioprotocol/fio-wallet-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
-            "code_url": "https://github.com/fioprotocol/fio-wallet-snap/tree/835567442e0fe5f210a814d8ad1c68d9d8ffdf45",
+            "code_urls": [
+                "https://github.com/fioprotocol/fio-wallet-snap/tree/835567442e0fe5f210a814d8ad1c68d9d8ffdf45"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -632,7 +757,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -641,7 +768,9 @@
             "date": "13/02/2024",
             "snap": "npm:bch-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fexcash/",
-            "code_url": "https://github.com/fex-cash/bch-snap/tree/233d1531cd665942c963c4f6d150dc7cf4eb7940",
+            "code_urls": [
+                "https://github.com/fex-cash/bch-snap/tree/233d1531cd665942c963c4f6d150dc7cf4eb7940"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -650,7 +779,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -659,7 +790,9 @@
             "date": "05/12/2023",
             "snap": "npm:@galactica-net/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
-            "code_url": "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0",
+            "code_urls": [
+                "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -668,7 +801,9 @@
             "date": "18/01/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://cure53.de/pentest-report_safeheron-snap.pdf",
-            "code_url": "https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba",
+            "code_urls": [
+                "https://github.com/Safeheron/multi-mpc-snap-monorepo/tree/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -677,7 +812,9 @@
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274",
+            "code_urls": [
+                "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -686,7 +823,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -695,7 +834,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -704,7 +845,9 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
+            "code_urls": [
+                "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -713,7 +856,9 @@
             "date": "07/11/2023",
             "snap": "npm:@astar-network/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589",
+            "code_urls": [
+                "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -722,7 +867,9 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/aleo-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
-            "code_url": "https://github.com/ChainSafe/aleo-snap/tree/e367a29dd354484f764785d6c9362aa6b0d73b17",
+            "code_urls": [
+                "https://github.com/ChainSafe/aleo-snap/tree/e367a29dd354484f764785d6c9362aa6b0d73b17"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -731,7 +878,9 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/polkadot-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
-            "code_url": "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092",
+            "code_urls": [
+                "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -740,7 +889,9 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/polkadot-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
-            "code_url": "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092",
+            "code_urls": [
+                "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -749,7 +900,9 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/polkadot-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
-            "code_url": "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092",
+            "code_urls": [
+                "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -758,7 +911,9 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/polkadot-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkadot/",
-            "code_url": "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092",
+            "code_urls": [
+                "https://github.com/ChainSafe/metamask-snap-polkadot/tree/61787c6d2193e7ec6dee6cf3ecfae4b855717092"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -767,7 +922,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -776,7 +933,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -785,7 +944,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -794,7 +955,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -803,7 +966,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -812,7 +977,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -821,7 +988,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -830,7 +999,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -839,7 +1010,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "High"
         },
@@ -848,7 +1021,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -857,7 +1032,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -866,7 +1043,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Critical"
         },
@@ -875,7 +1054,9 @@
             "date": "15/12/2023",
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
-            "code_url": "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f",
+            "code_urls": [
+                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -884,7 +1065,9 @@
             "date": "01/02/2024",
             "snap": "npm:@fioprotocol/fio-wallet-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
-            "code_url": "https://github.com/fioprotocol/fio-wallet-snap/tree/835567442e0fe5f210a814d8ad1c68d9d8ffdf45",
+            "code_urls": [
+                "https://github.com/fioprotocol/fio-wallet-snap/tree/835567442e0fe5f210a814d8ad1c68d9d8ffdf45"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -893,7 +1076,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -902,7 +1087,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -911,7 +1098,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -920,7 +1109,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -929,7 +1120,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -938,7 +1131,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -947,7 +1142,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -956,7 +1153,9 @@
             "date": "13/03/2024",
             "snap": "npm:@fort-major/msq",
             "report_url": "https://consensys.io/diligence/audits/2024/03/msq-snap/",
-            "code_url": "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5",
+            "code_urls": [
+                "https://github.com/fort-major/msq/tree/6f5b16dddf99624e2874876145987002ba6d4df5"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -965,7 +1164,9 @@
             "date": "05/12/2023",
             "snap": "npm:@galactica-net/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
-            "code_url": "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0",
+            "code_urls": [
+                "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -974,7 +1175,9 @@
             "date": "05/12/2023",
             "snap": "npm:@galactica-net/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
-            "code_url": "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0",
+            "code_urls": [
+                "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -983,7 +1186,9 @@
             "date": "02/10/2023",
             "snap": "npm:@kunalabs-io/sui-metamask-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-kunalabs/",
-            "code_url": "https://github.com/kunalabs-io/sui-snap/tree/9e2c05ed91d9724851687ffd32a40d8ce35a869f",
+            "code_urls": [
+                "https://github.com/kunalabs-io/sui-snap/tree/9e2c05ed91d9724851687ffd32a40d8ce35a869f"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -992,7 +1197,9 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
+            "code_urls": [
+                "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -1001,7 +1208,9 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
+            "code_urls": [
+                "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1010,7 +1219,9 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
+            "code_urls": [
+                "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1019,7 +1230,9 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
+            "code_urls": [
+                "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1028,7 +1241,9 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
+            "code_urls": [
+                "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1037,7 +1252,9 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
+            "code_urls": [
+                "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1046,7 +1263,9 @@
             "date": "13/09/2023",
             "snap": "npm:@pianity/arsnap",
             "report_url": "https://sayfer.io/audits/pianity-snap",
-            "code_url": "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157",
+            "code_urls": [
+                "https://github.com/pianity/arsnap/tree/25e87c1f663ec591345b0a468006132a1c0b6157"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1055,7 +1274,9 @@
             "date": "26/02/2024",
             "snap": "npm:@polkagate/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-polkagate-snap/",
-            "code_url": "https://github.com/PolkaGate/snap/tree/11bd667863e43b5901c7628e4737e80ba6f16930",
+            "code_urls": [
+                "https://github.com/PolkaGate/snap/tree/11bd667863e43b5901c7628e4737e80ba6f16930"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1064,7 +1285,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1073,7 +1296,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1082,7 +1307,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1091,7 +1318,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1100,7 +1329,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1109,7 +1340,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -1118,7 +1351,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1127,7 +1362,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1136,7 +1373,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1145,7 +1384,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -1154,7 +1395,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1163,7 +1406,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1172,7 +1417,9 @@
             "date": "03/07/2023",
             "snap": "npm:@pushprotocol/snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/push-protocol-snap-for-metamask/",
-            "code_url": "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c",
+            "code_urls": [
+                "https://github.com/push-protocol/push-protocol-snaps/tree/c1636586dee1e43cd447f9c4ac03b0d776224f9c"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1181,7 +1428,9 @@
             "date": "27/08/2024",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
-            "code_url": "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Veridise",
             "severity": "TODO"
         },
@@ -1190,7 +1439,9 @@
             "date": "27/08/2024",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
-            "code_url": "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Veridise",
             "severity": "TODO"
         },
@@ -1199,7 +1450,9 @@
             "date": "27/08/2024",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
-            "code_url": "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Veridise",
             "severity": "TODO"
         },
@@ -1208,7 +1461,9 @@
             "date": "27/08/2024",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
-            "code_url": "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Veridise",
             "severity": "TODO"
         },
@@ -1217,7 +1472,9 @@
             "date": "27/08/2024",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://github.com/Quick-Intel/quickintel-snap/blob/main/VAR_quickintel_snap.pdf",
-            "code_url": "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Veridise",
             "severity": "TODO"
         },
@@ -1226,7 +1483,9 @@
             "date": "27/08/2024",
             "snap": "npm:@rarimo/rarime",
             "report_url": "https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "deleted"
+            ],
             "auditor": "Halborn",
             "severity": "TODO"
         },
@@ -1235,7 +1494,9 @@
             "date": "27/08/2024",
             "snap": "npm:@rarimo/rarime",
             "report_url": "https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "deleted"
+            ],
             "auditor": "Halborn",
             "severity": "Critical"
         },
@@ -1244,7 +1505,9 @@
             "date": "18/01/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://cure53.de/pentest-report_safeheron-snap.pdf",
-            "code_url": "https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba",
+            "code_urls": [
+                "https://github.com/Safeheron/multi-mpc-snap-monorepo/tree/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba"
+            ],
             "auditor": "Cure53",
             "severity": "Low"
         },
@@ -1253,7 +1516,9 @@
             "date": "18/01/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://cure53.de/pentest-report_safeheron-snap.pdf",
-            "code_url": "https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba",
+            "code_urls": [
+                "https://github.com/Safeheron/multi-mpc-snap-monorepo/tree/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -1262,7 +1527,9 @@
             "date": "18/01/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://cure53.de/pentest-report_safeheron-snap.pdf",
-            "code_url": "https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba",
+            "code_urls": [
+                "https://github.com/Safeheron/multi-mpc-snap-monorepo/tree/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba"
+            ],
             "auditor": "Cure53",
             "severity": "Low"
         },
@@ -1271,7 +1538,9 @@
             "date": "18/01/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://cure53.de/pentest-report_safeheron-snap.pdf",
-            "code_url": "https://github.com/Safeheron/multi-mpc-snap-monorepo/commit/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba",
+            "code_urls": [
+                "https://github.com/Safeheron/multi-mpc-snap-monorepo/tree/80c59cc48c0e7c003e80c5d30a6895aa6d5d2eba"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -1280,7 +1549,9 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "Low"
         },
@@ -1289,7 +1560,9 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1298,7 +1571,9 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1307,7 +1582,9 @@
             "date": "05/02/2024",
             "snap": "npm:@safeheron/mpcsnap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Safeheron_Crypto_Suites__Multiparty_ECDSA_Updated_Final_Audit_Report_Least_Authority.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1316,7 +1593,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1325,7 +1604,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1334,7 +1615,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -1343,7 +1626,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1352,7 +1637,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1361,7 +1648,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1370,7 +1659,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1379,7 +1670,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -1388,7 +1681,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1397,7 +1692,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1406,7 +1703,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -1415,7 +1714,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1424,7 +1725,9 @@
             "date": "07/09/2023",
             "snap": "npm:@silencelaboratories/silent-shard-snap",
             "report_url": "https://cure53.de/pentest-report_silencelabs-snap.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/silence-laboratories/silent-shard-snap/tree/01e0b52a7f318b5f4665915f4e16018c787315d5"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -1433,7 +1736,9 @@
             "date": "07/09/2023",
             "snap": "npm:@silencelaboratories/silent-shard-snap",
             "report_url": "https://cure53.de/pentest-report_silencelabs-apps.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Cure53",
             "severity": "Critical"
         },
@@ -1442,7 +1747,9 @@
             "date": "07/09/2023",
             "snap": "npm:@silencelaboratories/silent-shard-snap",
             "report_url": "https://cure53.de/pentest-report_silencelabs-apps.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -1451,7 +1758,9 @@
             "date": "07/09/2023",
             "snap": "npm:@silencelaboratories/silent-shard-snap",
             "report_url": "https://cure53.de/pentest-report_silencelabs-apps.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -1460,7 +1769,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1469,7 +1782,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1478,7 +1795,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1487,7 +1808,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1496,7 +1821,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1505,7 +1834,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -1514,7 +1847,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1523,7 +1860,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1532,7 +1873,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1541,7 +1886,9 @@
             "date": "09/04/2024",
             "snap": "npm:@tezoroproject/snap",
             "report_url": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
-            "code_url": "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8",
+            "code_urls": [
+                "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1550,7 +1897,9 @@
             "date": "09/04/2024",
             "snap": "npm:@tezoroproject/snap",
             "report_url": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
-            "code_url": "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8",
+            "code_urls": [
+                "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1559,7 +1908,9 @@
             "date": "09/04/2024",
             "snap": "npm:@tezoroproject/snap",
             "report_url": "https://consensys.io/diligence/audits/2024/04/tezoro-snap/",
-            "code_url": "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8",
+            "code_urls": [
+                "https://github.com/tezoroproject/metamask-snap/tree/4204075301856f7412f07746c937343fb31cb7b8"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1568,7 +1919,9 @@
             "date": "04/08/2023",
             "snap": "npm:@tuum-tech/identify",
             "report_url": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
-            "code_url": "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119",
+            "code_urls": [
+                "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -1577,7 +1930,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1586,7 +1941,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1595,7 +1952,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "Medium"
         },
@@ -1604,7 +1963,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1613,7 +1974,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1622,7 +1985,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "Medium"
         },
@@ -1631,7 +1996,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "Low"
         },
@@ -1640,7 +2007,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1649,7 +2018,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1658,7 +2029,9 @@
             "date": "13/02/2024",
             "snap": "npm:@usecapsule/account-snap",
             "report_url": "https://leastauthority.com/wp-content/uploads/2024/02/Capsule_Signing_and_Permissioning_Toolkit_Updated_2.pdf",
-            "code_url": "multiple",
+            "code_urls": [
+                "multiple"
+            ],
             "auditor": "Least Authority",
             "severity": "Low"
         },
@@ -1667,7 +2040,9 @@
             "date": "12/09/2023",
             "snap": "npm:@web3mq/snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
-            "code_url": "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a",
+            "code_urls": [
+                "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1676,7 +2051,9 @@
             "date": "12/09/2023",
             "snap": "npm:@web3mq/snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
-            "code_url": "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a",
+            "code_urls": [
+                "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1685,7 +2062,9 @@
             "date": "12/09/2023",
             "snap": "npm:@web3mq/snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
-            "code_url": "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a",
+            "code_urls": [
+                "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1694,7 +2073,9 @@
             "date": "12/09/2023",
             "snap": "npm:@web3mq/snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12604989/Least_Authority_Generative_Labs_MetaMask_Snap_Updated_Final_Audit.pdf",
-            "code_url": "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a",
+            "code_urls": [
+                "https://github.com/Generative-Labs/Web3MQ-Snap/tree/b12e6ec9cac02d7d98e63f41b33b7d4d1590d02a"
+            ],
             "auditor": "Least Authority",
             "severity": "TODO"
         },
@@ -1703,7 +2084,9 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
+            "code_urls": [
+                "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1712,7 +2095,9 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
+            "code_urls": [
+                "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1721,7 +2106,9 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
+            "code_urls": [
+                "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1730,7 +2117,9 @@
             "date": "18/04/2024",
             "snap": "npm:@xtreamly/xtreamly_slippage_predictor",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-xtreamly/",
-            "code_url": "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2",
+            "code_urls": [
+                "https://github.com/Xtreamly-Team/Slippage-Snap/tree/e6ab8ca0976912e59af41f23ae595b49648d59b2"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1739,7 +2128,9 @@
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274",
+            "code_urls": [
+                "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -1748,7 +2139,9 @@
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274",
+            "code_urls": [
+                "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1757,7 +2150,9 @@
             "date": "13/02/2024",
             "snap": "npm:bch-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fexcash/",
-            "code_url": "https://github.com/fex-cash/bch-snap/tree/233d1531cd665942c963c4f6d150dc7cf4eb7940",
+            "code_urls": [
+                "https://github.com/fex-cash/bch-snap/tree/233d1531cd665942c963c4f6d150dc7cf4eb7940"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1766,7 +2161,9 @@
             "date": "13/02/2024",
             "snap": "npm:bch-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fexcash/",
-            "code_url": "https://github.com/fex-cash/bch-snap/tree/233d1531cd665942c963c4f6d150dc7cf4eb7940",
+            "code_urls": [
+                "https://github.com/fex-cash/bch-snap/tree/233d1531cd665942c963c4f6d150dc7cf4eb7940"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -1775,7 +2172,9 @@
             "date": "27/08/2024",
             "snap": "npm:casper-manager",
             "report_url": "https://github.com/casper-ecosystem/casper-manager/blob/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/casper-ecosystem/casper-manager/tree/c19720a4612eb5224d5d6603917ea3162c2c07d4"
+            ],
             "auditor": "Halborn",
             "severity": "TODO"
         },
@@ -1784,7 +2183,9 @@
             "date": "27/08/2024",
             "snap": "npm:casper-manager",
             "report_url": "https://github.com/casper-ecosystem/casper-manager/blob/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/casper-ecosystem/casper-manager/tree/c19720a4612eb5224d5d6603917ea3162c2c07d4"
+            ],
             "auditor": "Halborn",
             "severity": "TODO"
         },
@@ -1793,7 +2194,9 @@
             "date": "15/12/2023",
             "snap": "npm:dedaub-metamask-snap",
             "report_url": "https://cure53.de/pentest-report_dedaub-metamask-snap.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Dedaub/metamask-snap/tree/fb485d438caf27a32f143e70fd235678dc26b9cc"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -1802,7 +2205,9 @@
             "date": "02/02/2024",
             "snap": "npm:defi-armor-snap",
             "report_url": "https://github.com/Eulith/eulith-metamask-snap/blob/master/audit-report.pdf",
-            "code_url": "https://github.com/Eulith/eulith-metamask-snap/tree/d47f88f62e90cd7f2130057e8e59d216e5d09dcc",
+            "code_urls": [
+                "https://github.com/Eulith/eulith-metamask-snap/tree/d47f88f62e90cd7f2130057e8e59d216e5d09dcc"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -1811,7 +2216,9 @@
             "date": "14/08/2023",
             "snap": "npm:filsnap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
-            "code_url": "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f",
+            "code_urls": [
+                "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1820,7 +2227,9 @@
             "date": "14/08/2023",
             "snap": "npm:filsnap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
-            "code_url": "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f",
+            "code_urls": [
+                "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1829,7 +2238,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1838,7 +2249,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1847,7 +2260,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1856,7 +2271,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1865,7 +2282,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1874,7 +2293,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1883,7 +2304,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1892,7 +2315,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1901,7 +2326,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -1910,7 +2337,9 @@
             "date": "07/12/2023",
             "snap": "npm:walletchat-metamask-snap",
             "report_url": "https://drive.google.com/uc?export=download&id=1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f",
-            "code_url": "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec",
+            "code_urls": [
+                "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec"
+            ],
             "auditor": "Cure53",
             "severity": "Medium"
         },
@@ -1919,25 +2348,9 @@
             "date": "07/12/2023",
             "snap": "npm:walletchat-metamask-snap",
             "report_url": "https://drive.google.com/uc?export=download&id=1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f",
-            "code_url": "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec",
-            "auditor": "Cure53",
-            "severity": "Low"
-        },
-        {
-            "title": "Restrict Snap RPC access to trusted origins",
-            "date": "12/07/2023",
-            "snap": "npm:walletchat-metamask-snap",
-            "report_url": "https://drive.google.com/uc?export=download&id=1dixJw4G4ekcO40GpbH7VmizLTINS5gUL",
-            "code_url": "TODO",
-            "auditor": "Cure53",
-            "severity": "Medium"
-        },
-        {
-            "title": "Unsafe wild card targetOrigin usage in postMessage",
-            "date": "12/07/2023",
-            "snap": "npm:walletchat-metamask-snap",
-            "report_url": "https://drive.google.com/uc?export=download&id=1dixJw4G4ekcO40GpbH7VmizLTINS5gUL",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec"
+            ],
             "auditor": "Cure53",
             "severity": "Low"
         },
@@ -1946,7 +2359,9 @@
             "date": "20/06/2023",
             "snap": "npm:casper-manager",
             "report_url": "https://raw.githubusercontent.com/casper-ecosystem/casper-manager/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/casper-ecosystem/casper-manager/tree/c19720a4612eb5224d5d6603917ea3162c2c07d4"
+            ],
             "auditor": "Halborn",
             "severity": "Informational"
         },
@@ -1955,7 +2370,9 @@
             "date": "20/06/2023",
             "snap": "npm:casper-manager",
             "report_url": "https://raw.githubusercontent.com/casper-ecosystem/casper-manager/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/casper-ecosystem/casper-manager/tree/c19720a4612eb5224d5d6603917ea3162c2c07d4"
+            ],
             "auditor": "Halborn",
             "severity": "Informational"
         },
@@ -1964,7 +2381,9 @@
             "date": "08/04/2023",
             "snap": "npm:@tuum-tech/identify",
             "report_url": "https://raw.githubusercontent.com/tuum-tech/identify/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119"
+            ],
             "auditor": "Cure53",
             "severity": "Medium"
         },
@@ -1973,7 +2392,9 @@
             "date": "08/04/2023",
             "snap": "npm:@tuum-tech/identify",
             "report_url": "https://raw.githubusercontent.com/tuum-tech/identify/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119"
+            ],
             "auditor": "Cure53",
             "severity": "Low"
         },
@@ -1982,7 +2403,9 @@
             "date": "08/04/2023",
             "snap": "npm:@tuum-tech/identify",
             "report_url": "https://raw.githubusercontent.com/tuum-tech/identify/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119"
+            ],
             "auditor": "Cure53",
             "severity": "Medium"
         },
@@ -1991,7 +2414,9 @@
             "date": "15/08/2023",
             "snap": "npm:@tenderly/metamask-snap",
             "report_url": "https://raw.githubusercontent.com/Tenderly/tenderly-snap/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Tenderly/tenderly-snap/pull/1/tree/6ef8b6bef49b2e82e25372d703625cb4b74e1f14"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2000,7 +2425,9 @@
             "date": "28/08/2023",
             "snap": "npm:@rarimo/rarime",
             "report_url": "https://raw.githubusercontent.com/rarimo/rarime/main/audits/halborn_2023-08-28.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "deleted"
+            ],
             "auditor": "Halborn",
             "severity": "Critical"
         },
@@ -2009,7 +2436,9 @@
             "date": "28/08/2023",
             "snap": "npm:@rarimo/rarime",
             "report_url": "https://raw.githubusercontent.com/rarimo/rarime/main/audits/halborn_2023-08-28.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "deleted"
+            ],
             "auditor": "Halborn",
             "severity": "Informational"
         },
@@ -2018,7 +2447,9 @@
             "date": "10/10/2023",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://raw.githubusercontent.com/Quick-Intel/quickintel-snap/main/VAR_quickintel_snap.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Quick intel",
             "severity": "Critical"
         },
@@ -2027,7 +2458,9 @@
             "date": "10/10/2023",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://raw.githubusercontent.com/Quick-Intel/quickintel-snap/main/VAR_quickintel_snap.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Quick intel",
             "severity": "Medium"
         },
@@ -2036,7 +2469,9 @@
             "date": "10/10/2023",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://raw.githubusercontent.com/Quick-Intel/quickintel-snap/main/VAR_quickintel_snap.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Quick intel",
             "severity": "Low"
         },
@@ -2045,7 +2480,9 @@
             "date": "10/10/2023",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://raw.githubusercontent.com/Quick-Intel/quickintel-snap/main/VAR_quickintel_snap.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Quick intel",
             "severity": "Low"
         },
@@ -2054,7 +2491,9 @@
             "date": "10/10/2023",
             "snap": "npm:@quickintel/quickintel-snap",
             "report_url": "https://raw.githubusercontent.com/Quick-Intel/quickintel-snap/main/VAR_quickintel_snap.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Quick-Intel/quickintel-snap/tree/3af7d0b3a514c57ca2ee6ebc9437c9a579df800c"
+            ],
             "auditor": "Quick intel",
             "severity": "Informational"
         },
@@ -2063,7 +2502,9 @@
             "date": "02/02/2024",
             "snap": "TODO",
             "report_url": "https://raw.githubusercontent.com/Eulith/eulith-metamask-snap/master/audit-report.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Eulith/eulith-metamask-snap/tree/d47f88f62e90cd7f2130057e8e59d216e5d09dcc"
+            ],
             "auditor": "Cure53",
             "severity": "Low"
         },
@@ -2072,7 +2513,9 @@
             "date": "23/06/2023",
             "snap": "npm:tezos-metamask-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf",
-            "code_url": "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26",
+            "code_urls": [
+                "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2081,7 +2524,9 @@
             "date": "23/06/2023",
             "snap": "npm:tezos-metamask-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf",
-            "code_url": "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26",
+            "code_urls": [
+                "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26"
+            ],
             "auditor": "Sayfer",
             "severity": "Informational"
         },
@@ -2090,7 +2535,9 @@
             "date": "23/06/2023",
             "snap": "npm:tezos-metamask-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf",
-            "code_url": "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26",
+            "code_urls": [
+                "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26"
+            ],
             "auditor": "Sayfer",
             "severity": "Informational"
         },
@@ -2099,7 +2546,9 @@
             "date": "15/08/2023",
             "snap": "npm:@tenderly/metamask-snap",
             "report_url": "https://github.com/Tenderly/tenderly-snap/blob/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf",
-            "code_url": "https://github.com/Tenderly/tenderly-snap/tree/6ef8b6bef49b2e82e25372d703625cb4b74e1f14",
+            "code_urls": [
+                "https://github.com/Tenderly/tenderly-snap/tree/6ef8b6bef49b2e82e25372d703625cb4b74e1f14"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2108,7 +2557,9 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
+            "code_urls": [
+                "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6"
+            ],
             "auditor": "Sayfer",
             "severity": "High"
         },
@@ -2117,7 +2568,9 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
+            "code_urls": [
+                "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2126,7 +2579,9 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
+            "code_urls": [
+                "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2135,7 +2590,9 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
+            "code_urls": [
+                "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2144,7 +2601,9 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
+            "code_urls": [
+                "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6"
+            ],
             "auditor": "Sayfer",
             "severity": "Informational"
         }
@@ -2155,7 +2614,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
         },
@@ -2164,7 +2625,9 @@
             "date": "28/06/2023",
             "snap": "npm:@consensys/starknet-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/06/metamask/partner-snaps-starknetsnap/",
-            "code_url": "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf",
+            "code_urls": [
+                "https://github.com/ConsenSys/starknet-snap/tree/ec24b0053eae641f49e4095809979c2839758bdf"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -2173,7 +2636,11 @@
             "date": "21/08/2023",
             "snap": "npm:@solflare-wallet/solana-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/solflare-metamask-snaps-solflare-sui-aptos/",
-            "code_url": "multiple",
+            "code_urls": [
+                "https://github.com/solflare-wallet/solflare-snap/tree/792fcb2a253c572677271044ece061daae81ce41",
+                "https://github.com/solflare-wallet/sui-snap/tree/39740383fd11174a406a1a27e15c92f277d00779",
+                "https://github.com/solflare-wallet/aptos-snap/tree/36145fbb8f4963eb02cff26a549ac348a34d8cb3"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -2182,7 +2649,9 @@
             "date": "22/02/2024",
             "snap": "npm:rubic-snap",
             "report_url": "https://cure53.de/pentest-report_rubic-snap.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "undefined"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -2191,7 +2660,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         }
@@ -2202,7 +2673,9 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
+            "code_urls": [
+                "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2211,7 +2684,9 @@
             "date": "07/11/2023",
             "snap": "npm:@astar-network/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589",
+            "code_urls": [
+                "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2220,7 +2695,9 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/aleo-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
-            "code_url": "https://github.com/ChainSafe/aleo-snap/tree/e367a29dd354484f764785d6c9362aa6b0d73b17",
+            "code_urls": [
+                "https://github.com/ChainSafe/aleo-snap/tree/e367a29dd354484f764785d6c9362aa6b0d73b17"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         },
@@ -2229,7 +2706,9 @@
             "date": "05/12/2023",
             "snap": "npm:@galactica-net/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-galactica/",
-            "code_url": "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0",
+            "code_urls": [
+                "https://github.com/Galactica-corp/galactica-monorepo/tree/bd4e35e1dcafda2c5673687d6d185090fd3321c0"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2238,7 +2717,9 @@
             "date": "24/07/2023",
             "snap": "npm:@shapeshiftoss/metamask-snaps",
             "report_url": "https://consensys.io/diligence/audits/2023/07/metamask/partner-snaps-shapeshift-snap/",
-            "code_url": "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011",
+            "code_urls": [
+                "https://github.com/shapeshift/metamask-snaps/tree/32d2f43808de6b107ef759b517e7df27644f4011"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "High"
         },
@@ -2247,7 +2728,9 @@
             "date": "12/12/2023",
             "snap": "npm:azero-wallet",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-alephzero/",
-            "code_url": "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274",
+            "code_urls": [
+                "https://github.com/bide-dev/azero-wallet/tree/5e6aa033a94c69be7b2b82e875a20c69c5dd5274"
+            ],
             "auditor": "Sayfer",
             "severity": "Low"
         }
@@ -2258,7 +2741,9 @@
             "date": "17/07/2023",
             "snap": "npm:wallet-guard-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/07/wallet-guard/",
-            "code_url": "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374",
+            "code_urls": [
+                "https://github.com/wallet-guard/wallet-guard-snap/tree/695c7874d4ac8ffe6a454e9dd5c7fc6925189374"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -2267,7 +2752,9 @@
             "date": "07/11/2023",
             "snap": "npm:@astar-network/snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-astar/",
-            "code_url": "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589",
+            "code_urls": [
+                "https://github.com/AstarNetwork/metamask-snap-astar/tree/8c8f25b32d58230d7fc692e86e13c01f8cd5d589"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2276,7 +2763,9 @@
             "date": "15/08/2023",
             "snap": "npm:@tenderly/metamask-snap",
             "report_url": "https://raw.githubusercontent.com/Tenderly/tenderly-snap/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Tenderly/tenderly-snap/pull/1/tree/6ef8b6bef49b2e82e25372d703625cb4b74e1f14"
+            ],
             "auditor": "Sayfer",
             "severity": "Informational"
         },
@@ -2285,7 +2774,9 @@
             "date": "15/08/2023",
             "snap": "npm:@tenderly/metamask-snap",
             "report_url": "https://github.com/Tenderly/tenderly-snap/blob/main/audits/2023-08-Metamask-Snap-PT-for-Tenderly.pdf",
-            "code_url": "https://github.com/Tenderly/tenderly-snap/tree/6ef8b6bef49b2e82e25372d703625cb4b74e1f14",
+            "code_urls": [
+                "https://github.com/Tenderly/tenderly-snap/tree/6ef8b6bef49b2e82e25372d703625cb4b74e1f14"
+            ],
             "auditor": "Sayfer",
             "severity": "Informational"
         }
@@ -2296,7 +2787,9 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
+            "code_urls": [
+                "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2305,7 +2798,9 @@
             "date": "08/12/2023",
             "snap": "npm:@amax/amaxsnap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-amax/",
-            "code_url": "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba",
+            "code_urls": [
+                "https://github.com/armoniax/amaxup.evmsnap/tree/dd242acd7a1e24bf11e3cd75f3325868e7175dba"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2314,7 +2809,9 @@
             "date": "17/09/2023",
             "snap": "npm:@chainsafe/aleo-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-aleo/",
-            "code_url": "https://github.com/ChainSafe/aleo-snap/tree/e367a29dd354484f764785d6c9362aa6b0d73b17",
+            "code_urls": [
+                "https://github.com/ChainSafe/aleo-snap/tree/e367a29dd354484f764785d6c9362aa6b0d73b17"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2323,7 +2820,9 @@
             "date": "01/02/2024",
             "snap": "npm:@fioprotocol/fio-wallet-snap",
             "report_url": "https://sayfer.io/audits/metamask-snap-audit-report-for-fio/",
-            "code_url": "https://github.com/fioprotocol/fio-wallet-snap/tree/835567442e0fe5f210a814d8ad1c68d9d8ffdf45",
+            "code_urls": [
+                "https://github.com/fioprotocol/fio-wallet-snap/tree/835567442e0fe5f210a814d8ad1c68d9d8ffdf45"
+            ],
             "auditor": "Sayfer",
             "severity": "TODO"
         },
@@ -2332,7 +2831,9 @@
             "date": "13/08/2023",
             "snap": "npm:@leapwallet/metamask-cosmos-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544468/Sayfer.-.2023-08.Penetration.Testing.Report.for.LeapWallet.Snap.-.Updated.pdf",
-            "code_url": "undefined",
+            "code_urls": [
+                "undefined"
+            ],
             "auditor": "Sayfer",
             "severity": "Medium"
         }
@@ -2343,7 +2844,9 @@
             "date": "27/08/2024",
             "snap": "npm:@rarimo/rarime",
             "report_url": "https://github.com/rarimo/rarime/blob/main/audits/halborn_2023-08-28.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "deleted"
+            ],
             "auditor": "Halborn",
             "severity": "TODO"
         },
@@ -2352,7 +2855,9 @@
             "date": "27/08/2024",
             "snap": "npm:casper-manager",
             "report_url": "https://github.com/casper-ecosystem/casper-manager/blob/main/audits/20_06_2023_Casper_Management_Snap_App_WebApp_Pentest_Report_Halborn_Final.pdf",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/casper-ecosystem/casper-manager/tree/c19720a4612eb5224d5d6603917ea3162c2c07d4"
+            ],
             "auditor": "Halborn",
             "severity": "TODO"
         },
@@ -2361,7 +2866,9 @@
             "date": "14/08/2023",
             "snap": "npm:filsnap",
             "report_url": "https://consensys.io/diligence/audits/2023/08/metamask/partner-snaps-filsnap/",
-            "code_url": "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f",
+            "code_urls": [
+                "https://github.com/filecoin-project/filsnap/tree/5c5e6ad523d198d12bdd2057028dad429435bc6f"
+            ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
         },
@@ -2370,7 +2877,9 @@
             "date": "12/07/2023",
             "snap": "npm:walletchat-metamask-snap",
             "report_url": "https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -2379,7 +2888,9 @@
             "date": "12/07/2023",
             "snap": "npm:walletchat-metamask-snap",
             "report_url": "https://drive.google.com/file/d/1pNhN43mMOLiA2jWUF5IbJA-5kmfAod1f/view?usp=drive_link",
-            "code_url": "TODO",
+            "code_urls": [
+                "https://github.com/Wallet-Chat/walletchat-metamask-snap/tree/fec67c2a588fb9db132501b70165e8ef75d100ec"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         }
@@ -2390,7 +2901,9 @@
             "date": "04/08/2023",
             "snap": "npm:@tuum-tech/identify",
             "report_url": "https://github.com/tuum-tech/identify/blob/main/SNAP_AUDIT_REPORT_BY_CURE53.pdf",
-            "code_url": "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119",
+            "code_urls": [
+                "https://github.com/tuum-tech/identify/tree/d066f36b271e98adc34009f0e9d43e3ca4c8c119"
+            ],
             "auditor": "Cure53",
             "severity": "TODO"
         },
@@ -2399,7 +2912,9 @@
             "date": "23/06/2023",
             "snap": "npm:tezos-metamask-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12543946/Sayfer.-.2023-06.Penetration.Testing.Report.for.Tezos.Metamask.Snap.Application.pdf",
-            "code_url": "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26",
+            "code_urls": [
+                "https://github.com/airgap-it/tezos-metamask-snap/tree/0e0d653b85cbd11365771ad9c2ee5726b10a7d26"
+            ],
             "auditor": "Sayfer",
             "severity": "Informational"
         }
@@ -2410,7 +2925,9 @@
             "date": "30/08/2023",
             "snap": "npm:web3-security-snap",
             "report_url": "https://github.com/MetaMask/snaps-registry/files/12544383/Sayfer.-.2023-08.Penetration.Testing.Report.for.AnChain.Snap.pdf",
-            "code_url": "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6",
+            "code_urls": [
+                "https://github.com/AnChainAI/web3-security-snap/tree/6d0314b5c9c42e3720039ebbd2bba9ee9c8a30f6"
+            ],
             "auditor": "Sayfer",
             "severity": "Medium"
         }
