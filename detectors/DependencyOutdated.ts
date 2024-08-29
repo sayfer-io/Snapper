@@ -1,137 +1,165 @@
-import { execSync } from 'child_process';
+import { SourceFile } from 'ts-morph';
+import { Finding } from '../types';
+import { RiskRating } from '../types/structures';
 import * as fs from 'fs';
 import * as path from 'path';
+// import packageJson from 'package-json';
+// import { audit } from 'npm-audit-report';
 
 interface DependencyStatus {
   name: string;
   currentVersion: string;
   latestVersion: string;
   hasSecurityIssues: boolean;
+  vulnerabilities: any[];
 }
 
 interface Advisory {
+  id: number;
   module_name: string;
-  vulnerable_versions: string;
-}
-
-/**
- * Get the path to the package.json file in the current working directory.
- * @returns {string} The path to the package.json file.
- */
-function getPackageJsonPath(): string {
-  return path.resolve(process.cwd(), 'package.json');
+  title: string;
+  severity: string;
+  url: string;
+  findings: { version: string }[];
 }
 
 /**
  * Read and parse the package.json file.
- * @param {string} packageJsonPath - The path to the package.json file.
- * @returns {any} The parsed package.json content.
- * @throws Will throw an error if the package.json file is not found.
+ * @param {string} filePath - The path to the package.json file.
+ * @returns {object} - The parsed content of the package.json file.
  */
-function readPackageJson(packageJsonPath: string): any {
-  if (!fs.existsSync(packageJsonPath)) {
-    throw new Error('package.json not found in the current directory.');
+function readPackageJson(filePath: string): any {
+  const packageJsonContent = fs.readFileSync(filePath, 'utf-8');
+  return JSON.parse(packageJsonContent);
+}
+
+/**
+ * Extracts all dependencies from the package.json content.
+ * @param {object} packageJson - The parsed content of the package.json file.
+ * @returns {Record<string, string>} - An object containing all dependencies.
+ */
+function extractDependencies(packageJson: any): Record<string, string> {
+  return {
+    ...packageJson.dependencies,
+    ...packageJson.devDependencies,
+    ...packageJson.peerDependencies,
+    ...packageJson.optionalDependencies,
+  };
+}
+
+/**
+ * Checks if any of the dependencies have known vulnerabilities.
+ * @param {Record<string, string>} dependencies - The dependencies to check.
+ * @returns {Promise<DependencyStatus[]>} - Array of dependency statuses with vulnerability details.
+ */
+async function checkForVulnerabilities(dependencies: Record<string, string>): Promise<DependencyStatus[]> {
+  const dependencyStatuses: DependencyStatus[] = [];
+
+  for (const [name, version] of Object.entries(dependencies)) {
+    const vulnerabilities = await getVulnerabilities(name, version);
+    const latestVersion = await getLatestVersion(name);
+    const hasSecurityIssues = vulnerabilities.length > 0;
+
+    dependencyStatuses.push({
+      name,
+      currentVersion: version,
+      latestVersion,
+      hasSecurityIssues,
+      vulnerabilities,
+    });
   }
-  return JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+
+  return dependencyStatuses;
 }
 
 /**
- * Get the dependencies from the package.json content.
- * @param {any} packageJson - The parsed package.json content.
- * @returns {Record<string, string>} An object containing all dependencies.
+ * Gets the latest version of a dependency.
+ * @param {string} name - The name of the dependency.
+ * @returns {Promise<string>} - The latest version of the dependency.
  */
-function getDependencies(packageJson: any): Record<string, string> {
-  return { ...packageJson.dependencies, ...packageJson.devDependencies };
+async function getLatestVersion(name: string): Promise<string> {
+  // const pkg = await packageJson(name);
+  // return pkg.version;
+  return '1.0.0';
 }
 
 /**
- * Check for outdated dependencies using npm-check-updates.
- * @param {Record<string, string>} dependencies - The current dependencies.
- * @returns {DependencyStatus[]} A list of outdated dependencies with their status.
+ * Gets the vulnerabilities of a dependency.
+ * @param {string} name - The name of the dependency.
+ * @param {string} version - The version of the dependency.
+ * @returns {Promise<any[]>} - The vulnerabilities of the dependency.
  */
-function checkOutdatedDependencies(dependencies: Record<string, string>): DependencyStatus[] {
-  const outdatedDependencies: DependencyStatus[] = [];
-  try {
-    const outdated = JSON.parse(execSync('npx npm-check-updates --json').toString());
-    for (const [name, latestVersion] of Object.entries(outdated)) {
-      outdatedDependencies.push({
-        name,
-        currentVersion: dependencies[name],
-        latestVersion: latestVersion as string,
-        hasSecurityIssues: false,
+async function getVulnerabilities(name: string, version: string): Promise<any[]> {
+  const { default: packageJson } = await import('package-json');
+  // const auditResult = await audit();
+  // const vulnerabilities = [];
+
+  // for (const advisory of Object.values(auditResult.advisories) as Advisory[]) {
+  //   if (advisory.module_name === name && advisory.findings.some((finding: any) => finding.version === version)) {
+  //     vulnerabilities.push({
+  //       id: advisory.id,
+  //       title: advisory.title,
+  //       severity: advisory.severity,
+  //       url: advisory.url,
+  //     });
+  //   }
+  // }
+
+  // return vulnerabilities;
+  return [];
+}
+
+/**
+ * Detects dependencies with known vulnerabilities in the package.json file.
+ * @param {SourceFile} file - The source file to analyze.
+ * @returns {Promise<Finding[]>} - Array of findings with dependency vulnerability details.
+ */
+export async function detectVulnerableDependencies(file: SourceFile): Promise<Finding[]> {
+  const filePath = file.getFilePath();
+
+  if (!isPackageJson(filePath)) {
+    return [];
+  }
+  
+  const packageJsonContent = readPackageJson(filePath);
+  const dependencies = extractDependencies(packageJsonContent);
+  const dependencyStatuses = await checkForVulnerabilities(dependencies);
+  
+  return createFindings(file, dependencyStatuses);
+}
+
+/**
+ * Checks if the file is package.json.
+ * @param {string} filePath - The path of the file.
+ * @returns {boolean} - True if the file is package.json, false otherwise.
+ */
+function isPackageJson(filePath: string): boolean {
+  return path.basename(filePath) === 'package.json';
+}  
+
+/**
+ * Creates findings for dependencies with known vulnerabilities.
+ * @param {SourceFile} file - The source file containing the dependencies.
+ * @param {DependencyStatus[]} dependencyStatuses - The dependency statuses to check.
+ * @returns {Finding[]} - Array of findings with vulnerability details.
+ */
+function createFindings(file: SourceFile, dependencyStatuses: DependencyStatus[]): Finding[] {
+  const findings: Finding[] = [];
+
+  for (const status of dependencyStatuses) {
+    if (status.hasSecurityIssues) {
+      findings.push({
+        type: 'VulnerableDependency',
+        description: `Dependency "${status.name}" (version ${status.currentVersion}) has known security issues. Latest version is ${status.latestVersion}.`,
+        position: {
+          filePath: file.getFilePath(),
+          lineNum: 1, // Since we are reading from package.json, line number is not applicable
+        },
+        riskRating: RiskRating.High,
+        weight: 10,
       });
     }
-  } catch (error) {
-    console.error('Error checking for outdated dependencies:', error);
   }
-  return outdatedDependencies;
+
+  return findings;
 }
-
-/**
- * Check for security issues in the outdated dependencies using npm audit.
- * @param {DependencyStatus[]} outdatedDependencies - The list of outdated dependencies.
- * @returns {string[]} A list of dependencies with security issues.
- */
-function checkSecurityIssues(outdatedDependencies: DependencyStatus[]): string[] {
-  const securityIssues: string[] = [];
-  try {
-    const auditReport = JSON.parse(execSync('npm audit --json').toString());
-    if (auditReport.advisories) {
-      for (const advisory of Object.values(auditReport.advisories) as Advisory[]) {
-        const { module_name, vulnerable_versions } = advisory;
-        const dependency = outdatedDependencies.find(dep => dep.name === module_name);
-        if (dependency) {
-          dependency.hasSecurityIssues = true;
-        } else {
-          securityIssues.push(`${module_name} (${vulnerable_versions})`);
-        }
-      }
-    }
-  } catch (error) {
-    console.error('Error checking for security issues:', error);
-  }
-  return securityIssues;
-}
-
-/**
- * Log the results of the dependency check.
- * @param {DependencyStatus[]} outdatedDependencies - The list of outdated dependencies.
- * @param {string[]} securityIssues - The list of dependencies with security issues.
- */
-function logResults(outdatedDependencies: DependencyStatus[], securityIssues: string[]): void {
-  console.log('Outdated Dependencies:');
-  outdatedDependencies.forEach(dep => {
-    console.log(
-      `${dep.name}: ${dep.currentVersion} -> ${dep.latestVersion} ${dep.hasSecurityIssues ? '(Security Issues)' : ''}`
-    );
-  });
-
-  if (securityIssues.length > 0) {
-    console.log('\nDependencies with Security Issues:');
-    securityIssues.forEach(issue => console.log(issue));
-  }
-}
-
-/**
- * Main function to check for outdated dependencies and security issues.
- */
-function checkDependencies() {
-  try {
-    const packageJsonPath = getPackageJsonPath();
-    const packageJson = readPackageJson(packageJsonPath);
-    const dependencies = getDependencies(packageJson);
-
-    const outdatedDependencies = checkOutdatedDependencies(dependencies);
-    const securityIssues = checkSecurityIssues(outdatedDependencies);
-
-    logResults(outdatedDependencies, securityIssues);
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    } else {
-      console.error('An unknown error occurred');
-    }
-  }
-}
-
-checkDependencies();

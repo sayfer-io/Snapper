@@ -9,3 +9,4 @@
 export { detectConsoleLog } from './ConsoleLog';
 export { detectDangerousFunctions } from './DangerousFunctions';
 export { detectNonExactDependencies } from './DependencyVersioning';
+export { detectVulnerableDependencies } from './DependencyOutdated';

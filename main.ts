@@ -24,8 +24,6 @@ async function main(): Promise<void> {
 
         const allFindings = await processFiles(projectPath, rule, argv.recursive);
 
-        console.log(`Found ${allFindings.length} findings in ${allFindings.length} files`);
-
         // Save findings to a JSON file
         const now = new Date();
         const timestamp = `${now.getHours()}${now.getMinutes()}${now.getSeconds()}${now.getDate()}${now.getMonth() + 1}${now.getFullYear()}`;

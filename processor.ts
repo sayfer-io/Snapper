@@ -3,14 +3,20 @@ import { Project } from 'ts-morph';
 import logger from './utils/logger';
 import { findTsConfig } from './utils/fileUtils';
 import { Finding } from './types';
-import { detectConsoleLog, detectDangerousFunctions, detectNonExactDependencies } from './detectors';
+import { 
+    detectConsoleLog, 
+    detectDangerousFunctions, 
+    detectNonExactDependencies, 
+    detectVulnerableDependencies 
+} from './detectors';
 
 type RuleFunction = (file: any) => Finding[];
 
 const rules: { [key: string]: RuleFunction } = {
     consoleLog: detectConsoleLog,
     dangerousFunctions: detectDangerousFunctions,
-    dependencyVersioning: detectNonExactDependencies
+    dependencyVersioning: detectNonExactDependencies,
+    // dependencyOutdated: detectVulnerableDependencies
 };
 
 /**
@@ -35,7 +41,10 @@ export async function processFiles(projectPath: string, rule?: string, recursive
         const project = new Project({ tsConfigFilePath: tsConfigPath });
         logger.debug(`Processing project with tsconfig: ${tsConfigPath}`);
 
-        const files = project.addSourceFilesAtPaths(`${folderPath}/**/*.ts`);
+        const files = project.addSourceFilesAtPaths([
+            `${folderPath}/**/*.ts`,
+            `${folderPath}/**/package.json`
+        ]);
         logger.info(`Processing files in path: ${folderPath}`);
 
         let findingsCount = 0;

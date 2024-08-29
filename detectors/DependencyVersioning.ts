@@ -1,69 +1,102 @@
-import { SourceFile, SyntaxKind, PropertyAssignment, ObjectLiteralElementLike } from "ts-morph";
+import { SourceFile } from "ts-morph";
 import { RiskRating } from "../types/structures";
 import { Finding } from "../types";
+import * as fs from 'fs';
+import * as path from 'path';
 
 /**
- * Detects dependencies with non-exact versions in the given file.
+ * Detects dependencies with non-exact versions in the package.json file.
  * This is a security rule (detector) that checks for dependencies specified with only a minimum version.
  * @param {SourceFile} file - The source file to analyze.
  * @returns {Finding[]} - Array of findings with dependency version details.
  */
 export function detectNonExactDependencies(file: SourceFile): Finding[] {
-    const findings: Finding[] = [];
-    const objectLiterals = file.getDescendantsOfKind(SyntaxKind.ObjectLiteralExpression);
+    const filePath = file.getFilePath();
 
-    objectLiterals.forEach((obj) => {
-        const properties = obj.getProperties();
-        properties.forEach((prop) => {
-            if (isNonExactDependency(prop)) {
-                const assignment = prop as PropertyAssignment;
-                const version = getVersion(assignment);
-                findings.push(createFinding(file, assignment, version));
-            }
-        });
-    });
+    if (!isPackageJson(filePath)) {
+        return [];
+    }
+
+    const packageJsonContent = readPackageJson(filePath);
+    const dependencies = extractDependencies(packageJsonContent);
+
+    return findNonExactDependencies(file, dependencies);
+}
+
+/**
+ * Checks if the file is package.json.
+ * @param {string} filePath - The path of the file.
+ * @returns {boolean} - True if the file is package.json, false otherwise.
+ */
+function isPackageJson(filePath: string): boolean {
+    return path.basename(filePath) === 'package.json';
+}
+
+/**
+ * Reads the content of package.json file.
+ * @param {string} filePath - The path of the package.json file.
+ * @returns {object} - The parsed content of the package.json file.
+ */
+function readPackageJson(filePath: string): any {
+    const packageJsonContent = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(packageJsonContent);
+}
+
+/**
+ * Extracts all dependencies from the package.json content.
+ * @param {object} packageJson - The parsed content of the package.json file.
+ * @returns {Record<string, string>} - An object containing all dependencies.
+ */
+function extractDependencies(packageJson: any): Record<string, string> {
+    return {
+        ...packageJson.dependencies,
+        ...packageJson.devDependencies,
+        ...packageJson.peerDependencies,
+        ...packageJson.optionalDependencies,
+    };
+}
+
+/**
+ * Finds dependencies with non-exact versions.
+ * @param {SourceFile} file - The source file containing the dependencies.
+ * @param {Record<string, string>} dependencies - The dependencies to check.
+ * @returns {Finding[]} - Array of findings with non-exact dependency version details.
+ */
+function findNonExactDependencies(file: SourceFile, dependencies: Record<string, string>): Finding[] {
+    const findings: Finding[] = [];
+
+    for (const [dependency, version] of Object.entries(dependencies)) {
+        if (isNonExactVersion(version)) {
+            findings.push(createFinding(file, dependency, version));
+        }
+    }
 
     return findings;
 }
 
 /**
- * Checks if a property assignment is a non-exact dependency.
- * @param {ObjectLiteralElementLike} prop - The property assignment to check.
- * @returns {boolean} - True if the property is a non-exact dependency, false otherwise.
+ * Checks if a version string is non-exact.
+ * @param {string} version - The version string to check.
+ * @returns {boolean} - True if the version is non-exact, false otherwise.
  */
-function isNonExactDependency(prop: ObjectLiteralElementLike): boolean {
-    if (prop.getKind() !== SyntaxKind.PropertyAssignment) return false;
-    const assignment = prop as PropertyAssignment;
-    const initializer = assignment.getInitializer();
-    if (!initializer || SyntaxKind[initializer.getKind()] !== "StringLiteral") return false;
-    const version = initializer.getText().replace(/['"]/g, "");
-    return /^[\^~]/.test(version);
-}
-
-/**
- * Extracts the version string from a property assignment.
- * @param {PropertyAssignment} assignment - The property assignment to extract the version from.
- * @returns {string} - The version string.
- */
-function getVersion(assignment: PropertyAssignment): string {
-    const initializer = assignment.getInitializer();
-    return initializer ? initializer.getText().replace(/['"]/g, "") : "";
+function isNonExactVersion(version: string): boolean {
+    return /^[\^~>=]/.test(version);
 }
 
 /**
  * Creates a finding for a non-exact dependency.
  * @param {SourceFile} file - The source file containing the dependency.
- * @param {PropertyAssignment} assignment - The property assignment of the dependency.
+ * @param {string} dependency - The name of the dependency.
  * @param {string} version - The version string of the dependency.
  * @returns {Finding} - The created finding.
  */
-function createFinding(file: SourceFile, assignment: PropertyAssignment, version: string): Finding {
+function createFinding(file: SourceFile, dependency: string, version: string): Finding {
     return {
         type: "NonExactDependency",
-        description: `Dependency "${assignment.getName()}" has a non-exact version "${version}".`,
+        description: `Dependency "${dependency}" has a non-exact version "${version}".`,
         position: {
             filePath: file.getFilePath(),
-            lineNum: assignment.getStartLineNumber(),
+            lineNum: 1, // Since we are reading from package.json, line number is not applicable
         },
         riskRating: RiskRating.Medium,
         weight: 5,
