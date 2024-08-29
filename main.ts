@@ -1,20 +1,53 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-
 import logger from './logger';
-
 import { Project } from "ts-morph";
 import { Finding } from "./detectors/types";
-
 import { detectConsoleLog } from "./detectors/ConsoleLog";
 import { detectDangerousFunctions } from "./detectors/DangerousFunctions";
+// import {detectDependencyOutdated} from "./detectors/DependencyOutdated";
+// import {detectDependencyVersioning} from "./detectors/DependencyVersioning";
 
 type RuleFunction = (file: any) => Finding[];
 
 const rules: { [key: string]: RuleFunction } = {
     consoleLog: detectConsoleLog,
     dangerousFunctions: detectDangerousFunctions,
+    // dependencyOutdated: detectDependencyOutdated
+    // dependencyVersioning: detectDependencyVersioning
 };
+
+function configureYargs() {
+    return yargs(hideBin(process.argv))
+        .option('path', {
+            alias: 'p',
+            type: 'string',
+            description: 'Project path',
+            demandOption: true
+        })
+        .option('rule', {
+            alias: 'r',
+            type: 'string',
+            description: 'Optional rule argument'
+        })
+        .option('verbose', {
+            alias: 'v',
+            type: 'boolean',
+            description: 'Enable verbose logging',
+            default: false
+        })
+        .argv as unknown as {
+            path: string;
+            rule?: string;
+            verbose: boolean;
+        };
+}
+
+function setupLogger(verbose: boolean) {
+    if (verbose) {
+        logger.level = 'debug';
+    }
+}
 
 async function processFiles(projectPath: string, rule?: string): Promise<Finding[]> {
     const project = new Project({
@@ -28,16 +61,13 @@ async function processFiles(projectPath: string, rule?: string): Promise<Finding
 
     for (const file of files) {
         logger.debug(`Processing file: ${file.getFilePath()}`);
-        if (rule && rules[rule]) {
-            logger.debug(`Running rule: ${rule}`);
-            const findings = rules[rule](file);
+        const applicableRules = rule && rules[rule] ? [rules[rule]] : Object.values(rules);
+
+        for (const ruleFunction of applicableRules) {
+            logger.debug(`Running rule: ${ruleFunction.name}`);
+            const findings = ruleFunction(file);
+            logger.debug(`Found ${findings.length} findings`);
             allFindings.push(...findings);
-        } else {
-            for (const ruleFunction of Object.values(rules)) {
-                // logger.debug(`Running rule: ${ruleName}`);
-                const findings = ruleFunction(file);
-                allFindings.push(...findings);
-            }
         }
     }
 
@@ -45,37 +75,12 @@ async function processFiles(projectPath: string, rule?: string): Promise<Finding
 }
 
 async function main() {
-    const argv = yargs(hideBin(process.argv))
-    .option('path', {
-        alias: 'p',
-        type: 'string',
-        description: 'Project path',
-        demandOption: true
-    })
-    .option('rule', {
-        alias: 'r',
-        type: 'string',
-        description: 'Optional rule argument'
-    })
-    .option('verbose', {
-        alias: 'v',
-        type: 'boolean',
-        description: 'Enable verbose logging',
-        default: false
-    })
-    .argv as unknown as {
-        path: string;
-        rule?: string;
-        verbose?: boolean;
-    };
+    const argv = configureYargs();
+    setupLogger(argv.verbose);
 
     try {
         const projectPath = argv.path;
         const rule = argv.rule;
-
-        if (argv.verbose) {
-            logger.level = 'debug';
-        }
 
         if (!projectPath) {
             throw new Error("Project path must be provided as a command line argument.");
