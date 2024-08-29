@@ -6,7 +6,7 @@ import { Finding } from "./detectors/types";
 import { detectConsoleLog } from "./detectors/ConsoleLog";
 import { detectDangerousFunctions } from "./detectors/DangerousFunctions";
 // import {detectDependencyOutdated} from "./detectors/DependencyOutdated";
-// import {detectDependencyVersioning} from "./detectors/DependencyVersioning";
+import {detectNonExactDependencies} from "./detectors/DependencyVersioning";
 
 type RuleFunction = (file: any) => Finding[];
 
@@ -14,7 +14,7 @@ const rules: { [key: string]: RuleFunction } = {
     consoleLog: detectConsoleLog,
     dangerousFunctions: detectDangerousFunctions,
     // dependencyOutdated: detectDependencyOutdated
-    // dependencyVersioning: detectDependencyVersioning
+    dependencyVersioning: detectNonExactDependencies
 };
 
 function configureYargs() {
