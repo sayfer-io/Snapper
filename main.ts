@@ -1,27 +1,19 @@
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-
 import logger from './logger';
-
 import { promises as fs } from 'fs';
 import path from 'path';
-
 import { Project } from "ts-morph";
 import { Finding } from "./detectors/types";
-
 import { detectConsoleLog } from "./detectors/ConsoleLog";
 import { detectDangerousFunctions } from "./detectors/DangerousFunctions";
-// import {detectDependencyOutdated} from "./detectors/DependencyOutdated";
-import {detectNonExactDependencies} from "./detectors/DependencyVersioning";
-import { log } from 'console';
-
+import { detectNonExactDependencies } from "./detectors/DependencyVersioning";
 
 type RuleFunction = (file: any) => Finding[];
 
 const rules: { [key: string]: RuleFunction } = {
     consoleLog: detectConsoleLog,
     dangerousFunctions: detectDangerousFunctions,
-    // dependencyOutdated: detectDependencyOutdated
     dependencyVersioning: detectNonExactDependencies
 };
 
@@ -103,32 +95,30 @@ async function processFiles(projectPath: string, rule?: string, recursive: boole
 
     for (const tsConfigPath of tsConfigPaths) {
         const folderPath = path.dirname(tsConfigPath);
-        const project = new Project({
-            tsConfigFilePath: tsConfigPath,
-        });
+        const project = new Project({ tsConfigFilePath: tsConfigPath });
         logger.debug(`Processing project with tsconfig: ${tsConfigPath}`);
 
-        const files = project.addSourceFilesAtPaths(`${path.dirname(folderPath)}/**/*.ts`);
-        logger.info(`Processing files in path: ${path.dirname(folderPath)}`);
+        const files = project.addSourceFilesAtPaths(`${folderPath}/**/*.ts`);
+        logger.info(`Processing files in path: ${folderPath}`);
 
         let findingsCount = 0;
         for (const file of files) {
-            // logger.debug(`Processing file: ${file.getFilePath()}`);
+            logger.debug(`Processing file: ${file.getFilePath()}`);
             const applicableRules = rule && rules[rule] ? [rules[rule]] : Object.values(rules);
 
             for (const ruleFunction of applicableRules) {
-                // logger.debug(`Running rule: ${ruleFunction.name}`);
+                logger.debug(`Running rule: ${ruleFunction.name}`);
                 const findings = ruleFunction(file);
-                // logger.debug(`Found ${findings.length} findings`);
+                logger.debug(`Found ${findings.length} findings`);
                 allFindings.push(...findings);
                 findingsCount += findings.length;
             }
         }
 
-        logger.info(`Number of issues found for: ${findingsCount}`);
-
+        logger.info(`Number of issues found for ${tsConfigPath}: ${findingsCount}`);
     }
 
+    logger.info(`Total number of issues found: ${allFindings.length}`);
     return allFindings;
 }
 
@@ -149,9 +139,13 @@ async function main() {
         const allFindings = await processFiles(projectPath, rule, argv.recursive);
 
         console.log(`Found ${allFindings.length} findings in ${allFindings.length} files`);
-        // allFindings.forEach(finding => {
-        //     logger.info(JSON.stringify(finding, null, 2));
-        // });
+
+        // Save findings to a JSON file
+        const now = new Date();
+        const timestamp = `${now.getHours()}${now.getMinutes()}${now.getSeconds()}${now.getDate()}${now.getMonth() + 1}${now.getFullYear()}`;
+        const resultFileName = `result-${timestamp}.json`;
+        await fs.writeFile(resultFileName, JSON.stringify(allFindings, null, 2));
+        logger.info(`Results saved to ${resultFileName}`);
     } catch (error) {
         if (error instanceof Error) {
             logger.error(error.message);
