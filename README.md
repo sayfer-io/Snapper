@@ -1,4 +1,4 @@
-# Snapper Documentation
+# Snapper
 
 ## Preparing the Environment
 
@@ -49,5 +49,6 @@ To prepare an example test, follow these steps:
 To run the test case, use the following command:
 
 ```bash
-ts-node main.ts .
+/bin/bash buildenv.sh
+ts-node main.ts --path testcases --recursive
 ```

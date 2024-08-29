@@ -1,6 +1,6 @@
 import { SourceFile, SyntaxKind, PropertyAssignment, ObjectLiteralElementLike } from "ts-morph";
-import { RiskRating } from "./structures";
-import { Finding } from "./types";
+import { RiskRating } from "../types/structures";
+import { Finding } from "../types";
 
 /**
  * Detects dependencies with non-exact versions in the given file.
