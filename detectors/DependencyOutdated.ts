@@ -142,8 +142,7 @@ function createFindings(file: SourceFile, dependencyStatuses: DependencyStatus[]
           filePath: file.getFilePath(),
           lineNum: 1, // Since we are reading from package.json, line number is not applicable
         },
-        riskRating: RiskRating.High,
-        weight: 10,
+        riskRating: RiskRating.High
       });
     }
   }

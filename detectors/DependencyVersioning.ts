@@ -100,7 +100,6 @@ function createFinding(file: SourceFile, dependency: string, version: string): F
             filePath: file.getFilePath(),
             lineNum: 1, // Since we are reading from package.json, line number is not applicable
         },
-        riskRating: RiskRating.Medium,
-        weight: 5,
+        riskRating: RiskRating.Medium
     };
 }

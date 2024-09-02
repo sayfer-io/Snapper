@@ -1,5 +1,4 @@
 import { SourceFile, SyntaxKind, CallExpression } from "ts-morph";
-
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 
@@ -7,10 +6,11 @@ import { RiskRating } from "../structures";
  * Structure to hold dangerous functions with their names and weights.
  */
 const dangerousFunctions = [
-    { name: "dangerouslySetInnerHTML", weight: 6 },
-    { name: "eval", weight: 10 },
-    { name: "signData", weight: 1 },
-    
+    { name: "dangerouslySetInnerHTML", risk: RiskRating.High },
+    { name: "eval", risk: RiskRating.High },
+    { name: "signData", risk: RiskRating.High },
+    { name: "atob", risk: RiskRating.Informational },
+    { name: "btoa", risk: RiskRating.Informational },
     // ... more dangerous functions as needed
 ];
 
@@ -20,36 +20,47 @@ const dangerousFunctions = [
  * @returns {CallExpression[]} - Array of dangerous function call expressions.
  */
 function getDangerousFunctionExpressions(file: SourceFile): CallExpression[] {
-    return file
-        .getDescendantsOfKind(SyntaxKind.CallExpression)
-        .filter((expression) => {
-            const expressionText = expression.getExpression().getText().toLowerCase();
-            return dangerousFunctions.some(func => func.name.toLowerCase() === expressionText);
-        });
+    const dangerousFunctionNames = dangerousFunctions.map(func => func.name);
+    const dangerousExpressions: CallExpression[] = [];
+
+    file.forEachDescendant((node) => {
+        if (node.getKind() === SyntaxKind.CallExpression) {
+            const callExpression = node as CallExpression;
+            const expression = callExpression.getExpression().getText();
+            if (dangerousFunctionNames.includes(expression)) {
+                dangerousExpressions.push(callExpression);
+            }
+        }
+    });
+
+    return dangerousExpressions;
 }
 
 /**
- * Detects dangerous function calls in the given file.
+ * Creates findings for dangerous function usages in the given file.
  * @param {SourceFile} file - The source file to analyze.
- * @returns {Finding[]} - Array of findings with dangerous function details.
+ * @returns {Finding[]} - Array of findings with details about the detected issues.
  */
 export function detectDangerousFunctions(file: SourceFile): Finding[] {
-    const dangerousFunctionExpressions = getDangerousFunctionExpressions(file);
+    const findings: Finding[] = [];
+    const dangerousExpressions = getDangerousFunctionExpressions(file);
 
-    return dangerousFunctionExpressions.map((expression) => {
-        const line = expression.getStartLineNumber();
+    dangerousExpressions.forEach(expression => {
         const functionName = expression.getExpression().getText();
-        const functionDetails = dangerousFunctions.find(func => func.name === functionName);
-
-        return {
-            type: "DangerousFunction",
-            description: `A dangerous function "${functionName}" was detected.`,
-            position: {
-                filePath: file.getFilePath(),
-                lineNum: line,
-            },
-            riskRating: RiskRating.High,
-            weight: functionDetails?.weight || 0,
-        };
+        const dangerousFunction = dangerousFunctions.find(func => func.name === functionName);
+        if (dangerousFunction) {
+            const startLineNum = file.getLineAndColumnAtPos(expression.getPos()).line;
+            findings.push({
+                type: "DangerousFunction",
+                description: `Usage of dangerous function: ${functionName}`,
+                position: {
+                    filePath: file.getFilePath(),
+                    lineNum: startLineNum,
+                },
+                riskRating: dangerousFunction.risk
+            });
+        }
     });
+
+    return findings;
 }

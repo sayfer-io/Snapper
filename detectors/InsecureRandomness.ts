@@ -31,7 +31,6 @@ export function detectInsecureRandomness(file: SourceFile): Finding[] {
             filePath: file.getFilePath(),
             lineNum: expression.getStartLineNumber(),
         },
-        riskRating: RiskRating.High,
-        weight: 5
+        riskRating: RiskRating.High
     }));
 }

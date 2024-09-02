@@ -39,8 +39,7 @@ function identifyUnusedFunctions(functionDeclarations: FunctionDeclaration[], ca
                 filePath: func.getSourceFile().getFilePath(),
                 lineNum: func.getStartLineNumber(),
             },
-            riskRating: RiskRating.Low,
-            weight: 1
+            riskRating: RiskRating.Low
         }));
 }
 

@@ -44,8 +44,7 @@ function createLargeCommentedOutCodeFinding(file: SourceFile, comment: CommentRa
             filePath: file.getFilePath(),
             lineNum: startLineNum,
         },
-        riskRating: RiskRating.Medium,
-        weight: 2
+        riskRating: RiskRating.Medium
     };
 }
 
@@ -64,8 +63,7 @@ function createLeftoverTODOFinding(file: SourceFile, comment: CommentRange): Fin
             filePath: file.getFilePath(),
             lineNum: startLineNum,
         },
-        riskRating: RiskRating.Low,
-        weight: 1
+        riskRating: RiskRating.Low
     };
 }
 
