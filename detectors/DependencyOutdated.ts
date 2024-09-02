@@ -13,15 +13,6 @@ interface DependencyStatus {
   vulnerabilities: any[];
 }
 
-interface Advisory {
-  id: number;
-  module_name: string;
-  title: string;
-  severity: string;
-  url: string;
-  findings: { version: string }[];
-}
-
 /**
  * Read and parse the package.json file.
  * @param {string} filePath - The path to the package.json file.
@@ -89,8 +80,20 @@ async function getLatestVersion(name: string): Promise<string> {
  * @returns {Promise<any[]>} - The vulnerabilities of the dependency.
  */
 async function getVulnerabilities(name: string, version: string): Promise<any[]> {
+  try {
+      // Authenticate with Snyk
+      // await snyk.auth(process.env.SNYK_TOKEN);
 
-  return [];
+      // Fetch the vulnerabilities for the given dependency
+      // const result = await snyk.test(`${name}@${version}`, { dev: false });
+
+      // Extract and return the vulnerabilities
+      // return result.vulnerabilities || [];
+      return [];
+  } catch (error) {
+      console.error(`Error fetching vulnerabilities for ${name}@${version}:`, error);
+      return [];
+  }
 }
 
 /**
