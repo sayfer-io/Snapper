@@ -1,6 +1,7 @@
 import { SourceFile, SyntaxKind, CallExpression } from "ts-morph";
-import { RiskRating } from "../types/structures";
+
 import { Finding } from "../types";
+import { RiskRating } from "../structures";
 
 /**
  * Structure to hold dangerous functions with their names and weights.

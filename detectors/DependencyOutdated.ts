@@ -1,8 +1,9 @@
-import { SourceFile } from 'ts-morph';
-import { Finding } from '../types';
-import { RiskRating } from '../types/structures';
 import * as fs from 'fs';
 import * as path from 'path';
+import { SourceFile } from 'ts-morph';
+
+import { Finding } from '../types';
+import { RiskRating } from '../structures';
 
 interface DependencyStatus {
   name: string;

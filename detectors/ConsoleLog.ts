@@ -1,6 +1,7 @@
 import { SourceFile, SyntaxKind, CallExpression } from "ts-morph";
-import { RiskRating } from "../types/structures";
+
 import { Finding } from "../types";
+import { RiskRating } from "../structures";
 
 /**
  * Filters and returns console log expressions from the given file.

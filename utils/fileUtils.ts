@@ -1,5 +1,5 @@
-import { promises as fs } from 'fs';
 import path from 'path';
+import { promises as fs } from 'fs';
 
 /**
  * Finds all `tsconfig.json` files in the given project path.

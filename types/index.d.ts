@@ -1,4 +1,4 @@
-import { RiskRating } from "./structures";
+import { RiskRating } from "../structuress";
 
 /**
  * Represents a finding in the source code.

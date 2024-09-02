@@ -1,8 +1,10 @@
-import { SourceFile } from "ts-morph";
-import { RiskRating } from "../types/structures";
-import { Finding } from "../types";
+
 import * as fs from 'fs';
 import * as path from 'path';
+import { SourceFile } from "ts-morph";
+
+import { Finding } from "../types";
+import { RiskRating } from "../structures";
 
 /**
  * Detects dependencies with non-exact versions in the package.json file.
