@@ -23,8 +23,8 @@ function getDangerousFunctionExpressions(file: SourceFile): CallExpression[] {
     return file
         .getDescendantsOfKind(SyntaxKind.CallExpression)
         .filter((expression) => {
-            const expressionText = expression.getExpression().getText();
-            return dangerousFunctions.some(func => func.name === expressionText);
+            const expressionText = expression.getExpression().getText().toLowerCase();
+            return dangerousFunctions.some(func => func.name.toLowerCase() === expressionText);
         });
 }
 
