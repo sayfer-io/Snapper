@@ -3,8 +3,6 @@ import { Finding } from '../types';
 import { RiskRating } from '../types/structures';
 import * as fs from 'fs';
 import * as path from 'path';
-// import packageJson from 'package-json';
-// import { audit } from 'npm-audit-report';
 
 interface DependencyStatus {
   name: string;
@@ -78,9 +76,9 @@ async function checkForVulnerabilities(dependencies: Record<string, string>): Pr
  * @returns {Promise<string>} - The latest version of the dependency.
  */
 async function getLatestVersion(name: string): Promise<string> {
-  // const pkg = await packageJson(name);
-  // return pkg.version;
-  return '1.0.0';
+  const { default: packageJson } = await import('package-json');
+  const pkg = await packageJson(name);
+  return pkg.version;
 }
 
 /**
@@ -90,22 +88,7 @@ async function getLatestVersion(name: string): Promise<string> {
  * @returns {Promise<any[]>} - The vulnerabilities of the dependency.
  */
 async function getVulnerabilities(name: string, version: string): Promise<any[]> {
-  const { default: packageJson } = await import('package-json');
-  // const auditResult = await audit();
-  // const vulnerabilities = [];
 
-  // for (const advisory of Object.values(auditResult.advisories) as Advisory[]) {
-  //   if (advisory.module_name === name && advisory.findings.some((finding: any) => finding.version === version)) {
-  //     vulnerabilities.push({
-  //       id: advisory.id,
-  //       title: advisory.title,
-  //       severity: advisory.severity,
-  //       url: advisory.url,
-  //     });
-  //   }
-  // }
-
-  // return vulnerabilities;
   return [];
 }
 
