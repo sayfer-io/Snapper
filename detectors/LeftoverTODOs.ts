@@ -20,7 +20,7 @@ function getCommentRanges(file: SourceFile): CommentRange[] {
 }
 
 /**
- * Checks if the comment is a JSDoc comment.
+ * Checks if the comment is a JSDoc comment. JSDoc comments start with '/**'.
  * @param {CommentRange} comment - The comment range to check.
  * @returns {boolean} - True if the comment is a JSDoc comment, false otherwise.
  */
