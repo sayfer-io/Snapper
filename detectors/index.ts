@@ -10,3 +10,6 @@ export { detectConsoleLog } from './ConsoleLog';
 export { detectDangerousFunctions } from './DangerousFunctions';
 export { detectNonExactDependencies } from './DependencyVersioning';
 export { detectVulnerableDependencies } from './DependencyOutdated';
+// export { detectHardcodedSecrets } from './HardcodedSecrets';
+// export { detectInsecureRandomness } from './InsecureRandomness';
+export { detectUnusedFunctions } from './UnusedFunctions';

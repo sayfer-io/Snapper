@@ -51,6 +51,7 @@ async function findTsConfigRecursive(currentPath: string, tsConfigPaths: string[
  */
 export function generateTimestampFileName(filename: string = 'result', extension: string = 'json'): string {
     const now = new Date();
-    const timestamp = `${now.getHours()}${now.getMinutes()}${now.getSeconds()}${now.getDate()}${now.getMonth() + 1}${now.getFullYear()}`;
+    const pad = (num: number) => num.toString().padStart(2, '0');
+    const timestamp = `${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}${pad(now.getDate())}${pad(now.getMonth() + 1)}${now.getFullYear()}`;
     return `${filename}-${timestamp}.${extension}`;
 }

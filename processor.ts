@@ -7,7 +7,8 @@ import {
     detectConsoleLog, 
     detectDangerousFunctions, 
     detectNonExactDependencies, 
-    detectVulnerableDependencies 
+    detectVulnerableDependencies,
+    detectUnusedFunctions
 } from './detectors';
 
 type RuleFunction = (file: any) => Finding[];
@@ -17,6 +18,7 @@ const rules: { [key: string]: RuleFunction } = {
     dangerousFunctions: detectDangerousFunctions,
     dependencyVersioning: detectNonExactDependencies,
     // dependencyOutdated: detectVulnerableDependencies
+    unusedFunctions: detectUnusedFunctions
 };
 
 /**
