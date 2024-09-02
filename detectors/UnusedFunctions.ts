@@ -1,33 +1,35 @@
-import { SourceFile, SyntaxKind, FunctionDeclaration, CallExpression } from 'ts-morph';
+import { Project, SourceFile, SyntaxKind, FunctionDeclaration, CallExpression } from 'ts-morph';
 import { Finding } from '../types';
 import { RiskRating } from '../structures';
 
 /**
- * Gets all function declarations in the given file.
- * @param {SourceFile} file - The source file to analyze.
+ * Gets all function declarations in the given project.
+ * @param {SourceFile[]} files - The source files to analyze.
  * @returns {FunctionDeclaration[]} - Array of function declarations.
  */
-function getFunctionDeclarations(file: SourceFile): FunctionDeclaration[] {
-    return file.getFunctions();
+function getAllFunctionDeclarations(files: SourceFile[]): FunctionDeclaration[] {
+    return files.flatMap(file => file.getFunctions());
 }
 
 /**
- * Gets all function call expressions in the given file.
- * @param {SourceFile} file - The source file to analyze.
+ * Gets all function call expressions in the given project.
+ * @param {SourceFile[]} files - The source files to analyze.
  * @returns {CallExpression[]} - Array of function call expressions.
  */
-function getFunctionCallExpressions(file: SourceFile): CallExpression[] {
-    return file.getDescendantsOfKind(SyntaxKind.CallExpression);
+function getAllFunctionCallExpressions(files: SourceFile[]): CallExpression[] {
+    return files.flatMap(file => file.getDescendantsOfKind(SyntaxKind.CallExpression));
 }
 
 /**
- * Detects unused functions in the given file.
- * @param {SourceFile} file - The source file to analyze.
+ * Detects unused functions in the given project.
+ * @param {Project} project - The project to analyze.
  * @returns {Finding[]} - Array of findings with unused function details.
  */
-export function detectUnusedFunctions(file: SourceFile): Finding[] {
-    const functionDeclarations = getFunctionDeclarations(file);
-    const functionCallExpressions = getFunctionCallExpressions(file);
+export function detectUnusedFunctions(project: Project): Finding[] {
+    // TODO: Check if this correctly gets all source files.
+    const sourceFiles = project.getSourceFiles();
+    const functionDeclarations = getAllFunctionDeclarations(sourceFiles);
+    const functionCallExpressions = getAllFunctionCallExpressions(sourceFiles);
 
     const calledFunctionNames = new Set(
         functionCallExpressions.map(expression => expression.getExpression().getText())
@@ -42,7 +44,7 @@ export function detectUnusedFunctions(file: SourceFile): Finding[] {
         type: "UnusedFunction",
         description: `Function '${func.getName()}' is declared but never used.`,
         position: {
-            filePath: file.getFilePath(),
+            filePath: func.getSourceFile().getFilePath(),
             lineNum: func.getStartLineNumber(),
         },
         riskRating: RiskRating.Low,
