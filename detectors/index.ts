@@ -4,6 +4,10 @@
  * - `detectConsoleLog`: Detects usage of console.log statements.
  * - `detectDangerousFunctions`: Detects usage of potentially dangerous functions.
  * - `detectNonExactDependencies`: Detects non-exact dependency versions in package.json.
+ * - `detectVulnerableDependencies`: Detects usage of vulnerable dependencies.
+ * - `detectInsecureRandomness`: Detects usage of insecure randomness.
+ * - `detectUnusedFunctions`: Detects unused functions in the code.
+ * - `detectLeftoverTODOs`: Detects large sections of commented-out code or leftover TODOs.
  */
 
 export { detectConsoleLog } from './ConsoleLog';
@@ -13,3 +17,4 @@ export { detectVulnerableDependencies } from './DependencyOutdated';
 // export { detectHardcodedSecrets } from './HardcodedSecrets';
 export { detectInsecureRandomness } from './InsecureRandomness';
 export { detectUnusedFunctions } from './UnusedFunctions';
+export { detectLeftoverTODOs } from './LeftoverTODOs';

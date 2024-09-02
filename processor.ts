@@ -9,7 +9,8 @@ import {
     detectNonExactDependencies, 
     detectVulnerableDependencies,
     detectUnusedFunctions,
-    detectInsecureRandomness
+    detectInsecureRandomness,
+    detectLeftoverTODOs
 } from './detectors';
 
 type RuleFunction = (file: any) => Finding[];
@@ -20,7 +21,8 @@ const rules: { [key: string]: RuleFunction } = {
     dependencyVersioning: detectNonExactDependencies,
     // dependencyOutdated: detectVulnerableDependencies
     unusedFunctions: detectUnusedFunctions,
-    insecureRandomness: detectInsecureRandomness
+    insecureRandomness: detectInsecureRandomness,
+    leftoverTodos: detectLeftoverTODOs
 };
 
 /**
@@ -47,7 +49,8 @@ export async function processFiles(projectPath: string, rule?: string, recursive
 
         const files = project.addSourceFilesAtPaths([
             `${folderPath}/**/*.ts`,
-            `${folderPath}/**/package.json`
+            `${folderPath}/**/package.json`,
+            `${folderPath}/**/tsconfig.json`,
         ]);
         logger.info(`Processing files in path: ${folderPath}`);
 
