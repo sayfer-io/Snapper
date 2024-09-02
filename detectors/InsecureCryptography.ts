@@ -6,7 +6,7 @@ import { RiskRating } from '../structures';
 const PBKDF2_ITERATION_THRESHOLD = 10000;
 
 // Non-native cryptography libraries to detect
-const NON_NATIVE_CRYPTO_LIBRARIES = ['crypto-js', 'CryptoJS'];
+const NON_NATIVE_CRYPTO_LIBRARIES = ['crypto-js', 'CryptoJS', 'elliptic'];
 
 /**
  * Checks if the given node is a call to PBKDF2 with a low number of iterations.
@@ -16,8 +16,8 @@ const NON_NATIVE_CRYPTO_LIBRARIES = ['crypto-js', 'CryptoJS'];
 function isLowIterationPBKDF2(node: Node): boolean {
     if (node.getKind() === SyntaxKind.CallExpression) {
         const callExpression = node as CallExpression;
-        const expression = callExpression.getExpression();
-        if (expression.getText().includes('pbkdf2') || expression.getText().includes('PBKDF2')) {
+        const expression = callExpression.getExpression().getText().toLowerCase();
+        if (expression.includes('pbkdf2')) {
             const args = callExpression.getArguments();
             if (args.length >= 4) {
                 const iterationsArg = args[2];
