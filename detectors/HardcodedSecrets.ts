@@ -1,22 +1,31 @@
-import { SourceFile, SyntaxKind, Node } from 'ts-morph';
+import { SourceFile, SyntaxKind, Node, VariableDeclaration } from 'ts-morph';
 import { Finding } from '../types';
 import { RiskRating } from '../structures';
 
-const MIN_SECRET_LENGTH = 6;
+// Regular expression for detecting potential secrets
+const SECRET_PATTERN = /^[a-zA-Z0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{7,}$/;
 
 /**
- * Checks if the given node is a string literal.
+ * Checks if the given node is a string literal or a variable declaration with a string initializer.
  * @param {Node} node - The node to check.
- * @returns {boolean} - True if the node is a string literal, false otherwise.
+ * @returns {boolean} - True if the node is a string literal or a variable declaration with a string initializer, false otherwise.
  */
-function isStringLiteral(node: Node): boolean {
-    return node.getKind() === SyntaxKind.StringLiteral;
+function isStringLiteralOrVariableWithStringInitializer(node: Node): boolean {
+    if (node.getKind() === SyntaxKind.StringLiteral) {
+        return true;
+    }
+    if (node.getKind() === SyntaxKind.VariableDeclaration) {
+        const variableDeclaration = node as VariableDeclaration;
+        const initializer = variableDeclaration.getInitializer();
+        return initializer !== undefined && initializer.getKind() === SyntaxKind.StringLiteral;
+    }
+    return false;
 }
 
 /**
  * Creates a finding for a potential hardcoded secret.
  * @param {SourceFile} file - The source file containing the node.
- * @param {Node} node - The node representing the string literal.
+ * @param {Node} node - The node representing the string literal or variable declaration.
  * @param {string} stringValue - The string value of the literal.
  * @returns {Finding} - The finding object.
  */
@@ -36,7 +45,7 @@ function createHardcodedSecretFinding(file: SourceFile, node: Node, stringValue:
 
 /**
  * Detects hardcoded secrets in the given file.
- * Flags string literals longer than 6 characters as potential hardcoded secrets.
+ * Flags string literals or variable initializers matching the secret pattern as potential hardcoded secrets.
  * @param {SourceFile} file - The source file to analyze.
  * @returns {Finding[]} - Array of findings with details about the detected issues.
  */
@@ -44,12 +53,22 @@ export function detectHardcodedSecrets(file: SourceFile): Finding[] {
     const findings: Finding[] = [];
 
     file.forEachDescendant((node: Node) => {
-        if (isStringLiteral(node)) {
-            const text = node.getText();
-            // Remove the surrounding quotes
-            const stringValue = text.slice(1, -1);
+        if (isStringLiteralOrVariableWithStringInitializer(node)) {
+            let stringValue: string;
+            if (node.getKind() === SyntaxKind.StringLiteral) {
+                stringValue = node.getText().slice(1, -1); // Remove the surrounding quotes
+            } else {
+                const variableDeclaration = node as VariableDeclaration;
+                const initializer = variableDeclaration.getInitializer();
+                if (initializer) {
+                    stringValue = initializer.getText().slice(1, -1); // Remove the surrounding quotes
+                } else {
+                    return;
+                }
+            }
 
-            if (stringValue.length > MIN_SECRET_LENGTH) {
+            // Check if the string matches the secret pattern
+            if (SECRET_PATTERN.test(stringValue)) {
                 findings.push(createHardcodedSecretFinding(file, node, stringValue));
             }
         }
