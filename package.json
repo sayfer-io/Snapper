@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node main.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@types/node": "^20.14.10",
     "@types/yargs": "^17.0.33",
-    "npm-audit-report": "^5.0.0"
+    "npm-audit-report": "^5.0.0",
+    "ts-node": "^10.9.2"
   }
 }
