@@ -41,3 +41,16 @@ async function findTsConfigRecursive(currentPath: string, tsConfigPaths: string[
         }
     }
 }
+
+/**
+ * Generates a timestamp-based file name.
+ * 
+ * @param {string} [filename='result'] - The base name for the file.
+ * @param {string} [extension='json'] - The file extension.
+ * @returns {string} - The generated file name.
+ */
+export function generateTimestampFileName(filename: string = 'result', extension: string = 'json'): string {
+    const now = new Date();
+    const timestamp = `${now.getHours()}${now.getMinutes()}${now.getSeconds()}${now.getDate()}${now.getMonth() + 1}${now.getFullYear()}`;
+    return `${filename}-${timestamp}.${extension}`;
+}

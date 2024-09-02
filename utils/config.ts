@@ -32,11 +32,17 @@ export function configureYargs() {
             description: 'Parse projects recursively',
             default: false
         })
+        .option('output', {
+            alias: 'o',
+            type: 'string',
+            description: 'Specify output file'
+        })
         .argv as unknown as {
             path: string;
             rule?: string;
             verbose: boolean;
             recursive: boolean;
+            output?: string;
         };
 }
 

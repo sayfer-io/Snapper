@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 import { configureYargs, setupLogger } from './utils/config';
 import logger from './utils/logger';
 import { processFiles } from './processor';
+import { generateTimestampFileName } from './utils/fileUtils';
 
 /**
  * Main function to process TypeScript files based on specified rules.
@@ -24,10 +25,10 @@ async function main(): Promise<void> {
 
         const allFindings = await processFiles(projectPath, rule, argv.recursive);
 
-        // Save findings to a JSON file
-        const now = new Date();
-        const timestamp = `${now.getHours()}${now.getMinutes()}${now.getSeconds()}${now.getDate()}${now.getMonth() + 1}${now.getFullYear()}`;
-        const resultFileName = `result-${timestamp}.json`;
+        // Determine the output file name
+        const resultFileName = argv.output || generateTimestampFileName('result', 'json');
+
+        // Save findings to the output file
         await fs.writeFile(resultFileName, JSON.stringify(allFindings, null, 2));
         logger.info(`Results saved to ${resultFileName}`);
     } catch (error) {
