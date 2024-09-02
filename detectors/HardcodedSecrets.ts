@@ -38,8 +38,7 @@ function createHardcodedSecretFinding(file: SourceFile, node: Node, stringValue:
             filePath: file.getFilePath(),
             lineNum: startLineNum,
         },
-        riskRating: RiskRating.High,
-        weight: 3
+        riskRating: RiskRating.High
     };
 }
 

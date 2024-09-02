@@ -2,7 +2,7 @@
  * Enum representing the risk rating of a finding.
  */
 export enum RiskRating {
-    Information = 0,
+    Informational = 0,
     Low = 1,
     Medium = 2,
     High = 3,

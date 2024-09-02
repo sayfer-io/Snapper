@@ -7,9 +7,9 @@ import { RiskRating } from "../structures";
  * Structure to hold dangerous functions with their names and weights.
  */
 const dangerousFunctions = [
-    { name: "dangerouslySetInnerHTML", weight: 6 },
-    { name: "eval", weight: 10 },
-    { name: "signData", weight: 1 },
+    { name: "dangerouslySetInnerHTML", risk: RiskRating.High },
+    { name: "eval", risk: RiskRating.High },
+    { name: "signData", risk: RiskRating.High },
     
     // ... more dangerous functions as needed
 ];
@@ -48,8 +48,7 @@ export function detectDangerousFunctions(file: SourceFile): Finding[] {
                 filePath: file.getFilePath(),
                 lineNum: line,
             },
-            riskRating: RiskRating.High,
-            weight: functionDetails?.weight || 0,
+            riskRating: functionDetails?.risk || RiskRating.Informational
         };
     });
 }

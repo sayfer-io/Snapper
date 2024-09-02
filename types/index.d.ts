@@ -33,10 +33,5 @@ export type Finding = {
      * The risk rating associated with the finding.
      */
     riskRating: RiskRating;
-
-    /**
-     * The weight of the finding, indicating whether it is a best practice violation or a compliance violation.
-     */
-    weight: number;
 };
 

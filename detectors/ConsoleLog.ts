@@ -37,8 +37,7 @@ export function detectConsoleLog(file: SourceFile): Finding[] {
                 filePath: file.getFilePath(),
                 lineNum: line,
             },
-            riskRating: RiskRating.Low,
-            weight: 1,
+            riskRating: RiskRating.Low
         };
     });
 }
