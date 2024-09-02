@@ -10,7 +10,8 @@ import {
     detectVulnerableDependencies,
     detectUnusedFunctions,
     detectInsecureRandomness,
-    detectLeftoverTODOs
+    detectLeftoverTODOs,
+    detectHardcodedSecrets
 } from './detectors';
 
 type RuleFunction = (file: any) => Finding[];
@@ -22,7 +23,8 @@ const rules: { [key: string]: RuleFunction } = {
     // dependencyOutdated: detectVulnerableDependencies
     unusedFunctions: detectUnusedFunctions,
     insecureRandomness: detectInsecureRandomness,
-    leftoverTodos: detectLeftoverTODOs
+    leftoverTodos: detectLeftoverTODOs,
+    hardcodedSecret: detectHardcodedSecrets
 };
 
 /**
