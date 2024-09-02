@@ -64,14 +64,17 @@ export function detectUnusedFunctions(file: SourceFile): Finding[] {
         );
 
         return identifyUnusedFunctions(functionDeclarations, calledFunctionNames);
-    } else {
-        const functionDeclarations = file.getFunctions();
-        const functionCallExpressions = file.getDescendantsOfKind(SyntaxKind.CallExpression);
+    } 
+    // TODO: Implement the case where the input is a single source file.
+    // else {
+    //     const functionDeclarations = file.getFunctions();
+    //     const functionCallExpressions = file.getDescendantsOfKind(SyntaxKind.CallExpression);
 
-        const calledFunctionNames = new Set(
-            functionCallExpressions.map(expression => expression.getExpression().getText())
-        );
+    //     const calledFunctionNames = new Set(
+    //         functionCallExpressions.map(expression => expression.getExpression().getText())
+    //     );
 
-        return identifyUnusedFunctions(functionDeclarations, calledFunctionNames);
-    }
+    //     return identifyUnusedFunctions(functionDeclarations, calledFunctionNames);
+    // }
+    return [];
 }
