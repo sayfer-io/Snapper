@@ -1,30 +1,54 @@
+import * as path from 'path';
 import { exec } from 'child_process';
 import { SourceFile } from 'ts-morph';
+
 import { Finding } from '../types';
 import { RiskRating } from '../structures';
 
 /**
- * Runs `npm audit` on the entire package.json file to list all vulnerable libraries.
- * @returns {Promise<any[]>} - A promise that resolves to an array of vulnerabilities.
- */
-function auditPackageJson(): Promise<any[]> {
-    return new Promise((resolve, reject) => {
-        exec('npm audit --json', (error, stdout, stderr) => {
-            if (error) {
-                reject(`Error: ${stderr}`);
-                return;
-            }
+* Runs `npm audit` on the specified package.json file to list all vulnerable libraries.
+* @param {string} filePath - The path to the package.json file.
+* @returns {Promise<any[]>} - A promise that resolves to an array of vulnerabilities.
+*/
+function auditPackageJson(filePath: string): Promise<any[]> {
+   const directoryPath = path.dirname(filePath);
 
-            try {
-                const auditResult = JSON.parse(stdout);
-                const vulnerabilities = auditResult.advisories ? Object.values(auditResult.advisories) : [];
-                resolve(vulnerabilities);
-            } catch (parseError: any) {
-                reject(`Failed to parse npm audit output: ${parseError.message}`);
-            }
-        });
-    });
+   return new Promise((resolve, reject) => {
+       exec(`npm audit --json --prefix ${directoryPath}`, (error, stdout, stderr) => {
+           if (error) {
+               reject(`Error: ${stderr}`);
+               return;
+           }
+
+           try {
+               const auditResult = JSON.parse(stdout);
+               const vulnerabilities = auditResult.advisories ? Object.values(auditResult.advisories) : [];
+               resolve(vulnerabilities);
+           } catch (parseError: any) {
+               reject(`Failed to parse npm audit output: ${parseError.message}`);
+           }
+       });
+   });
 }
+
+/**
+ * Maps the severity string to a RiskRating enum.
+ * @param {string} severity - The severity string.
+ * @returns {RiskRating} - The corresponding RiskRating enum value.
+ */
+function mapSeverityToRiskRating(severity: string): RiskRating {
+  switch (severity) {
+      case 'critical':
+          return RiskRating.Critical;
+      case 'high':
+          return RiskRating.High;
+      case 'moderate':
+          return RiskRating.Medium;
+      default:
+          return RiskRating.Low;
+  }
+}
+
 
 /**
  * Parses the vulnerabilities and creates findings.
@@ -47,7 +71,7 @@ function createFindings(vulnerabilities: any[], filePath: string): Finding[] {
                         filePath,
                         lineNum: 1, // Line number is not applicable for dependencies
                     },
-                    riskRating: severity === 'critical' ? RiskRating.Critical : severity === 'high' ? RiskRating.High : severity === 'moderate' ? RiskRating.Medium : RiskRating.Low,
+                    riskRating: mapSeverityToRiskRating(severity),
                 });
             });
         });
@@ -57,14 +81,30 @@ function createFindings(vulnerabilities: any[], filePath: string): Finding[] {
 }
 
 /**
+ * Checks if the file is package.json.
+ * @param {string} filePath - The path of the file.
+ * @returns {boolean} - True if the file is package.json, false otherwise.
+ */
+function isPackageJson(filePath: string): boolean {
+  return path.basename(filePath) === 'package.json';
+}
+
+
+/**
  * Detects dependencies with known vulnerabilities in the package.json file.
  * @param {SourceFile} file - The source file to analyze.
  * @returns {Promise<Finding[]>} - Array of findings with dependency vulnerability details.
  */
 export async function detectVulnerableDependencies(file: SourceFile): Promise<Finding[]> {
+    const filePath = file.getFilePath();
+
+    if (!isPackageJson(filePath)) {
+      return [];
+    }
+
     try {
-        const vulnerabilities = await auditPackageJson();
-        return createFindings(vulnerabilities, file.getFilePath());
+        const vulnerabilities = await auditPackageJson(filePath);
+        return createFindings(vulnerabilities, filePath);
     } catch (error) {
         console.error(`Failed to get vulnerabilities: ${error}`);
         return [];
