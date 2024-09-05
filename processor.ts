@@ -12,7 +12,8 @@ import {
     detectInsecureRandomness,
     detectLeftoverTODOs,
     detectHardcodedSecrets,
-    detectInsecureCryptography
+    detectInsecureCryptography,
+    detectUsedBeforeDefined
 } from './detectors';
 
 type RuleFunction = (file: any) => Finding[];
@@ -26,7 +27,8 @@ const rules: { [key: string]: RuleFunction } = {
     insecureRandomness: detectInsecureRandomness,
     leftoverTodos: detectLeftoverTODOs,
     hardcodedSecret: detectHardcodedSecrets,
-    insecureCryptography: detectInsecureCryptography
+    insecureCryptography: detectInsecureCryptography,
+    usedBeforeDefined: detectUsedBeforeDefined
 };
 
 /**

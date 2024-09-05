@@ -1,6 +1,7 @@
 ### Custotm
 testcases/
 result-*.json
+.DS_Store
 
 ### Node template
 # Logs
