@@ -1,6 +1,5 @@
 import { exec } from 'child_process';
 import { SourceFile } from 'ts-morph';
-
 import { Finding } from '../types';
 import { RiskRating } from '../structures';
 
@@ -20,11 +19,41 @@ function auditPackageJson(): Promise<any[]> {
                 const auditResult = JSON.parse(stdout);
                 const vulnerabilities = auditResult.advisories ? Object.values(auditResult.advisories) : [];
                 resolve(vulnerabilities);
-            } catch (parseError) {
+            } catch (parseError: any) {
                 reject(`Failed to parse npm audit output: ${parseError.message}`);
             }
         });
     });
+}
+
+/**
+ * Parses the vulnerabilities and creates findings.
+ * @param {any[]} vulnerabilities - The array of vulnerabilities.
+ * @param {string} filePath - The path of the file being analyzed.
+ * @returns {Finding[]} - Array of findings with dependency vulnerability details.
+ */
+function createFindings(vulnerabilities: any[], filePath: string): Finding[] {
+    const findings: Finding[] = [];
+
+    vulnerabilities.forEach(vulnerability => {
+        const { module_name, vulnerable_versions, severity, findings: vulnFindings } = vulnerability;
+        vulnFindings.forEach((vulnFinding: any) => {
+            const { version, paths } = vulnFinding;
+            paths.forEach((path: any) => {
+                findings.push({
+                    type: "VulnerableDependency",
+                    description: `Vulnerable dependency detected: ${module_name}@${version} (vulnerable versions: ${vulnerable_versions})`,
+                    position: {
+                        filePath,
+                        lineNum: 1, // Line number is not applicable for dependencies
+                    },
+                    riskRating: severity === 'critical' ? RiskRating.Critical : severity === 'high' ? RiskRating.High : severity === 'moderate' ? RiskRating.Medium : RiskRating.Low,
+                });
+            });
+        });
+    });
+
+    return findings;
 }
 
 /**
@@ -33,31 +62,11 @@ function auditPackageJson(): Promise<any[]> {
  * @returns {Promise<Finding[]>} - Array of findings with dependency vulnerability details.
  */
 export async function detectVulnerableDependencies(file: SourceFile): Promise<Finding[]> {
-    const findings: Finding[] = [];
-
     try {
         const vulnerabilities = await auditPackageJson();
-
-        vulnerabilities.forEach(vulnerability => {
-            const { module_name, vulnerable_versions, severity, findings: vulnFindings } = vulnerability;
-            vulnFindings.forEach(vulnFinding => {
-                const { version, paths } = vulnFinding;
-                paths.forEach(path => {
-                    findings.push({
-                        type: "VulnerableDependency",
-                        description: `Vulnerable dependency detected: ${module_name}@${version} (vulnerable versions: ${vulnerable_versions})`,
-                        position: {
-                            filePath: file.getFilePath(),
-                            lineNum: 1, // Line number is not applicable for dependencies
-                        },
-                        riskRating: severity === 'critical' ? RiskRating.Critical : severity === 'high' ? RiskRating.High : severity === 'moderate' ? RiskRating.Medium : RiskRating.Low,
-                    });
-                });
-            });
-        });
+        return createFindings(vulnerabilities, file.getFilePath());
     } catch (error) {
         console.error(`Failed to get vulnerabilities: ${error}`);
+        return [];
     }
-
-    return findings;
 }
