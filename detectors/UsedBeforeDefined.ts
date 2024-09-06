@@ -1,4 +1,5 @@
-import { SourceFile, SyntaxKind, Node, CallExpression, FunctionDeclaration } from 'ts-morph';
+import { SourceFile, Node} from 'ts-morph';
+
 import { Finding } from '../types';
 import { RiskRating } from '../structures';
 
@@ -14,20 +15,18 @@ export function detectUsedBeforeDefined(file: SourceFile): Finding[] {
 
     // Traverse the AST to find function declarations and their usages
     file.forEachDescendant((node: Node) => {
-        if (node.getKind() === SyntaxKind.FunctionDeclaration) {
-            const functionDeclaration = node as FunctionDeclaration;
-            const functionName = functionDeclaration.getName();
+        if (Node.isFunctionDeclaration(node)) {
+            const functionName = node.getName();
             if (functionName) {
-                const startLineNum = file.getLineAndColumnAtPos(functionDeclaration.getPos()).line;
+                const startLineNum = file.getLineAndColumnAtPos(node.getPos()).line;
                 functionDeclarations[functionName] = startLineNum;
             }
-        } else if (node.getKind() === SyntaxKind.CallExpression) {
-            const callExpression = node as CallExpression;
-            const expression = callExpression.getExpression();
-            if (expression.getKind() === SyntaxKind.Identifier) {
+        } else if (Node.isCallExpression(node)) {
+            const expression = node.getExpression();
+            if (Node.isIdentifier(expression)) {
                 const functionName = expression.getText();
-                const startLineNum = file.getLineAndColumnAtPos(callExpression.getPos()).line;
-                if (!functionUsages[functionName]) {
+                const startLineNum = file.getLineAndColumnAtPos(node.getPos()).line;
+                if (!Array.isArray(functionUsages[functionName])) {
                     functionUsages[functionName] = [];
                 }
                 functionUsages[functionName].push(startLineNum);
