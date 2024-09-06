@@ -1,6 +1,6 @@
 /**
  * Exports the detection functions for various code issues.
- * 
+ *
  * - `detectConsoleLog`: Detects usage of console.log statements.
  * - `detectDangerousFunctions`: Detects usage of potentially dangerous functions.
  * - `detectNonExactDependencies`: Detects non-exact dependency versions in package.json.
@@ -13,13 +13,13 @@
  * - `detectUsedBeforeDefined`: Detects functions that are used before they are defined.
  */
 
-export { detectConsoleLog } from './ConsoleLog';
-export { detectDangerousFunctions } from './DangerousFunctions';
-export { detectNonExactDependencies } from './DependencyVersioning';
-export { detectVulnerableDependencies } from './DependencyOutdated';
-export { detectHardcodedSecrets } from './HardcodedSecrets';
-export { detectInsecureRandomness } from './InsecureRandomness';
-export { detectUnusedFunctions } from './UnusedFunctions';
-export { detectLeftoverTODOs } from './LeftoverTODOs';
-export { detectInsecureCryptography } from './InsecureCryptography';
-export { detectUsedBeforeDefined } from './UsedBeforeDefined';
+export { detectConsoleLog } from "./ConsoleLog";
+export { detectDangerousFunctions } from "./DangerousFunctions";
+export { detectNonExactDependencies } from "./DependencyVersioning";
+export { detectVulnerableDependencies } from "./DependencyOutdated";
+export { detectHardcodedSecrets } from "./HardcodedSecrets";
+export { detectInsecureRandomness } from "./InsecureRandomness";
+export { detectUnusedFunctions } from "./UnusedFunctions";
+export { detectLeftoverTODOs } from "./LeftoverTODOs";
+export { detectInsecureCryptography } from "./InsecureCryptography";
+export { detectUsedBeforeDefined } from "./UsedBeforeDefined";

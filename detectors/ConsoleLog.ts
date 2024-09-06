@@ -9,15 +9,15 @@ import { RiskRating } from "../structures";
  * @returns {CallExpression[]} - Array of console log call expressions.
  */
 function getConsoleLogExpressions(file: SourceFile): CallExpression[] {
-    return file
-        .getDescendantsOfKind(SyntaxKind.CallExpression)
-        .filter((expression) => {
-            const expressionText = expression.getExpression().getText();
-            return (
-                expressionText === "console.log" ||
-                expressionText.startsWith("console.")
-            );
-        });
+  return file
+    .getDescendantsOfKind(SyntaxKind.CallExpression)
+    .filter((expression) => {
+      const expressionText = expression.getExpression().getText();
+      return (
+        expressionText === "console.log" ||
+        expressionText.startsWith("console.")
+      );
+    });
 }
 
 /**
@@ -26,18 +26,18 @@ function getConsoleLogExpressions(file: SourceFile): CallExpression[] {
  * @returns {Finding[]} - Array of findings with console log details.
  */
 export function detectConsoleLog(file: SourceFile): Finding[] {
-    const consoleLogExpressions = getConsoleLogExpressions(file);
+  const consoleLogExpressions = getConsoleLogExpressions(file);
 
-    return consoleLogExpressions.map((log) => {
-        const line = log.getStartLineNumber();
-        return {
-            type: "ConsoleLog",
-            description: "Presence of console log function detected.",
-            position: {
-                filePath: file.getFilePath(),
-                lineNum: line,
-            },
-            riskRating: RiskRating.Low
-        };
-    });
+  return consoleLogExpressions.map((log) => {
+    const line = log.getStartLineNumber();
+    return {
+      type: "ConsoleLog",
+      description: "Presence of console log function detected.",
+      position: {
+        filePath: file.getFilePath(),
+        lineNum: line,
+      },
+      riskRating: RiskRating.Low,
+    };
+  });
 }
