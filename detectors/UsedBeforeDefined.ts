@@ -1,7 +1,7 @@
 import {
   SourceFile,
   Node,
-  FunctionDeclaration,
+  VariableDeclaration,
   CallExpression,
   InterfaceDeclaration,
   Identifier,
@@ -11,7 +11,7 @@ import { Finding } from "../types";
 import { RiskRating } from "../structures";
 
 /**
- * Detects if functions and interfaces are used before they are defined in the given file.
+ * Detects if function expressions, arrow functions, and interfaces are used before they are defined in the given file.
  * @param {SourceFile} file - The source file to analyze.
  * @returns {Finding[]} - Array of findings with details about the detected issues.
  */
@@ -22,11 +22,11 @@ export function detectUsedBeforeDefined(file: SourceFile): Finding[] {
   const interfaceDeclarations: { [name: string]: number } = {};
   const interfaceUsages: { [name: string]: number[] } = {};
 
-  // Traverse the AST to find function and interface declarations and their usages
+  // Traverse the AST to find function expressions, arrow functions, and interfaces and their usages
   file.forEachDescendant((node: Node) => {
-    if (Node.isFunctionDeclaration(node)) {
-      handleFunctionDeclaration(
-        node as FunctionDeclaration,
+    if (Node.isVariableDeclaration(node)) {
+      handleVariableDeclaration(
+        node as VariableDeclaration,
         functionDeclarations,
         file
       );
@@ -43,7 +43,7 @@ export function detectUsedBeforeDefined(file: SourceFile): Finding[] {
     }
   });
 
-  // Check if any function or interface is used before it is defined
+  // Check if any function expression, arrow function, or interface is used before it is defined
   checkUsages(functionUsages, functionDeclarations, findings, file, "Function");
   checkUsages(
     interfaceUsages,
@@ -57,18 +57,23 @@ export function detectUsedBeforeDefined(file: SourceFile): Finding[] {
 }
 
 /**
- * Handles function declaration nodes.
- * @param {FunctionDeclaration} node - The AST node.
+ * Handles variable declaration nodes to find function expressions and arrow functions.
+ * @param {VariableDeclaration} node - The AST node.
  * @param {Object} functionDeclarations - The object to store function declarations.
  * @param {SourceFile} file - The source file.
  */
-function handleFunctionDeclaration(
-  node: FunctionDeclaration,
+function handleVariableDeclaration(
+  node: VariableDeclaration,
   functionDeclarations: { [name: string]: number },
   file: SourceFile
 ) {
-  const functionName = node.getName();
-  if (functionName) {
+  const initializer = node.getInitializer();
+  if (
+    initializer &&
+    (Node.isArrowFunction(initializer) ||
+      Node.isFunctionExpression(initializer))
+  ) {
+    const functionName = node.getName();
     const startLineNum = file.getLineAndColumnAtPos(node.getPos()).line;
     functionDeclarations[functionName] = startLineNum;
   }
@@ -134,7 +139,7 @@ function handleIdentifier(
 }
 
 /**
- * Checks if any function or interface is used before it is defined.
+ * Checks if any function expression, arrow function, or interface is used before it is defined.
  * @param {Object} usages - The object storing usages.
  * @param {Object} declarations - The object storing declarations.
  * @param {Finding[]} findings - The array to store findings.
