@@ -23,3 +23,4 @@ export { detectUnusedElements } from "./UnusedElements";
 export { detectLeftoverTODOs } from "./LeftoverTODOs";
 export { detectInsecureCryptography } from "./InsecureCryptography";
 export { detectUsedBeforeDefined } from "./UsedBeforeDefined";
+export { detectUnusedPermissions } from "./UnusedPermissions";

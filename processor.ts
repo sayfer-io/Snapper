@@ -15,6 +15,7 @@ import {
   detectHardcodedSecrets,
   detectInsecureCryptography,
   detectUsedBeforeDefined,
+  detectUnusedPermissions,
 } from "./detectors";
 
 type RuleFunction = (file: any) => Finding[];
@@ -30,6 +31,7 @@ const rules: { [key: string]: RuleFunction } = {
   hardcodedSecret: detectHardcodedSecrets,
   insecureCryptography: detectInsecureCryptography,
   usedBeforeDefined: detectUsedBeforeDefined,
+  unusedPermissions: detectUnusedPermissions,
 };
 
 /**
