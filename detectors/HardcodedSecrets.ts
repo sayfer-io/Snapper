@@ -52,6 +52,9 @@ export function detectHardcodedSecrets(sourceFile: SourceFile): Finding[] {
   stringLiterals.forEach((node) => {
     const text = node.getText().slice(1, -1); // Remove the surrounding quotes
     SECRET_PATTERNS.forEach((pattern) => {
+      if (text.length < 10) {
+        return; // Skip if the string is too short
+      }
       if (pattern.test(text)) {
         if (pattern === SECRET_PATTERNS[0] && !isValidBase64(text)) {
           return; // Skip if it's not a valid base64 string

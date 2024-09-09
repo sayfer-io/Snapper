@@ -1,5 +1,6 @@
 ### Custotm
 testcases/
+temp/
 result-*.json
 .DS_Store
 
