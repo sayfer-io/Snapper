@@ -11,6 +11,8 @@
  * - `detectLeftoverTODOs`: Detects large sections of commented-out code or leftover TODOs.
  * - `detectInsecureCryptography`: Detects insecure cryptography usage, such as low iteration PBKDF2 and non-native cryptography libraries.
  * - `detectUsedBeforeDefined`: Detects functions that are used before they are defined.
+ * - `detectUnusedPermissions`: Detects unused permissions in the snap.manifest.json file.
+ * - `detectDeprecatedPermissions`: Detects deprecated permissions in the snap.manifest.json file.
  */
 
 export { detectConsoleLog } from "./ConsoleLog";
@@ -24,3 +26,4 @@ export { detectLeftoverTODOs } from "./LeftoverTODOs";
 export { detectInsecureCryptography } from "./InsecureCryptography";
 export { detectUsedBeforeDefined } from "./UsedBeforeDefined";
 export { detectUnusedPermissions } from "./UnusedPermissions";
+export { detectDeprecatedPermissions } from "./DeprecatedPermissions";
