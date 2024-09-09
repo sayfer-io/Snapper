@@ -1,13 +1,21 @@
-// TODO: The base64 detection logic is not working as expected.
-// Fix the issue and add more patterns to detect hardcoded secrets.
+// TODO:
+// 1. Fix the issue with the isValidBase64 function.
+//    - The current implementation incorrectly identifies strings such as
+//      "location", "filePath", "iconPath", and "registry" as valid base64 strings.
+//    - Ensure that the function accurately validates base64 strings.
+// 2. Add more patterns to the SECRET_PATTERNS array to detect additional types of hardcoded secrets.
+//
+// To reproduce the issue, run the following command in the terminal:
+// $ npx ts-node main.ts --path '.\testcases\Injection Flaws\push-protocol-snaps\snap' --verbose --rule hardcodedSecret
 
 import { SourceFile, SyntaxKind } from "ts-morph";
+
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 
 // List of regular expressions for detecting potential secrets
 const SECRET_PATTERNS: RegExp[] = [
-  /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/, // Base64 strings
+  /^(?:[A-Za-z0-9+/]{4}){2,}(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/, // Base64 strings
   // /^[0-9a-fA-F]{8,}$/, // Hex strings over 7 characters long
   // Add more patterns here
 ];
@@ -18,6 +26,11 @@ const SECRET_PATTERNS: RegExp[] = [
  * @returns {boolean} - True if the string is a valid base64 string, false otherwise.
  */
 function isValidBase64(str: string): boolean {
+  // Check if the string is empty or too short to be a valid base64 string
+  if (str.length === 0 || str.length % 4 !== 0) {
+    return false;
+  }
+
   try {
     return btoa(atob(str)) === str;
   } catch (err) {

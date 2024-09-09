@@ -66,6 +66,7 @@ export async function processFiles(
       `${folderPath}/**/*.ts`,
       `${folderPath}/**/package.json`,
       `${folderPath}/**/tsconfig.json`,
+      `${folderPath}/**/snap.manifest.json`,
     ]);
     logger.info(`Processing files in path: ${folderPath}`);
 
