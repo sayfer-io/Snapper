@@ -33,7 +33,7 @@ export function detectHardcodedSecrets(sourceFile: SourceFile): Finding[] {
             filePath: sourceFile.getFilePath(),
             lineNum: node.getStartLineNumber(),
           },
-          riskRating: RiskRating.High, // Assign an appropriate risk rating
+          riskRating: RiskRating.High,
         });
       }
     });
