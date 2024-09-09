@@ -149,7 +149,7 @@ function checkUsages(
   type: string
 ) {
   for (const name in usages) {
-    if (usages.hasOwnProperty(name)) {
+    if (Object.prototype.hasOwnProperty.call(usages, name)) {
       const usageLines = usages[name];
       const declarationLine = declarations[name];
       if (declarationLine !== undefined) {
