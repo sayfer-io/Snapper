@@ -1,73 +1,73 @@
-import * as path from "path";
+import os from "os";
+import path from "path";
+import fsExtra from "fs-extra";
+import { rmSync, mkdirSync } from "fs";
 import { execSync } from "child_process";
-import { existsSync, mkdirSync, copyFileSync, rmSync } from "fs";
-import { tmpdir } from "os";
 import { SourceFile } from "ts-morph";
 
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 
 /**
- * Runs `npm audit` on the specified package.json file to list all vulnerable libraries.
- * This version uses a synchronous alternative and operates in a temporary directory.
- * @param {string} filePath - The path to the package.json file.
- * @returns {any[]} - An array of vulnerabilities.
+ * Runs a command in the specified directory.
+ * @param {string} command - The command to run.
+ * @param {string} tempDir - The path to the temporary directory.
+ * @returns {string} - The command's output.
  */
-function auditPackageJsonSync(filePath: string): any[] {
-  const tempDir = createTempDir();
-  const tempPackageJsonPath = path.join(tempDir, "package.json");
-
+function runCommand(command: string, tempDir: string | null = null): string {
+  const originalCwd = process.cwd();
   try {
-    copyPackageJson(filePath, tempPackageJsonPath);
-    createLockfile(tempDir);
-    const vulnerabilities = runNpmAudit(tempDir);
-    cleanUpTempDir(tempDir);
-    return vulnerabilities;
-  } catch (error: any) {
-    console.error(`Error: ${error.stderr}`);
-    cleanUpTempDir(tempDir);
-    return [];
+    if (tempDir) {
+      process.chdir(tempDir);
+    }
+    return execSync(command, { encoding: "utf-8" });
+  } catch (err: any) {
+    if (err.stdout) {
+      return err.stdout.toString();
+    }
+    console.error(`Error running command: ${command}`, err);
+    return "";
+  } finally {
+    if (tempDir) {
+      process.chdir(originalCwd);
+    }
   }
 }
 
 /**
- * Creates a temporary directory.
- * @returns {string} - The path to the temporary directory.
+ * Detects the package manager being used in the project.
+ * @returns {string} - The package manager name ('npm' or 'pnpm').
  */
-function createTempDir(): string {
-  const tempDir = path.join(tmpdir(), `audit-${Date.now()}`);
-  mkdirSync(tempDir);
-  return tempDir;
-}
-
-/**
- * Copies the package.json file to the temporary directory.
- * @param {string} sourcePath - The source path of the package.json file.
- * @param {string} destPath - The destination path in the temporary directory.
- */
-function copyPackageJson(sourcePath: string, destPath: string): void {
-  copyFileSync(sourcePath, destPath);
+function detectPackageManager(): string {
+  return runCommand("pnpm --version") ? "pnpm" : "npm";
 }
 
 /**
  * Creates a lockfile in the temporary directory.
  * @param {string} tempDir - The path to the temporary directory.
+ * @param {string} packageManager - The package manager to use ('npm' or 'pnpm').
  */
-function createLockfile(tempDir: string): void {
-  execSync(`npm i --package-lock-only --prefix ${tempDir}`, {
-    encoding: "utf-8",
-  });
+function createLockfile(tempDir: string, packageManager: string): void {
+  const command =
+    packageManager === "pnpm"
+      ? `pnpm install --lockfile-only --dir "${tempDir}"`
+      : `npm install --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`;
+  runCommand(command, tempDir);
 }
 
 /**
- * Runs `npm audit` in the temporary directory.
+ * Runs the audit command in the temporary directory.
  * @param {string} tempDir - The path to the temporary directory.
+ * @param {string} packageManager - The package manager to use ('npm' or 'pnpm').
  * @returns {any[]} - An array of vulnerabilities.
  */
-function runNpmAudit(tempDir: string): any[] {
-  const stdout = execSync(`npm audit --json --force --prefix ${tempDir}`, {
-    encoding: "utf-8",
-  });
+function runAudit(tempDir: string, packageManager: string): any[] {
+  const command =
+    packageManager === "pnpm"
+      ? `pnpm audit --json --dir "${tempDir}"`
+      : `npm audit --json --loglevel=error --legacy-peer-deps --prefix "${tempDir}"`;
+
+  const stdout = runCommand(command, tempDir);
   const auditResult = JSON.parse(stdout);
   return auditResult.advisories ? Object.values(auditResult.advisories) : [];
 }
@@ -93,38 +93,11 @@ function mapSeverityToRiskRating(severity: string): RiskRating {
       return RiskRating.High;
     case "moderate":
       return RiskRating.Medium;
-    default:
+    case "low":
       return RiskRating.Low;
+    default:
+      return RiskRating.Informational;
   }
-}
-
-/**
- * Parses the vulnerabilities and creates findings.
- * @param {any[]} vulnerabilities - The array of vulnerabilities.
- * @param {string} filePath - The path of the file being analyzed.
- * @returns {Finding[]} - Array of findings with dependency vulnerability details.
- */
-function createFindings(vulnerabilities: any[], filePath: string): Finding[] {
-  return vulnerabilities.flatMap((vulnerability) => {
-    const {
-      module_name,
-      vulnerable_versions,
-      severity,
-      findings: vulnFindings,
-    } = vulnerability;
-    return vulnFindings.flatMap((vulnFinding: any) => {
-      const { version, paths } = vulnFinding;
-      return paths.map((path: any) => ({
-        type: "VulnerableDependency",
-        description: `Vulnerable dependency detected: ${module_name}@${version} (vulnerable versions: ${vulnerable_versions})`,
-        position: {
-          filePath,
-          lineNum: 1, // Line number is not applicable for dependencies
-        },
-        riskRating: mapSeverityToRiskRating(severity),
-      }));
-    });
-  });
 }
 
 /**
@@ -148,6 +121,35 @@ export function detectVulnerableDependencies(file: SourceFile): Finding[] {
     return [];
   }
 
-  const vulnerabilities = auditPackageJsonSync(filePath);
+  const tempDir = path.join(os.tmpdir(), "dependency-outdated-temp");
+  mkdirSync(tempDir, { recursive: true });
+  console.log("tempDir", tempDir);
+
+  const projectDir = path.dirname(filePath);
+  fsExtra.copySync(projectDir, tempDir);
+
+  const packageManager = detectPackageManager();
+  createLockfile(tempDir, packageManager);
+  const vulnerabilities = runAudit(tempDir, packageManager);
+  cleanUpTempDir(tempDir);
+
   return createFindings(vulnerabilities, filePath);
+}
+
+/**
+ * Creates findings from the vulnerabilities.
+ * @param {any[]} vulnerabilities - The array of vulnerabilities.
+ * @param {string} filePath - The path of the file.
+ * @returns {Finding[]} - Array of findings with dependency vulnerability details.
+ */
+function createFindings(vulnerabilities: any[], filePath: string): Finding[] {
+  return vulnerabilities.map((vulnerability) => ({
+    type: "DependencyVulnerability",
+    description: `Detected vulnerable dependency ${vulnerability.module_name}@${vulnerability.findings[0].version} (${vulnerability.vulnerable_versions})`,
+    position: {
+      filePath,
+      lineNum: 1, // Not important for this detector
+    },
+    riskRating: mapSeverityToRiskRating(vulnerability.severity),
+  }));
 }

@@ -25,7 +25,7 @@ const rules: { [key: string]: RuleFunction } = {
   consoleLog: detectConsoleLog,
   dangerousFunctions: detectDangerousFunctions,
   dependencyVersioning: detectNonExactDependencies,
-  // dependencyOutdated: detectVulnerableDependencies,
+  dependencyOutdated: detectVulnerableDependencies,
   unusedElements: detectUnusedElements,
   insecureRandomness: detectInsecureRandomness,
   leftoverTodos: detectLeftoverTODOs,
@@ -75,6 +75,8 @@ export async function processFiles(
       logger.debug(`Processing file: ${file.getFilePath()}`);
       const applicableRules =
         rule && rules[rule] ? [rules[rule]] : Object.values(rules);
+
+      logger.debug(`Going to run rules: ${applicableRules.map((r) => r.name)}`);
 
       for (const ruleFunction of applicableRules) {
         logger.debug(`Running rule: ${ruleFunction.name}`);
