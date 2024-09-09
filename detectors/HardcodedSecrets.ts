@@ -1,13 +1,14 @@
-import { SourceFile, SyntaxKind } from "ts-morph";
+// TODO: The base64 detection logic is not working as expected.
+// Fix the issue and add more patterns to detect hardcoded secrets.
 
+import { SourceFile, SyntaxKind } from "ts-morph";
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 
 // List of regular expressions for detecting potential secrets
 const SECRET_PATTERNS: RegExp[] = [
-  /^[A-Za-z0-9+/]{8,}={0,2}$/, // Base64 strings over 7 characters long
+  /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/, // Base64 strings
   // /^[0-9a-fA-F]{8,}$/, // Hex strings over 7 characters long
-  // /^[0-9a-f]{40,}$/i, // SHA-X hashes
   // Add more patterns here
 ];
 
