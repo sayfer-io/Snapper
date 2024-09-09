@@ -6,10 +6,23 @@ import { RiskRating } from "../structures";
 // List of regular expressions for detecting potential secrets
 const SECRET_PATTERNS: RegExp[] = [
   /^[A-Za-z0-9+/]{8,}={0,2}$/, // Base64 strings over 7 characters long
-  /^[0-9a-fA-F]{8,}$/, // Hex strings over 7 characters long
-  /^[0-9a-f]{40,}$/i, // SHA-X hashes
+  // /^[0-9a-fA-F]{8,}$/, // Hex strings over 7 characters long
+  // /^[0-9a-f]{40,}$/i, // SHA-X hashes
   // Add more patterns here
 ];
+
+/**
+ * Validates if a string is a real base64 string.
+ * @param {string} str - The string to validate.
+ * @returns {boolean} - True if the string is a valid base64 string, false otherwise.
+ */
+function isValidBase64(str: string): boolean {
+  try {
+    return btoa(atob(str)) === str;
+  } catch (err) {
+    return false;
+  }
+}
 
 /**
  * Detects hardcoded secrets in the given source file.
@@ -26,6 +39,9 @@ export function detectHardcodedSecrets(sourceFile: SourceFile): Finding[] {
     const text = node.getText().slice(1, -1); // Remove the surrounding quotes
     SECRET_PATTERNS.forEach((pattern) => {
       if (pattern.test(text)) {
+        if (pattern === SECRET_PATTERNS[0] && !isValidBase64(text)) {
+          return; // Skip if it's not a valid base64 string
+        }
         findings.push({
           type: "HardcodedSecret",
           description: `Potential hardcoded secret detected: "${text}"`,
