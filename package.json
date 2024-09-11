@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx ts-node main.ts"
+    "start": "npx ts-node main.ts",
+    "postinstall": "node ./scripts/check-dependencies.js"
   },
   "keywords": [],
   "author": "",

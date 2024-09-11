@@ -2,36 +2,52 @@ import { SourceFile, SyntaxKind, CallExpression } from "ts-morph";
 
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
+import { DetectorBase } from "./DetectorBase";
 
-/**
- * Gets all call expressions in the given file.
- * @param {SourceFile} file - The source file to analyze.
- * @returns {CallExpression[]} - Array of call expressions.
- */
-function getCallExpressions(file: SourceFile): CallExpression[] {
-  return file.getDescendantsOfKind(SyntaxKind.CallExpression);
+class InsecureRandomnessDetector extends DetectorBase {
+  // List of notable functions
+  private static NOTABLE_FUNCTIONS: string[] = ["Math.random"];
+
+  constructor() {
+    super("InsecureRandomness", RiskRating.Medium);
+  }
+
+  /**
+   * Gets all call expressions in the given file.
+   * @param {SourceFile} file - The source file to analyze.
+   * @returns {CallExpression[]} - Array of call expressions.
+   */
+  private getCallExpressions(file: SourceFile): CallExpression[] {
+    return file.getDescendantsOfKind(SyntaxKind.CallExpression);
+  }
+
+  /**
+   * Runs the detector on the given source file.
+   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @returns {Finding[]} - Array of findings with insecure randomness details.
+   */
+  public run(sourceFile: SourceFile): Finding[] {
+    const callExpressions = this.getCallExpressions(sourceFile);
+
+    const insecureRandomnessExpressions = callExpressions.filter(
+      (expression) => {
+        const expressionText = expression.getExpression().getText();
+        return InsecureRandomnessDetector.NOTABLE_FUNCTIONS.includes(
+          expressionText
+        );
+      }
+    );
+
+    insecureRandomnessExpressions.forEach((expression) => {
+      this.addFinding(
+        `Insecure randomness detected: ${expression.getExpression().getText()}`,
+        sourceFile.getFilePath(),
+        expression.getStartLineNumber()
+      );
+    });
+
+    return this.getFindings();
+  }
 }
 
-/**
- * Detects insecure randomness in the given file.
- * @param {SourceFile} file - The source file to analyze.
- * @returns {Finding[]} - Array of findings with insecure randomness details.
- */
-export function detectInsecureRandomness(file: SourceFile): Finding[] {
-  const callExpressions = getCallExpressions(file);
-
-  const insecureRandomnessExpressions = callExpressions.filter((expression) => {
-    const expressionText = expression.getExpression().getText();
-    return expressionText === "Math.random";
-  });
-
-  return insecureRandomnessExpressions.map((expression) => ({
-    type: "InsecureRandomness",
-    description: `Insecure randomness detected: '${expression.getText()}'. Consider using a cryptographic random number generator.`,
-    position: {
-      filePath: file.getFilePath(),
-      lineNum: expression.getStartLineNumber(),
-    },
-    riskRating: RiskRating.High,
-  }));
-}
+export { InsecureRandomnessDetector };

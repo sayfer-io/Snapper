@@ -16,10 +16,10 @@ export function configureYargs() {
       description: "Project path",
       demandOption: true,
     })
-    .option("rule", {
+    .option("detector", {
       alias: "r",
       type: "string",
-      description: "Optional rule argument",
+      description: "Specify which detector to run",
     })
     .option("verbose", {
       alias: "v",
@@ -39,7 +39,7 @@ export function configureYargs() {
       description: "Specify output file",
     }).argv as unknown as {
     path: string;
-    rule?: string;
+    detector?: string;
     verbose: boolean;
     recursive: boolean;
     output?: string;

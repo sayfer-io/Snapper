@@ -6,71 +6,77 @@
 // 2. Add more patterns to the SECRET_PATTERNS array to detect additional types of hardcoded secrets.
 //
 // To reproduce the issue, run the following command in the terminal:
-// $ npx ts-node main.ts --path '.\testcases\Injection Flaws\push-protocol-snaps\snap' --verbose --rule hardcodedSecret
+// $ npx ts-node main.ts --path '.\testcases\Injection Flaws\push-protocol-snaps\snap' --verbose --detector hardcodedSecret
 
 import { SourceFile, SyntaxKind } from "ts-morph";
 
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
+import { DetectorBase } from "./DetectorBase";
 
-// List of regular expressions for detecting potential secrets
-const SECRET_PATTERNS: RegExp[] = [
-  /^(?:[A-Za-z0-9+/]{4}){2,}(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/, // Base64 strings
-  // /^[0-9a-fA-F]{8,}$/, // Hex strings over 7 characters long
-  // Add more patterns here
-];
+class HardcodedSecretsDetector extends DetectorBase {
+  private static SECRET_PATTERNS: RegExp[] = [
+    /^(?:[A-Za-z0-9+/]{4}){2,}(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/, // Base64 strings
+    // /^[0-9a-fA-F]{8,}$/, // Hex strings over 7 characters long
+    // Add more patterns here
+  ];
 
-/**
- * Validates if a string is a real base64 string.
- * @param {string} str - The string to validate.
- * @returns {boolean} - True if the string is a valid base64 string, false otherwise.
- */
-function isValidBase64(str: string): boolean {
-  // Check if the string is empty or too short to be a valid base64 string
-  if (str.length === 0 || str.length % 4 !== 0) {
-    return false;
+  constructor() {
+    super("HardcodedSecrets", RiskRating.High);
   }
 
-  try {
-    return btoa(atob(str)) === str;
-  } catch (err) {
-    return false;
+  /**
+   * Validates if a string is a real base64 string.
+   * @param {string} str - The string to validate.
+   * @returns {boolean} - True if the string is a valid base64 string, false otherwise.
+   */
+  private isValidBase64(str: string): boolean {
+    // Check if the string is empty or not the right length to be a valid base64 string
+    if (str.length === 0 || str.length % 4 !== 0) {
+      return false;
+    }
+
+    try {
+      return btoa(atob(str)) === str;
+    } catch (err) {
+      return false;
+    }
   }
-}
 
-/**
- * Detects hardcoded secrets in the given source file.
- * @param {SourceFile} sourceFile - The source file to analyze.
- * @returns {Finding[]} - Array of findings with details about the detected issues.
- */
-export function detectHardcodedSecrets(sourceFile: SourceFile): Finding[] {
-  const findings: Finding[] = [];
-  const stringLiterals = sourceFile.getDescendantsOfKind(
-    SyntaxKind.StringLiteral
-  );
+  /**
+   * Runs the detector on the given source file.
+   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @returns {Finding[]} - Array of findings with details about the detected issues.
+   */
+  public run(sourceFile: SourceFile): Finding[] {
+    const stringLiterals = sourceFile.getDescendantsOfKind(
+      SyntaxKind.StringLiteral
+    );
 
-  stringLiterals.forEach((node) => {
-    const text = node.getText().slice(1, -1); // Remove the surrounding quotes
-    SECRET_PATTERNS.forEach((pattern) => {
-      if (text.length < 10) {
-        return; // Skip if the string is too short
-      }
-      if (pattern.test(text)) {
-        if (pattern === SECRET_PATTERNS[0] && !isValidBase64(text)) {
-          return; // Skip if it's not a valid base64 string
+    stringLiterals.forEach((node) => {
+      const text = node.getText().slice(1, -1); // Remove the surrounding quotes
+      HardcodedSecretsDetector.SECRET_PATTERNS.forEach((pattern) => {
+        if (text.length < 16) {
+          return; // Skip if the string is too short
         }
-        findings.push({
-          type: "HardcodedSecret",
-          description: `Potential hardcoded secret detected: "${text}"`,
-          position: {
-            filePath: sourceFile.getFilePath(),
-            lineNum: node.getStartLineNumber(),
-          },
-          riskRating: RiskRating.High,
-        });
-      }
+        if (pattern.test(text)) {
+          if (
+            pattern === HardcodedSecretsDetector.SECRET_PATTERNS[0] &&
+            !this.isValidBase64(text)
+          ) {
+            return; // Skip if it's not a valid base64 string
+          }
+          this.addFinding(
+            `Potential hardcoded secret detected: "${text}"`,
+            sourceFile.getFilePath(),
+            node.getStartLineNumber()
+          );
+        }
+      });
     });
-  });
 
-  return findings;
+    return this.getFindings();
+  }
 }
+
+export { HardcodedSecretsDetector };

@@ -6,7 +6,7 @@ import { processFiles } from "./processor";
 import { generateTimestampFileName } from "./utils/fileUtils";
 
 /**
- * Main function to process TypeScript files based on specified rules.
+ * Main function to process TypeScript files based on specified detector(s).
  *
  * @returns {Promise<void>} - A promise that resolves when the processing is complete.
  */
@@ -16,7 +16,7 @@ async function main(): Promise<void> {
 
   try {
     const projectPath = argv.path;
-    const rule = argv.rule;
+    const detector = argv.detector;
 
     if (!projectPath) {
       throw new Error(
@@ -25,12 +25,16 @@ async function main(): Promise<void> {
     }
 
     logger.info(
-      `Starting processing with path: ${projectPath} and rule: ${
-        rule || "all rules"
+      `Starting processing with path: ${projectPath} and detector: ${
+        detector || "all detectors"
       }`
     );
 
-    const allFindings = await processFiles(projectPath, rule, argv.recursive);
+    const allFindings = await processFiles(
+      projectPath,
+      detector,
+      argv.recursive
+    );
 
     // Determine the output file name
     const resultFileName =

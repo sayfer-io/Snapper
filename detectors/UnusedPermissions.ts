@@ -1,7 +1,9 @@
 import * as path from "path";
-import { SourceFile, SyntaxKind, Project } from "ts-morph";
+import { SourceFile, SyntaxKind } from "ts-morph";
+
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
+import { DetectorBase } from "./DetectorBase";
 
 interface Manifest {
   initialPermissions: {
@@ -10,84 +12,68 @@ interface Manifest {
 }
 
 /**
- * Maps permissions to their corresponding APIs.
+ * Class to detect unused permissions in the snap.manifest.json file.
  */
-const permissionApiMap: { [key: string]: string } = {
-  "endowment:ethereum-provider": "window.ethereum",
-  // Add more permissions and their corresponding APIs here
-};
+class UnusedPermissionsDetector extends DetectorBase {
+  // Map of permissions and their corresponding APIs.
+  private static readonly PERMISSION_API_MAP: { [key: string]: string } = {
+    "endowment:ethereum-provider": "window.ethereum",
+  };
 
-/**
- * Reads the snap.manifest.json file and returns the parsed content.
- * @param {SourceFile} file - The source file representing snap.manifest.json.
- * @returns {Manifest} - The parsed manifest content.
- */
-function readManifest(file: SourceFile): Manifest {
-  const manifestContent = file.getFullText();
-  return JSON.parse(manifestContent);
-}
+  constructor() {
+    super("UnusedPermissions", RiskRating.Medium);
+  }
 
-/**
- * Checks if the specified API is used in the project files, excluding comments.
- * @param {SourceFile[]} sourceFiles - The source files to analyze.
- * @param {string} api - The API to check for usage.
- * @returns {boolean} - True if the API is used, false otherwise.
- */
-function isApiUsed(sourceFiles: SourceFile[], api: string): boolean {
-  for (const file of sourceFiles) {
-    const nodes = file.getDescendantsOfKind(SyntaxKind.Identifier);
-    for (const node of nodes) {
-      if (node.getText() === api) {
-        return true;
+  /**
+   * Reads the snap.manifest.json file and returns the parsed content.
+   * @param {SourceFile} file - The source file representing snap.manifest.json.
+   * @returns {Manifest} - The parsed manifest content.
+   */
+  private readManifest(file: SourceFile): Manifest {
+    const manifestContent = file.getFullText();
+    return JSON.parse(manifestContent);
+  }
+
+  /**
+   * Runs the detector on the given source file.
+   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @returns {Finding[]} - Array of findings with details about the detected issues.
+   */
+  public run(sourceFile: SourceFile): Finding[] {
+    const findings: Finding[] = [];
+    const filePath = sourceFile.getFilePath();
+
+    if (path.basename(filePath) !== "snap.manifest.json") {
+      return findings;
+    }
+
+    const manifest = this.readManifest(sourceFile);
+    const permissions = manifest.initialPermissions;
+
+    for (const [permission, api] of Object.entries(
+      UnusedPermissionsDetector.PERMISSION_API_MAP
+    )) {
+      if (permissions[permission] && !this.isApiUsed(sourceFile, api)) {
+        this.addFinding(
+          `Permission '${permission}' is declared but its corresponding API '${api}' is not used.`,
+          filePath
+        );
       }
     }
-  }
-  return false;
-}
-/**
- * Creates a project using the base directory of the manifest file.
- * @param {string} manifestPath - The path to the manifest file.
- * @returns {Project} - The created project.
- */
-function createProjectFromManifest(manifestPath: string): Project {
-  const baseDir = path.dirname(manifestPath);
-  return new Project({
-    tsConfigFilePath: path.join(baseDir, "tsconfig.json"),
-  });
-}
 
-/**
- * Detects unused permissions in the snap.manifest.json file.
- * @param {SourceFile} file - The source file representing snap.manifest.json.
- * @returns {Finding[]} - Array of findings with details about the detected issues.
- */
-export function detectUnusedPermissions(file: SourceFile): Finding[] {
-  const findings: Finding[] = [];
-  const filePath = file.getFilePath();
-
-  if (path.basename(filePath) !== "snap.manifest.json") {
-    return findings;
+    return this.getFindings();
   }
 
-  const manifest = readManifest(file);
-  const permissions = manifest.initialPermissions;
-
-  const project = createProjectFromManifest(filePath);
-  const sourceFiles = project.getSourceFiles();
-
-  for (const [permission, api] of Object.entries(permissionApiMap)) {
-    if (permissions[permission] && !isApiUsed(sourceFiles, api)) {
-      findings.push({
-        type: "UnusedPermission",
-        description: `Permission '${permission}' is requested but the corresponding API '${api}' is not used.`,
-        position: {
-          filePath,
-          lineNum: 1, // Not important for this detector
-        },
-        riskRating: RiskRating.High,
-      });
-    }
+  /**
+   * Checks if the specified API is used in the source file.
+   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @param {string} api - The API to check for usage.
+   * @returns {boolean} - True if the API is used, false otherwise.
+   */
+  private isApiUsed(sourceFile: SourceFile, api: string): boolean {
+    const identifiers = sourceFile.getDescendantsOfKind(SyntaxKind.Identifier);
+    return identifiers.some((identifier) => identifier.getText() === api);
   }
-
-  return findings;
 }
+
+export { UnusedPermissionsDetector };

@@ -1,52 +1,47 @@
+//TODO: Need to reword the recursive flag logic.
+
 import path from "path";
-import { Project } from "ts-morph";
+import { Project, SourceFile } from "ts-morph";
 
 import logger from "./utils/logger";
-import { findTsConfig } from "./utils/fileUtils";
 import { Finding } from "./types";
-import {
-  detectConsoleLog,
-  detectDangerousFunctions,
-  detectNonExactDependencies,
-  detectVulnerableDependencies,
-  detectUnusedElements,
-  detectInsecureRandomness,
-  detectLeftoverTODOs,
-  detectHardcodedSecrets,
-  detectInsecureCryptography,
-  detectUsedBeforeDefined,
-  detectUnusedPermissions,
-  detectDeprecatedPermissions,
-} from "./detectors";
+import { findTsConfig } from "./utils/fileUtils";
+import * as Detectors from "./detectors";
 
-type RuleFunction = (file: any) => Finding[];
-
-const rules: { [key: string]: RuleFunction } = {
-  consoleLog: detectConsoleLog,
-  dangerousFunctions: detectDangerousFunctions,
-  dependencyVersioning: detectNonExactDependencies,
-  dependencyOutdated: detectVulnerableDependencies,
-  unusedElements: detectUnusedElements,
-  insecureRandomness: detectInsecureRandomness,
-  leftoverTodos: detectLeftoverTODOs,
-  hardcodedSecret: detectHardcodedSecrets,
-  insecureCryptography: detectInsecureCryptography,
-  usedBeforeDefined: detectUsedBeforeDefined,
-  unusedPermissions: detectUnusedPermissions,
-  deprecatedPermissions: detectDeprecatedPermissions,
-};
+// List of detector instances
+const detectors = [
+  new Detectors.ConsoleLogDetector(),
+  new Detectors.DangerousFunctionsDetector(),
+  new Detectors.DeprecatedFunctionsDetector(),
+  new Detectors.HardcodedSecretsDetector(),
+  new Detectors.ExcessiveCommentsDetector(),
+  new Detectors.InsecureRandomnessDetector(),
+  new Detectors.UnusedFunctionsDetector(),
+  new Detectors.UnusedImportsDetector(),
+  new Detectors.UnusedVariablesDetector(),
+  new Detectors.LeftoverTODOsDetector(),
+  new Detectors.InsecureCryptoLibrariesDetector(),
+  new Detectors.InsecureCryptographyDetector(),
+  new Detectors.UsedBeforeDefinedFunctionsDetector(),
+  new Detectors.UsedBeforeDefinedArrowFunctionsDetector(),
+  new Detectors.UsedBeforeDefinedInterfacesDetector(),
+  new Detectors.UnusedPermissionsDetector(),
+  new Detectors.DeprecatedPermissionsDetector(),
+  new Detectors.DependencyOutdatedDetector(),
+  new Detectors.DependencyVersioningDetector(),
+];
 
 /**
- * Processes files in a TypeScript project to find issues based on specified rules.
+ * Processes files in a TypeScript project to find issues based on specified detector.
  *
  * @param {string} projectPath - The path to the TypeScript project.
- * @param {string} [rule] - The specific rule to apply. If not provided, all rules will be applied.
+ * @param {string} [detectorName] - The specific detector to run. If not provided, all detectors will be applied.
  * @param {boolean} [recursive=false] - Whether to process projects recursively.
  * @returns {Promise<Finding[]>} - A promise that resolves to an array of findings.
  */
 export async function processFiles(
   projectPath: string,
-  rule?: string,
+  detectorName?: string,
   recursive: boolean = false
 ): Promise<Finding[]> {
   const tsConfigPaths = await findTsConfig(projectPath);
@@ -73,17 +68,41 @@ export async function processFiles(
     let findingsCount = 0;
     for (const file of files) {
       logger.debug(`Processing file: ${file.getFilePath()}`);
-      const applicableRules =
-        rule && rules[rule] ? [rules[rule]] : Object.values(rules);
 
-      logger.debug(`Going to run rules: ${applicableRules.map((r) => r.name)}`);
+      let detectorsToRun = detectors;
 
-      for (const ruleFunction of applicableRules) {
-        logger.debug(`Running rule: ${ruleFunction.name}`);
-        const findings = ruleFunction(file);
-        logger.debug(`Found ${findings.length} findings`);
-        allFindings.push(...findings);
-        findingsCount += findings.length;
+      if (detectorName) {
+        detectorsToRun = detectors.filter((detector) => {
+          return (
+            detector.getName().toLowerCase() === detectorName.toLowerCase()
+          );
+        });
+        if (detectorsToRun.length === 0) {
+          logger.warn(`No detector found with name: ${detectorName}`);
+          return [];
+        }
+      }
+
+      logger.debug(
+        `Going to run detectors: ${detectorsToRun.map((d) => d.getName())}`
+      );
+
+      for (const detector of detectorsToRun) {
+        logger.debug(`Running detector: ${detector.getName()}`);
+
+        // Get the initial number of findings
+        const initialFindingsCount = allFindings.length;
+
+        detector.run(file as SourceFile);
+        const findings = detector.getFindings();
+
+        // Calculate the number of new findings
+        const newFindingsCount = findings.length;
+        const newFindings = findings.slice(initialFindingsCount);
+
+        logger.debug(`Found ${newFindingsCount} new findings`);
+        findingsCount += newFindingsCount;
+        allFindings.push(...newFindings);
       }
     }
 

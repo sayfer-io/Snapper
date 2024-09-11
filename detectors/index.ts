@@ -1,29 +1,43 @@
 /**
  * Exports the detection functions for various code issues.
  *
- * - `detectConsoleLog`: Detects usage of console.log statements.
- * - `detectDangerousFunctions`: Detects usage of potentially dangerous functions.
- * - `detectNonExactDependencies`: Detects non-exact dependency versions in package.json.
- * - `detectVulnerableDependencies`: Detects usage of vulnerable dependencies.
- * - `detectHardcodedSecrets`: Detects hardcoded secrets in the code.
- * - `detectInsecureRandomness`: Detects usage of insecure randomness.
- * - `detectUnusedElements`: Detects unused variables, functions, and imports in the code.
- * - `detectLeftoverTODOs`: Detects large sections of commented-out code or leftover TODOs.
- * - `detectInsecureCryptography`: Detects insecure cryptography usage, such as low iteration PBKDF2 and non-native cryptography libraries.
- * - `detectUsedBeforeDefined`: Detects functions that are used before they are defined.
- * - `detectUnusedPermissions`: Detects unused permissions in the snap.manifest.json file.
- * - `detectDeprecatedPermissions`: Detects deprecated permissions in the snap.manifest.json file.
+ * - `ConsoleLogDetector`: Detects usage of console.log statements.
+ * - `DangerousFunctionsDetector`: Detects usage of potentially dangerous functions.
+ * - `DeprecatedFunctionsDetector`: Detects usage of deprecated functions.
+ * - `HardcodedSecretsDetector`: Detects hardcoded secrets in the code.
+ * - `ExcessiveCommentsDetector`: Detects large sections of commented-out code or leftover TODOs.
+ * - `InsecureRandomnessDetector`: Detects usage of insecure randomness.
+ * - `UnusedFunctionsDetector`: Detects unused functions in the code.
+ * - `UnusedImportsDetector`: Detects unused imports in the code.
+ * - `UnusedVariablesDetector`: Detects unused variables in the code.
+ * - `LeftoverTODOsDetector`: Detects leftover TODOs in the code.
+ * - `InsecureCryptoLibrariesDetector`: Detects usage of insecure cryptography libraries.
+ * - `InsecureCryptographyDetector`: Detects insecure cryptography usage, such as low iteration PBKDF2.
+ * - `UsedBeforeDefinedFunctionsDetector`: Detects functions that are used before they are defined.
+ * - `UsedBeforeDefinedArrowFunctionsDetector`: Detects arrow functions that are used before they are defined.
+ * - `UsedBeforeDefinedInterfacesDetector`: Detects interfaces that are used before they are defined.
+ * - `UnusedPermissionsDetector`: Detects unused permissions in the snap.manifest.json file.
+ * - `DeprecatedPermissionsDetector`: Detects deprecated permissions in the snap.manifest.json file.
+ * - `DependencyOutdatedDetector`: Detects outdated dependencies in the package.json file.
+ * - `DependencyVersioningDetector`: Detects non-exact dependency versions in the package.json file.
  */
 
-export { detectConsoleLog } from "./ConsoleLog";
-export { detectDangerousFunctions } from "./DangerousFunctions";
-export { detectNonExactDependencies } from "./DependencyVersioning";
-export { detectVulnerableDependencies } from "./DependencyOutdated";
-export { detectHardcodedSecrets } from "./HardcodedSecrets";
-export { detectInsecureRandomness } from "./InsecureRandomness";
-export { detectUnusedElements } from "./UnusedElements";
-export { detectLeftoverTODOs } from "./LeftoverTODOs";
-export { detectInsecureCryptography } from "./InsecureCryptography";
-export { detectUsedBeforeDefined } from "./UsedBeforeDefined";
-export { detectUnusedPermissions } from "./UnusedPermissions";
-export { detectDeprecatedPermissions } from "./DeprecatedPermissions";
+export { ConsoleLogDetector } from "./ConsoleLog";
+export { DangerousFunctionsDetector } from "./DangerousFunctions";
+export { DeprecatedFunctionsDetector } from "./DeprecatedFunctions";
+export { HardcodedSecretsDetector } from "./HardcodedSecrets";
+export { ExcessiveCommentsDetector } from "./ExcessiveComments";
+export { InsecureRandomnessDetector } from "./InsecureRandomness";
+export { UnusedFunctionsDetector } from "./UnusedFunctions";
+export { UnusedImportsDetector } from "./UnusedImports";
+export { UnusedVariablesDetector } from "./UnusedVariables";
+export { LeftoverTODOsDetector } from "./LeftoverTODOs";
+export { InsecureCryptoLibrariesDetector } from "./InsecureCryptoLibraries";
+export { InsecureCryptographyDetector } from "./InsecureCryptography";
+export { UsedBeforeDefinedFunctionsDetector } from "./UsedBeforeDefinedFunctions";
+export { UsedBeforeDefinedArrowFunctionsDetector } from "./UsedBeforeDefinedArrowFunctions";
+export { UsedBeforeDefinedInterfacesDetector } from "./UsedBeforeDefinedInterfaces";
+export { UnusedPermissionsDetector } from "./UnusedPermissions";
+export { DeprecatedPermissionsDetector } from "./DeprecatedPermissions";
+export { DependencyOutdatedDetector } from "./DependencyOutdated";
+export { DependencyVersioningDetector } from "./DependencyVersioning";

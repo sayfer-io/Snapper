@@ -5,41 +5,37 @@ import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
 /**
- * Class to detect dangerous functions in the source code.
+ * Class to detect deprecated functions in the source code.
  */
-class DangerousFunctionsDetector extends DetectorBase {
-  // List of dangerous function names
-  private static DANGEROUS_FUNCTIONS = [
-    "dangerouslySetInnerHTML",
-    "eval",
-    "signData",
-  ];
+class DeprecatedFunctionsDetector extends DetectorBase {
+  // List of deprecated function names
+  private static DEPRECATED_FUNCTIONS = ["atob", "btoa"];
 
   constructor() {
-    super("DangerousFunctions", RiskRating.High);
+    super("DeprecatedFunctions", RiskRating.Low);
   }
 
   /**
-   * Filters and returns dangerous function call expressions from the given file.
+   * Filters and returns deprecated function call expressions from the given file.
    * @param {SourceFile} file - The source file to analyze.
-   * @returns {CallExpression[]} - Array of dangerous function call expressions.
+   * @returns {CallExpression[]} - Array of deprecated function call expressions.
    */
-  private getDangerousFunctionExpressions(file: SourceFile): CallExpression[] {
-    const dangerousExpressions: CallExpression[] = [];
+  private getDeprecatedFunctionExpressions(file: SourceFile): CallExpression[] {
+    const deprecatedExpressions: CallExpression[] = [];
 
     file.forEachDescendant((node) => {
       if (node.getKind() === SyntaxKind.CallExpression) {
         const callExpression = node as CallExpression;
         const expression = callExpression.getExpression().getText();
         if (
-          DangerousFunctionsDetector.DANGEROUS_FUNCTIONS.includes(expression)
+          DeprecatedFunctionsDetector.DEPRECATED_FUNCTIONS.includes(expression)
         ) {
-          dangerousExpressions.push(callExpression);
+          deprecatedExpressions.push(callExpression);
         }
       }
     });
 
-    return dangerousExpressions;
+    return deprecatedExpressions;
   }
 
   /**
@@ -48,13 +44,13 @@ class DangerousFunctionsDetector extends DetectorBase {
    * @returns {Finding[]} - Array of findings with details about the detected issues.
    */
   public run(sourceFile: SourceFile): Finding[] {
-    const dangerousExpressions =
-      this.getDangerousFunctionExpressions(sourceFile);
+    const deprecatedExpressions =
+      this.getDeprecatedFunctionExpressions(sourceFile);
 
-    dangerousExpressions.forEach((expression) => {
+    deprecatedExpressions.forEach((expression) => {
       const functionName = expression.getExpression().getText();
       this.addFinding(
-        `Usage of dangerous function: ${functionName}`,
+        `Usage of deprecated function: ${functionName}`,
         sourceFile.getFilePath(),
         sourceFile.getLineAndColumnAtPos(expression.getPos()).line
       );
@@ -64,4 +60,4 @@ class DangerousFunctionsDetector extends DetectorBase {
   }
 }
 
-export { DangerousFunctionsDetector };
+export { DeprecatedFunctionsDetector };

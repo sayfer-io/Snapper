@@ -5,11 +5,11 @@ import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
 /**
- * Class to detect leftover TODO comments in the source code.
+ * Class to detect excessive comments in the source code.
  */
-class LeftoverTODOsDetector extends DetectorBase {
+class ExcessiveCommentsDetector extends DetectorBase {
   constructor() {
-    super("LeftoverTODOs", RiskRating.Medium);
+    super("ExcessiveComments", RiskRating.Medium);
   }
 
   /**
@@ -52,11 +52,12 @@ class LeftoverTODOsDetector extends DetectorBase {
       }
 
       const commentText = comment.getText();
+      const lines = commentText.split("\n").length;
 
-      // Detect leftover TODOs
-      if (commentText.includes("TODO")) {
+      // Detect large sections of commented-out code
+      if (lines > 5) {
         this.addFinding(
-          "Leftover TODO comment detected.",
+          `Large section of commented-out code detected (${lines} lines).`,
           sourceFile.getFilePath(),
           sourceFile.getLineAndColumnAtPos(comment.getPos()).line
         );
@@ -67,4 +68,4 @@ class LeftoverTODOsDetector extends DetectorBase {
   }
 }
 
-export { LeftoverTODOsDetector };
+export { ExcessiveCommentsDetector };
