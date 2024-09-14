@@ -271,7 +271,7 @@ class DependencyOutdatedDetector extends DetectorBase {
     this.createLockfile(tempDir, packageManager);
 
     const vulnerabilities = this.runAudit(tempDir, packageManager);
-    // this.cleanUpTempDir(tempDir);
+    this.cleanUpTempDir(tempDir);
 
     vulnerabilities.forEach((vulnerability) => {
       this.addFinding(
