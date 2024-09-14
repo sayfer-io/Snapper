@@ -55,9 +55,7 @@ class DependencyOutdatedDetector extends DetectorBase {
     // Check if package.json exists
     if (fs.existsSync(packageJsonPath)) {
       try {
-        const packageJson = JSON.parse(
-          fs.readFileSync(packageJsonPath, "utf-8")
-        );
+        const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf-8"));
 
         // Check for packageManager field in package.json
         if (packageJson.packageManager) {
