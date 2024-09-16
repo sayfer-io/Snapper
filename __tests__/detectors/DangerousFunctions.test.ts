@@ -1,6 +1,7 @@
 import { Project, SourceFile } from "ts-morph";
-import { DangerousFunctionsDetector } from "../../detectors/DangerousFunctions";
+
 import { Finding } from "../../types";
+import { DangerousFunctionsDetector } from "../../detectors/DangerousFunctions";
 
 describe("DangerousFunctionsDetector", () => {
   let project: Project;
