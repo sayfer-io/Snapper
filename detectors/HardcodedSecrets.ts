@@ -17,7 +17,11 @@ import { DetectorBase } from "./DetectorBase";
 class HardcodedSecretsDetector extends DetectorBase {
   private static SECRET_PATTERNS: RegExp[] = [
     /^(?:[A-Za-z0-9+/]{4}){2,}(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/, // Base64 strings
-    // /^[0-9a-fA-F]{8,}$/, // Hex strings over 7 characters long
+    /-----BEGIN (RSA|EC|DSA|OPENSSH) PRIVATE KEY-----/, // Private Key Begin
+    /-----BEGIN CERTIFICATE-----/, // Certificate Begin
+    /\/\/[^\/\s:@]+:[^\/\s:@]+@/, // URL with credentials
+    /eyJ[A-Za-z0-9_-]+\.([A-Za-z0-9_-]+\.?){1,2}/, // JWT Token
+
     // Add more patterns here
   ];
 
