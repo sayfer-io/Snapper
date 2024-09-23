@@ -8,7 +8,7 @@ import { TransformableInfo } from "logform";
  * - Use 'info' as the default logging level.
  * - Colorize the output.
  * - Add timestamps to log messages.
- * - Format log messages as: 'timestamp [level]: message'.
+ * - Format log messages as: `timestamp [level]: message`.
  * - Output logs to the console.
  *
  * @returns {Logger} - A configured Winston logger instance.
