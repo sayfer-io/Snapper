@@ -8,7 +8,7 @@
     "test:watch": "jest --watch",
     "start": "npx ts-node main.ts",
     "postinstall": "node ./scripts/check-dependencies.js",
-    "docs": "npx typedoc --entryPoints \"./**/*.ts\" --out docs"
+    "docs": "npx typedoc --options typedoc.json"
   },
   "keywords": [],
   "author": "",
