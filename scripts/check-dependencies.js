@@ -27,6 +27,7 @@ function main() {
     { name: "npm", installCommand: "npm install -g npm" },
     { name: "yarn", installCommand: "npm install -g yarn" },
     { name: "pnpm", installCommand: "npm install -g pnpm" },
+    { name: "mm-snap", installCommand: "npm install -g snaps-cli" },
   ];
 
   packageManagers.forEach((pm) => checkAndInstall(pm.name, pm.installCommand));
