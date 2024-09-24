@@ -14,11 +14,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@metamask/snaps-simulation": "^1.0.1",
     "fs-extra": "^11.2.0",
     "package-json": "^10.0.1",
     "typescript": "^5.5.3",
     "winston": "^3.14.2",
     "yargs": "^17.7.2"
+  },
+  "resolutions": {
+    "@metamask/snaps-execution-environments": "6.7.2",
+    "@metamask/snaps-controllers/@metamask/snaps-execution-environments": "6.7.2"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
