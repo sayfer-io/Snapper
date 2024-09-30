@@ -38,6 +38,13 @@ export abstract class DetectorBase {
     this.findings.push(finding);
   }
 
+  /**
+   * Clears the findings.
+   */
+  clearFindings(): void {
+    this.findings = [];
+  }
+
   getName(): string {
     return this.name;
   }
