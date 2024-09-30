@@ -7,7 +7,7 @@ import {
 } from "ts-morph";
 import { LeftoverTODOsDetector } from "../../detectors/LeftoverTODOs";
 
-describe("LeftoverTODOs", () => {
+describe("LeftoverTODOsDetector", () => {
   let detector: LeftoverTODOsDetector;
   let mockSourceFile: jest.Mocked<SourceFile>;
   let mockNode: jest.Mocked<Node>;
@@ -57,7 +57,6 @@ describe("LeftoverTODOs", () => {
   function createMockSourceFile(): jest.Mocked<SourceFile> {
     return {
       forEachDescendant: jest.fn(),
-      // Add other necessary mock methods if needed
     } as unknown as jest.Mocked<SourceFile>;
   }
 
@@ -65,7 +64,6 @@ describe("LeftoverTODOs", () => {
     return {
       getLeadingCommentRanges: jest.fn(),
       getTrailingCommentRanges: jest.fn(),
-      // Add other necessary mock methods if needed
     } as unknown as jest.Mocked<Node>;
   }
 
@@ -80,7 +78,6 @@ describe("LeftoverTODOs", () => {
       getEnd: () => end,
       getText: () => text,
       getSourceFile: () => mockSourceFile,
-      // Add other necessary mock methods if needed
     } as unknown as CommentRange;
   }
 
