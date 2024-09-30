@@ -27,16 +27,22 @@ class DependencyVersioningDetector extends DetectorBase {
     }
 
     const packageJsonContent = this.readPackageJson(filePath);
-    const dependencies = this.extractDependencies(packageJsonContent);
-
-    for (const [dependency, version] of Object.entries(dependencies)) {
-      if (this.isNonExactVersion(version)) {
-        this.addFinding(
-          `Dependency "${dependency}" has a non-exact version "${version}".`,
-          sourceFile.getFilePath()
-        );
-      }
+    if (!packageJsonContent || Object.keys(packageJsonContent).length === 0) {
+      return [];
     }
+
+    const dependencies = this.extractDependencies(
+      packageJsonContent,
+      "dependencies"
+    );
+    const devDependencies = this.extractDependencies(
+      packageJsonContent,
+      "devDependencies"
+    );
+
+    // Check both dependencies and devDependencies
+    this.checkForNonExactVersions(dependencies, sourceFile);
+    this.checkForNonExactVersions(devDependencies, sourceFile);
 
     return this.getFindings();
   }
@@ -53,34 +59,62 @@ class DependencyVersioningDetector extends DetectorBase {
   /**
    * Reads the content of package.json file.
    * @param {string} filePath - The path of the package.json file.
-   * @returns {object} - The parsed content of the package.json file.
+   * @returns {object|null} - The parsed content of the package.json file or null if the file is empty.
    */
-  private readPackageJson(filePath: string): any {
-    const packageJsonContent = fs.readFileSync(filePath, "utf-8");
-    return JSON.parse(packageJsonContent);
+  private readPackageJson(filePath: string): any | null {
+    try {
+      const packageJsonContent = fs.readFileSync(filePath, "utf-8");
+      return packageJsonContent ? JSON.parse(packageJsonContent) : null;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(`Error reading package.json file: ${error.message}`);
+      } else {
+        console.error(`Unknown error reading package.json file: ${error}`);
+      }
+      return null;
+    }
   }
 
   /**
-   * Extracts all dependencies from the package.json content.
-   * @param {object} packageJson - The parsed content of the package.json file.
-   * @returns {Record<string, string>} - An object containing all dependencies.
+   * Extracts all dependencies from the package.json file.
+   * @param {object} packageJsonContent - The content of the package.json file.
+   * @param {string} section - The section to extract (e.g., 'dependencies', 'devDependencies').
+   * @returns {object} - The extracted dependencies.
    */
-  private extractDependencies(packageJson: any): Record<string, string> {
-    return {
-      ...packageJson.dependencies,
-      ...packageJson.devDependencies,
-      ...packageJson.peerDependencies,
-      ...packageJson.optionalDependencies,
-    };
+  private extractDependencies(
+    packageJsonContent: any,
+    section: string
+  ): Record<string, string> {
+    return packageJsonContent[section] || {};
   }
 
   /**
-   * Checks if a version string is non-exact.
-   * @param {string} version - The version string to check.
+   * Checks for non-exact versions in the dependencies.
+   * @param {object} dependencies - The list of dependencies to check.
+   * @param {SourceFile} sourceFile - The source file.
+   */
+  private checkForNonExactVersions(
+    dependencies: Record<string, string>,
+    sourceFile: SourceFile
+  ): void {
+    for (const [dependency, version] of Object.entries(dependencies)) {
+      if (this.isNonExactVersion(version)) {
+        console.log("Adding finding...");
+        this.addFinding(
+          `Dependency "${dependency}" has a non-exact version "${version}".`,
+          sourceFile.getFilePath()
+        );
+      }
+    }
+  }
+
+  /**
+   * Determines if the version is non-exact.
+   * @param {string} version - The version of the dependency.
    * @returns {boolean} - True if the version is non-exact, false otherwise.
    */
   private isNonExactVersion(version: string): boolean {
-    return /^[\^~>=]/.test(version);
+    return version.startsWith("^") || version.startsWith("~");
   }
 }
 
