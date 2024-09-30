@@ -3,12 +3,12 @@ import path from "path";
 import fs from "fs";
 import fsExtra from "fs-extra";
 import { rmSync, mkdirSync, readFileSync } from "fs";
-import { execSync } from "child_process";
 import { SourceFile } from "ts-morph";
 
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
+import { runCommand } from "../utils/commandUtils";
 
 /**
  * Class to detect outdated dependencies in the source code.
@@ -16,33 +16,6 @@ import { DetectorBase } from "./DetectorBase";
 class DependencyOutdatedDetector extends DetectorBase {
   constructor() {
     super("DependencyOutdated", RiskRating.Medium);
-  }
-
-  /**
-   * Runs a command in the specified directory.
-   * @param {string} command - The command to run.
-   * @param {string} workingDir - The path to the temporary directory.
-   * @returns {string} - The command's output.
-   */
-  private runCommand(command: string, workingDir: string): string {
-    const originalCwd = process.cwd();
-    try {
-      if (workingDir) {
-        process.chdir(workingDir);
-      }
-      this.logDebug(`Running command: ${command}`);
-      return execSync(command, { encoding: "utf-8" });
-    } catch (err: any) {
-      if (err.stdout) {
-        return err.stdout.toString();
-      }
-      this.logError(`Error running command: ${command}`, err);
-      return "";
-    } finally {
-      if (workingDir) {
-        process.chdir(originalCwd);
-      }
-    }
   }
 
   /**
@@ -141,7 +114,7 @@ class DependencyOutdatedDetector extends DetectorBase {
     }
 
     try {
-      const output = this.runCommand(command, tempDir);
+      const output = runCommand(command, tempDir);
       this.logDebug(`Lockfile creation output: ${output}`);
 
       let lockfileName: string;
@@ -197,7 +170,7 @@ class DependencyOutdatedDetector extends DetectorBase {
         throw new Error(`Unsupported package manager: ${packageManager}`);
     }
 
-    const stdout = this.runCommand(command, tempDir);
+    const stdout = runCommand(command, tempDir);
     this.logDebug("STDOUT: " + stdout);
     try {
       const auditResult = JSON.parse(stdout);
