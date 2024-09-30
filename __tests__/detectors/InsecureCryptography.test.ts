@@ -2,8 +2,6 @@ import { Project, SourceFile } from "ts-morph";
 import { Finding } from "../../types";
 import { InsecureCryptographyDetector } from "../../detectors/InsecureCryptography";
 
-const LOW_ITERATION_THRESHOLD = 10000;
-
 describe("InsecureCryptographyDetector", () => {
   let project: Project;
   let sourceFile: SourceFile;
