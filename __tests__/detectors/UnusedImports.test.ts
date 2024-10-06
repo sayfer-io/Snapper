@@ -1,6 +1,7 @@
-import { SourceFile, Project } from "ts-morph";
-import { UnusedImportsDetector } from "../../detectors/UnusedImports";
 import mock from "mock-fs";
+import { Project } from "ts-morph";
+
+import { UnusedImportsDetector } from "../../detectors/UnusedImports";
 
 describe("UnusedImportsDetector", () => {
   let detector: UnusedImportsDetector;
@@ -34,9 +35,6 @@ describe("UnusedImportsDetector", () => {
 
     const findings = detector.run(sourceFile);
 
-    console.log("Source File Text:", sourceFile.getText());
-    console.log("Findings:", findings);
-
     expect(findings).toHaveLength(1);
     expect(findings[0].description).toBe(
       "Import 'unusedImport' is declared but never used."
@@ -62,9 +60,6 @@ describe("UnusedImportsDetector", () => {
 
     const findings = detector.run(sourceFile);
 
-    console.log("Source File Text:", sourceFile.getText());
-    console.log("Findings:", findings);
-
     // Ensure that only the unused import is reported
     expect(findings).toHaveLength(0);
   });
@@ -84,9 +79,6 @@ describe("UnusedImportsDetector", () => {
     const sourceFile = project.addSourceFileAtPath(mockFilePath);
 
     const findings = detector.run(sourceFile);
-
-    console.log("Source File Text:", sourceFile.getText());
-    console.log("Findings:", findings);
 
     // Ensure no findings are reported
     expect(findings).toHaveLength(0);
@@ -109,9 +101,6 @@ describe("UnusedImportsDetector", () => {
     const sourceFile = project.addSourceFileAtPath(mockFilePath);
 
     const findings = detector.run(sourceFile);
-
-    console.log("Source File Text:", sourceFile.getText());
-    console.log("Findings:", findings);
 
     // Ensure no findings are reported
     expect(findings).toHaveLength(0);

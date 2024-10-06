@@ -55,10 +55,7 @@ class UnusedImportsDetector extends DetectorBase {
     const usedIdentifiers = new Set(
       identifiers.map((identifier) => identifier.getText())
     );
-    console.log(
-      "Collected Used Identifiers (excluding imports):",
-      Array.from(usedIdentifiers)
-    );
+
     return usedIdentifiers;
   }
 
@@ -100,22 +97,12 @@ class UnusedImportsDetector extends DetectorBase {
     const usedIdentifiers = this.collectUsedIdentifiers(sourceFile);
     const importDeclarations = this.getAllImportDeclarations(sourceFile);
 
-    console.log(
-      "Collected Used Identifiers (excluding imports):",
-      Array.from(usedIdentifiers)
-    );
-    console.log(
-      "Import Declarations:",
-      importDeclarations.map((decl) => decl.getText())
-    );
-
     importDeclarations.forEach((importDecl) => {
       importDecl.getNamedImports().forEach((namedImport) => {
         const isUsed = this.isNamedImportUsed(
           namedImport.getName(),
           usedIdentifiers
         );
-        console.log(`Import ${namedImport.getName()} used:`, isUsed);
         if (!isUsed) {
           this.reportUnusedImport(namedImport.getName(), importDecl);
         }
@@ -127,7 +114,7 @@ class UnusedImportsDetector extends DetectorBase {
           defaultImport.getText(),
           usedIdentifiers
         );
-        console.log(`Default import ${defaultImport.getText()} used:`, isUsed);
+
         if (!isUsed) {
           this.reportUnusedImport(defaultImport.getText(), importDecl);
         }
@@ -139,17 +126,13 @@ class UnusedImportsDetector extends DetectorBase {
           namespaceImport.getText(),
           usedIdentifiers
         );
-        console.log(
-          `Namespace import ${namespaceImport.getText()} used:`,
-          isUsed
-        );
+
         if (!isUsed) {
           this.reportUnusedImport(namespaceImport.getText(), importDecl);
         }
       }
     });
 
-    console.log("Final Findings:", this.getFindings());
     return this.getFindings();
   }
 }
