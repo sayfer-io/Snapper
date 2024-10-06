@@ -36,52 +36,120 @@ class UnusedImportsDetector extends DetectorBase {
   }
 
   /**
+   * Collects all used identifiers in the source file.
+   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @returns {Set<string>} - Set of used identifier names.
+   */
+  private collectUsedIdentifiers(sourceFile: SourceFile): Set<string> {
+    const identifiers = this.getAllIdentifiers(sourceFile).filter(
+      (identifier) => {
+        // Exclude identifiers that are part of import declarations
+        const parentKind = identifier.getParent()?.getKind();
+        return (
+          parentKind !== SyntaxKind.ImportSpecifier &&
+          parentKind !== SyntaxKind.ImportClause
+        );
+      }
+    );
+
+    const usedIdentifiers = new Set(
+      identifiers.map((identifier) => identifier.getText())
+    );
+    console.log(
+      "Collected Used Identifiers (excluding imports):",
+      Array.from(usedIdentifiers)
+    );
+    return usedIdentifiers;
+  }
+
+  /**
+   * Checks if a named import is used.
+   * @param {string} importName - The name of the import.
+   * @param {Set<string>} usedIdentifiers - Set of used identifier names.
+   * @returns {boolean} - True if the import is used, false otherwise.
+   */
+  private isNamedImportUsed(
+    importName: string,
+    usedIdentifiers: Set<string>
+  ): boolean {
+    return usedIdentifiers.has(importName);
+  }
+
+  /**
+   * Adds a finding for an unused import.
+   * @param {string} importName - The name of the unused import.
+   * @param {ImportDeclaration} importDecl - The import declaration.
+   */
+  private reportUnusedImport(
+    importName: string,
+    importDecl: ImportDeclaration
+  ): void {
+    this.addFinding(
+      `Import '${importName}' is declared but never used.`,
+      importDecl.getSourceFile().getFilePath(),
+      importDecl.getStartLineNumber()
+    );
+  }
+
+  /**
    * Runs the detector on the given source file.
    * @param {SourceFile} sourceFile - The source file to analyze.
    * @returns {Finding[]} - Array of findings with details about the detected issues.
    */
   public run(sourceFile: SourceFile): Finding[] {
+    const usedIdentifiers = this.collectUsedIdentifiers(sourceFile);
     const importDeclarations = this.getAllImportDeclarations(sourceFile);
-    const identifiers = this.getAllIdentifiers(sourceFile);
 
-    const usedIdentifiers = new Set(
-      identifiers.map((identifier) => identifier.getText())
+    console.log(
+      "Collected Used Identifiers (excluding imports):",
+      Array.from(usedIdentifiers)
+    );
+    console.log(
+      "Import Declarations:",
+      importDeclarations.map((decl) => decl.getText())
     );
 
-    const reportedImports = new Set<string>();
     importDeclarations.forEach((importDecl) => {
       importDecl.getNamedImports().forEach((namedImport) => {
-        if (!usedIdentifiers.has(namedImport.getName())) {
-          this.addFinding(
-            `Import '${namedImport.getName()}' is declared but never used.`,
-            importDecl.getSourceFile().getFilePath(),
-            importDecl.getStartLineNumber()
-          );
-          return; // Skip the rest of the checks for this import declaration
+        const isUsed = this.isNamedImportUsed(
+          namedImport.getName(),
+          usedIdentifiers
+        );
+        console.log(`Import ${namedImport.getName()} used:`, isUsed);
+        if (!isUsed) {
+          this.reportUnusedImport(namedImport.getName(), importDecl);
         }
       });
 
       const defaultImport = importDecl.getDefaultImport();
-      if (defaultImport && !usedIdentifiers.has(defaultImport.getText())) {
-        this.addFinding(
-          `Import '${defaultImport.getText()}' is declared but never used.`,
-          importDecl.getSourceFile().getFilePath(),
-          importDecl.getStartLineNumber()
+      if (defaultImport) {
+        const isUsed = this.isNamedImportUsed(
+          defaultImport.getText(),
+          usedIdentifiers
         );
-        return; // Skip the rest of the checks for this import declaration
+        console.log(`Default import ${defaultImport.getText()} used:`, isUsed);
+        if (!isUsed) {
+          this.reportUnusedImport(defaultImport.getText(), importDecl);
+        }
       }
 
       const namespaceImport = importDecl.getNamespaceImport();
-      if (namespaceImport && !usedIdentifiers.has(namespaceImport.getText())) {
-        this.addFinding(
-          `Import '${namespaceImport.getText()}' is declared but never used.`,
-          importDecl.getSourceFile().getFilePath(),
-          importDecl.getStartLineNumber()
+      if (namespaceImport) {
+        const isUsed = this.isNamedImportUsed(
+          namespaceImport.getText(),
+          usedIdentifiers
         );
-        return; // Skip the rest of the checks for this import declaration
+        console.log(
+          `Namespace import ${namespaceImport.getText()} used:`,
+          isUsed
+        );
+        if (!isUsed) {
+          this.reportUnusedImport(namespaceImport.getText(), importDecl);
+        }
       }
     });
 
+    console.log("Final Findings:", this.getFindings());
     return this.getFindings();
   }
 }
