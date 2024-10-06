@@ -1,12 +1,4 @@
-// TODO: Going forward, this detector should be updated to also take into
-// account the whole project (using tsconfig) and not just one file at a time.
-
-import {
-  SourceFile,
-  SyntaxKind,
-  FunctionDeclaration,
-  Identifier,
-} from "ts-morph";
+import { SourceFile, SyntaxKind, FunctionDeclaration } from "ts-morph";
 
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
@@ -21,23 +13,69 @@ class UnusedFunctionsDetector extends DetectorBase {
   }
 
   /**
-   * Gets all non-exported function declarations in the given file.
+   * Gets all function declarations in the given file.
    * @param {SourceFile} file - The source file to analyze.
-   * @returns {FunctionDeclaration[]} - Array of non-exported function declarations.
+   * @returns {FunctionDeclaration[]} - Array of function declarations.
    */
-  private getAllNonExportedFunctionDeclarations(
-    file: SourceFile
-  ): FunctionDeclaration[] {
-    return file.getFunctions().filter((func) => !func.isExported());
+  private getAllFunctionDeclarations(file: SourceFile): FunctionDeclaration[] {
+    return file.getFunctions();
   }
 
   /**
-   * Gets all identifiers in the given file.
-   * @param {SourceFile} file - The source file to analyze.
-   * @returns {Identifier[]} - Array of identifiers.
+   * Collects all used identifiers in the source file, excluding function declarations.
+   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @returns {Set<string>} - Set of used identifier names.
    */
-  private getAllIdentifiers(file: SourceFile): Identifier[] {
-    return file.getDescendantsOfKind(SyntaxKind.Identifier);
+  private collectUsedIdentifiers(sourceFile: SourceFile): Set<string> {
+    const identifiers = sourceFile.getDescendantsOfKind(SyntaxKind.Identifier);
+    const usedIdentifiers = new Set<string>();
+
+    identifiers.forEach((identifier) => {
+      const parent = identifier.getParent();
+      if (parent && parent.getKind() !== SyntaxKind.FunctionDeclaration) {
+        usedIdentifiers.add(identifier.getText());
+      }
+    });
+
+    return usedIdentifiers;
+  }
+
+  /**
+   * Checks if a function is used or exported.
+   * @param {FunctionDeclaration} functionDecl - The function declaration.
+   * @param {Set<string>} usedIdentifiers - Set of used identifier names.
+   * @returns {boolean} - True if the function is used or exported, false otherwise.
+   */
+  private isFunctionUsedOrExported(
+    functionDecl: FunctionDeclaration,
+    usedIdentifiers: Set<string>
+  ): boolean {
+    const functionName = functionDecl.getName();
+    if (!functionName) return false;
+
+    // Check if the function is used
+    if (usedIdentifiers.has(functionName)) return true;
+
+    // Check if the function is exported
+    if (functionDecl.isExported()) return true;
+
+    return false;
+  }
+
+  /**
+   * Adds a finding for an unused function.
+   * @param {string} functionName - The name of the unused function.
+   * @param {FunctionDeclaration} functionDecl - The function declaration.
+   */
+  private reportUnusedFunction(
+    functionName: string,
+    functionDecl: FunctionDeclaration
+  ): void {
+    this.addFinding(
+      `Function '${functionName}' is declared but never used.`,
+      functionDecl.getSourceFile().getFilePath(),
+      functionDecl.getStartLineNumber()
+    );
   }
 
   /**
@@ -46,21 +84,19 @@ class UnusedFunctionsDetector extends DetectorBase {
    * @returns {Finding[]} - Array of findings with details about the detected issues.
    */
   public run(sourceFile: SourceFile): Finding[] {
-    const functionDeclarations =
-      this.getAllNonExportedFunctionDeclarations(sourceFile);
-    const identifiers = this.getAllIdentifiers(sourceFile);
+    const usedIdentifiers = this.collectUsedIdentifiers(sourceFile);
+    const functionDeclarations = this.getAllFunctionDeclarations(sourceFile);
 
-    const usedIdentifiers = new Set(
-      identifiers.map((identifier) => identifier.getText())
-    );
-
-    functionDeclarations.forEach((func) => {
-      if (!usedIdentifiers.has(func.getName()!)) {
-        this.addFinding(
-          `Function '${func.getName()}' is declared but never used.`,
-          func.getSourceFile().getFilePath(),
-          func.getStartLineNumber()
+    functionDeclarations.forEach((functionDecl) => {
+      const functionName = functionDecl.getName();
+      if (functionName) {
+        const isUsedOrExported = this.isFunctionUsedOrExported(
+          functionDecl,
+          usedIdentifiers
         );
+        if (!isUsedOrExported) {
+          this.reportUnusedFunction(functionName, functionDecl);
+        }
       }
     });
 
