@@ -99,7 +99,6 @@ class DependencyVersioningDetector extends DetectorBase {
   ): void {
     for (const [dependency, version] of Object.entries(dependencies)) {
       if (this.isNonExactVersion(version)) {
-        console.log("Adding finding...");
         this.addFinding(
           `Dependency "${dependency}" has a non-exact version "${version}".`,
           sourceFile.getFilePath()
