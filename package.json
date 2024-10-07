@@ -12,7 +12,7 @@
     "docs": "npx typedoc --options typedoc.json"
   },
   "keywords": [],
-  "author": "",
+  "author": "sayfer",
   "license": "ISC",
   "dependencies": {
     "@metamask/snaps-cli": "^6.3.3",
