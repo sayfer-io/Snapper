@@ -128,13 +128,6 @@ const runSnapServerAndConnect = async (directory: string) => {
       return;
     }
 
-    // Verify if the output file exists
-    const outputFilePath = join(tempDir, "dist", "index.js");
-    if (!existsSync(outputFilePath)) {
-      console.error(`Error: Output file ${outputFilePath} does not exist.`);
-      return;
-    }
-
     // Step 4: Start the Snap server in the background
     startSnapServer(tempDir, port);
 
@@ -182,6 +175,4 @@ const runTestFunction = async (snapInstance: any) => {
 };
 
 // Example usage
-runSnapServerAndConnect(
-  "../testcases/Weak Cryptography/bob-snap/packages/snap"
-);
+runSnapServerAndConnect("../testcases/Improper Input Validation/solflare-snap");
