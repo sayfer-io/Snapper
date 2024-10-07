@@ -21,7 +21,6 @@ describe("DeprecatedFunctionsDetector", () => {
 
   it("should detect usage of deprecated functions", () => {
     const findings = detector.run(sourceFile);
-    console.log(findings); // Add logging to debug
     expect(findings).toHaveLength(1);
     expect(findings[0].description).toBe("Usage of deprecated function: atob");
   });

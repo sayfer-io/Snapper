@@ -39,9 +39,6 @@ describe("DependencyVersioningDetector", () => {
       findings[0].position.filePath
     );
 
-    // Log the absolute path being processed
-    console.log(findings[0].position.filePath);
-
     expect(findings.length).toBe(2);
 
     // Compare descriptions
