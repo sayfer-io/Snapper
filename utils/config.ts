@@ -10,6 +10,7 @@ import logger from "./logger";
  */
 export function configureYargs() {
   return yargs(hideBin(process.argv))
+    .strict() // Ensure only defined options are accepted
     .option("path", {
       alias: "p",
       type: "string",
@@ -37,7 +38,17 @@ export function configureYargs() {
       alias: "o",
       type: "string",
       description: "Specify output file",
-    }).argv as unknown as {
+    })
+    .fail((msg, err, yargs) => {
+      if (err) {
+        console.error(`Error: ${err.message}`);
+      } else {
+        console.error(`Error: ${msg || "Unknown argument provided."}`);
+      }
+      console.log(yargs.help());
+      process.exit(1);
+    })
+    .help().argv as unknown as {
     path: string;
     detector?: string;
     verbose: boolean;
