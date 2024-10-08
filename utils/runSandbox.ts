@@ -1,6 +1,7 @@
 import { join } from "path";
+import fsExtra from "fs-extra";
 import { installSnap } from "@metamask/snaps-jest";
-import { createTempDir } from "./fileUtils";
+import { createTempDir, detectPackageManager } from "./fileUtils";
 import { runCommandDetached, runCommand } from "./commandUtils";
 import { existsSync, cpSync } from "fs";
 
@@ -36,15 +37,6 @@ const copySnapToTempDirectory = (directory: string): string => {
 };
 
 /**
- * Installs dependencies in the temporary directory.
- * @param {string} directory - The directory where dependencies should be installed.
- */
-const installDependencies = (directory: string): void => {
-  console.log("Installing dependencies...");
-  runCommand(`npm install`, directory);
-};
-
-/**
  * Starts the Snap server in the background.
  * @param {string} directory - The directory where the Snap server should be started.
  * @param {number} port - The port number to use for the Snap server.
@@ -59,6 +51,62 @@ const startSnapServer = (directory: string, port: number): void => {
     `npx mm-snap serve --port ${port} --config ${configFile}`,
     directory
   );
+};
+
+/**
+ * Installs dependencies in the temporary directory.
+ * @param {string} tempDir - The path to the temporary directory.
+ * @param {string} packageManager - The package manager to use.
+ */
+const installDependencies = (tempDir: string, packageManager: string): void => {
+  let command: string;
+
+  switch (packageManager) {
+    case "pnpm":
+      command = `pnpm install --lockfile-only --dir "${tempDir}"`;
+      break;
+    case "yarn":
+      command = `yarn install --cwd "${tempDir}"`;
+      break;
+    case "npm":
+      command = `npm install --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`;
+      break;
+    default:
+      throw new Error(`Unsupported package manager: ${packageManager}`);
+  }
+
+  try {
+    const output = runCommand(command, tempDir);
+    console.log(`Lockfile creation output: ${output}`);
+
+    let lockfileName: string;
+
+    switch (packageManager) {
+      case "yarn":
+        lockfileName = "yarn.lock";
+        break;
+      case "pnpm":
+        lockfileName = "pnpm-lock.yaml";
+        break;
+      case "npm":
+      default:
+        lockfileName = "package-lock.json";
+        break;
+    }
+
+    const lockfilePath = join(tempDir, lockfileName);
+    if (!fsExtra.existsSync(lockfilePath)) {
+      throw new Error(`Failed to create lockfile at ${lockfilePath}`);
+    }
+
+    console.log("Lockfile created successfully");
+  } catch (error) {
+    console.log(
+      `Error creating lockfile with ${packageManager}`,
+      error as Error
+    );
+    throw error;
+  }
 };
 
 /**
@@ -116,26 +164,31 @@ const runSnapServerAndConnect = async (directory: string) => {
     const tempDir = copySnapToTempDirectory(snapFolderPath);
     console.log(`Copied Snap directory to temporary directory: ${tempDir}`);
 
-    // Step 2: Install dependencies in the temporary directory
-    installDependencies(tempDir);
+    // Step 2: Detect package manager
+    const packageManager = detectPackageManager(tempDir);
+    console.log(`Detected package manager: ${packageManager}`);
 
-    // Step 3: Build the Snap in the temporary directory
+    // Step 3: Install dependencies in the temporary directory
+    installDependencies(tempDir, packageManager);
+
+    // Step 4: Build the Snap in the temporary directory
     console.log("Building the Snap...");
     try {
+      runCommand(`npm run build`, tempDir);
       runCommand(`npx mm-snap build`, tempDir);
     } catch (buildError) {
       console.error("Error building the Snap:", buildError);
       return;
     }
 
-    // Step 4: Start the Snap server in the background
+    // Step 5: Start the Snap server in the background
     startSnapServer(tempDir, port);
 
     // Wait a bit before connecting to the Snap server
     console.log("Waiting for the Snap server to start...");
     await sleep(5000); // Sleep for 5 seconds
 
-    // Step 5: Concurrently connect to the Snap server with retries
+    // Step 6: Concurrently connect to the Snap server with retries
     console.log("Connecting to the Snap server...");
     const snapInstance = await connectToSnapServer(
       port,
@@ -143,7 +196,7 @@ const runSnapServerAndConnect = async (directory: string) => {
       retryDelay
     );
 
-    // Step 6: Run the test function with the Snap instance
+    // Step 7: Run the test function with the Snap instance
     await runTestFunction(snapInstance);
 
     // Simulate some work being done with the Snap
@@ -175,4 +228,4 @@ const runTestFunction = async (snapInstance: any) => {
 };
 
 // Example usage
-runSnapServerAndConnect("../testcases/Improper Input Validation/solflare-snap");
+runSnapServerAndConnect("../testcases/Uncategorized/starknet-snap");

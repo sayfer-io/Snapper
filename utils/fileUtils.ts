@@ -1,9 +1,10 @@
+import fs from "fs";
+import { readdir } from "fs/promises";
+
 import tmp from "tmp";
 import path from "path";
 
 import logger from "./logger";
-
-import { promises as fs } from "fs";
 
 /**
  * Creates a temporary directory for the package audit.
@@ -38,7 +39,9 @@ async function findTsConfigRecursive(
   currentPath: string,
   tsConfigPaths: string[]
 ): Promise<void> {
-  const entries = await fs.readdir(currentPath, { withFileTypes: true });
+  const entries = await readdir(currentPath, {
+    withFileTypes: true,
+  });
 
   let foundTsConfig = false;
   for (const entry of entries) {
@@ -79,4 +82,20 @@ export function generateTimestampFileName(
     now.getSeconds()
   )}${pad(now.getDate())}${pad(now.getMonth() + 1)}${now.getFullYear()}`;
   return `${filename}-${timestamp}.${extension}`;
+}
+
+export function detectPackageManager(workingDir: string): string {
+  const packageJsonPath = path.resolve(workingDir, "package.json");
+
+  if (fs.existsSync(packageJsonPath)) {
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
+    if (packageJson.packageManager?.startsWith("yarn")) return "yarn";
+    if (packageJson.packageManager?.startsWith("pnpm")) return "pnpm";
+  }
+
+  return fs.existsSync(path.resolve(workingDir, "yarn.lock"))
+    ? "yarn"
+    : fs.existsSync(path.resolve(workingDir, "pnpm-lock.yaml"))
+    ? "pnpm"
+    : "npm";
 }

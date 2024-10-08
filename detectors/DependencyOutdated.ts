@@ -1,13 +1,11 @@
 import path from "path";
-import fs from "fs";
 import fsExtra from "fs-extra";
-import { rmSync, mkdirSync, readFileSync } from "fs";
 import { SourceFile } from "ts-morph";
 import { runCommand } from "../utils/commandUtils";
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
-import { createTempDir } from "../utils/fileUtils";
+import { createTempDir, detectPackageManager } from "../utils/fileUtils";
 
 // Add packageName to the Finding type
 interface AuditCIFinding {
@@ -27,22 +25,6 @@ class DependencyOutdatedDetector extends DetectorBase {
     super("DependencyOutdated", RiskRating.Medium);
   }
 
-  private detectPackageManager(workingDir: string): string {
-    const packageJsonPath = path.resolve(workingDir, "package.json");
-
-    if (fs.existsSync(packageJsonPath)) {
-      const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf-8"));
-      if (packageJson.packageManager?.startsWith("yarn")) return "yarn";
-      if (packageJson.packageManager?.startsWith("pnpm")) return "pnpm";
-    }
-
-    return fs.existsSync(path.resolve(workingDir, "yarn.lock"))
-      ? "yarn"
-      : fs.existsSync(path.resolve(workingDir, "pnpm-lock.yaml"))
-      ? "pnpm"
-      : "npm";
-  }
-
   private createLockfile(tempDir: string, packageManager: string): void {
     let command: string;
 
@@ -51,7 +33,7 @@ class DependencyOutdatedDetector extends DetectorBase {
         command = `pnpm install --lockfile-only --dir "${tempDir}"`;
         break;
       case "yarn":
-        command = `yarn install --ignore-scripts --cwd "${tempDir}"`;
+        command = `yarn install --cwd "${tempDir}"`;
         break;
       case "npm":
         command = `npm install --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`;
@@ -168,7 +150,7 @@ class DependencyOutdatedDetector extends DetectorBase {
 
     const tempDir = createTempDir();
     fsExtra.copySync(path.dirname(filePath), tempDir);
-    const packageManager = this.detectPackageManager(tempDir);
+    const packageManager = detectPackageManager(tempDir);
 
     this.logDebug(`Detected package manager: ${packageManager}`);
 
