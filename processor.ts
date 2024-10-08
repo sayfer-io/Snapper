@@ -29,6 +29,7 @@ const detectors = [
   new Detectors.DeprecatedPermissionsDetector(),
   new Detectors.DependencyOutdatedDetector(),
   new Detectors.DependencyVersioningDetector(),
+  new Detectors.LackOfExceptionHandlingDetector(),
 ];
 
 /**
