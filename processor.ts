@@ -90,15 +90,13 @@ export async function processFiles(
       for (const detector of detectorsToRun) {
         logger.debug(`Running detector: ${detector.getName()}`);
 
-        // Get the initial number of findings
-        const initialFindingsCount = allFindings.length;
-
+        // Run the detector and capture its findings
         detector.run(file as SourceFile);
         const findings = detector.getFindings();
 
-        // Calculate the number of new findings
-        const newFindingsCount = findings.length;
-        const newFindings = findings.slice(initialFindingsCount);
+        // Calculate new findings added by this detector
+        const newFindings = findings.slice(allFindings.length);
+        const newFindingsCount = newFindings.length;
 
         logger.debug(`Found ${newFindingsCount} new findings`);
         findingsCount += newFindingsCount;

@@ -1,14 +1,23 @@
-import os from "os";
 import path from "path";
 import fs from "fs";
 import fsExtra from "fs-extra";
 import { rmSync, mkdirSync, readFileSync } from "fs";
 import { SourceFile } from "ts-morph";
-
+import { runCommand } from "../utils/commandUtils";
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
-import { runCommand } from "../utils/commandUtils";
+import { createTempDir } from "../utils/fileUtils";
+
+// Add packageName to the Finding type
+interface AuditCIFinding {
+  description: string;
+  severity: RiskRating;
+  recommendation?: string;
+  affectedVersion?: string;
+  link?: string;
+  packageName?: string; // Add this line
+}
 
 /**
  * Class to detect outdated dependencies in the source code.
@@ -18,96 +27,34 @@ class DependencyOutdatedDetector extends DetectorBase {
     super("DependencyOutdated", RiskRating.Medium);
   }
 
-  /**
-   * Detects the package manager being used in the project.
-   * @returns {string} - The package manager name ('npm', 'yarn', or 'pnpm').
-   */
   private detectPackageManager(workingDir: string): string {
     const packageJsonPath = path.resolve(workingDir, "package.json");
 
-    // Check if package.json exists
     if (fs.existsSync(packageJsonPath)) {
-      try {
-        const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf-8"));
-
-        // Check for packageManager field in package.json
-        if (packageJson.packageManager) {
-          if (packageJson.packageManager.startsWith("yarn")) {
-            return "yarn";
-          } else if (packageJson.packageManager.startsWith("pnpm")) {
-            return "pnpm";
-          } else if (packageJson.packageManager.startsWith("npm")) {
-            return "npm";
-          }
-        }
-
-        // Check for Yarn-specific fields in package.json
-        if (packageJson.workspaces || packageJson.resolutions) {
-          return "yarn";
-        }
-
-        if (packageJson.scripts) {
-          for (const script of Object.values(packageJson.scripts)) {
-            if (typeof script === "string" && script.includes("yarn")) {
-              return "yarn";
-            }
-          }
-        }
-
-        if (packageJson.dependencies) {
-          for (const dep of Object.values(packageJson.dependencies)) {
-            if (typeof dep === "string" && dep.startsWith("workspace:")) {
-              return "yarn";
-            }
-          }
-        }
-      } catch (error) {
-        console.error("Error reading or parsing package.json:", error);
-      }
+      const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf-8"));
+      if (packageJson.packageManager?.startsWith("yarn")) return "yarn";
+      if (packageJson.packageManager?.startsWith("pnpm")) return "pnpm";
     }
 
-    // Check for lock files
-    const yarnLockPath = path.resolve(workingDir, "yarn.lock");
-    const pnpmLockPath = path.resolve(workingDir, "pnpm-lock.yaml");
-    const npmLockPath = path.resolve(workingDir, "package-lock.json");
-
-    if (fs.existsSync(yarnLockPath)) {
-      return "yarn";
-    } else if (fs.existsSync(pnpmLockPath)) {
-      return "pnpm";
-    } else if (fs.existsSync(npmLockPath)) {
-      return "npm";
-    }
-
-    // Check for Yarn configuration files
-    const yarnRcPath = path.resolve(workingDir, ".yarnrc");
-    const yarnRcYamlPath = path.resolve(workingDir, ".yarnrc.yml");
-
-    if (fs.existsSync(yarnRcPath) || fs.existsSync(yarnRcYamlPath)) {
-      return "yarn";
-    }
-
-    // Default to npm if no specific manager is detected
-    return "npm";
+    return fs.existsSync(path.resolve(workingDir, "yarn.lock"))
+      ? "yarn"
+      : fs.existsSync(path.resolve(workingDir, "pnpm-lock.yaml"))
+      ? "pnpm"
+      : "npm";
   }
 
-  /**
-   * Creates a lockfile in the temporary directory.
-   * @param {string} tempDir - The path to the temporary directory.
-   * @param {string} packageManager - The package manager to use ('npm', 'yarn', or 'pnpm').
-   */
   private createLockfile(tempDir: string, packageManager: string): void {
     let command: string;
 
     switch (packageManager) {
       case "pnpm":
-        command = `pnpm install --lockfile-only --dir "${tempDir}"`; // 2>/dev/null
+        command = `pnpm install --lockfile-only --dir "${tempDir}"`;
         break;
       case "yarn":
-        command = `yarn install --ignore-scripts --cwd "${tempDir}"`; // 2>/dev/null
+        command = `yarn install --ignore-scripts --cwd "${tempDir}"`;
         break;
       case "npm":
-        command = `npm install --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`; // 2>/dev/null
+        command = `npm install --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`;
         break;
       default:
         throw new Error(`Unsupported package manager: ${packageManager}`);
@@ -148,109 +95,95 @@ class DependencyOutdatedDetector extends DetectorBase {
   }
 
   /**
-   * Runs the audit command in the temporary directory.
+   * Runs the audit-ci command and parses the JSON output for vulnerabilities.
    * @param {string} tempDir - The path to the temporary directory.
-   * @param {string} packageManager - The package manager to use ('npm' or 'pnpm').
-   * @returns {any[]} - An array of vulnerabilities.
+   * @param {string} packageManager - The package manager to use ('npm', 'yarn', or 'pnpm').
+   * @returns {AuditCIFinding[]} - An array of findings with details about the detected issues.
    */
-  private runAudit(tempDir: string, packageManager: string): any[] {
-    let command: string;
-
-    switch (packageManager) {
-      case "pnpm":
-        command = `pnpm audit --json --dir "${tempDir}"`; // 2>/dev/null
-        break;
-      case "yarn":
-        command = `yarn audit --json --cwd "${tempDir}"`; // 2>/dev/null
-        break;
-      case "npm":
-        command = `npm audit --json --prefix "${tempDir}"`; // 2>/dev/null
-        break;
-      default:
-        throw new Error(`Unsupported package manager: ${packageManager}`);
-    }
-
+  private runAuditCi(
+    tempDir: string,
+    packageManager: string
+  ): AuditCIFinding[] {
+    const command = `npx audit-ci --${packageManager} --json --report-type full`;
     const stdout = runCommand(command, tempDir);
-    this.logDebug("STDOUT: " + stdout);
+    this.logDebug("[DependencyOutdated] Audit-CI output: " + stdout);
+
+    const findings: AuditCIFinding[] = [];
+
+    // Locate the start and end of the JSON block in stdout
+    const jsonStart = stdout.indexOf("{");
+    const jsonEnd = stdout.lastIndexOf("}") + 1;
+
+    if (jsonStart === -1 || jsonEnd === -1) {
+      this.logError(
+        "[DependencyOutdated] No JSON output found in audit-ci response."
+      );
+      return findings;
+    }
+
     try {
-      const auditResult = JSON.parse(stdout);
-      return auditResult.advisories
-        ? Object.values(auditResult.advisories)
-        : [];
+      const auditResult = JSON.parse(stdout.slice(jsonStart, jsonEnd));
+      const vulnerabilities = auditResult.vulnerabilities;
+
+      for (const [packageName, details] of Object.entries(vulnerabilities)) {
+        const detail = details as any;
+        const vulnerabilityDescription = detail.via
+          .map((v: any) => v.title)
+          .join(", ");
+        findings.push({
+          packageName,
+          description: `Vulnerable package ${packageName} found: ${vulnerabilityDescription}`,
+          severity: this.mapSeverityToRiskRating(detail.severity),
+          recommendation: detail.fixAvailable
+            ? `Upgrade to ${detail.fixAvailable.name} version ${detail.fixAvailable.version}`
+            : "No fix available",
+          affectedVersion: detail.range,
+          link: detail.via.map((v: any) => v.url).join(", "),
+        });
+      }
     } catch (error) {
-      this.logError("Failed to parse audit output as JSON", error as Error);
-      return [];
+      this.logError(
+        "[DependencyOutdated] Failed to parse audit-ci output as JSON",
+        error as Error
+      );
     }
+    return findings;
   }
 
-  /**
-   * Cleans up the temporary directory.
-   * @param {string} tempDir - The path to the temporary directory.
-   */
-  private cleanUpTempDir(tempDir: string): void {
-    rmSync(tempDir, { recursive: true, force: true });
-  }
-
-  /**
-   * Maps the severity string to a RiskRating enum.
-   * @param {string} severity - The severity string.
-   * @returns {RiskRating} - The corresponding RiskRating enum value.
-   */
   private mapSeverityToRiskRating(severity: string): RiskRating {
-    switch (severity) {
-      case "critical":
-        return RiskRating.Critical;
-      case "high":
-        return RiskRating.High;
-      case "moderate":
-        return RiskRating.Medium;
-      case "low":
-        return RiskRating.Low;
-      default:
-        return RiskRating.Informational;
-    }
+    return (
+      {
+        critical: RiskRating.Critical,
+        high: RiskRating.High,
+        moderate: RiskRating.Medium,
+        low: RiskRating.Low,
+      }[severity] || RiskRating.Informational
+    );
   }
 
-  /**
-   * Checks if the file is package.json.
-   * @param {string} filePath - The path of the file.
-   * @returns {boolean} - True if the file is package.json, false otherwise.
-   */
-  private isPackageJson(filePath: string): boolean {
-    return path.basename(filePath) === "package.json";
-  }
-
-  /**
-   * Runs the detector on the given source file.
-   * @param {SourceFile} sourceFile - The source file to analyze.
-   * @returns {Finding[]} - Array of findings with details about the detected issues.
-   */
   public run(sourceFile: SourceFile): Finding[] {
     const filePath = sourceFile.getFilePath();
 
-    if (!this.isPackageJson(filePath)) {
+    if (!filePath.endsWith("package.json")) return [];
+
+    const tempDir = createTempDir();
+    fsExtra.copySync(path.dirname(filePath), tempDir);
+    const packageManager = this.detectPackageManager(tempDir);
+
+    this.logDebug(`Detected package manager: ${packageManager}`);
+
+    try {
+      this.createLockfile(tempDir, packageManager);
+    } catch (error) {
+      this.logError("Failed to create a lockfile", error as Error);
       return [];
     }
 
-    const tempDir = path.join(os.tmpdir(), "dependency-outdated-temp");
-    mkdirSync(tempDir, { recursive: true });
-
-    const projectDir = path.dirname(filePath);
-    fsExtra.copySync(projectDir, tempDir);
-
-    const packageManager = this.detectPackageManager(tempDir);
-    this.logDebug(`Detected package manager: ${packageManager}`);
-
-    this.createLockfile(tempDir, packageManager);
-
-    const vulnerabilities = this.runAudit(tempDir, packageManager);
-    this.cleanUpTempDir(tempDir);
+    const vulnerabilities = this.runAuditCi(tempDir, packageManager);
 
     vulnerabilities.forEach((vulnerability) => {
-      this.addFinding(
-        `Detected vulnerable dependency ${vulnerability.module_name} (${vulnerability.vulnerable_versions})`,
-        filePath
-      );
+      const description = `Vulnerability in ${vulnerability.packageName} version ${vulnerability.affectedVersion}: ${vulnerability.description}`;
+      this.addFinding(description, filePath, vulnerability.severity);
     });
 
     return this.getFindings();

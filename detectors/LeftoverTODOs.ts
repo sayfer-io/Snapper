@@ -45,6 +45,7 @@ class LeftoverTODOsDetector extends DetectorBase {
    */
   public run(sourceFile: SourceFile): Finding[] {
     const commentRanges = this.getCommentRanges(sourceFile);
+    const reportedTodos = new Set<string>();
 
     commentRanges.forEach((comment) => {
       if (this.isJSDocComment(comment)) {
@@ -55,11 +56,18 @@ class LeftoverTODOsDetector extends DetectorBase {
 
       // Detect leftover TODOs
       if (commentText.includes("TODO")) {
-        this.addFinding(
-          "Leftover TODO comment detected.",
-          sourceFile.getFilePath(),
+        const todoLocation = `${sourceFile.getFilePath()}:${
           sourceFile.getLineAndColumnAtPos(comment.getPos()).line
-        );
+        }`;
+
+        if (!reportedTodos.has(todoLocation)) {
+          this.addFinding(
+            "Leftover TODO comment detected.",
+            sourceFile.getFilePath(),
+            sourceFile.getLineAndColumnAtPos(comment.getPos()).line
+          );
+          reportedTodos.add(todoLocation);
+        }
       }
     });
 

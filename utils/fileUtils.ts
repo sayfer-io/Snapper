@@ -1,5 +1,19 @@
+import tmp from "tmp";
 import path from "path";
+
+import logger from "./logger";
+
 import { promises as fs } from "fs";
+
+/**
+ * Creates a temporary directory for the package audit.
+ * Automatically cleans up the directory when done.
+ */
+export function createTempDir(): string {
+  const tempDir = tmp.dirSync({ unsafeCleanup: true });
+  logger.debug(`A temporary folder was created at ${tempDir.name}`);
+  return tempDir.name;
+}
 
 /**
  * Finds all `tsconfig.json` files in the given project path.

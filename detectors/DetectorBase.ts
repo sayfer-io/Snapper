@@ -34,7 +34,7 @@ export abstract class DetectorBase {
       },
       riskRating: this.riskRating,
     };
-    this.logDebug(`Adding finding...`);
+    this.logDebug(`Adding finding - ${description}`);
     this.findings.push(finding);
   }
 
