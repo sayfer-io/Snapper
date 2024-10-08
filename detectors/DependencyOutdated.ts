@@ -14,7 +14,7 @@ interface AuditCIFinding {
   recommendation?: string;
   affectedVersion?: string;
   link?: string;
-  packageName?: string; // Add this line
+  packageName?: string;
 }
 
 /**
