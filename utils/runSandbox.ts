@@ -1,8 +1,8 @@
 import { join } from "path";
 import { installSnap } from "@metamask/snaps-jest";
+import { createTempDir } from "./fileUtils";
 import { runCommandDetached, runCommand } from "./commandUtils";
-import { existsSync, mkdtempSync, cpSync } from "fs";
-import { tmpdir } from "os";
+import { existsSync, cpSync } from "fs";
 
 /**
  * Sleeps for the specified number of milliseconds.
@@ -30,7 +30,7 @@ const verifyDirectoryExists = (directory: string): void => {
  * @returns {string} The path to the temporary directory.
  */
 const copySnapToTempDirectory = (directory: string): string => {
-  const tempDir = mkdtempSync(join(tmpdir(), "snap-"));
+  const tempDir = createTempDir();
   cpSync(directory, tempDir, { recursive: true });
   return tempDir;
 };

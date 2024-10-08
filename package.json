@@ -15,9 +15,9 @@
   "author": "sayfer.io",
   "license": "ISC",
   "dependencies": {
-    "@metamask/snaps-cli": "^6.3.3",
-    "@metamask/snaps-jest": "^8.4.0",
-    "@metamask/snaps-simulation": "^1.0.1",
+    "@metamask/snaps-cli": "^6.3.4",
+    "@metamask/snaps-jest": "^8.5.0",
+    "@metamask/snaps-simulation": "^1.1.0",
     "audit-ci": "^7.1.0",
     "fs-extra": "^11.2.0",
     "package-json": "^10.0.1",
