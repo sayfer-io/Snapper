@@ -30,9 +30,11 @@ class UsedBeforeDefinedInterfacesDetector extends DetectorBase {
         const parent = node.getParent();
         if (parent && Node.isTypeReference(parent)) {
           const name = node.getText();
-          if (!interfaceUsages[name]) {
+
+          if (!Array.isArray(interfaceUsages[name])) {
             interfaceUsages[name] = [];
           }
+
           interfaceUsages[name].push(node.getStartLineNumber());
         }
       }

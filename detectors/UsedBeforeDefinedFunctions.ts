@@ -33,9 +33,11 @@ class UsedBeforeDefinedFunctionsDetector extends DetectorBase {
         const expression = node.getExpression();
         if (Node.isIdentifier(expression)) {
           const name = expression.getText();
-          if (!functionUsages[name]) {
+
+          if (!Array.isArray(functionUsages[name])) {
             functionUsages[name] = [];
           }
+
           functionUsages[name].push(node.getStartLineNumber());
         }
       }

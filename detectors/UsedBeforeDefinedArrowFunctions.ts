@@ -33,9 +33,11 @@ class UsedBeforeDefinedArrowFunctionsDetector extends DetectorBase {
         const parent = node.getParent();
         if (parent && Node.isCallExpression(parent)) {
           const name = node.getText();
-          if (!arrowFunctionUsages[name]) {
+
+          if (!Array.isArray(arrowFunctionUsages[name])) {
             arrowFunctionUsages[name] = [];
           }
+
           arrowFunctionUsages[name].push(node.getStartLineNumber());
         }
       }
