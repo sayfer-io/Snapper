@@ -2,5 +2,11 @@
   "name": "Snapper Project",
   "entryPoints": ["./**/*.ts"],
   "out": "docs",
-  "exclude": ["testcases/**/*", "**/testcases/**", "**/test/**"]
+  "exclude": [
+    "testcases/**/*",
+    "**/testcases/**",
+    "**/test/**",
+    "**/temp/**",
+    "**/localtests/**"
+  ]
 }
