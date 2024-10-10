@@ -67,7 +67,7 @@ const installDependencies = (tempDir: string, packageManager: string): void => {
       command = `pnpm install --silent --lockfile-only --dir "${tempDir}"`;
       break;
     case "yarn":
-      command = `yarn install --silent`;
+      command = `yarn install --no-progress --silent`;
       break;
     case "npm":
       command = `npm install --silent --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`;
