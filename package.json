@@ -24,6 +24,7 @@
     "pacote": "^19.0.0",
     "recast": "^0.23.9",
     "tmp": "^0.2.3",
+    "typedoc-plugin-markdown": "^4.2.9",
     "winston": "^3.14.2",
     "yargs": "^17.7.2"
   },

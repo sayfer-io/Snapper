@@ -8,5 +8,6 @@
     "**/test/**",
     "**/temp/**",
     "**/localtests/**"
-  ]
+  ],
+  "plugin": ["typedoc-plugin-markdown"]
 }
