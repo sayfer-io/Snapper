@@ -38,7 +38,7 @@ class DependencyOutdatedDetector extends DetectorBase {
         command = `pnpm install --silent --lockfile-only --dir "${tempDir}"`;
         break;
       case "yarn":
-        command = `yarn install --no-progress --silent --cwd "${tempDir}"`;
+        command = `yarn install --silent --cwd "${tempDir}"`;
         break;
       case "npm":
         command = `npm install --silent --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`;
