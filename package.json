@@ -18,6 +18,7 @@
     "@metamask/snaps-cli": "^6.3.4",
     "@metamask/snaps-jest": "^8.5.0",
     "@metamask/snaps-simulation": "^1.1.0",
+    "@metamask/approval-controller": "^7.0.0",
     "audit-ci": "^7.1.0",
     "fs-extra": "^11.2.0",
     "package-json": "^10.0.1",
@@ -26,11 +27,15 @@
     "tmp": "^0.2.3",
     "typedoc-plugin-markdown": "^4.2.9",
     "winston": "^3.14.2",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "@babel/runtime": "^7.0.0",
+    "webextension-polyfill": "^0.12.0"
   },
   "resolutions": {
-    "@metamask/snaps-execution-environments": "6.9.0",
-    "@metamask/snaps-controllers/@metamask/snaps-execution-environments": "6.9.0"
+    "@metamask/snaps-execution-environments": "6.9.1",
+    "@metamask/snaps-controllers/@metamask/snaps-execution-environments": "6.9.1",
+    "glob": "^9.0.0",
+    "inflight": "^1.0.6"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
@@ -46,5 +51,9 @@
     "ts-node": "^10.9.2",
     "typedoc": "^0.26.7",
     "typescript": "^5.6.2"
+  },
+  "engines": {
+    "node": ">=18.18.0",
+    "yarn": "^1.22.22"
   }
 }
