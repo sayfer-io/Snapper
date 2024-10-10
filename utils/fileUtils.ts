@@ -93,9 +93,9 @@ export function detectPackageManager(workingDir: string): string {
     if (packageJson.packageManager?.startsWith("pnpm")) return "pnpm";
   }
 
-  return fs.existsSync(path.resolve(workingDir, "yarn.lock"))
-    ? "yarn"
-    : fs.existsSync(path.resolve(workingDir, "pnpm-lock.yaml"))
-    ? "pnpm"
-    : "npm";
+  if (fs.existsSync(path.resolve(workingDir, "yarn.lock"))) return "yarn";
+
+  if (fs.existsSync(path.resolve(workingDir, "pnpm-lock.yaml"))) return "pnpm";
+
+  return "npm";
 }

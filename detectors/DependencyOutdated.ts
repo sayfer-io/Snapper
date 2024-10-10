@@ -7,7 +7,6 @@ import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 import { createTempDir, detectPackageManager } from "../utils/fileUtils";
 
-// Add packageName to the Finding type
 interface AuditCIFinding {
   description: string;
   severity: RiskRating;
@@ -25,18 +24,24 @@ class DependencyOutdatedDetector extends DetectorBase {
     super("DependencyOutdated", RiskRating.Medium);
   }
 
+  /**
+   * Creates a lockfile using the specified package manager.
+   * @param {string} tempDir - The path to the temporary directory.
+   * @param {string} packageManager - The package manager to use ('npm', 'yarn', or 'pnpm').
+   * @throws Will throw an error if the lockfile creation fails.
+   */
   private createLockfile(tempDir: string, packageManager: string): void {
     let command: string;
 
     switch (packageManager) {
       case "pnpm":
-        command = `pnpm install --lockfile-only --dir "${tempDir}"`;
+        command = `pnpm install --silent --lockfile-only --dir "${tempDir}"`;
         break;
       case "yarn":
-        command = `yarn install --cwd "${tempDir}"`;
+        command = `yarn install --silent --cwd "${tempDir}"`;
         break;
       case "npm":
-        command = `npm install --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`;
+        command = `npm install --silent --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`;
         break;
       default:
         throw new Error(`Unsupported package manager: ${packageManager}`);
@@ -79,59 +84,68 @@ class DependencyOutdatedDetector extends DetectorBase {
   /**
    * Runs the audit-ci command and parses the JSON output for vulnerabilities.
    * @param {string} tempDir - The path to the temporary directory.
-   * @param {string} packageManager - The package manager to use ('npm', 'yarn', or 'pnpm').
    * @returns {AuditCIFinding[]} - An array of findings with details about the detected issues.
    */
-  private runAuditCi(
-    tempDir: string,
-    packageManager: string
-  ): AuditCIFinding[] {
-    const command = `npx audit-ci --${packageManager} --json --report-type full`;
-    const stdout = runCommand(command, tempDir);
-    this.logDebug("[DependencyOutdated] Audit-CI output: " + stdout);
+  private runAuditCi(tempDir: string): AuditCIFinding[] {
+    const command = `npx audit-ci --output-format json --report-type full`;
+    let stdout = runCommand(command, tempDir);
+    this.logDebug("Audit-CI output: " + stdout);
+    this.logDebug("End of Audit-CI output.");
+
+    if (stdout.trim().length === 0) {
+      this.logError("No output found in audit-ci response.");
+      return [];
+    }
 
     const findings: AuditCIFinding[] = [];
 
-    // Locate the start and end of the JSON block in stdout
-    const jsonStart = stdout.indexOf("{");
-    const jsonEnd = stdout.lastIndexOf("}") + 1;
+    let jsonObjects = stdout
+      .trim()
+      .split("\n}\n")
+      .map((obj) => obj.trim() + "}")
+      .filter(Boolean);
 
-    if (jsonStart === -1 || jsonEnd === -1) {
-      this.logError(
-        "[DependencyOutdated] No JSON output found in audit-ci response."
-      );
+    if (jsonObjects.length < 1) {
+      this.logError("No JSON output found in audit-ci response.");
       return findings;
     }
 
-    try {
-      const auditResult = JSON.parse(stdout.slice(jsonStart, jsonEnd));
-      const vulnerabilities = auditResult.vulnerabilities;
+    jsonObjects[jsonObjects.length - 1] = jsonObjects[
+      jsonObjects.length - 1
+    ].slice(0, -1);
 
-      for (const [packageName, details] of Object.entries(vulnerabilities)) {
-        const detail = details as any;
-        const vulnerabilityDescription = detail.via
-          .map((v: any) => v.title)
-          .join(", ");
-        findings.push({
-          packageName,
-          description: `Vulnerable package ${packageName} found: ${vulnerabilityDescription}`,
-          severity: this.mapSeverityToRiskRating(detail.severity),
-          recommendation: detail.fixAvailable
-            ? `Upgrade to ${detail.fixAvailable.name} version ${detail.fixAvailable.version}`
-            : "No fix available",
-          affectedVersion: detail.range,
-          link: detail.via.map((v: any) => v.url).join(", "),
-        });
-      }
-    } catch (error) {
-      this.logError(
-        "[DependencyOutdated] Failed to parse audit-ci output as JSON",
-        error as Error
-      );
-    }
+    jsonObjects.forEach((jsonString) => {
+      const auditResult = JSON.parse(jsonString);
+      if (!auditResult || !auditResult.data || !auditResult.data.advisory)
+        return;
+
+      const advisory = auditResult.data.advisory;
+
+      const vulnerabilityURLs = advisory.references
+        .split("\n")
+        .filter((url: string) => url.trim().startsWith("http"))
+        .join(", ");
+
+      const recommendation = advisory.recommendation || "No fix available";
+
+      findings.push({
+        packageName: advisory.module_name,
+        description: advisory.title,
+        severity: this.mapSeverityToRiskRating(advisory.severity),
+        recommendation: recommendation,
+        affectedVersion: advisory.vulnerable_versions,
+        link: vulnerabilityURLs,
+      });
+    });
+
     return findings;
   }
 
+  /**
+   * Maps the severity string to a RiskRating enum.
+   * @param {string} severity - The severity string.
+   * @returns {RiskRating} - The corresponding RiskRating enum.
+   */
   private mapSeverityToRiskRating(severity: string): RiskRating {
     return (
       {
@@ -143,6 +157,11 @@ class DependencyOutdatedDetector extends DetectorBase {
     );
   }
 
+  /**
+   * Runs the dependency outdated detector on the given source file.
+   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @returns {Finding[]} - An array of findings with details about the detected issues.
+   */
   public run(sourceFile: SourceFile): Finding[] {
     const filePath = sourceFile.getFilePath();
 
@@ -161,7 +180,7 @@ class DependencyOutdatedDetector extends DetectorBase {
       return [];
     }
 
-    const vulnerabilities = this.runAuditCi(tempDir, packageManager);
+    const vulnerabilities = this.runAuditCi(tempDir);
 
     vulnerabilities.forEach((vulnerability) => {
       const description = `Vulnerability in ${vulnerability.packageName} version ${vulnerability.affectedVersion}: ${vulnerability.description}`;
