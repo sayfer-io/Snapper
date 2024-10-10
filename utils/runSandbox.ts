@@ -1,5 +1,4 @@
 import { join } from "path";
-import fsExtra from "fs-extra";
 import { installSnap } from "@metamask/snaps-jest";
 import { createTempDir, detectPackageManager } from "./fileUtils";
 import { runCommandDetached, runCommand } from "./commandUtils";
@@ -97,20 +96,25 @@ const connectToSnapServer = async (
   retryDelay: number
 ): Promise<any> => {
   let retries = 0;
+
   while (retries < maxRetries) {
     try {
       const snapId: any = `local:http://localhost:${port}`;
-      const snapInstance = await installSnap(snapId);
-      // Add any additional logic for connecting to the Snap server here
-      return snapInstance;
+      const { request, onHomePage, onTransaction } = await installSnap(snapId);
+      console.log("Connected to the Snap server.");
+      return { request, onHomePage, onTransaction };
     } catch (error) {
       retries++;
       if (retries >= maxRetries) {
         throw new Error(
-          "Failed to connect to the Snap server after multiple attempts."
+          `Failed to connect to the Snap server after ${maxRetries} attempts.`
         );
       }
-      console.log("Error connecting to the Snap server:", error);
+
+      console.log(
+        "Error connecting to the Snap server:",
+        error instanceof Error ? error.message : error
+      );
       console.log(
         `Retrying to connect to the Snap server... (${retries}/${maxRetries})`
       );
@@ -166,12 +170,12 @@ const runSnapServerAndConnect = async (directory: string) => {
     await sleep(5000); // Sleep for 5 seconds
 
     // // Step 6: Concurrently connect to the Snap server with retries
-    // console.log("Connecting to the Snap server...");
-    // const snapInstance = await connectToSnapServer(
-    //   port,
-    //   maxRetries,
-    //   retryDelay
-    // );
+    console.log("Connecting to the Snap server...");
+    const snapInstance = await connectToSnapServer(
+      port,
+      maxRetries,
+      retryDelay
+    );
 
     // // Step 7: Run the test function with the Snap instance
     // await runTestFunction(snapInstance);
