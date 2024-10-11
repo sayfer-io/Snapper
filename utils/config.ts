@@ -1,6 +1,5 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import logger from "./logger";
 
 /**
  * Configures command-line arguments using yargs.
@@ -39,6 +38,11 @@ export function configureYargs() {
         type: "string",
         description: "Specify output file",
       },
+      logFile: {
+        alias: "l",
+        type: "string",
+        description: "Specify log file path",
+      },
     })
     .fail((msg, err, yargs) => {
       const errorMessage = err
@@ -54,14 +58,6 @@ export function configureYargs() {
     verbose: boolean;
     recursive: boolean;
     output?: string;
+    logFile?: string;
   };
-}
-
-/**
- * Sets up the logger based on the verbosity flag.
- *
- * @param {boolean} verbose - Flag to enable verbose logging.
- */
-export function setupLogger(verbose: boolean) {
-  logger.level = verbose ? "debug" : "info";
 }

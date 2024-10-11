@@ -2,21 +2,12 @@ import { createLogger, format, transports } from "winston";
 import { TransformableInfo } from "logform";
 
 /**
- * Creates a logger instance with specified configuration.
+ * Generates the log format.
  *
- * The logger is configured to:
- * - Use 'info' as the default logging level.
- * - Colorize the output.
- * - Add timestamps to log messages.
- * - Format log messages as: `timestamp [level]: message`.
- * - Output logs to the console.
- *
- * @returns {Logger} - A configured Winston logger instance.
+ * @returns {Format} - The log format.
  */
-const logger = createLogger({
-  level: "info",
-  format: format.combine(
-    format.colorize(),
+const generateLogFormat = () =>
+  format.combine(
     format.timestamp(),
     format.printf((info: TransformableInfo) => {
       const { timestamp, level, message } = info as TransformableInfo & {
@@ -24,8 +15,40 @@ const logger = createLogger({
       };
       return `${timestamp} [${level}]: ${message}`;
     })
-  ),
-  transports: [new transports.Console()],
+  );
+
+const logger = createLogger({
+  level: "info",
+  format: generateLogFormat(),
+  transports: [
+    new transports.Console({
+      format: format.combine(format.colorize(), generateLogFormat()),
+    }),
+  ],
 });
+
+/**
+ * Sets up the logger based on the verbosity flag.
+ *
+ * @param {boolean} verbose - Flag to enable verbose logging.
+ * @param {string} [logFilePath] - Optional path to the log file.
+ */
+export function enableLogVerbosity(verbose: boolean): void {
+  logger.level = verbose ? "debug" : "info";
+}
+
+/**
+ * Enables logging to a file.
+ *
+ * @param {string} logFilePath - The path to the log file.
+ */
+export function enableLogFile(logFilePath: string): void {
+  logger.add(
+    new transports.File({
+      filename: logFilePath,
+      format: generateLogFormat(),
+    })
+  );
+}
 
 export default logger;

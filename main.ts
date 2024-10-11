@@ -1,7 +1,8 @@
 import { promises as fs } from "fs";
 
 import logger from "./utils/logger";
-import { configureYargs, setupLogger } from "./utils/config";
+import { enableLogFile, enableLogVerbosity } from "./utils/logger";
+import { configureYargs } from "./utils/config";
 import { processFiles } from "./processor";
 import { generateTimestampFileName } from "./utils/fileUtils";
 
@@ -12,7 +13,12 @@ import { generateTimestampFileName } from "./utils/fileUtils";
  */
 async function main(): Promise<void> {
   const argv = configureYargs();
-  setupLogger(argv.verbose);
+  if (argv.verbose) {
+    enableLogVerbosity(argv.verbose);
+  }
+  if (argv.logFile) {
+    enableLogFile(argv.logFile);
+  }
 
   try {
     const projectPath = argv.path;
