@@ -16,7 +16,7 @@ export abstract class DetectorBase {
   }
 
   // Abstract method that each detector must implement
-  abstract run(file: SourceFile): Finding[];
+  abstract run(file: SourceFile):Finding[] | Promise<Finding[]>;
 
   /**
    * Adds a finding to the findings array.
