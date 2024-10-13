@@ -15,16 +15,40 @@ jobs:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - name: Set SonarCloud URL
+      - name: Extract SonarCloud Project URL
         run: |
-          echo "SONAR_URL=https://sonarcloud.io/project/overview?id=${{ github.repository_owner }}_${{ github.event.repository.name }}" >> $GITHUB_ENV
+          REPORT_FILE=$(find . -name "report-task.txt" | head -n 1)
+          if [ -f "$REPORT_FILE" ]; then
+            SONAR_PROJECT_URL=$(grep dashboardUrl= "$REPORT_FILE" | cut -d'=' -f2-)
+            echo "SONAR_PROJECT_URL=$SONAR_PROJECT_URL" >> $GITHUB_ENV
+          else
+            echo "SonarCloud report file not found"
+            exit 1
+          fi
+      - name: Update Check Run with SonarCloud URL
+        uses: actions/github-script@v6
+        if: always()
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const { SONAR_PROJECT_URL } = process.env;
+            if (SONAR_PROJECT_URL) {
+              await github.rest.checks.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                check_run_id: context.runId,
+                details_url: SONAR_PROJECT_URL
+              });
+            }
       - name: Create custom output
+        id: create-custom-output
         uses: actions/github-script@v6
         with:
           script: |
             const fs = require('fs');
-            fs.writeFileSync(process.env.GITHUB_STEP_SUMMARY, `## SonarCloud Analysis\n[View on SonarCloud](${process.env.SONAR_URL})`);
-            core.setOutput('sonar-url', process.env.SONAR_URL);
+            fs.writeFileSync(process.env.GITHUB_STEP_SUMMARY, `## SonarCloud Analysis\n[View on SonarCloud](${process.env.SONAR_PROJECT_URL})`);
+            core.setOutput('sonar-url', process.env.SONAR_PROJECT_URL);
     outputs:
       sonar-url: ${{ steps.create-custom-output.outputs.sonar-url }}
