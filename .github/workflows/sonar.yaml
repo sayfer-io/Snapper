@@ -16,4 +16,8 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
+      - name: Create custom summary
+        run: |
+          echo "### SonarCloud Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "Click the button below to view the SonarCloud dashboard:" >> $GITHUB_STEP_SUMMARY
+          echo "[![View on SonarCloud](https://img.shields.io/badge/View%20on-SonarCloud-blue)](https://sonarcloud.io/project/overview?id=${{ github.repository_owner }}_${{ github.event.repository.name }})" >> $GITHUB_STEP_SUMMARY
