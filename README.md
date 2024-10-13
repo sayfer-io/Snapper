@@ -1,4 +1,6 @@
-# Snapper
+# Snapper 🐠
+Snapper aims to improve the overall security and reliability of Metamask Snaps by identifying vulnerabilities, potential issues, and ensuring best coding practices.
+
 
 ## Preparing the Environment
 
