@@ -11,13 +11,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      - name: Create custom summary
+      - name: Set SonarCloud URL
         run: |
-          echo "### SonarCloud Analysis" >> $GITHUB_STEP_SUMMARY
-          echo "Click the button below to view the SonarCloud dashboard:" >> $GITHUB_STEP_SUMMARY
-          echo "[![View on SonarCloud](https://img.shields.io/badge/View%20on-SonarCloud-blue)](https://sonarcloud.io/project/overview?id=${{ github.repository_owner }}_${{ github.event.repository.name }})" >> $GITHUB_STEP_SUMMARY
+          echo "SONAR_URL=https://sonarcloud.io/project/overview?id=${{ github.repository_owner }}_${{ github.event.repository.name }}" >> $GITHUB_ENV
+      - name: Create custom output
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            fs.writeFileSync(process.env.GITHUB_STEP_SUMMARY, `## SonarCloud Analysis\n[View on SonarCloud](${process.env.SONAR_URL})`);
+            core.setOutput('sonar-url', process.env.SONAR_URL);
+    outputs:
+      sonar-url: ${{ steps.create-custom-output.outputs.sonar-url }}
