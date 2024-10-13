@@ -69,6 +69,11 @@ export async function processFiles(
 
     let findingsCount = 0;
     for (const file of files) {
+      // Skip files in node_modules, could not make it work with the glob pattern
+      if (file.getFilePath().includes('/node_modules/')) {
+        continue;
+      }
+
       logger.debug(`Processing file: ${file.getFilePath()}`);
 
       let detectorsToRun = detectors;
@@ -93,7 +98,7 @@ export async function processFiles(
         logger.debug(`Running detector: ${detector.getName()}`);
 
         // Run the detector and capture its findings
-        detector.run(file as SourceFile);
+        await detector.run(file as SourceFile);
         const findings = detector.getFindings();
 
         // Calculate new findings added by this detector
