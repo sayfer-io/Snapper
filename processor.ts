@@ -30,6 +30,7 @@ const detectors = [
   new Detectors.DependencyOutdatedDetector(),
   new Detectors.DependencyVersioningDetector(),
   new Detectors.LackOfExceptionHandlingDetector(),
+  new Detectors.OriginValidation(),
 ];
 
 /**

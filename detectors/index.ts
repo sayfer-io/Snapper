@@ -41,4 +41,5 @@ export { UnusedPermissionsDetector } from "./UnusedPermissions";
 export { DeprecatedPermissionsDetector } from "./DeprecatedPermissions";
 export { DependencyOutdatedDetector } from "./DependencyOutdated";
 export { DependencyVersioningDetector } from "./DependencyVersioning";
+export { OriginValidation } from "./OriginValidation";
 export { LackOfExceptionHandlingDetector } from "./LackOfExceptionHandling";
