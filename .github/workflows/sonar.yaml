@@ -4,6 +4,11 @@ on:
     branches: [main, develop, building-ci-cd]
   pull_request:
     types: [opened, synchronize, reopened]
+
+permissions:
+  checks: write
+  pull-requests: write
+
 jobs:
   sonarcloud:
     name: SonarCloud
@@ -35,12 +40,31 @@ jobs:
           script: |
             const { SONAR_PROJECT_URL } = process.env;
             if (SONAR_PROJECT_URL) {
-              await github.rest.checks.update({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                check_run_id: context.runId,
-                details_url: SONAR_PROJECT_URL
-              });
+              try {
+                const { data: checkRuns } = await github.rest.checks.listForRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: context.sha,
+                  check_name: 'SonarCloud'
+                });
+                
+                if (checkRuns.total_count > 0) {
+                  const checkRunId = checkRuns.check_runs[0].id;
+                  await github.rest.checks.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    check_run_id: checkRunId,
+                    details_url: SONAR_PROJECT_URL
+                  });
+                  console.log(`Successfully updated check run with ID ${checkRunId}`);
+                } else {
+                  console.log('No matching check run found');
+                }
+              } catch (error) {
+                console.error('Error updating check run:', error);
+              }
+            } else {
+              console.log('SONAR_PROJECT_URL not found');
             }
       - name: Create custom output
         id: create-custom-output
