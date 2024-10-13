@@ -15,17 +15,19 @@ class OriginValidation extends DetectorBase {
   private async hasDomainAllowList() {
     const snapId: any = 'local:http://localhost:3333';
     const {request} = await installSnap(snapId)
-    let hasErrored = false;
+    let blockedOrigin = false;
 
     const {response}: any = await request({
       origin: "https://theansweris42.com:4242",
       method: "hello",
       params: [],
     })
-    if (response.error) {
-      hasErrored = true;
+
+    if (response.error && !response.error.message.toLowerCase().includes("method")) {
+      blockedOrigin = true;
     }
-    return hasErrored
+
+    return blockedOrigin
   }
 
   public async run(sourceFile: SourceFile): Promise<Finding[]> {
