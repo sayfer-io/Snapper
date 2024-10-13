@@ -53,6 +53,18 @@ class HardcodedSecretsDetector extends DetectorBase {
    * @returns {Finding[]} - Array of findings with details about the detected issues.
    */
   public run(sourceFile: SourceFile): Finding[] {
+    // only on TS files
+    if (!sourceFile.getFilePath().endsWith(".ts")) {
+      return this.getFindings();
+    }
+
+    // skip tests files
+    if (sourceFile.getFilePath().includes(".test.ts") ||
+      sourceFile.getFilePath().includes("mock") ||
+      sourceFile.getFilePath().includes("__test__")) {
+      return this.getFindings();
+    }
+
     const stringLiterals = sourceFile.getDescendantsOfKind(
       SyntaxKind.StringLiteral
     );
