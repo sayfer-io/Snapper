@@ -48,7 +48,7 @@ const startSnapServer = (snapDirectory: string, port: number): void => {
   // Run the Snap server using the temporary configuration file
   runCommandDetached(
     `npx`,
-    [`mm-snap`, `serve`, `--port`, `${port}`],
+    [`mm-snap`, `serve`, `--port`, `${port}`, `--verboseErrors`],
     snapDirectory,
     (output) => {
       logger.debug("Command Output:", output);
