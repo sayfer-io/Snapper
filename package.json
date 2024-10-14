@@ -30,13 +30,15 @@
     "typedoc-plugin-markdown": "^4.2.9",
     "webextension-polyfill": "^0.12.0",
     "winston": "^3.14.2",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "ts-node": "^10.9.2",
+    "ts-morph": "^24.0.0",
+    "typescript": "^5.6.2"
   },
   "resolutions": {
     "@metamask/snaps-execution-environments": "6.9.1",
     "@metamask/snaps-controllers/@metamask/snaps-execution-environments": "6.9.1",
-    "glob": "^9.0.0",
-    "inflight": "^1.0.6"
+    "glob": "^9.0.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
@@ -48,10 +50,7 @@
     "jest": "^29.7.0",
     "mock-fs": "^5.3.0",
     "ts-jest": "^29.2.5",
-    "ts-morph": "^24.0.0",
-    "ts-node": "^10.9.2",
-    "typedoc": "^0.26.7",
-    "typescript": "^5.6.2"
+    "typedoc": "^0.26.7"
   },
   "engines": {
     "node": ">=18.18.0",
