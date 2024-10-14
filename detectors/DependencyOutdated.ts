@@ -84,7 +84,9 @@ class DependencyOutdatedDetector extends DetectorBase {
     }
 
     this.logDebug(
-      "Audit-CI output: " + stdout.split("\n").slice(0, 5).join("\n") + "\n..."
+      "Audit-CI output: " +
+        stdout.split("\n").slice(0, 5).join("\n") +
+        "\n...snip..."
     );
     this.logDebug("End of Audit-CI output.");
 
