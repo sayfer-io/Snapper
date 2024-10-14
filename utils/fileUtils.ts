@@ -87,14 +87,27 @@ export function generateTimestampFileName(
 export function detectPackageManager(workingDir: string): string {
   const packageJsonPath = path.resolve(workingDir, "package.json");
 
-  if (fs.existsSync(packageJsonPath)) {
-    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
-    if (packageJson.packageManager?.startsWith("yarn")) return "yarn";
-    if (packageJson.packageManager?.startsWith("pnpm")) return "pnpm";
+  if (!fs.existsSync(packageJsonPath)) {
+    throw new Error(`No package.json found in ${workingDir}`);
+  }
+
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
+  if (packageJson.packageManager?.startsWith("yarn")) return "yarn";
+  if (packageJson.packageManager?.startsWith("pnpm")) return "pnpm";
+
+  // Check for "workspace:*" in dependencies
+  for (const [dep, version] of Object.entries({
+    ...packageJson.dependencies,
+    ...packageJson.devDependencies,
+    ...packageJson.peerDependencies,
+    ...packageJson.optionalDependencies,
+  })) {
+    if (version === "workspace:*") {
+      return "yarn";
+    }
   }
 
   if (fs.existsSync(path.resolve(workingDir, "yarn.lock"))) return "yarn";
-
   if (fs.existsSync(path.resolve(workingDir, "pnpm-lock.yaml"))) return "pnpm";
 
   return "npm";
