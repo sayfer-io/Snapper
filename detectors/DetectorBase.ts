@@ -80,4 +80,13 @@ export abstract class DetectorBase {
   logError(message: string, error?: Error): void {
     logger.error(`[${this.name}] ${message}`, error);
   }
+
+  /**
+   * Logs a warning message.
+   * @param message - The message to log.
+   * @param error - Optional error object to log.
+   */
+  logWarning(message: string, error?: Error): void {
+    logger.warn(`[${this.name}] ${message}`, error);
+  }
 }
