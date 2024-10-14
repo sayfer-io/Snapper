@@ -1,5 +1,3 @@
-//TODO: Need to reword the recursive flag logic.
-
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
 
@@ -38,13 +36,11 @@ const detectors = [
  *
  * @param {string} projectPath - The path to the TypeScript project.
  * @param {string} [detectorName] - The specific detector to run. If not provided, all detectors will be applied.
- * @param {boolean} [recursive=false] - Whether to process projects recursively.
  * @returns {Promise<Finding[]>} - A promise that resolves to an array of findings.
  */
 export async function processFiles(
   projectPath: string,
-  detectorName?: string,
-  recursive: boolean = false
+  detectorName?: string
 ): Promise<Finding[]> {
   const tsConfigPaths = await findTsConfig(projectPath);
   if (tsConfigPaths.length === 0) {

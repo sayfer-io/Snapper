@@ -3,12 +3,13 @@ import { hideBin } from "yargs/helpers";
 
 /**
  * Configures command-line arguments using yargs.
+ * Only defined options are accepted.
  *
  * @returns {object} - The parsed command-line arguments.
  */
 export function configureYargs() {
   return yargs(hideBin(process.argv))
-    .strict() // Ensure only defined options are accepted
+    .strict()
     .options({
       path: {
         alias: "p",
@@ -25,12 +26,6 @@ export function configureYargs() {
         alias: "v",
         type: "boolean",
         description: "Enable verbose logging",
-        default: false,
-      },
-      recursive: {
-        alias: "r",
-        type: "boolean",
-        description: "Parse projects recursively",
         default: false,
       },
       output: {
@@ -56,7 +51,6 @@ export function configureYargs() {
     path: string;
     detector?: string;
     verbose: boolean;
-    recursive: boolean;
     output?: string;
     logFile?: string;
   };

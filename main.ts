@@ -36,11 +36,7 @@ async function main(): Promise<void> {
       }`
     );
 
-    const allFindings = await processFiles(
-      projectPath,
-      detector,
-      argv.recursive
-    );
+    const allFindings = await processFiles(projectPath, detector);
 
     // Determine the output file name
     const resultFileName =
