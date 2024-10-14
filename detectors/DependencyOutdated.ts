@@ -31,41 +31,28 @@ class DependencyOutdatedDetector extends DetectorBase {
    * @throws Will throw an error if the lockfile creation fails.
    */
   private createLockfile(tempDir: string, packageManager: string): void {
-    let command: string;
+    const commands: { [key: string]: string } = {
+      pnpm: `pnpm install --silent --lockfile-only --dir "${tempDir}"`,
+      yarn: `yarn install --silent --cwd "${tempDir}"`,
+      npm: `npm install --silent --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`,
+    };
 
-    switch (packageManager) {
-      case "pnpm":
-        command = `pnpm install --silent --lockfile-only --dir "${tempDir}"`;
-        break;
-      case "yarn":
-        command = `yarn install --silent --cwd "${tempDir}"`;
-        break;
-      case "npm":
-        command = `npm install --silent --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`;
-        break;
-      default:
-        throw new Error(`Unsupported package manager: ${packageManager}`);
+    const command = commands[packageManager];
+    if (!command) {
+      throw new Error(`Unsupported package manager: ${packageManager}`);
     }
 
     try {
       const output = runCommand(command, tempDir);
       this.logDebug(`Lockfile creation output: ${output}`);
 
-      let lockfileName: string;
+      const lockfileNames: { [key: string]: string } = {
+        yarn: "yarn.lock",
+        pnpm: "pnpm-lock.yaml",
+        npm: "package-lock.json",
+      };
 
-      switch (packageManager) {
-        case "yarn":
-          lockfileName = "yarn.lock";
-          break;
-        case "pnpm":
-          lockfileName = "pnpm-lock.yaml";
-          break;
-        case "npm":
-        default:
-          lockfileName = "package-lock.json";
-          break;
-      }
-
+      const lockfileName = lockfileNames[packageManager];
       const lockfilePath = path.join(tempDir, lockfileName);
       if (!fsExtra.existsSync(lockfilePath)) {
         throw new Error(`Failed to create lockfile at ${lockfilePath}`);
@@ -88,7 +75,7 @@ class DependencyOutdatedDetector extends DetectorBase {
    */
   private runAuditCi(tempDir: string): AuditCIFinding[] {
     const command = `npx audit-ci --output-format json --report-type full`;
-    let stdout = runCommand(command, tempDir);
+    const stdout = runCommand(command, tempDir);
     this.logDebug("Audit-CI output: " + stdout);
     this.logDebug("End of Audit-CI output.");
 
@@ -98,8 +85,7 @@ class DependencyOutdatedDetector extends DetectorBase {
     }
 
     const findings: AuditCIFinding[] = [];
-
-    let jsonObjects = stdout
+    const jsonObjects = stdout
       .trim()
       .split("\n}\n")
       .map((obj) => obj.trim() + "}")
@@ -116,26 +102,40 @@ class DependencyOutdatedDetector extends DetectorBase {
 
     jsonObjects.forEach((jsonString) => {
       const auditResult = JSON.parse(jsonString);
-      if (!auditResult || !auditResult.data || !auditResult.data.advisory)
-        return;
+      if (!auditResult) return;
 
-      const advisory = auditResult.data.advisory;
+      if (auditResult.data && auditResult.data.advisory) {
+        const advisory = auditResult.data.advisory;
 
-      const vulnerabilityURLs = advisory.references
-        .split("\n")
-        .filter((url: string) => url.trim().startsWith("http"))
-        .join(", ");
+        findings.push({
+          packageName: advisory.module_name,
+          description: advisory.title,
+          severity: this.mapSeverityToRiskRating(advisory.severity),
+          recommendation: advisory.recommendation || "No fix available",
+          affectedVersion: advisory.vulnerable_versions,
+          link: advisory.references
+            .split("\n")
+            .filter((url: string) => url.trim().startsWith("http"))
+            .join(", "),
+        });
+      }
 
-      const recommendation = advisory.recommendation || "No fix available";
-
-      findings.push({
-        packageName: advisory.module_name,
-        description: advisory.title,
-        severity: this.mapSeverityToRiskRating(advisory.severity),
-        recommendation: recommendation,
-        affectedVersion: advisory.vulnerable_versions,
-        link: vulnerabilityURLs,
-      });
+      if (auditResult.auditReportVersion && auditResult.vulnerabilities) {
+        Object.values(auditResult.vulnerabilities).forEach(
+          (vulnerability: any) => {
+            findings.push({
+              packageName: vulnerability.name,
+              description: `Vulnerability in ${vulnerability.name}`,
+              severity: this.mapSeverityToRiskRating(vulnerability.severity),
+              recommendation: vulnerability.fixAvailable
+                ? "Update to a fixed version"
+                : "No fix available",
+              affectedVersion: vulnerability.range,
+              link: `https://www.npmjs.com/package/${vulnerability.name}`,
+            });
+          }
+        );
+      }
     });
 
     return findings;
