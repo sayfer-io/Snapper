@@ -27,7 +27,7 @@ const detectors = [
   new Detectors.UsedBeforeDefinedInterfacesDetector(),
   new Detectors.UnusedPermissionsDetector(),
   new Detectors.DeprecatedPermissionsDetector(),
-  new Detectors.DependencyOutdatedDetector(),
+  // new Detectors.DependencyOutdatedDetector(),
   new Detectors.DependencyVersioningDetector(),
   new Detectors.LackOfExceptionHandlingDetector(),
   new Detectors.OriginValidation(),
@@ -70,7 +70,7 @@ export async function processFiles(
     let findingsCount = 0;
     for (const file of files) {
       // Skip files in node_modules, could not make it work with the glob pattern
-      if (file.getFilePath().includes('/node_modules/')) {
+      if (file.getFilePath().includes("/node_modules/")) {
         continue;
       }
 
