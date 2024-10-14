@@ -77,13 +77,16 @@ class DependencyOutdatedDetector extends DetectorBase {
   private runAuditCi(tempDir: string): AuditCIFinding[] {
     const command = `npx audit-ci --output-format json --pass-enoaudit --report-type full`;
     const stdout = runCommand(command, tempDir);
-    this.logDebug("Audit-CI output: " + stdout);
-    this.logDebug("End of Audit-CI output.");
 
     if (stdout.trim().length === 0) {
       this.logWarning("No output found in audit-ci response.");
       return [];
     }
+
+    this.logDebug(
+      "Audit-CI output: " + stdout.split("\n").slice(0, 5).join("\n") + "\n..."
+    );
+    this.logDebug("End of Audit-CI output.");
 
     const findings: AuditCIFinding[] = [];
     const jsonObjects = stdout

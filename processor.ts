@@ -27,10 +27,10 @@ const detectors = [
   new Detectors.UsedBeforeDefinedInterfacesDetector(),
   new Detectors.UnusedPermissionsDetector(),
   new Detectors.DeprecatedPermissionsDetector(),
-  // new Detectors.DependencyOutdatedDetector(),
+  new Detectors.DependencyOutdatedDetector(),
   new Detectors.DependencyVersioningDetector(),
   new Detectors.LackOfExceptionHandlingDetector(),
-  new Detectors.OriginValidation(),
+  // new Detectors.OriginValidation(),
 ];
 
 /**

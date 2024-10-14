@@ -17,7 +17,7 @@ export function runCommand(command: string, workingDir: string): string {
     if (workingDir) {
       process.chdir(workingDir);
     }
-    output = execSync(command, { encoding: "utf-8" });
+    output = execSync(command, { encoding: "utf-8", stdio: "pipe" });
   } catch (err: any) {
     if (err.stdout) {
       output = err.stdout.toString();
