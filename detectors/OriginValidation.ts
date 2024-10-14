@@ -1,62 +1,71 @@
-import {SourceFile, SyntaxKind} from "ts-morph";
-import {Finding} from "../types";
-import {RiskRating} from "../structures";
-import {DetectorBase} from "./DetectorBase";
-import {installSnap} from '@metamask/snaps-simulation';
+import { SourceFile } from "ts-morph";
+import { installSnap } from "@metamask/snaps-simulation";
 
+import { Finding } from "../types";
+import { RiskRating } from "../structures";
+import { DetectorBase } from "./DetectorBase";
+
+/**
+ * Detector for validating the origin of requests.
+ */
 class OriginValidation extends DetectorBase {
-  private counter: number;
+  private runCounter: number;
 
   constructor() {
     super("originValidation", RiskRating.High);
-    this.counter = 0
+    this.runCounter = 0;
   }
 
-  private async hasDomainAllowList() {
-    const snapId: any = 'local:http://localhost:3333';
-    const {request} = await installSnap(snapId)
-    let blockedOrigin = false;
+  /**
+   * Checks if the domain allow list is properly configured.
+   * @returns {Promise<boolean>} - True if the domain is blocked, false otherwise.
+   */
+  private async hasDomainAllowList(): Promise<boolean> {
+    const snapId: any = "local:http://localhost:3333";
+    const { request } = await installSnap(snapId);
+    let isBlocked = false;
 
-    const {response}: any = await request({
-      origin: "https://theansweris42.com:4242",
-      method: "hello",
-      params: [],
-    })
+    try {
+      const { response }: any = await request({
+        origin: "https://theansweris42.com:4242",
+        method: "hello",
+        params: [],
+      });
 
-    if (response.error && !response.error.message.toLowerCase().includes("method")) {
-      blockedOrigin = true;
+      if (
+        response.error &&
+        !response.error.message.toLowerCase().includes("method")
+      ) {
+        isBlocked = true;
+      }
+    } catch (error) {
+      console.error("Error during domain allow list check:", error);
     }
 
-    return blockedOrigin
+    return isBlocked;
   }
 
+  /**
+   * Runs the origin validation detector on the given source file.
+   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @returns {Promise<Finding[]>} - Array of findings with details about the detected issues.
+   */
   public async run(sourceFile: SourceFile): Promise<Finding[]> {
-    this.counter += 1
-    if (this.counter > 1) {
+    if (++this.runCounter > 1) {
       return this.getFindings();
     }
 
-    let hasAllowList = await this.hasDomainAllowList();
+    const hasAllowList = await this.hasDomainAllowList();
     if (!hasAllowList) {
-      this.addFinding(`Insufficient origin validation`, sourceFile.getFilePath(), 0)
+      this.addFinding(
+        "Insufficient origin validation",
+        sourceFile.getFilePath(),
+        0
+      );
     }
 
     return this.getFindings();
   }
 }
 
-export {OriginValidation};
-
-// (async function test() {
-//   const snapId: any = 'local:http://localhost:3333';
-//   const {request, onHomePage, onTransaction} = await installSnap(snapId)
-//   const response = await request({
-//     origin: "http://localhost:8080",
-//     method: "hello",
-//     params: [],
-//   })
-//   console.log(response)
-//   const ui = await onHomePage()
-//   let interface_ =  ui.getInterface()
-//   console.log(interface_)
-// })()
+export { OriginValidation };
