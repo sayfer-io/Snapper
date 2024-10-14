@@ -20,6 +20,8 @@
  * - `DeprecatedPermissionsDetector`: Detects deprecated permissions in the snap.manifest.json file.
  * - `DependencyOutdatedDetector`: Detects outdated dependencies in the package.json file.
  * - `DependencyVersioningDetector`: Detects non-exact dependency versions in the package.json file.
+ * - `OriginValidation`: Validates the origin of requests to ensure proper domain allow list configuration.
+ * - `LackOfExceptionHandlingDetector`: Detects lack of exception handling in important functions.
  */
 
 export { ConsoleLogDetector } from "./ConsoleLog";

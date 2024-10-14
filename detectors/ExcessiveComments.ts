@@ -7,6 +7,9 @@ const EXCESSIVE_COMMENT_THRESHOLD = 5;
 const SINGLE_LINE_COMMENT_PATTERN = /(^\s*\/\/[^*].*$[\r\n]*)+/gm; // Excludes JSDoc starting with `/**`
 const MULTI_LINE_COMMENT_PATTERN = /\/\*[^*][\s\S]*?\*\//g; // Excludes JSDoc starting with `/**`
 
+/**
+ * Detector for identifying excessive comments in the code.
+ */
 class ExcessiveCommentsDetector extends DetectorBase {
   constructor() {
     super("ExcessiveComments", RiskRating.Medium);

@@ -4,6 +4,9 @@ import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
+/**
+ * Detector for identifying console.log statements in the code.
+ */
 class ConsoleLogDetector extends DetectorBase {
   constructor() {
     super("ConsoleLog", RiskRating.Low);

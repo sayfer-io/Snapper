@@ -53,15 +53,17 @@ class HardcodedSecretsDetector extends DetectorBase {
    * @returns {Finding[]} - Array of findings with details about the detected issues.
    */
   public run(sourceFile: SourceFile): Finding[] {
-    // only on TS files
+    // only analyze TS files
     if (!sourceFile.getFilePath().endsWith(".ts")) {
       return this.getFindings();
     }
 
     // skip tests files
-    if (sourceFile.getFilePath().includes(".test.ts") ||
+    if (
+      sourceFile.getFilePath().includes(".test.ts") ||
       sourceFile.getFilePath().includes("mock") ||
-      sourceFile.getFilePath().includes("__test__")) {
+      sourceFile.getFilePath().includes("__test__")
+    ) {
       return this.getFindings();
     }
 
@@ -71,10 +73,9 @@ class HardcodedSecretsDetector extends DetectorBase {
 
     stringLiterals.forEach((node) => {
       const text = node.getText().slice(1, -1); // Remove the surrounding quotes
+      if (text.length < 16) return; // Skip if the string is too short
+
       HardcodedSecretsDetector.SECRET_PATTERNS.forEach((pattern) => {
-        if (text.length < 16) {
-          return; // Skip if the string is too short
-        }
         if (pattern.test(text)) {
           if (
             pattern === HardcodedSecretsDetector.SECRET_PATTERNS[0] &&
