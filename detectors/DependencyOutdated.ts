@@ -1,6 +1,7 @@
 import path from "path";
 import fsExtra from "fs-extra";
 import { SourceFile } from "ts-morph";
+
 import { runCommand } from "../utils/commandUtils";
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
@@ -74,7 +75,7 @@ class DependencyOutdatedDetector extends DetectorBase {
    * @returns {AuditCIFinding[]} - An array of findings with details about the detected issues.
    */
   private runAuditCi(tempDir: string): AuditCIFinding[] {
-    const command = `npx audit-ci --output-format json --report-type full`;
+    const command = `npx audit-ci --output-format json --pass-enoaudit --report-type full`;
     const stdout = runCommand(command, tempDir);
     this.logDebug("Audit-CI output: " + stdout);
     this.logDebug("End of Audit-CI output.");
@@ -96,6 +97,7 @@ class DependencyOutdatedDetector extends DetectorBase {
       return findings;
     }
 
+    // Remove the trailing brace from the last object
     jsonObjects[jsonObjects.length - 1] = jsonObjects[
       jsonObjects.length - 1
     ].slice(0, -1);
@@ -104,7 +106,7 @@ class DependencyOutdatedDetector extends DetectorBase {
       const auditResult = JSON.parse(jsonString);
       if (!auditResult) return;
 
-      if (auditResult.data && auditResult.data.advisory) {
+      if (auditResult.data) {
         const advisory = auditResult.data.advisory;
 
         findings.push({
@@ -118,9 +120,7 @@ class DependencyOutdatedDetector extends DetectorBase {
             .filter((url: string) => url.trim().startsWith("http"))
             .join(", "),
         });
-      }
-
-      if (auditResult.auditReportVersion && auditResult.vulnerabilities) {
+      } else if (auditResult.vulnerabilities) {
         Object.values(auditResult.vulnerabilities).forEach(
           (vulnerability: any) => {
             findings.push({
@@ -131,7 +131,12 @@ class DependencyOutdatedDetector extends DetectorBase {
                 ? "Update to a fixed version"
                 : "No fix available",
               affectedVersion: vulnerability.range,
-              link: `https://www.npmjs.com/package/${vulnerability.name}`,
+              link:
+                vulnerability.via
+                  .filter((via: any) => typeof via === "object" && via.url)
+                  .map((via: any) => via.url)
+                  .join(", ") ||
+                `https://www.npmjs.com/package/${vulnerability.name}`,
             });
           }
         );
