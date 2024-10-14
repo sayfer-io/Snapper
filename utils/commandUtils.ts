@@ -1,3 +1,5 @@
+import logger from "../utils/logger";
+
 import { execSync, spawn, ChildProcess } from "child_process";
 
 let childProcesses: ChildProcess[] = [];
@@ -58,7 +60,7 @@ export function runCommandDetached(
   });
 
   child.on("close", (code) => {
-    console.log(`Child process exited with code ${code}`);
+    logger.debug(`Child process exited with code ${code}`);
     // Remove the child process from the list
     childProcesses = childProcesses.filter((cp) => cp.pid !== child.pid);
   });
@@ -70,13 +72,13 @@ export function runCommandDetached(
  * Kills all running child processes.
  */
 export function killAllChildProcesses(): void {
-  console.log("Terminating all child processes...");
+  logger.debug("Terminating all child processes...");
   childProcesses.forEach((child) => {
     if (child.pid) {
       try {
         // Kill the entire process group of each child
         process.kill(-child.pid, "SIGKILL");
-        console.log(`Child process ${child.pid} terminated.`);
+        logger.debug(`Child process ${child.pid} terminated.`);
       } catch (error) {
         if (error instanceof Error) {
           console.error(
@@ -96,6 +98,6 @@ export function killAllChildProcesses(): void {
 // Handle Ctrl+C signal, kill all child processes, and exit
 process.on("SIGINT", () => {
   killAllChildProcesses();
-  console.log("Exiting main process.");
+  logger.debug("Exiting main process.");
   process.exit(); // Explicitly exit the main process
 });

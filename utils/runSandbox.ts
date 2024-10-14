@@ -1,8 +1,10 @@
 import { join } from "path";
+import { existsSync, cpSync } from "fs";
 import { installSnap } from "@metamask/snaps-jest";
+
+import logger from "./logger";
 import { createTempDir, detectPackageManager } from "./fileUtils";
 import { runCommandDetached, runCommand } from "./commandUtils";
-import { existsSync, cpSync } from "fs";
 
 /**
  * Sleeps for the specified number of milliseconds.
@@ -41,7 +43,7 @@ const copySnapToTempDirectory = (directory: string): string => {
  * @param {number} port - The port number to use for the Snap server.
  */
 const startSnapServer = (snapDirectory: string, port: number): void => {
-  console.log("Starting the Snap server...");
+  logger.debug("Starting the Snap server...");
 
   // Run the Snap server using the temporary configuration file
   runCommandDetached(
@@ -49,7 +51,7 @@ const startSnapServer = (snapDirectory: string, port: number): void => {
     [`mm-snap`, `serve`, `--port`, `${port}`],
     snapDirectory,
     (output) => {
-      console.log("Command Output:", output);
+      logger.debug("Command Output:", output);
     }
   );
 };
@@ -77,9 +79,9 @@ const installDependencies = (tempDir: string, packageManager: string): void => {
   }
 
   const output1 = runCommand(command, tempDir);
-  console.log(`Dependencies installed: ${output1}`);
+  logger.debug(`Dependencies installed: ${output1}`);
   const output2 = runCommand(command, tempDir);
-  console.log(`Dependencies installed: ${output2}`);
+  logger.debug(`Dependencies installed: ${output2}`);
 };
 
 /**
@@ -101,7 +103,7 @@ const connectToSnapServer = async (
     try {
       const snapId: any = `local:http://localhost:${port}`;
       const { request, onHomePage, onTransaction } = await installSnap(snapId);
-      console.log("Connected to the Snap server.");
+      logger.debug("Connected to the Snap server.");
       return { request, onHomePage, onTransaction };
     } catch (error) {
       retries++;
@@ -111,11 +113,11 @@ const connectToSnapServer = async (
         );
       }
 
-      console.log(
+      logger.debug(
         "Error connecting to the Snap server:",
         error instanceof Error ? error.message : error
       );
-      console.log(
+      logger.debug(
         `Retrying to connect to the Snap server... (${retries}/${maxRetries})`
       );
       await sleep(retryDelay);
@@ -141,22 +143,22 @@ const runSnapServerAndConnect = async (directory: string) => {
 
     // Step 1: Copy the Snap directory to a temporary directory
     const tempDir = copySnapToTempDirectory(snapFolderPath);
-    console.log(`Copied Snap directory to temporary directory: ${tempDir}`);
+    logger.debug(`Copied Snap directory to temporary directory: ${tempDir}`);
 
     // Step 2: Detect package manager
     const packageManager = detectPackageManager(tempDir);
-    console.log(`Detected package manager: ${packageManager}`);
+    logger.debug(`Detected package manager: ${packageManager}`);
 
     // Step 3: Install dependencies in the temporary directory
     installDependencies(tempDir, packageManager);
 
     // Step 4: Build the Snap in the temporary directory
-    console.log("Building the Snap...");
+    logger.debug("Building the Snap...");
     const snapDirectory = join(tempDir, "packages/snap");
-    console.log(`Snap directory: ${snapDirectory}`);
+    logger.debug(`Snap directory: ${snapDirectory}`);
     try {
       const output = runCommand(`npx mm-snap build`, snapDirectory);
-      console.log(`Snap built: ${output}`);
+      logger.debug(`Snap built: ${output}`);
     } catch (buildError) {
       console.error("Error building the Snap:", buildError);
       return;
@@ -166,11 +168,11 @@ const runSnapServerAndConnect = async (directory: string) => {
     startSnapServer(snapDirectory, port);
 
     // Wait a bit before connecting to the Snap server
-    console.log("Waiting for the Snap server to start...");
+    logger.debug("Waiting for the Snap server to start...");
     await sleep(5000); // Sleep for 5 seconds
 
     // // Step 6: Concurrently connect to the Snap server with retries
-    console.log("Connecting to the Snap server...");
+    logger.debug("Connecting to the Snap server...");
     const snapInstance = await connectToSnapServer(
       port,
       maxRetries,
@@ -181,9 +183,9 @@ const runSnapServerAndConnect = async (directory: string) => {
     // await runTestFunction(snapInstance);
 
     // // Simulate some work being done with the Snap
-    // console.log("Simulating work with the Snap...");
+    // logger.debug("Simulating work with the Snap...");
     // await sleep(5000); // Sleep for 5 seconds
-    // console.log("Finished simulating work with the Snap.");
+    // logger.debug("Finished simulating work with the Snap.");
 
     // Note: Killing the Snap server process is not handled here since it's detached
   } catch (error) {
@@ -202,10 +204,10 @@ const runTestFunction = async (snapInstance: any) => {
     method: "hello",
     params: [],
   });
-  console.log(response);
+  logger.debug(response);
   const ui = await onHomePage();
   let interface_ = ui.getInterface();
-  console.log(interface_);
+  logger.debug(interface_);
 };
 
 // Example usage
