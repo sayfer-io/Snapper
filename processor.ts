@@ -31,6 +31,7 @@ const detectors = [
   // new Detectors.OriginValidation(),
   new Detectors.PotentialOutdatedEngineDetector(),
   new Detectors.StrictNullChecksDetector(),
+  new Detectors.MissingExplicitStrictTypeCheckingDetector(),
 ];
 
 /**
