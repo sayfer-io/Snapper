@@ -28,7 +28,7 @@ const detectors = [
   // new Detectors.DependencyOutdatedDetector(),
   new Detectors.DependencyVersioningDetector(),
   new Detectors.LackOfExceptionHandlingDetector(),
-  // new Detectors.OriginValidation(),
+  new Detectors.OriginValidation(),
   new Detectors.PotentialOutdatedEngineDetector(),
   new Detectors.StrictNullChecksDetector(),
   new Detectors.MissingExplicitStrictTypeCheckingDetector(),
@@ -69,9 +69,12 @@ export async function processFiles(
       `${folderPath}/**/snap.manifest.json`,
     ]);
     logger.info(`Processing files in path: ${folderPath}`);
+    const sortedFiles = files.sort((a, b) =>
+      a.getFilePath().localeCompare(b.getFilePath())
+    );
+    logger.info(`Total number of files found: ${sortedFiles.length}`);
 
-    let findingsCount = 0;
-    for (const file of files) {
+    for (const file of sortedFiles) {
       // Skip files in node_modules, could not make it work with the glob pattern
       if (file.getFilePath().includes("/node_modules/")) {
         continue;
@@ -109,8 +112,6 @@ export async function processFiles(
         allFindings.push(...findings);
       }
     }
-
-    logger.info(`Number of issues found for ${tsConfigPath}: ${findingsCount}`);
   }
 
   logger.info(`Total number of issues found: ${allFindings.length}`);
