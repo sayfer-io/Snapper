@@ -1,14 +1,13 @@
 {
   "name": "snapper",
   "version": "1.0.0",
-  "description": "Snapper aims to improve the overall security and reliability of Metamask Snaps by identifying vulnerabilities, potential issues, and ensuring best coding practices ",
+  "description": "Snapper aims to improve the overall security and reliability of Metamask Snaps by identifying vulnerabilities, potential issues, and ensuring best coding practices",
   "main": "main.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "start": "npx ts-node main.ts",
-    "preinstall": "npx npm-force-resolutions",
     "postinstall": "node ./scripts/check-dependencies.js",
     "docs": "npx typedoc --options typedoc.json"
   },
@@ -38,9 +37,7 @@
   },
   "resolutions": {
     "@metamask/snaps-execution-environments": "6.9.1",
-    "@metamask/snaps-controllers/@metamask/snaps-execution-environments": "6.9.1",
-    "glob": "^9.0.0",
-    "punycode": "^2.1.1"
+    "@metamask/snaps-controllers/@metamask/snaps-execution-environments": "6.9.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
