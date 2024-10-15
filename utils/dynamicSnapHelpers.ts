@@ -117,6 +117,15 @@ export async function prepareSnap(projectFolderPath: string): Promise<void> {
   logger.debug(`Snap built: ${output}`);
 }
 
+export async function connectSnapServer(port: number): Promise<any> {
+  logger.debug("Connecting to the Snap server...");
+
+  const snapId: any = `local:http://localhost:${port}`;
+  const { request, onHomePage, onTransaction } = await installSnap(snapId);
+  logger.debug("Connected to the Snap server.");
+  return { request, onHomePage, onTransaction };
+}
+
 /**
  * Starts the Snap server and connects to it.
  * @param {string} directory - The directory where the Snap server should be started.
@@ -134,10 +143,5 @@ export async function startAndConnectToSnap(directory: string): Promise<any> {
   await sleep(5000); // Sleep for 5 seconds
 
   // Step 2: Connect to the Snap server
-  logger.debug("Connecting to the Snap server...");
-
-  const snapId: any = `local:http://localhost:${port}`;
-  const { request, onHomePage, onTransaction } = await installSnap(snapId);
-  logger.debug("Connected to the Snap server.");
-  return { request, onHomePage, onTransaction, port };
+  return connectSnapServer(port), port;
 }
