@@ -98,19 +98,15 @@ export async function processFiles(
       );
 
       for (const detector of detectorsToRun) {
+        detector.clearFindings();
         logger.debug(`Running detector: ${detector.getName()}`);
 
         // Run the detector and capture its findings
         await detector.run(file as SourceFile);
         const findings = detector.getFindings();
 
-        // Calculate new findings added by this detector
-        const newFindings = findings.slice(allFindings.length);
-        const newFindingsCount = newFindings.length;
-
-        logger.debug(`Found ${newFindingsCount} new findings`);
-        findingsCount += newFindingsCount;
-        allFindings.push(...newFindings);
+        logger.debug(`Found ${findings.length} issues`);
+        allFindings.push(...findings);
       }
     }
 
