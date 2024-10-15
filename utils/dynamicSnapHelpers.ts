@@ -143,5 +143,5 @@ export async function startAndConnectToSnap(directory: string): Promise<any> {
   const snapId: any = `local:http://localhost:${port}`;
   const { request, onHomePage, onTransaction } = await installSnap(snapId);
   logger.debug("Connected to the Snap server.");
-  return { request, onHomePage, onTransaction };
+  return { request, onHomePage, onTransaction, port };
 }
