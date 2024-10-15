@@ -84,8 +84,6 @@ export function installDependencies(
   // Run the command to install dependencies
   const output1 = runCommand(command, tempDir);
   logger.debug(`Dependencies installed: ${output1}`);
-  // const output2 = runCommand(command, tempDir);
-  // logger.debug(`Dependencies installed: ${output2}`);
 }
 
 /**
