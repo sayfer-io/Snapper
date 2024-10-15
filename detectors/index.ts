@@ -82,3 +82,6 @@ export { FloatingPointPrecisionDetector } from "./FloatingPointPrecision";
 
 /** Detects unhandled promise rejections in the code. */
 export { UnhandledPromiseRejectionDetector } from "./UnhandledPromiseRejection";
+
+/** Detects improper type usage in the code. */
+export { ImproperTypeUsageDetector } from "./ImproperTypeUsage";
