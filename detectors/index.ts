@@ -76,3 +76,6 @@ export { MissingExplicitStrictTypeCheckingDetector } from "./MissingExplicitStri
 
 /** Detects broad permissions in the snap.manifest.json file. */
 export { BroadPermissionsDetector } from "./BroadPermissions";
+
+/** Detects potential floating-point precision issues in JavaScript/TypeScript files. */
+export { FloatingPointPrecisionDetector } from "./FloatingPointPrecision";
