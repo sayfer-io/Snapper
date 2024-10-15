@@ -88,7 +88,7 @@ export function installDependencies(
 
 /**
  * Prepares the Snap by setting up dependencies and building it.
- * @param {string} directory - The directory of the Snap.
+ * @param {string} projectFolderPath - The directory of the Snap.
  */
 export async function prepareSnap(projectFolderPath: string): Promise<void> {
   // Verify if the directory exists

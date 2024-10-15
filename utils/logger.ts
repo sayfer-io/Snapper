@@ -31,7 +31,6 @@ const logger = createLogger({
  * Sets up the logger based on the verbosity flag.
  *
  * @param {boolean} verbose - Flag to enable verbose logging.
- * @param {string} [logFilePath] - Optional path to the log file.
  */
 export function enableLogVerbosity(verbose: boolean): void {
   logger.level = verbose ? "debug" : "info";
