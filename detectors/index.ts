@@ -79,3 +79,6 @@ export { BroadPermissionsDetector } from "./BroadPermissions";
 
 /** Detects potential floating-point precision issues in JavaScript/TypeScript files. */
 export { FloatingPointPrecisionDetector } from "./FloatingPointPrecision";
+
+/** Detects unhandled promise rejections in the code. */
+export { UnhandledPromiseRejectionDetector } from "./UnhandledPromiseRejection";

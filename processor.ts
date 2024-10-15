@@ -34,6 +34,7 @@ const detectors = [
   new Detectors.MissingExplicitStrictTypeCheckingDetector(),
   new Detectors.BroadPermissionsDetector(),
   new Detectors.FloatingPointPrecisionDetector(),
+  new Detectors.UnhandledPromiseRejectionDetector(),
 ];
 
 /**
