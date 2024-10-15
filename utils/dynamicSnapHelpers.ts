@@ -90,14 +90,12 @@ export function installDependencies(
  * Prepares the Snap by setting up dependencies and building it.
  * @param {string} directory - The directory of the Snap.
  */
-export async function prepareSnap(directory: string): Promise<void> {
-  const snapFolderPath = join(__dirname, directory);
-
+export async function prepareSnap(projectFolderPath: string): Promise<void> {
   // Verify if the directory exists
-  verifyDirectoryExists(snapFolderPath);
+  verifyDirectoryExists(projectFolderPath);
 
   // Step 1: Copy the Snap directory to a temporary directory
-  const tempDir = copySnapToTempDirectory(snapFolderPath);
+  const tempDir = copySnapToTempDirectory(projectFolderPath);
   logger.debug(`Copied Snap directory to temporary directory: ${tempDir}`);
 
   // Step 2: Detect package manager
@@ -108,15 +106,13 @@ export async function prepareSnap(directory: string): Promise<void> {
   installDependencies(tempDir, packageManager);
   logger.debug("Dependencies installed.");
 
-  // Step 4: Build the Snap in the temporary directory
-  logger.debug("Building the Snap...");
-
-  // Step 5: Identify the Snap directory
+  // Step 4: Identify the Snap directory
   // TODO: This is not always the case. Sometimes the snap folder is different.
   const snapDirectory = join(tempDir, "packages/snap");
   logger.debug(`Snap directory: ${snapDirectory}`);
 
-  // Step 6: Build the Snap
+  // Step 5: Build the Snap
+  logger.debug("Building the Snap...");
   const output = runCommand(`npx mm-snap build`, snapDirectory);
   logger.debug(`Snap built: ${output}`);
 }

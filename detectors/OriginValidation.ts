@@ -1,3 +1,4 @@
+import { dirname, join } from "path";
 import { SourceFile } from "ts-morph";
 
 import { Finding } from "../types";
@@ -58,16 +59,18 @@ class OriginValidation extends DetectorBase {
     // Only process package.json files
     if (!filePath.endsWith("package.json")) return [];
 
-    try {
-      await prepareSnap(sourceFile.getBaseName());
-      const { request, port } = await startAndConnectToSnap(
-        sourceFile.getBaseName()
-      );
+    const sourceFileDir = dirname(sourceFile.getFilePath());
 
-      const isBlocked = await this.isDomainBlocked(request, port);
-      if (!isBlocked) {
-        this.addFinding("Insufficient origin validation", filePath, 0);
-      }
+    try {
+      await prepareSnap(sourceFileDir);
+      // const { request, port } = await startAndConnectToSnap(
+      //   sourceFile.getBaseName()
+      // );
+
+      // const isBlocked = await this.isDomainBlocked(request, port);
+      // if (!isBlocked) {
+      //   this.addFinding("Insufficient origin validation", filePath, 0);
+      // }
     } catch (error) {
       this.handleError("Error during the origin validation run", error);
     }
