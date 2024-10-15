@@ -63,14 +63,12 @@ class OriginValidation extends DetectorBase {
 
     try {
       await prepareSnap(sourceFileDir);
-      // const { request, port } = await startAndConnectToSnap(
-      //   sourceFile.getBaseName()
-      // );
+      const { request, port } = await startAndConnectToSnap(sourceFileDir);
 
-      // const isBlocked = await this.isDomainBlocked(request, port);
-      // if (!isBlocked) {
-      //   this.addFinding("Insufficient origin validation", filePath, 0);
-      // }
+      const isBlocked = await this.isDomainBlocked(request, port);
+      if (!isBlocked) {
+        this.addFinding("Insufficient origin validation", filePath, 0);
+      }
     } catch (error) {
       this.handleError("Error during the origin validation run", error);
     }
