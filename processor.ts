@@ -32,6 +32,7 @@ const detectors = [
   new Detectors.PotentialOutdatedEngineDetector(),
   new Detectors.StrictNullChecksDetector(),
   new Detectors.MissingExplicitStrictTypeCheckingDetector(),
+  new Detectors.BroadPermissionsDetector(),
 ];
 
 /**

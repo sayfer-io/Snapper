@@ -73,3 +73,6 @@ export { StrictNullChecksDetector } from "./StrictNullChecks";
 
 /** Detects missing explicit strict type-checking options in tsconfig.json. */
 export { MissingExplicitStrictTypeCheckingDetector } from "./MissingExplicitStrictTypeChecking";
+
+/** Detects broad permissions in the snap.manifest.json file. */
+export { BroadPermissionsDetector } from "./BroadPermissions";
