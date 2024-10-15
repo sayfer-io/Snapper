@@ -1,48 +1,50 @@
 import { SourceFile } from "ts-morph";
-import { installSnap } from "@metamask/snaps-simulation";
 
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
+import {
+  prepareSnap,
+  startAndConnectToSnap,
+} from "../utils/dynamicSnapHelpers";
+
+const DOMAIN = "https://theansweris42.com";
+const METHOD = "hello";
+const ERROR_MESSAGE = "method";
 
 /**
  * Detector for validating the origin of requests.
  */
 class OriginValidation extends DetectorBase {
-  private runCounter: number;
-
   constructor() {
     super("originValidation", RiskRating.High);
-    this.runCounter = 0;
   }
 
   /**
    * Checks if the domain allow list is properly configured.
+   * @param request - The Snap request function from `startAndConnectToSnap`.
+   * @param port - The port number to use in the request.
    * @returns {Promise<boolean>} - True if the domain is blocked, false otherwise.
    */
-  private async hasDomainAllowList(): Promise<boolean> {
-    const snapId: any = "local:http://localhost:3333";
-    const { request } = await installSnap(snapId);
-    let isBlocked = false;
-
+  private async isDomainBlocked(
+    request: (params: any) => Promise<any>,
+    port: number
+  ): Promise<boolean> {
     try {
-      const { response }: any = await request({
-        origin: "https://theansweris42.com:4242",
-        method: "hello",
+      const { response } = await request({
+        origin: `${DOMAIN}:${port}`,
+        method: METHOD,
         params: [],
       });
 
-      if (
-        response.error &&
-        !response.error.message.toLowerCase().includes("method")
-      ) {
-        isBlocked = true;
-      }
+      return (
+        response?.error &&
+        !response.error.message.toLowerCase().includes(ERROR_MESSAGE)
+      );
     } catch (error) {
-      console.error("Error during domain allow list check:", error);
+      this.handleError("Error during domain allow list check", error);
+      return false;
     }
-
-    return isBlocked;
   }
 
   /**
@@ -51,20 +53,35 @@ class OriginValidation extends DetectorBase {
    * @returns {Promise<Finding[]>} - Array of findings with details about the detected issues.
    */
   public async run(sourceFile: SourceFile): Promise<Finding[]> {
-    if (++this.runCounter > 1) {
-      return this.getFindings();
-    }
+    const filePath = sourceFile.getFilePath();
 
-    const hasAllowList = await this.hasDomainAllowList();
-    if (!hasAllowList) {
-      this.addFinding(
-        "Insufficient origin validation",
-        sourceFile.getFilePath(),
-        0
+    // Only process package.json files
+    if (!filePath.endsWith("package.json")) return [];
+
+    try {
+      await prepareSnap(sourceFile.getBaseName());
+      const { request, port } = await startAndConnectToSnap(
+        sourceFile.getBaseName()
       );
+
+      const isBlocked = await this.isDomainBlocked(request, port);
+      if (!isBlocked) {
+        this.addFinding("Insufficient origin validation", filePath, 0);
+      }
+    } catch (error) {
+      this.handleError("Error during the origin validation run", error);
     }
 
     return this.getFindings();
+  }
+
+  /**
+   * Handles errors by logging them to the console.
+   * @param message - The error message to log.
+   * @param error - The error object.
+   */
+  private handleError(message: string, error: any): void {
+    console.error(message, error);
   }
 }
 
