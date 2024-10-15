@@ -28,7 +28,7 @@ Class to detect deprecated permissions in the snap.manifest.json file.
 
 #### Defined in
 
-[detectors/DeprecatedPermissions.ts:24](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DeprecatedPermissions.ts#L24)
+[detectors/DeprecatedPermissions.ts:24](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DeprecatedPermissions.ts#L24)
 
 ## Properties
 
@@ -42,7 +42,7 @@ Class to detect deprecated permissions in the snap.manifest.json file.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:11](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L11)
+[detectors/DetectorBase.ts:14](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L14)
 
 ***
 
@@ -56,7 +56,7 @@ Class to detect deprecated permissions in the snap.manifest.json file.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:9](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L9)
+[detectors/DetectorBase.ts:12](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L12)
 
 ***
 
@@ -70,7 +70,7 @@ Class to detect deprecated permissions in the snap.manifest.json file.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:10](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L10)
+[detectors/DetectorBase.ts:13](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L13)
 
 ## Methods
 
@@ -104,7 +104,7 @@ Line number where the finding was detected (default is 1).
 
 #### Defined in
 
-[detectors/DetectorBase.ts:27](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L27)
+[detectors/DetectorBase.ts:30](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L30)
 
 ***
 
@@ -124,7 +124,7 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:44](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L44)
+[detectors/DetectorBase.ts:47](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L47)
 
 ***
 
@@ -142,7 +142,7 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:52](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L52)
+[detectors/DetectorBase.ts:55](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L55)
 
 ***
 
@@ -160,7 +160,7 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:48](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L48)
+[detectors/DetectorBase.ts:51](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L51)
 
 ***
 
@@ -186,7 +186,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:68](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L68)
+[detectors/DetectorBase.ts:71](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L71)
 
 ***
 
@@ -216,7 +216,7 @@ Optional error object to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:77](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L77)
+[detectors/DetectorBase.ts:80](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L80)
 
 ***
 
@@ -242,7 +242,37 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:60](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L60)
+[detectors/DetectorBase.ts:63](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L63)
+
+***
+
+### logWarning()
+
+> **logWarning**(`message`, `error`?): `void`
+
+Logs a warning message.
+
+#### Parameters
+
+• **message**: `string`
+
+The message to log.
+
+• **error?**: `Error`
+
+Optional error object to log.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`DetectorBase`](../../DetectorBase/classes/DetectorBase.md).[`logWarning`](../../DetectorBase/classes/DetectorBase.md#logwarning)
+
+#### Defined in
+
+[detectors/DetectorBase.ts:89](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L89)
 
 ***
 
@@ -270,4 +300,4 @@ The source file to analyze.
 
 #### Defined in
 
-[detectors/DeprecatedPermissions.ts:43](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DeprecatedPermissions.ts#L43)
+[detectors/DeprecatedPermissions.ts:43](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DeprecatedPermissions.ts#L43)

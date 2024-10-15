@@ -11,4 +11,3 @@
 ### Functions
 
 - [configureYargs](functions/configureYargs.md)
-- [setupLogger](functions/setupLogger.md)

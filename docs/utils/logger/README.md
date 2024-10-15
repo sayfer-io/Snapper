@@ -11,3 +11,8 @@
 ### Variables
 
 - [default](variables/default.md)
+
+### Functions
+
+- [enableLogFile](functions/enableLogFile.md)
+- [enableLogVerbosity](functions/enableLogVerbosity.md)
