@@ -77,7 +77,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const core = require('@actions/core');
             const fs = require('fs');
             fs.writeFileSync(process.env.GITHUB_STEP_SUMMARY, `## SonarCloud Analysis\n[View on SonarCloud](${process.env.SONAR_PROJECT_URL})`);
             core.setOutput('sonar-url', process.env.SONAR_PROJECT_URL);
