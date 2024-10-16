@@ -35,10 +35,12 @@ class ESLintingDetector extends DetectorBase {
     const filePath = file.getFilePath();
 
     const results = await eslint.lintFiles([filePath]);
-    const formattedResults = await this.formatResults(eslint, results);
 
-    // TODO: Parse the formatted results and create findings
-    console.log(formattedResults);
+    results.forEach((result) => {
+      result.messages.forEach((message) => {
+        this.addFinding(message.message, result.filePath, message.line);
+      });
+    });
 
     return this.getFindings();
   }
@@ -68,21 +70,6 @@ class ESLintingDetector extends DetectorBase {
       overrideConfigFile: true,
       ignore: false,
     });
-  }
-
-  /**
-   * Formats the linting results to JSON.
-   * @param {ESLint} eslint - The ESLint instance.
-   * @param {ESLint.LintResult[]} results - The linting results.
-   * @returns {Promise<string>} - The formatted results as a JSON string.
-   */
-  private async formatResults(
-    eslint: ESLint,
-    results: ESLint.LintResult[]
-  ): Promise<string> {
-    const formatter = await eslint.loadFormatter("json");
-    const resultText = await formatter.format(results);
-    return JSON.stringify(JSON.parse(resultText), null, 2);
   }
 }
 
