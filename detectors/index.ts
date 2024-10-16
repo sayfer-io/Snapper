@@ -64,7 +64,9 @@ export { OriginValidation } from "./OriginValidation";
 
 /** Detects lack of exception handling in important functions. */
 export { LackOfExceptionHandlingDetector } from "./LackOfExceptionHandling";
-export { ESLinting } from "./ESLinting";
+
+/** Detects common issues like the use of any types, unused variables, unused expressions, and unused labels. */
+export { ESLintingDetector } from "./ESLinting";
 
 /** Detects missing or outdated Node.js engine specification in package.json. */
 export { PotentialOutdatedEngineDetector } from "./PotentialOutdatedEngine";

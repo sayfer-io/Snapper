@@ -36,7 +36,7 @@ const detectors = [
   new Detectors.FloatingPointPrecisionDetector(),
   new Detectors.UnhandledPromiseRejectionDetector(),
   new Detectors.ImproperTypeUsageDetector(),
-  new Detectors.ESLinting(),
+  new Detectors.ESLintingDetector(),
 ];
 
 /**

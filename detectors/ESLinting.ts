@@ -1,72 +1,89 @@
-import {SourceFile} from "ts-morph";
-import {ESLint} from 'eslint';
-
-import {Finding} from "../types";
-import {RiskRating} from "../structures";
-import {DetectorBase} from "./DetectorBase";
-import {glob} from "glob";
+import { SourceFile } from "ts-morph";
+import { ESLint } from "eslint";
 import path from "path";
 
-class ESLinting extends DetectorBase {
-  count = 0;
+import { Finding } from "../types";
+import { RiskRating } from "../structures";
+import { DetectorBase } from "./DetectorBase";
 
+const ESLINT_RULES: ESLint.ConfigData["rules"] = {
+  "@typescript-eslint/no-explicit-any": "warn",
+  "no-unused-vars": [
+    "error",
+    { vars: "all", args: "after-used", ignoreRestSiblings: false },
+  ],
+  "no-unused-expressions": "error",
+  "no-unused-labels": "error",
+};
+
+/**
+ * Checks a TypeScript file for common issues like the use of any types,
+ * unused variables, unused expressions, and unused labels.
+ */
+class ESLintingDetector extends DetectorBase {
   constructor() {
     super("ESLinting", RiskRating.Low);
   }
 
-
   /**
    * Runs the detector on the given file.
    * @param {SourceFile} file - The source file to analyze.
-   * @returns {Finding[]} - Array of findings.
+   * @returns {Promise<Finding[]>} - Array of findings.
    */
   public async run(file: SourceFile): Promise<Finding[]> {
-    this.count++;
-    if (this.count > 1) {
-      return this.getFindings();
-    }
-    // Instantiate ESLint
-    const eslint = new ESLint({
+    const eslint = this.createESLintInstance(file);
+    const filePath = file.getFilePath();
+
+    const results = await eslint.lintFiles([filePath]);
+    const formattedResults = await this.formatResults(eslint, results);
+
+    // TODO: Parse the formatted results and create findings
+    console.log(formattedResults);
+
+    return this.getFindings();
+  }
+
+  /**
+   * Creates an ESLint instance with the specified configuration.
+   * @param {SourceFile} file - The source file for ESLint.
+   * @returns {ESLint} - The ESLint instance.
+   */
+  private createESLintInstance(file: SourceFile): ESLint {
+    return new ESLint({
       cwd: file.getDirectoryPath(),
       baseConfig: {
-        files: ["**/*.ts", "**/*.tsx"],
+        files: [file.getBaseName()],
         languageOptions: {
-          parser: require('@typescript-eslint/parser'),
+          parser: require("@typescript-eslint/parser"),
           parserOptions: {
             ecmaVersion: 2020,
             sourceType: "module",
-          }
+          },
         },
         plugins: {
-          "@typescript-eslint": require("@typescript-eslint/eslint-plugin")
+          "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
         },
-        rules: {
-          "@typescript-eslint/no-explicit-any": "warn",
-          "no-unused-vars": ["error", {"vars": "all", "args": "after-used", "ignoreRestSiblings": false}],
-          "no-unused-expressions": "error",
-          "no-unused-labels": "error"
-        },
+        rules: ESLINT_RULES,
       },
       overrideConfigFile: true,
       ignore: false,
     });
-    console.log('ESLint instantiated');
-    // Lint the target files in another project
-    let files = glob.sync("**/*.ts", {cwd: file.getDirectoryPath()});
-    files.map(f => path.join(file.getDirectoryPath(), f))
-    files = files.filter(f => !f.includes('node_modules'));
-    // Lint the files
-    const results = await eslint.lintFiles(files);
-    console.log('ESLint linted files');
+  }
 
-    // Format results to JSON
-    const formatter = await eslint.loadFormatter('json');
+  /**
+   * Formats the linting results to JSON.
+   * @param {ESLint} eslint - The ESLint instance.
+   * @param {ESLint.LintResult[]} results - The linting results.
+   * @returns {Promise<string>} - The formatted results as a JSON string.
+   */
+  private async formatResults(
+    eslint: ESLint,
+    results: ESLint.LintResult[]
+  ): Promise<string> {
+    const formatter = await eslint.loadFormatter("json");
     const resultText = await formatter.format(results);
-    console.log(JSON.stringify(JSON.parse(resultText), null, 2));
-
-    return this.getFindings();
+    return JSON.stringify(JSON.parse(resultText), null, 2);
   }
 }
 
-
-export {ESLinting};
+export { ESLintingDetector };
