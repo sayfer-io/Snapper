@@ -36,18 +36,17 @@ async function main(): Promise<void> {
       }`
     );
 
-    const allFindings = await processFiles(
-      projectPath,
-      detector,
-      argv.recursive
-    );
+    const allFindings = await processFiles(projectPath, detector);
 
     // Determine the output file name
     const resultFileName =
       argv.output || generateTimestampFileName("result", "json");
 
     // Save findings to the output file
-    await fs.writeFile(resultFileName, JSON.stringify(allFindings, null, 2));
+    const sortedFindings = allFindings.sort((a, b) =>
+      a.type.localeCompare(b.type)
+    );
+    await fs.writeFile(resultFileName, JSON.stringify(sortedFindings, null, 2));
     logger.info(`Results saved to ${resultFileName}`);
   } catch (error) {
     if (error instanceof Error) {

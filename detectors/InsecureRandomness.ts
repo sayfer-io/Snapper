@@ -4,6 +4,12 @@ import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
+/**
+ * Detector for identifying insecure randomness usage in code.
+ *
+ * This class checks for the usage of insecure randomness functions like Math.random.
+ * It extends the DetectorBase class and is assigned a medium risk rating.
+ */
 class InsecureRandomnessDetector extends DetectorBase {
   // List of notable functions
   private static NOTABLE_FUNCTIONS: string[] = ["Math.random"];

@@ -34,4 +34,4 @@ Callback function to handle the command output.
 
 ## Defined in
 
-[utils/commandUtils.ts:38](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/utils/commandUtils.ts#L38)
+[utils/commandUtils.ts:40](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/utils/commandUtils.ts#L40)

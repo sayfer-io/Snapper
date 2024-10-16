@@ -1,5 +1,3 @@
-//TODO: Need to reword the recursive flag logic.
-
 import path from "path";
 import { Project, SourceFile } from "ts-morph";
 
@@ -31,6 +29,13 @@ const detectors = [
   new Detectors.DependencyVersioningDetector(),
   new Detectors.LackOfExceptionHandlingDetector(),
   new Detectors.OriginValidation(),
+  new Detectors.PotentialOutdatedEngineDetector(),
+  new Detectors.StrictNullChecksDetector(),
+  new Detectors.MissingExplicitStrictTypeCheckingDetector(),
+  new Detectors.BroadPermissionsDetector(),
+  new Detectors.FloatingPointPrecisionDetector(),
+  new Detectors.UnhandledPromiseRejectionDetector(),
+  new Detectors.ImproperTypeUsageDetector(),
   new Detectors.ESLinting(),
 ];
 
@@ -39,13 +44,11 @@ const detectors = [
  *
  * @param {string} projectPath - The path to the TypeScript project.
  * @param {string} [detectorName] - The specific detector to run. If not provided, all detectors will be applied.
- * @param {boolean} [recursive=false] - Whether to process projects recursively.
  * @returns {Promise<Finding[]>} - A promise that resolves to an array of findings.
  */
 export async function processFiles(
   projectPath: string,
-  detectorName?: string,
-  recursive: boolean = false
+  detectorName?: string
 ): Promise<Finding[]> {
   const tsConfigPaths = await findTsConfig(projectPath);
   if (tsConfigPaths.length === 0) {
@@ -67,11 +70,14 @@ export async function processFiles(
       `${folderPath}/**/snap.manifest.json`,
     ]);
     logger.info(`Processing files in path: ${folderPath}`);
+    const sortedFiles = files.sort((a, b) =>
+      a.getFilePath().localeCompare(b.getFilePath())
+    );
+    logger.info(`Total number of files found: ${sortedFiles.length}`);
 
-    let findingsCount = 0;
-    for (const file of files) {
+    for (const file of sortedFiles) {
       // Skip files in node_modules, could not make it work with the glob pattern
-      if (file.getFilePath().includes('/node_modules/')) {
+      if (file.getFilePath().includes("/node_modules/")) {
         continue;
       }
 
@@ -96,23 +102,17 @@ export async function processFiles(
       );
 
       for (const detector of detectorsToRun) {
+        detector.clearFindings();
         logger.debug(`Running detector: ${detector.getName()}`);
 
         // Run the detector and capture its findings
         await detector.run(file as SourceFile);
         const findings = detector.getFindings();
 
-        // Calculate new findings added by this detector
-        const newFindings = findings.slice(allFindings.length);
-        const newFindingsCount = newFindings.length;
-
-        logger.debug(`Found ${newFindingsCount} new findings`);
-        findingsCount += newFindingsCount;
-        allFindings.push(...newFindings);
+        logger.debug(`Found ${findings.length} issues`);
+        allFindings.push(...findings);
       }
     }
-
-    logger.info(`Number of issues found for ${tsConfigPath}: ${findingsCount}`);
   }
 
   logger.info(`Total number of issues found: ${allFindings.length}`);

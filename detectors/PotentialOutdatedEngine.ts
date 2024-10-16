@@ -1,0 +1,42 @@
+import * as fs from "fs";
+import * as path from "path";
+import { SourceFile } from "ts-morph";
+
+import { Finding } from "../types";
+import { RiskRating } from "../structures";
+import { DetectorBase } from "./DetectorBase";
+
+/**
+ * Class to detect potential outdated engine specifications in package.json files.
+ */
+class PotentialOutdatedEngineDetector extends DetectorBase {
+  constructor() {
+    super("PotentialOutdatedEngine", RiskRating.Low);
+  }
+
+  /**
+   * Runs the detector on the given source file.
+   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @returns {Finding[]} - Array of findings with details about the detected issues.
+   */
+  public run(sourceFile: SourceFile): Finding[] {
+    const findings: Finding[] = [];
+
+    const filePath = sourceFile.getFilePath();
+    if (path.basename(filePath) === "package.json") {
+      const packageJson = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
+      if (!packageJson.engines || !packageJson.engines.node) {
+        this.addFinding(
+          "Missing or outdated Node.js engine specification in package.json.",
+          filePath,
+          1 // Line number is not available for package.json files
+        );
+      }
+    }
+
+    return this.getFindings();
+  }
+}
+
+export { PotentialOutdatedEngineDetector };

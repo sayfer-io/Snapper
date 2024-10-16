@@ -28,6 +28,7 @@ function main() {
     { name: "yarn", installCommand: "npm install -g yarn" },
     { name: "pnpm", installCommand: "npm install -g pnpm" },
     { name: "mm-snap", installCommand: "npm install -g snaps-cli" },
+    { name: "audit-ci", installCommand: "npm install -g audit-ci" },
   ];
 
   packageManagers.forEach((pm) => checkAndInstall(pm.name, pm.installCommand));

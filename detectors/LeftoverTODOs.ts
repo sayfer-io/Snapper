@@ -39,6 +39,17 @@ class LeftoverTODOsDetector extends DetectorBase {
   }
 
   /**
+   * Checks if the comment contains a real "TODO" and not just the keyword in a string or non-TODO usage.
+   * @param {CommentRange} comment - The comment range to check.
+   * @returns {boolean} - True if the comment includes an actionable TODO, false otherwise.
+   */
+  private isRealTodoComment(comment: CommentRange): boolean {
+    const commentText = comment.getText();
+    // Ensure "TODO" appears as a standalone word
+    return /\bTODO\b/i.test(commentText);
+  }
+
+  /**
    * Runs the detector on the given source file.
    * @param {SourceFile} sourceFile - The source file to analyze.
    * @returns {Finding[]} - Array of findings with details about the detected issues.
@@ -52,10 +63,7 @@ class LeftoverTODOsDetector extends DetectorBase {
         return;
       }
 
-      const commentText = comment.getText();
-
-      // Detect leftover TODOs
-      if (commentText.includes("TODO")) {
+      if (this.isRealTodoComment(comment)) {
         const todoLocation = `${sourceFile.getFilePath()}:${
           sourceFile.getLineAndColumnAtPos(comment.getPos()).line
         }`;

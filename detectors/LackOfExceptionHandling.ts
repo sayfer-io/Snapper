@@ -10,6 +10,9 @@ import { DetectorBase } from "./DetectorBase";
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 
+/**
+ * Detector for identifying lack of exception handling in important functions.
+ */
 class LackOfExceptionHandlingDetector extends DetectorBase {
   private importantFunctions: string[] = [
     "ethereum.request",

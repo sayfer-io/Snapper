@@ -28,7 +28,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
@@ -153,7 +153,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
@@ -712,7 +712,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
@@ -723,7 +723,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
@@ -780,7 +780,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
@@ -824,7 +824,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "Low"
@@ -1011,7 +1011,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "High"
@@ -1022,7 +1022,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
@@ -1033,7 +1033,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"
@@ -1044,7 +1044,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "Critical"
@@ -1055,7 +1055,7 @@
             "snap": "npm:@consensys/web3tickets-snap",
             "report_url": "https://consensys.io/diligence/audits/2023/12/web3-tickets/",
             "code_urls": [
-                "https://github.com/Consensys/web3-tickets.git/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
+                "https://github.com/Consensys/web3-tickets/tree/8c6a772812160f7816c8f833feed9591fe4a771f"
             ],
             "auditor": "Consensys Diligence",
             "severity": "TODO"

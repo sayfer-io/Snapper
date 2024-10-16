@@ -17,4 +17,4 @@ Automatically cleans up the directory when done.
 
 ## Defined in
 
-[utils/fileUtils.ts:13](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/utils/fileUtils.ts#L13)
+[utils/fileUtils.ts:13](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/utils/fileUtils.ts#L13)

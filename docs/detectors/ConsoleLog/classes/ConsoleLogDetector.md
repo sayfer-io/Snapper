@@ -1,10 +1,12 @@
 [**Snapper Project**](../../../README.md) • **Docs**
 
----
+***
 
 [Snapper Project](../../../README.md) / [detectors/ConsoleLog](../README.md) / ConsoleLogDetector
 
 # Class: ConsoleLogDetector
+
+Detector for identifying console.log statements in the code.
 
 ## Extends
 
@@ -26,7 +28,7 @@
 
 #### Defined in
 
-[detectors/ConsoleLog.ts:8](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/ConsoleLog.ts#L8)
+[detectors/ConsoleLog.ts:11](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/ConsoleLog.ts#L11)
 
 ## Properties
 
@@ -40,9 +42,9 @@
 
 #### Defined in
 
-[detectors/DetectorBase.ts:11](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L11)
+[detectors/DetectorBase.ts:14](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L14)
 
----
+***
 
 ### name
 
@@ -54,9 +56,9 @@
 
 #### Defined in
 
-[detectors/DetectorBase.ts:9](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L9)
+[detectors/DetectorBase.ts:12](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L12)
 
----
+***
 
 ### riskRating
 
@@ -68,7 +70,7 @@
 
 #### Defined in
 
-[detectors/DetectorBase.ts:10](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L10)
+[detectors/DetectorBase.ts:13](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L13)
 
 ## Methods
 
@@ -102,9 +104,9 @@ Line number where the finding was detected (default is 1).
 
 #### Defined in
 
-[detectors/DetectorBase.ts:27](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L27)
+[detectors/DetectorBase.ts:30](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L30)
 
----
+***
 
 ### clearFindings()
 
@@ -122,9 +124,9 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:44](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L44)
+[detectors/DetectorBase.ts:47](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L47)
 
----
+***
 
 ### getFindings()
 
@@ -140,9 +142,9 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:52](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L52)
+[detectors/DetectorBase.ts:55](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L55)
 
----
+***
 
 ### getName()
 
@@ -158,9 +160,9 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:48](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L48)
+[detectors/DetectorBase.ts:51](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L51)
 
----
+***
 
 ### logDebug()
 
@@ -184,9 +186,9 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:68](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L68)
+[detectors/DetectorBase.ts:71](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L71)
 
----
+***
 
 ### logError()
 
@@ -214,9 +216,9 @@ Optional error object to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:77](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L77)
+[detectors/DetectorBase.ts:80](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L80)
 
----
+***
 
 ### logInfo()
 
@@ -240,9 +242,39 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:60](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/DetectorBase.ts#L60)
+[detectors/DetectorBase.ts:63](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L63)
 
----
+***
+
+### logWarning()
+
+> **logWarning**(`message`, `error`?): `void`
+
+Logs a warning message.
+
+#### Parameters
+
+• **message**: `string`
+
+The message to log.
+
+• **error?**: `Error`
+
+Optional error object to log.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`DetectorBase`](../../DetectorBase/classes/DetectorBase.md).[`logWarning`](../../DetectorBase/classes/DetectorBase.md#logwarning)
+
+#### Defined in
+
+[detectors/DetectorBase.ts:89](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L89)
+
+***
 
 ### run()
 
@@ -268,4 +300,4 @@ The source file to analyze.
 
 #### Defined in
 
-[detectors/ConsoleLog.ts:34](https://github.com/sayfer-io/Snapper/blob/a444e49088c95ab4a94b5ec3502c29e0d5191e98/detectors/ConsoleLog.ts#L34)
+[detectors/ConsoleLog.ts:37](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/ConsoleLog.ts#L37)

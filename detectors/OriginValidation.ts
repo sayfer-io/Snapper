@@ -1,62 +1,89 @@
-import {SourceFile, SyntaxKind} from "ts-morph";
-import {Finding} from "../types";
-import {RiskRating} from "../structures";
-import {DetectorBase} from "./DetectorBase";
-import {installSnap} from '@metamask/snaps-simulation';
+import { dirname, join } from "path";
+import { SourceFile } from "ts-morph";
 
+import { Finding } from "../types";
+import { RiskRating } from "../structures";
+import { DetectorBase } from "./DetectorBase";
+import {
+  prepareSnap,
+  startAndConnectToSnap,
+} from "../utils/dynamicSnapHelpers";
+
+const DOMAIN = "https://theansweris42.com";
+const METHOD = "hello";
+const ERROR_MESSAGE = "method";
+
+/**
+ * Detector for validating the origin of requests.
+ */
 class OriginValidation extends DetectorBase {
-  private counter: number;
-
   constructor() {
     super("originValidation", RiskRating.High);
-    this.counter = 0
   }
 
-  private async hasDomainAllowList() {
-    const snapId: any = 'local:http://localhost:3333';
-    const {request} = await installSnap(snapId)
-    let blockedOrigin = false;
+  /**
+   * Checks if the domain allow list is properly configured.
+   * @param request - The Snap request function from `startAndConnectToSnap`.
+   * @param port - The port number to use in the request.
+   * @returns {Promise<boolean>} - True if the domain is blocked, false otherwise.
+   */
+  private async isDomainBlocked(
+    request: (params: any) => Promise<any>,
+    port: number
+  ): Promise<boolean> {
+    try {
+      const { response } = await request({
+        origin: `${DOMAIN}:${port}`,
+        method: METHOD,
+        params: [],
+      });
 
-    const {response}: any = await request({
-      origin: "https://theansweris42.com:4242",
-      method: "hello",
-      params: [],
-    })
-
-    if (response.error && !response.error.message.toLowerCase().includes("method")) {
-      blockedOrigin = true;
+      return (
+        response?.error &&
+        !response.error.message.toLowerCase().includes(ERROR_MESSAGE)
+      );
+    } catch (error) {
+      this.handleError("Error during domain allow list check", error);
+      return false;
     }
-
-    return blockedOrigin
   }
 
+  /**
+   * Runs the origin validation detector on the given source file.
+   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @returns {Promise<Finding[]>} - Array of findings with details about the detected issues.
+   */
   public async run(sourceFile: SourceFile): Promise<Finding[]> {
-    this.counter += 1
-    if (this.counter > 1) {
-      return this.getFindings();
-    }
+    const filePath = sourceFile.getFilePath();
 
-    let hasAllowList = await this.hasDomainAllowList();
-    if (!hasAllowList) {
-      this.addFinding(`Insufficient origin validation`, sourceFile.getFilePath(), 0)
+    // Only process package.json files
+    if (!filePath.endsWith("package.json")) return [];
+
+    const sourceFileDir = dirname(sourceFile.getFilePath());
+
+    try {
+      await prepareSnap(sourceFileDir);
+      const { request, port } = await startAndConnectToSnap(sourceFileDir);
+
+      const isBlocked = await this.isDomainBlocked(request, port);
+      if (!isBlocked) {
+        this.addFinding("Insufficient origin validation", filePath, 0);
+      }
+    } catch (error) {
+      this.handleError("Error during the origin validation run", error);
     }
 
     return this.getFindings();
   }
+
+  /**
+   * Handles errors by logging them to the console.
+   * @param message - The error message to log.
+   * @param error - The error object.
+   */
+  private handleError(message: string, error: any): void {
+    console.error(message, error);
+  }
 }
 
-export {OriginValidation};
-
-// (async function test() {
-//   const snapId: any = 'local:http://localhost:3333';
-//   const {request, onHomePage, onTransaction} = await installSnap(snapId)
-//   const response = await request({
-//     origin: "http://localhost:8080",
-//     method: "hello",
-//     params: [],
-//   })
-//   console.log(response)
-//   const ui = await onHomePage()
-//   let interface_ =  ui.getInterface()
-//   console.log(interface_)
-// })()
+export { OriginValidation };

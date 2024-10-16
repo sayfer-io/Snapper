@@ -4,6 +4,9 @@ import logger from "../utils/logger";
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 
+/**
+ * Abstract base class for all detectors.
+ */
 export abstract class DetectorBase {
   // Common properties that all detectors need
   protected name: string;
@@ -16,7 +19,7 @@ export abstract class DetectorBase {
   }
 
   // Abstract method that each detector must implement
-  abstract run(file: SourceFile):Finding[] | Promise<Finding[]>;
+  abstract run(file: SourceFile): Finding[] | Promise<Finding[]>;
 
   /**
    * Adds a finding to the findings array.
@@ -76,5 +79,14 @@ export abstract class DetectorBase {
    */
   logError(message: string, error?: Error): void {
     logger.error(`[${this.name}] ${message}`, error);
+  }
+
+  /**
+   * Logs a warning message.
+   * @param message - The message to log.
+   * @param error - Optional error object to log.
+   */
+  logWarning(message: string, error?: Error): void {
+    logger.warn(`[${this.name}] ${message}`, error);
   }
 }
