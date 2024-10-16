@@ -31,6 +31,7 @@ const detectors = [
   new Detectors.DependencyVersioningDetector(),
   new Detectors.LackOfExceptionHandlingDetector(),
   new Detectors.OriginValidation(),
+  new Detectors.ESLinting(),
 ];
 
 /**
