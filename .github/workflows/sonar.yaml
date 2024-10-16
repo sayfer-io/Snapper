@@ -1,0 +1,84 @@
+name: Build
+on:
+  push:
+    branches: [main, develop, building-ci-cd]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  checks: write
+  pull-requests: write
+
+jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Extract SonarCloud Project URL
+        run: |
+          REPORT_FILE=$(find . -name "report-task.txt" | head -n 1)
+          if [ -f "$REPORT_FILE" ]; then
+            SONAR_PROJECT_URL=$(grep dashboardUrl= "$REPORT_FILE" | cut -d'=' -f2-)
+            echo "SONAR_PROJECT_URL=$SONAR_PROJECT_URL" >> $GITHUB_ENV
+          else
+            echo "SonarCloud report file not found"
+            exit 1
+          fi
+      - name: Update Check Run with SonarCloud URL
+        uses: actions/github-script@v6
+        if: always()
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { SONAR_PROJECT_URL } = process.env;
+            if (SONAR_PROJECT_URL) {
+              try {
+                const { data: checkRuns } = await github.rest.checks.listForRef({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  ref: context.sha,
+                });
+
+                console.log('Check runs found:');
+                for (const checkRun of checkRuns.check_runs) {
+                  console.log(`- ${checkRun.name} (ID: ${checkRun.id})`);
+                }
+
+                // Find the check run corresponding to SonarCloud
+                const sonarCheckRun = checkRuns.check_runs.find(run => run.name.includes('SonarCloud'));
+
+                if (sonarCheckRun) {
+                  await github.rest.checks.update({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    check_run_id: sonarCheckRun.id,
+                    details_url: SONAR_PROJECT_URL
+                  });
+                  console.log(`Successfully updated check run with ID ${sonarCheckRun.id}`);
+                } else {
+                  console.log('No matching check run found for SonarCloud');
+                }
+              } catch (error) {
+                console.error('Error updating check run:', error);
+              }
+            } else {
+              console.log('SONAR_PROJECT_URL not found');
+            }
+      - name: Create custom output
+        id: create-custom-output
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            fs.writeFileSync(process.env.GITHUB_STEP_SUMMARY, `## SonarCloud Analysis\n[View on SonarCloud](${process.env.SONAR_PROJECT_URL})`);
+            core.setOutput('sonar-url', process.env.SONAR_PROJECT_URL);
+    outputs:
+      sonar-url: ${{ steps.create-custom-output.outputs.sonar-url }}
