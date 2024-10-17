@@ -6,6 +6,8 @@ import { DetectorBase } from "./DetectorBase";
 
 /**
  * Class to detect unused functions in the source code.
+ * This detector identifies function declarations that are not used or exported,
+ * helping to maintain clean and efficient code by eliminating dead code.
  */
 class UnusedFunctionsDetector extends DetectorBase {
   constructor() {
@@ -13,9 +15,12 @@ class UnusedFunctionsDetector extends DetectorBase {
   }
 
   /**
-   * Gets all function declarations in the given file.
-   * @param {SourceFile} file - The source file to analyze.
-   * @returns {FunctionDeclaration[]} - Array of function declarations.
+   * Retrieves all function declarations within the provided source file.
+   *
+   * This method scans the source file and collects all declared functions.
+   *
+   * @param {SourceFile} file - The source file to analyze for function declarations.
+   * @returns {FunctionDeclaration[]} - An array of function declarations found in the file.
    */
   private getAllFunctionDeclarations(file: SourceFile): FunctionDeclaration[] {
     return file.getFunctions();
@@ -23,8 +28,13 @@ class UnusedFunctionsDetector extends DetectorBase {
 
   /**
    * Collects all used identifiers in the source file, excluding function declarations.
-   * @param {SourceFile} sourceFile - The source file to analyze.
-   * @returns {Set<string>} - Set of used identifier names.
+   *
+   * This method gathers identifiers (variable names, property names, etc.) that are used
+   * within the source file while ensuring that function declarations themselves are excluded
+   * from the results to avoid false positives.
+   *
+   * @param {SourceFile} sourceFile - The source file to analyze for used identifiers.
+   * @returns {Set<string>} - A set of used identifier names found in the file.
    */
   private collectUsedIdentifiers(sourceFile: SourceFile): Set<string> {
     const identifiers = sourceFile.getDescendantsOfKind(SyntaxKind.Identifier);
@@ -32,6 +42,7 @@ class UnusedFunctionsDetector extends DetectorBase {
 
     identifiers.forEach((identifier) => {
       const parent = identifier.getParent();
+      // Add identifier to the set only if it is not a function declaration
       if (parent && parent.getKind() !== SyntaxKind.FunctionDeclaration) {
         usedIdentifiers.add(identifier.getText());
       }
@@ -41,10 +52,14 @@ class UnusedFunctionsDetector extends DetectorBase {
   }
 
   /**
-   * Checks if a function is used or exported.
-   * @param {FunctionDeclaration} functionDecl - The function declaration.
-   * @param {Set<string>} usedIdentifiers - Set of used identifier names.
-   * @returns {boolean} - True if the function is used or exported, false otherwise.
+   * Determines if a function is either used or exported.
+   *
+   * This method checks if the given function declaration is referenced in the code
+   * or if it is exported, which would indicate that it might still be in use in another module.
+   *
+   * @param {FunctionDeclaration} functionDecl - The function declaration to check.
+   * @param {Set<string>} usedIdentifiers - Set of used identifier names to verify against.
+   * @returns {boolean} - True if the function is used or exported; false otherwise.
    */
   private isFunctionUsedOrExported(
     functionDecl: FunctionDeclaration,
@@ -53,19 +68,23 @@ class UnusedFunctionsDetector extends DetectorBase {
     const functionName = functionDecl.getName();
     if (!functionName) return false;
 
-    // Check if the function is used
+    // Check if the function is referenced in the used identifiers set
     if (usedIdentifiers.has(functionName)) return true;
 
-    // Check if the function is exported
+    // Check if the function is marked as exported
     if (functionDecl.isExported()) return true;
 
     return false;
   }
 
   /**
-   * Adds a finding for an unused function.
+   * Reports an unused function by logging a finding.
+   *
+   * This method generates a finding for a function that is declared but never utilized,
+   * which is essential for keeping the codebase clean and efficient.
+   *
    * @param {string} functionName - The name of the unused function.
-   * @param {FunctionDeclaration} functionDecl - The function declaration.
+   * @param {FunctionDeclaration} functionDecl - The function declaration containing additional details.
    */
   private reportUnusedFunction(
     functionName: string,
@@ -74,14 +93,19 @@ class UnusedFunctionsDetector extends DetectorBase {
     this.addFinding(
       `Function '${functionName}' is declared but never used.`,
       functionDecl.getSourceFile().getFilePath(),
-      functionDecl.getStartLineNumber()
+      functionDecl.getStartLineNumber() // Get the start line number for accurate reporting
     );
   }
 
   /**
-   * Runs the detector on the given source file.
-   * @param {SourceFile} sourceFile - The source file to analyze.
-   * @returns {Finding[]} - Array of findings with details about the detected issues.
+   * Runs the detector on the specified source file to identify unused functions.
+   *
+   * This method orchestrates the detection process by collecting used identifiers,
+   * fetching all function declarations, and then checking each function to see if it
+   * is used or exported. It reports findings for any unused functions detected.
+   *
+   * @param {SourceFile} sourceFile - The source file to analyze for unused functions.
+   * @returns {Finding[]} - An array of findings with details about unused functions.
    */
   public run(sourceFile: SourceFile): Finding[] {
     const usedIdentifiers = this.collectUsedIdentifiers(sourceFile);
@@ -100,6 +124,7 @@ class UnusedFunctionsDetector extends DetectorBase {
       }
     });
 
+    // Return all findings accumulated during the detection process
     return this.getFindings();
   }
 }

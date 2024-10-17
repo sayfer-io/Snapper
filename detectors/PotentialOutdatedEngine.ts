@@ -23,9 +23,11 @@ class PotentialOutdatedEngineDetector extends DetectorBase {
     const findings: Finding[] = [];
 
     const filePath = sourceFile.getFilePath();
+    // Only process package.json files
     if (path.basename(filePath) === "package.json") {
       const packageJson = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
+      // Check for missing or outdated Node.js engine specification
       if (!packageJson.engines || !packageJson.engines.node) {
         this.addFinding(
           "Missing or outdated Node.js engine specification in package.json.",

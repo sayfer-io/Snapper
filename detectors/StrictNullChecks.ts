@@ -15,17 +15,24 @@ class StrictNullChecksDetector extends DetectorBase {
   }
 
   /**
-   * Runs the detector on the given source file.
+   * Runs the detector on the given source file to check for strict null checks in tsconfig.json.
+   * 
+   * This function reads the tsconfig.json file and evaluates the compilerOptions.
+   * If strict null checks are not enabled, it adds a finding indicating this issue.
+   * 
    * @param {SourceFile} sourceFile - The source file to analyze.
-   * @returns {Finding[]} - Array of findings with details about the detected issues.
+   * @returns {Finding[]} - An array of findings that detail any issues detected regarding strict null checks.
    */
   public run(sourceFile: SourceFile): Finding[] {
     const findings: Finding[] = [];
 
     const filePath = sourceFile.getFilePath();
+    // Process only the tsconfig.json file
     if (path.basename(filePath) === "tsconfig.json") {
+      // Read and parse the tsconfig.json file
       const tsconfig = JSON.parse(fs.readFileSync(filePath, "utf-8"));
 
+      // Check if strict null checks are enabled
       if (
         !tsconfig.compilerOptions ||
         tsconfig.compilerOptions.strict !== true
@@ -38,6 +45,7 @@ class StrictNullChecksDetector extends DetectorBase {
       }
     }
 
+    // Return any findings collected during the analysis
     return this.getFindings();
   }
 }

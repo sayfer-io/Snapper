@@ -1,3 +1,9 @@
+/**
+ * This file defines a detector that identifies outdated dependencies in the source code.
+ * It uses the audit-ci tool to scan for vulnerabilities in the project's dependencies 
+ * and flags them as medium-risk issues.
+ */
+
 import path from "path";
 import fsExtra from "fs-extra";
 import { SourceFile } from "ts-morph";
@@ -19,14 +25,23 @@ interface AuditCIFinding {
 
 /**
  * Class to detect outdated dependencies in the source code.
+ * Extends the DetectorBase class to implement detection functionality for dependency vulnerabilities.
  */
 class DependencyOutdatedDetector extends DetectorBase {
+  /**
+   * Constructor for the DependencyOutdatedDetector.
+   * Initializes the detector with a name and assigns a medium-risk rating.
+   * @constructor
+   */
   constructor() {
     super("DependencyOutdated", RiskRating.Medium);
   }
 
   /**
    * Creates a lockfile using the specified package manager.
+   * This step is required before running the audit-ci tool to ensure that the 
+   * correct dependency versions are installed and locked.
+   *
    * @param {string} tempDir - The path to the temporary directory.
    * @param {string} packageManager - The package manager to use ('npm', 'yarn', or 'pnpm').
    * @throws Will throw an error if the lockfile creation fails.
@@ -44,9 +59,11 @@ class DependencyOutdatedDetector extends DetectorBase {
     }
 
     try {
+      // Run the command to generate the lockfile
       const output = runCommand(command, tempDir);
       this.logDebug(`Lockfile creation output: ${output}`);
 
+      // Define the expected lockfile names for different package managers
       const lockfileNames: { [key: string]: string } = {
         yarn: "yarn.lock",
         pnpm: "pnpm-lock.yaml",
@@ -55,6 +72,8 @@ class DependencyOutdatedDetector extends DetectorBase {
 
       const lockfileName = lockfileNames[packageManager];
       const lockfilePath = path.join(tempDir, lockfileName);
+
+      // Verify the lockfile was created successfully
       if (!fsExtra.existsSync(lockfilePath)) {
         throw new Error(`Failed to create lockfile at ${lockfilePath}`);
       }
@@ -71,6 +90,9 @@ class DependencyOutdatedDetector extends DetectorBase {
 
   /**
    * Runs the audit-ci command and parses the JSON output for vulnerabilities.
+   * This method is used to check the project's dependencies for security issues 
+   * and returns an array of findings based on the audit results.
+   *
    * @param {string} tempDir - The path to the temporary directory.
    * @returns {AuditCIFinding[]} - An array of findings with details about the detected issues.
    */
@@ -78,6 +100,7 @@ class DependencyOutdatedDetector extends DetectorBase {
     const command = `npx audit-ci --output-format json --pass-enoaudit --report-type full`;
     const stdout = runCommand(command, tempDir);
 
+    // Check for any output from the audit-ci command
     if (stdout.trim().length === 0) {
       this.logWarning("No output found in audit-ci response.");
       return [];
@@ -107,6 +130,7 @@ class DependencyOutdatedDetector extends DetectorBase {
       jsonObjects.length - 1
     ].slice(0, -1);
 
+    // Parse each JSON object and extract the relevant vulnerability data
     jsonObjects.forEach((jsonString) => {
       const auditResult = JSON.parse(jsonString);
       if (!auditResult) return;
@@ -153,7 +177,10 @@ class DependencyOutdatedDetector extends DetectorBase {
 
   /**
    * Maps the severity string to a RiskRating enum.
-   * @param {string} severity - The severity string.
+   * This method converts the severity level (e.g., 'critical', 'high') into a corresponding 
+   * RiskRating enumeration for use in the findings.
+   *
+   * @param {string} severity - The severity string returned from the audit-ci report.
    * @returns {RiskRating} - The corresponding RiskRating enum.
    */
   private mapSeverityToRiskRating(severity: string): RiskRating {
@@ -169,12 +196,17 @@ class DependencyOutdatedDetector extends DetectorBase {
 
   /**
    * Runs the dependency outdated detector on the given source file.
+   * This method first verifies that the source file is a package.json file, then 
+   * it creates a temporary directory to copy the project files and runs the audit-ci tool 
+   * to identify any outdated dependencies or vulnerabilities.
+   *
    * @param {SourceFile} sourceFile - The source file to analyze.
    * @returns {Finding[]} - An array of findings with details about the detected issues.
    */
   public run(sourceFile: SourceFile): Finding[] {
     const filePath = sourceFile.getFilePath();
 
+    // Only proceed if the file is a package.json file
     if (!filePath.endsWith("package.json")) return [];
 
     const tempDir = createTempDir();
@@ -192,6 +224,7 @@ class DependencyOutdatedDetector extends DetectorBase {
 
     const vulnerabilities = this.runAuditCi(tempDir);
 
+    // For each vulnerability found, add a finding
     vulnerabilities.forEach((vulnerability) => {
       const description = `Vulnerability in ${vulnerability.packageName} version ${vulnerability.affectedVersion}: ${vulnerability.description}`;
       this.addFinding(description, filePath, vulnerability.severity);

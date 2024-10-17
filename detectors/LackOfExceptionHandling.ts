@@ -14,6 +14,7 @@ import { RiskRating } from "../structures";
  * Detector for identifying lack of exception handling in important functions.
  */
 class LackOfExceptionHandlingDetector extends DetectorBase {
+  // List of important functions that require exception handling
   private importantFunctions: string[] = [
     "ethereum.request",
     "snap_manageAccounts",
@@ -31,16 +32,12 @@ class LackOfExceptionHandlingDetector extends DetectorBase {
   /**
    * Runs the detector on the given source file.
    * @param {SourceFile} sourceFile - The source file to analyze.
-   * @returns {Finding[]} - Array of findings with details about the detected issues.
+   * @returns {Finding[]} - Array of findings detailing the detected issues.
    */
   public run(sourceFile: SourceFile): Finding[] {
     // Get all function and method declarations in the source file
-    const functions = sourceFile.getDescendantsOfKind(
-      SyntaxKind.FunctionDeclaration
-    );
-    const methods = sourceFile.getDescendantsOfKind(
-      SyntaxKind.MethodDeclaration
-    );
+    const functions = sourceFile.getDescendantsOfKind(SyntaxKind.FunctionDeclaration);
+    const methods = sourceFile.getDescendantsOfKind(SyntaxKind.MethodDeclaration);
 
     // Check each important function and method for lack of exception handling
     functions.forEach((func) => this.checkImportantFunction(func));
@@ -53,11 +50,11 @@ class LackOfExceptionHandlingDetector extends DetectorBase {
    * Checks if the given function or method is important and lacks exception handling.
    * @param {FunctionDeclaration | MethodDeclaration} node - The function or method to check.
    */
-  private checkImportantFunction(
-    node: FunctionDeclaration | MethodDeclaration
-  ): void {
+  private checkImportantFunction(node: FunctionDeclaration | MethodDeclaration): void {
     const name = node.getName();
+    // Proceed only if the function is important
     if (name && this.importantFunctions.includes(name)) {
+      // Check for exception handling in the call stack
       if (!this.hasExceptionHandlingInCallStack(node)) {
         this.addFinding(
           `${node.getKindName()} '${name}' lacks exception handling in its call stack.`,
@@ -71,20 +68,16 @@ class LackOfExceptionHandlingDetector extends DetectorBase {
   /**
    * Checks if the given function or method has exception handling in its call stack.
    * @param {FunctionDeclaration | MethodDeclaration} node - The function or method to check.
-   * @returns {boolean} - True if the function or method has exception handling in its call stack, false otherwise.
+   * @returns {boolean} - True if exception handling is present, false otherwise.
    */
-  private hasExceptionHandlingInCallStack(
-    node: FunctionDeclaration | MethodDeclaration
-  ): boolean {
+  private hasExceptionHandlingInCallStack(node: FunctionDeclaration | MethodDeclaration): boolean {
     // Check if the node itself has a try statement
     if (this.hasExceptionHandling(node)) {
       return true;
     }
 
     // Traverse up the call stack to check for exception handling
-    const callExpressions = node.getDescendantsOfKind(
-      SyntaxKind.CallExpression
-    );
+    const callExpressions = node.getDescendantsOfKind(SyntaxKind.CallExpression);
     for (const callExpr of callExpressions) {
       const referencedDecl = this.getReferencedDeclaration(callExpr);
       if (referencedDecl && this.hasExceptionHandling(referencedDecl)) {
@@ -107,11 +100,9 @@ class LackOfExceptionHandlingDetector extends DetectorBase {
   /**
    * Gets the referenced declaration of a call expression.
    * @param {CallExpression} callExpr - The call expression to get the referenced declaration for.
-   * @returns {FunctionDeclaration | MethodDeclaration | undefined} - The referenced declaration, or undefined if not found.
+   * @returns {FunctionDeclaration | MethodDeclaration | undefined} - The referenced declaration or undefined if not found.
    */
-  private getReferencedDeclaration(
-    callExpr: CallExpression
-  ): FunctionDeclaration | MethodDeclaration | undefined {
+  private getReferencedDeclaration(callExpr: CallExpression): FunctionDeclaration | MethodDeclaration | undefined {
     const symbol = callExpr.getExpression().getSymbol();
     if (!symbol) return undefined;
 

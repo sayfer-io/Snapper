@@ -22,13 +22,21 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
   public run(sourceFile: SourceFile): Finding[] {
     const findings: Finding[] = [];
 
+    // Get the file path of the source file
     const filePath = sourceFile.getFilePath();
+    
+    // Check if the current file is tsconfig.json
     if (path.basename(filePath) === "tsconfig.json") {
+      // Read and parse the tsconfig.json file
       const tsconfig = JSON.parse(fs.readFileSync(filePath, "utf-8"));
       const compilerOptions = tsconfig.compilerOptions || {};
 
-      const missingOptions = [];
+      // Initialize an array to track missing strict type-checking options
+      const missingOptions: string[] = [];
+
+      // Check if the strict option is enabled
       if (compilerOptions.strict) {
+        // Check for specific missing options
         if (compilerOptions.noImplicitAny !== true) {
           missingOptions.push("noImplicitAny");
         }
@@ -40,11 +48,10 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
         }
       }
 
+      // If any options are missing, add a finding
       if (missingOptions.length > 0) {
         this.addFinding(
-          `Missing explicit strict type-checking options: ${missingOptions.join(
-            ", "
-          )}.`,
+          `Missing explicit strict type-checking options: ${missingOptions.join(", ")}.`,
           filePath,
           1 // Line number is not available for tsconfig.json files
         );

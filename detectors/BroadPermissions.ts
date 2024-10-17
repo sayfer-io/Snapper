@@ -1,11 +1,20 @@
+/**
+ * This file defines a detector that identifies broad permissions in the snap.manifest.json file.
+ * It flags permissions that pose security risks by providing overly extensive access to sensitive
+ * information or functions in MetaMask Snaps.
+ */
+
 import { readFileSync } from "fs";
 import { SourceFile } from "ts-morph";
-
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
 // Define broad permissions and their associated messages
+/**
+ * @constant {Object} BROAD_PERMISSIONS - An object mapping permission names to warning messages
+ * explaining the associated risk.
+ */
 const BROAD_PERMISSIONS: { [key: string]: { message: string } } = {
   snap_manageAccounts: {
     message:
@@ -30,16 +39,24 @@ const BROAD_PERMISSIONS: { [key: string]: { message: string } } = {
 
 /**
  * Class to detect broad permissions in snap.manifest.json with specific guidance.
+ * Extends the DetectorBase class to implement permission detection.
  */
 class BroadPermissionsDetector extends DetectorBase {
+  /**
+   * The constructor initializes the detector with a name and risk rating.
+   * @constructor
+   */
   constructor() {
     super("BroadPermissions", RiskRating.High);
   }
 
   /**
-   * Runs the detector on the given source file.
+   * Runs the detector on the given source file. It parses the snap.manifest.json file,
+   * checks for any permissions listed in BROAD_PERMISSIONS, and adds findings for those
+   * detected permissions.
+   *
    * @param {SourceFile} file - The source file to analyze.
-   * @returns {Finding[]} - List of findings.
+   * @returns {Finding[]} - A list of findings that flag any detected broad permissions.
    */
   public run(file: SourceFile): Finding[] {
     // Check if the file is named snap.manifest.json
@@ -51,12 +68,14 @@ class BroadPermissionsDetector extends DetectorBase {
     const jsonData = JSON.parse(readFileSync(file.getFilePath(), "utf-8"));
     const initialPermissions = jsonData.initialPermissions;
 
+    // If initialPermissions exist, check for broad permissions
     if (initialPermissions) {
       for (const [permissionName, permissionValue] of Object.entries(
         initialPermissions
       )) {
         const permissionInfo = BROAD_PERMISSIONS[permissionName];
         if (permissionInfo) {
+          // Add a finding for the broad permission detected
           this.addFinding(
             `Broad permission detected: ${permissionName}. ${permissionInfo.message}`,
             file.getFilePath(),
@@ -66,6 +85,7 @@ class BroadPermissionsDetector extends DetectorBase {
       }
     }
 
+    // Return the list of findings
     return this.getFindings();
   }
 }

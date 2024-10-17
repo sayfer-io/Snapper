@@ -1,5 +1,4 @@
 import { SourceFile, CommentRange, Node } from "ts-morph";
-
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
@@ -20,6 +19,7 @@ class LeftoverTODOsDetector extends DetectorBase {
   private getCommentRanges(file: SourceFile): CommentRange[] {
     const commentRanges: CommentRange[] = [];
 
+    // Collect all leading and trailing comment ranges from each descendant node
     file.forEachDescendant((node: Node) => {
       const leadingCommentRanges = node.getLeadingCommentRanges();
       const trailingCommentRanges = node.getTrailingCommentRanges();
@@ -58,16 +58,18 @@ class LeftoverTODOsDetector extends DetectorBase {
     const commentRanges = this.getCommentRanges(sourceFile);
     const reportedTodos = new Set<string>();
 
+    // Analyze each comment range for TODOs
     commentRanges.forEach((comment) => {
+      // Skip JSDoc comments
       if (this.isJSDocComment(comment)) {
         return;
       }
 
+      // Check if the comment is a valid TODO
       if (this.isRealTodoComment(comment)) {
-        const todoLocation = `${sourceFile.getFilePath()}:${
-          sourceFile.getLineAndColumnAtPos(comment.getPos()).line
-        }`;
+        const todoLocation = `${sourceFile.getFilePath()}:${sourceFile.getLineAndColumnAtPos(comment.getPos()).line}`;
 
+        // Add finding if this TODO hasn't been reported yet
         if (!reportedTodos.has(todoLocation)) {
           this.addFinding(
             "Leftover TODO comment detected.",

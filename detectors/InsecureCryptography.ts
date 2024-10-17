@@ -1,10 +1,9 @@
 import { SourceFile, SyntaxKind, Node, CallExpression } from "ts-morph";
-
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
-// Threshold for PBKDF2 iterations
+// Threshold for PBKDF2 iterations to consider usage insecure
 const PBKDF2_ITERATION_THRESHOLD = 10000;
 
 /**
@@ -18,7 +17,7 @@ class InsecureCryptographyDetector extends DetectorBase {
   /**
    * Runs the detector on the given source file.
    * @param {SourceFile} sourceFile - The source file to analyze.
-   * @returns {Finding[]} - Array of findings with details about the detected issues.
+   * @returns {Finding[]} - Array of findings with details about detected issues.
    */
   public run(sourceFile: SourceFile): Finding[] {
     sourceFile.forEachDescendant((node: Node) => {
@@ -37,11 +36,12 @@ class InsecureCryptographyDetector extends DetectorBase {
   }
 
   /**
-   * Checks if the given node is a PBKDF2 call with low iterations.
+   * Checks if the given node is a PBKDF2 call with a low number of iterations.
    * @param {Node} node - The node to check.
    * @returns {boolean} - True if the node is a PBKDF2 call with low iterations, false otherwise.
    */
   private isPBKDF2CallWithLowIterations(node: Node): boolean {
+    // Check if the node is a call expression
     if (node.getKind() !== SyntaxKind.CallExpression) {
       return false;
     }
@@ -49,20 +49,24 @@ class InsecureCryptographyDetector extends DetectorBase {
     const callExpression = node as CallExpression;
     const functionName = callExpression.getExpression().getText().toLowerCase();
 
+    // Check if the function name includes 'pbkdf2'
     if (!functionName.includes("pbkdf2")) {
       return false;
     }
 
     const args = callExpression.getArguments();
+    // PBKDF2 should have at least 4 arguments
     if (args.length < 4) {
       return false;
     }
 
     const iterationsArg = args[2];
+    // Check if the iterations argument is a numeric literal
     if (iterationsArg.getKind() !== SyntaxKind.NumericLiteral) {
       return false;
     }
 
+    // Parse the iteration count and check against the threshold
     const iterationCount = parseInt(iterationsArg.getText(), 10);
     return iterationCount < PBKDF2_ITERATION_THRESHOLD;
   }
@@ -70,7 +74,7 @@ class InsecureCryptographyDetector extends DetectorBase {
   /**
    * Extracts the iteration count from the PBKDF2 call expression.
    * @param {CallExpression} callExpression - The PBKDF2 call expression.
-   * @returns {number} - The iteration count.
+   * @returns {number} - The iteration count extracted from the arguments.
    */
   private getIterationCount(callExpression: CallExpression): number {
     const iterationsArg = callExpression.getArguments()[2];

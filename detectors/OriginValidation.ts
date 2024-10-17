@@ -1,4 +1,4 @@
-import { dirname, join } from "path";
+import { dirname } from "path";
 import { SourceFile } from "ts-morph";
 
 import { Finding } from "../types";
@@ -38,6 +38,7 @@ class OriginValidation extends DetectorBase {
         params: [],
       });
 
+      // Check if the response contains an error that isn't related to the expected method
       return (
         response?.error &&
         !response.error.message.toLowerCase().includes(ERROR_MESSAGE)
@@ -59,7 +60,7 @@ class OriginValidation extends DetectorBase {
     // Only process package.json files
     if (!filePath.endsWith("package.json")) return [];
 
-    const sourceFileDir = dirname(sourceFile.getFilePath());
+    const sourceFileDir = dirname(filePath);
 
     try {
       await prepareSnap(sourceFileDir);
