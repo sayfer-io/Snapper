@@ -14,6 +14,7 @@ export abstract class DetectorBase {
   protected name: string;
   protected riskRating: RiskRating;
   protected findings: Finding[] = []; // Array to hold findings detected by the detector.
+  public filetypes: string[] = ['.ts', '.tsx', '.js', '.jsx']; // File types supported by the detector.
 
   /**
    * Constructor to initialize the detector with a name and risk rating.

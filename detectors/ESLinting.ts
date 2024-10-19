@@ -62,6 +62,7 @@ class ESLintingDetector extends DetectorBase {
           parserOptions: {
             ecmaVersion: 2020, // Set ECMAScript version.
             sourceType: "module", // Specify module source type.
+            warnOnUnsupportedTypeScriptVersion: false,
           },
         },
         plugins: {
