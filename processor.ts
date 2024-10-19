@@ -30,7 +30,6 @@ const detectors = [
   new Detectors.LackOfExceptionHandlingDetector(),
   new Detectors.OriginValidation(),
   new Detectors.PotentialOutdatedEngineDetector(),
-  new Detectors.StrictNullChecksDetector(),
   new Detectors.MissingExplicitStrictTypeCheckingDetector(),
   new Detectors.BroadPermissionsDetector(),
   new Detectors.FloatingPointPrecisionDetector(),

@@ -117,12 +117,7 @@ export { ESLintingDetector } from "./ESLinting";
  */
 export { PotentialOutdatedEngineDetector } from "./PotentialOutdatedEngine";
 
-/** 
- * Detects if strict null checks are not enabled in tsconfig.json to ensure type safety. 
- */
-export { StrictNullChecksDetector } from "./StrictNullChecks";
-
-/** 
+/**
  * Detects missing explicit strict type-checking options in tsconfig.json for better type safety. 
  */
 export { MissingExplicitStrictTypeCheckingDetector } from "./MissingExplicitStrictTypeChecking";
