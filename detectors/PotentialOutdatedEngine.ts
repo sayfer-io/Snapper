@@ -23,8 +23,6 @@ class PotentialOutdatedEngineDetector extends DetectorBase {
    * @returns {Finding[]} - Array of findings with details about the detected issues.
    */
   public run(sourceFile: SourceFile): Finding[] {
-    const findings: Finding[] = [];
-
     const filePath = sourceFile.getFilePath();
     // Only process package.json files
     const packageJson = JSON.parse(fs.readFileSync(filePath, "utf-8"));

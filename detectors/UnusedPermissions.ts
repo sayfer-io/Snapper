@@ -17,6 +17,9 @@ interface Manifest {
  * in the associated code, helping to streamline permissions and enhance security.
  */
 class UnusedPermissionsDetector extends DetectorBase {
+
+  public allowedFileRegexes: RegExp[] = [/snap\.manifest\.json/];
+
   // Map of permissions and their corresponding APIs.
   private static readonly PERMISSION_API_MAP: { [key: string]: string } = {
     "endowment:ethereum-provider": "window.ethereum",
@@ -50,13 +53,7 @@ class UnusedPermissionsDetector extends DetectorBase {
    * @returns {Finding[]} - An array of findings detailing unused permissions.
    */
   public run(sourceFile: SourceFile): Finding[] {
-    const findings: Finding[] = [];
     const filePath = sourceFile.getFilePath();
-
-    // Ensure the file is snap.manifest.json before proceeding.
-    if (path.basename(filePath) !== "snap.manifest.json") {
-      return findings;
-    }
 
     const manifest = this.readManifest(sourceFile);
     const permissions = manifest.initialPermissions;
