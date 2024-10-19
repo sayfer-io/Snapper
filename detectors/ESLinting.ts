@@ -1,6 +1,5 @@
 import { SourceFile } from "ts-morph";
 import { ESLint } from "eslint";
-import path from "path";
 
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
@@ -16,9 +15,27 @@ const ESLINT_RULES: ESLint.ConfigData["rules"] = {
   "no-unused-labels": "error",
 };
 
+const ESLINT_BASIC_CONFIG: ESLint.Options = {
+  baseConfig: {
+    languageOptions: {
+      parser: require("@typescript-eslint/parser"),
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: "module",
+        warnOnUnsupportedTypeScriptVersion: false,
+      },
+    },
+    plugins: {
+      "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
+    },
+    rules: ESLINT_RULES,
+  },
+  overrideConfigFile: true,
+  ignore: false,
+};
+
 /**
- * Checks a TypeScript file for common issues like the use of any types,
- * unused variables, unused expressions, and unused labels.
+ * Detects common TypeScript issues such as 'any' types, unused variables, expressions, and labels.
  */
 class ESLintingDetector extends DetectorBase {
   constructor() {
@@ -26,50 +43,24 @@ class ESLintingDetector extends DetectorBase {
   }
 
   /**
-   * Runs the detector on the given file.
+   * Runs the ESLint detector on the provided TypeScript source file.
    * @param {SourceFile} file - The source file to analyze.
-   * @returns {Promise<Finding[]>} - Array of findings.
+   * @returns {Promise<Finding[]>} - A promise that resolves with an array of findings.
    */
   public async run(file: SourceFile): Promise<Finding[]> {
-    const eslint = this.createESLintInstance(file);
-    const filePath = file.getFilePath();
+    const eslint = new ESLint(ESLINT_BASIC_CONFIG);
 
-    const results = await eslint.lintFiles([filePath]);
+    const results = await eslint.lintText(file.getFullText());
 
-    results.forEach((result) => {
-      result.messages.forEach((message) => {
-        this.addFinding(message.message, result.filePath, message.line);
+    if (results.length) {
+      results.forEach(({ messages, filePath }) => {
+        messages.forEach(({ message, line }) =>
+          this.addFinding(message, filePath, line)
+        );
       });
-    });
+    }
 
     return this.getFindings();
-  }
-
-  /**
-   * Creates an ESLint instance with the specified configuration.
-   * @param {SourceFile} file - The source file for ESLint.
-   * @returns {ESLint} - The ESLint instance.
-   */
-  private createESLintInstance(file: SourceFile): ESLint {
-    return new ESLint({
-      cwd: file.getDirectoryPath(),
-      baseConfig: {
-        files: [file.getBaseName()],
-        languageOptions: {
-          parser: require("@typescript-eslint/parser"),
-          parserOptions: {
-            ecmaVersion: 2020,
-            sourceType: "module",
-          },
-        },
-        plugins: {
-          "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
-        },
-        rules: ESLINT_RULES,
-      },
-      overrideConfigFile: true,
-      ignore: false,
-    });
   }
 }
 
