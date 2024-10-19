@@ -103,6 +103,12 @@ export async function processFiles(
 
       for (const detector of detectorsToRun) {
         detector.clearFindings();
+
+        // Skip files that are not supported by the detector
+        if (!detector.allowedFileRegexes.some((regex) => file.getFilePath().match(regex))) {
+          continue;
+        }
+
         logger.debug(`Running detector: ${detector.getName()}`);
 
         // Run the detector and capture its findings
