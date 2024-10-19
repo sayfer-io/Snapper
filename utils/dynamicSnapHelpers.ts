@@ -1,6 +1,6 @@
-import { join } from "path";
 import { existsSync, cpSync } from "fs";
-import { installSnap } from "@metamask/snaps-jest";
+import { installSnap } from '@metamask/snaps-simulation';
+
 
 import logger from "./logger";
 import { createTempDir, detectPackageManager } from "./fileUtils";
@@ -90,30 +90,9 @@ export function installDependencies(
  * Prepares the Snap by setting up dependencies and building it.
  * @param {string} projectFolderPath - The directory of the Snap.
  */
-export async function prepareSnap(projectFolderPath: string): Promise<void> {
-  // Verify if the directory exists
-  verifyDirectoryExists(projectFolderPath);
-
-  // Step 1: Copy the Snap directory to a temporary directory
-  const tempDir = copySnapToTempDirectory(projectFolderPath);
-  logger.debug(`Copied Snap directory to temporary directory: ${tempDir}`);
-
-  // Step 2: Detect package manager
-  const packageManager = detectPackageManager(tempDir);
-  logger.debug(`Detected package manager: ${packageManager}`);
-
-  // Step 3: Install dependencies in the temporary directory
-  installDependencies(tempDir, packageManager);
-  logger.debug("Dependencies installed.");
-
-  // Step 4: Identify the Snap directory
-  // TODO: This is not always the case. Sometimes the snap folder is different.
-  const snapDirectory = join(tempDir, "packages/snap");
-  logger.debug(`Snap directory: ${snapDirectory}`);
-
-  // Step 5: Build the Snap
+export async function buildSnap(projectFolderPath: string): Promise<void> {
   logger.debug("Building the Snap...");
-  const output = runCommand(`npx mm-snap build`, snapDirectory);
+  let output = runCommand(`npx mm-snap build`, projectFolderPath);
   logger.debug(`Snap built: ${output}`);
 }
 
@@ -133,7 +112,7 @@ export async function connectSnapServer(port: number): Promise<any> {
  */
 export async function startAndConnectToSnap(directory: string): Promise<any> {
   // Generate a random high port number between 1024 and 65535
-  const port = Math.floor(Math.random() * (65535 - 1024 + 1)) + 1024;
+  const port = 3333;
 
   // Step 1: Start the Snap server in the background
   startSnapServer(directory, port);
@@ -143,5 +122,5 @@ export async function startAndConnectToSnap(directory: string): Promise<any> {
   await sleep(5000); // Sleep for 5 seconds
 
   // Step 2: Connect to the Snap server
-  return connectSnapServer(port), port;
+  return {...await connectSnapServer(port), port};
 }

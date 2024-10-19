@@ -1,11 +1,20 @@
+/**
+ * This file defines a detector that identifies broad permissions in the snap.manifest.json file.
+ * It flags permissions that pose security risks by providing overly extensive access to sensitive
+ * information or functions in MetaMask Snaps.
+ */
+
 import { readFileSync } from "fs";
 import { SourceFile } from "ts-morph";
-
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
 // Define broad permissions and their associated messages
+/**
+ * @constant {Object} BROAD_PERMISSIONS - An object mapping permission names to warning messages
+ * explaining the associated risk.
+ */
 const BROAD_PERMISSIONS: { [key: string]: { message: string } } = {
   snap_manageAccounts: {
     message:
@@ -28,44 +37,57 @@ const BROAD_PERMISSIONS: { [key: string]: { message: string } } = {
   },
 };
 
+const CONSIDER_AS_TOO_BROAD = 3;
+
 /**
  * Class to detect broad permissions in snap.manifest.json with specific guidance.
+ * Extends the DetectorBase class to implement permission detection.
  */
 class BroadPermissionsDetector extends DetectorBase {
+  /**
+   * The constructor initializes the detector with a name and risk rating.
+   * @constructor
+   */
+  public allowedFileRegexes = [/snap\.manifest\.json$/];
+
   constructor() {
     super("BroadPermissions", RiskRating.High);
   }
 
   /**
-   * Runs the detector on the given source file.
+   * Runs the detector on the given source file. It parses the snap.manifest.json file,
+   * checks for any permissions listed in BROAD_PERMISSIONS, and adds findings for those
+   * detected permissions.
+   *
    * @param {SourceFile} file - The source file to analyze.
-   * @returns {Finding[]} - List of findings.
+   * @returns {Finding[]} - A list of findings that flag any detected broad permissions.
    */
   public run(file: SourceFile): Finding[] {
-    // Check if the file is named snap.manifest.json
-    if (file.getBaseName() !== "snap.manifest.json") {
-      return this.getFindings();
-    }
-
     // Find the initialPermissions property node
     const jsonData = JSON.parse(readFileSync(file.getFilePath(), "utf-8"));
     const initialPermissions = jsonData.initialPermissions;
+    const permissionsFound: string[] = [];
 
+    console.log(initialPermissions);
+    // If initialPermissions exist, check for broad permissions
     if (initialPermissions) {
       for (const [permissionName, permissionValue] of Object.entries(
         initialPermissions
       )) {
         const permissionInfo = BROAD_PERMISSIONS[permissionName];
         if (permissionInfo) {
-          this.addFinding(
-            `Broad permission detected: ${permissionName}. ${permissionInfo.message}`,
-            file.getFilePath(),
-            1 // Line number is not available for snap.manifest.json files
-          );
+          // Add a finding for the broad permission detected
+          permissionsFound.push(permissionName);
         }
       }
     }
-
+    if (permissionsFound.length >= CONSIDER_AS_TOO_BROAD) {
+      this.addFinding(
+        `Broad permissions detected: ${permissionsFound.join(", ")}`,
+        file.getFilePath()
+      );
+    }
+    // Return the list of findings
     return this.getFindings();
   }
 }

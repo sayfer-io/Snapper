@@ -10,33 +10,34 @@ import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
 /**
- * Class to detect potential floating-point precision issues in JavaScript/TypeScript files.
+ * Detector class for identifying potential floating-point precision issues
+ * in JavaScript/TypeScript files.
  */
 class FloatingPointPrecisionDetector extends DetectorBase {
   constructor() {
-    super("FloatingPointPrecision", RiskRating.Medium);
+    super("FloatingPointPrecision", RiskRating.Medium); // Initializes the detector with a name and medium risk rating.
   }
 
   /**
-   * Runs the detector on the given source file.
+   * Analyzes the provided source file for potential floating-point precision issues.
    * @param {SourceFile} file - The source file to analyze.
-   * @returns {Finding[]} - List of findings.
+   * @returns {Finding[]} - List of findings related to floating-point precision issues.
    */
   public run(file: SourceFile): Finding[] {
-    const findings: Finding[] = [];
+    const findings: Finding[] = []; // Initialize findings array.
 
-    // Get all binary expressions in the file
+    // Retrieve all binary expressions from the file.
     const binaryExpressions = file.getDescendantsOfKind(
       SyntaxKind.BinaryExpression
     );
 
-    // Process each binary expression
+    // Process each binary expression to check for potential issues.
     binaryExpressions.forEach((binaryExpression) => {
       if (this.isDivisionOperation(binaryExpression)) {
         const leftOperand = binaryExpression.getLeft();
         const rightOperand = binaryExpression.getRight();
 
-        // Check if the division involves potential floating-point precision issues
+        // Check for potential floating-point precision issues in the division operation.
         if (
           this.isFloatingPointOperation(leftOperand, rightOperand) ||
           this.containsConditionalDivision(binaryExpression)
@@ -44,28 +45,28 @@ class FloatingPointPrecisionDetector extends DetectorBase {
           this.addFinding(
             `Potential floating-point precision issue detected in division operation.`,
             file.getFilePath(),
-            binaryExpression.getStart()
+            binaryExpression.getStart() // Log the position of the finding.
           );
         }
       }
     });
 
-    return this.getFindings();
+    return this.getFindings(); // Return all findings.
   }
 
   /**
-   * Checks if the binary expression is a division operation.
+   * Checks if the provided binary expression represents a division operation.
    * @param {BinaryExpression} binaryExpression - The binary expression to check.
    * @returns {boolean} - True if it is a division operation, false otherwise.
    */
   private isDivisionOperation(binaryExpression: BinaryExpression): boolean {
     return (
-      binaryExpression.getOperatorToken().getKind() === SyntaxKind.SlashToken
+      binaryExpression.getOperatorToken().getKind() === SyntaxKind.SlashToken // Check for the division operator.
     );
   }
 
   /**
-   * Checks if the operation involves floating-point numbers or large decimal values.
+   * Determines if the operation involves floating-point numbers or large decimal values.
    * @param {Node} leftOperand - The left operand of the binary expression.
    * @param {Node} rightOperand - The right operand of the binary expression.
    * @returns {boolean} - True if it involves floating-point numbers or decimals, false otherwise.
@@ -75,22 +76,22 @@ class FloatingPointPrecisionDetector extends DetectorBase {
     rightOperand: Node
   ): boolean {
     return (
-      this.containsDecimalOrExponent(leftOperand) ||
-      this.containsDecimalOrExponent(rightOperand)
+      this.containsDecimalOrExponent(leftOperand) || // Check if left operand contains decimals or exponents.
+      this.containsDecimalOrExponent(rightOperand) // Check if right operand contains decimals or exponents.
     );
   }
 
   /**
-   * Checks if a node contains decimal numbers or large constants (like 1e6, 1e12).
+   * Checks if the provided node contains decimal numbers or large constants (e.g., 1e6, 1e12).
    * @param {Node} node - The node to analyze.
-   * @returns {boolean} - True if it contains floating-point literals or scientific notation.
+   * @returns {boolean} - True if it contains floating-point literals or scientific notation, false otherwise.
    */
   private containsDecimalOrExponent(node: Node): boolean {
-    return /\d+\.\d+|e[\+\-]?\d+/i.test(node.getText());
+    return /\d+\.\d+|e[\+\-]?\d+/i.test(node.getText()); // Regex test for decimals or scientific notation.
   }
 
   /**
-   * Checks if a binary expression contains a conditional division operation.
+   * Checks if the binary expression contains a conditional division operation.
    * @param {BinaryExpression} binaryExpression - The binary expression to analyze.
    * @returns {boolean} - True if it contains a conditional division, false otherwise.
    */
@@ -102,11 +103,11 @@ class FloatingPointPrecisionDetector extends DetectorBase {
       const whenTrue = rightOperand.getWhenTrue();
       const whenFalse = rightOperand.getWhenFalse();
       return (
-        this.containsDecimalOrExponent(whenTrue) ||
-        this.containsDecimalOrExponent(whenFalse)
+        this.containsDecimalOrExponent(whenTrue) || // Check if the true branch contains decimals or exponents.
+        this.containsDecimalOrExponent(whenFalse) // Check if the false branch contains decimals or exponents.
       );
     }
-    return false;
+    return false; // Return false if the right operand is not a conditional expression.
   }
 }
 

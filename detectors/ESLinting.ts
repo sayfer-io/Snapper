@@ -5,14 +5,15 @@ import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
+// ESLint rules configuration to check for common issues in TypeScript files.
 const ESLINT_RULES: ESLint.ConfigData["rules"] = {
-  "@typescript-eslint/no-explicit-any": "warn",
+  "@typescript-eslint/no-explicit-any": "warn", // Warn for usage of 'any' type.
   "no-unused-vars": [
     "error",
-    { vars: "all", args: "after-used", ignoreRestSiblings: false },
+    { vars: "all", args: "after-used", ignoreRestSiblings: false }, // Error for unused variables.
   ],
-  "no-unused-expressions": "error",
-  "no-unused-labels": "error",
+  "no-unused-expressions": "error", // Error for unused expressions.
+  "no-unused-labels": "error", // Error for unused labels.
 };
 
 const ESLINT_BASIC_CONFIG: ESLint.Options = {
@@ -39,7 +40,7 @@ const ESLINT_BASIC_CONFIG: ESLint.Options = {
  */
 class ESLintingDetector extends DetectorBase {
   constructor() {
-    super("ESLinting", RiskRating.Low);
+    super("ESLinting", RiskRating.Low); // Initializes with a name and low risk rating.
   }
 
   /**
@@ -60,7 +61,7 @@ class ESLintingDetector extends DetectorBase {
       });
     }
 
-    return this.getFindings();
+    return this.getFindings(); // Return all findings.
   }
 }
 

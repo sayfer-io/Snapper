@@ -6,23 +6,32 @@ import { RiskRating } from "../structures";
 
 /**
  * Abstract base class for all detectors.
+ * This class provides a common structure and utility methods for specific detectors
+ * that will implement the run method to analyze source files for issues.
  */
 export abstract class DetectorBase {
   // Common properties that all detectors need
   protected name: string;
   protected riskRating: RiskRating;
-  protected findings: Finding[] = [];
+  protected findings: Finding[] = []; // Array to hold findings detected by the detector.
+  public allowedFileRegexes: RegExp[] = [/\.ts$/, /\.tsx$/, /\.js$/, /\.jsx$/];
 
+  /**
+   * Constructor to initialize the detector with a name and risk rating.
+   * @param name - The name of the detector.
+   * @param riskRating - The risk rating associated with the findings from this detector.
+   */
   constructor(name: string, riskRating: RiskRating) {
     this.name = name;
     this.riskRating = riskRating;
   }
 
-  // Abstract method that each detector must implement
+  // Abstract method that each detector must implement to perform the analysis
   abstract run(file: SourceFile): Finding[] | Promise<Finding[]>;
 
   /**
    * Adds a finding to the findings array.
+   * This method creates a Finding object and logs a debug message before adding it to the findings list.
    * @param description - Description of the finding.
    * @param filePath - Path of the file where the finding was detected.
    * @param lineNum - Line number where the finding was detected (default is 1).
@@ -38,26 +47,36 @@ export abstract class DetectorBase {
       riskRating: this.riskRating,
     };
     this.logDebug(`Adding finding - ${description}`);
-    this.findings.push(finding);
+    this.findings.push(finding); // Store the finding in the findings array.
   }
 
   /**
-   * Clears the findings.
+   * Clears all findings from the detector.
+   * This method resets the findings array to an empty state.
    */
   clearFindings(): void {
     this.findings = [];
   }
 
+  /**
+   * Gets the name of the detector.
+   * @returns {string} - The name of the detector.
+   */
   getName(): string {
     return this.name;
   }
 
+  /**
+   * Retrieves all findings collected by the detector.
+   * @returns {Finding[]} - Array of findings.
+   */
   getFindings(): Finding[] {
     return this.findings;
   }
 
   /**
    * Logs an informational message.
+   * This method formats the message with the detector's name and logs it at the info level.
    * @param message - The message to log.
    */
   logInfo(message: string): void {
@@ -66,6 +85,7 @@ export abstract class DetectorBase {
 
   /**
    * Logs a debug message.
+   * This method formats the message with the detector's name and logs it at the debug level.
    * @param message - The message to log.
    */
   logDebug(message: string): void {
@@ -74,8 +94,9 @@ export abstract class DetectorBase {
 
   /**
    * Logs an error message.
+   * This method formats the message with the detector's name and logs it at the error level.
    * @param message - The message to log.
-   * @param error - Optional error object to log.
+   * @param error - Optional error object to log alongside the message.
    */
   logError(message: string, error?: Error): void {
     logger.error(`[${this.name}] ${message}`, error);
@@ -83,8 +104,9 @@ export abstract class DetectorBase {
 
   /**
    * Logs a warning message.
+   * This method formats the message with the detector's name and logs it at the warning level.
    * @param message - The message to log.
-   * @param error - Optional error object to log.
+   * @param error - Optional error object to log alongside the message.
    */
   logWarning(message: string, error?: Error): void {
     logger.warn(`[${this.name}] ${message}`, error);

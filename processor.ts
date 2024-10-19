@@ -25,12 +25,11 @@ const detectors = [
   new Detectors.UsedBeforeDefinedInterfacesDetector(),
   new Detectors.UnusedPermissionsDetector(),
   new Detectors.DeprecatedPermissionsDetector(),
-  new Detectors.DependencyOutdatedDetector(),
-  new Detectors.DependencyVersioningDetector(),
+  // new Detectors.DependencyOutdatedDetector(),
+  // new Detectors.DependencyVersioningDetector(),
   new Detectors.LackOfExceptionHandlingDetector(),
   new Detectors.OriginValidation(),
   new Detectors.PotentialOutdatedEngineDetector(),
-  new Detectors.StrictNullChecksDetector(),
   new Detectors.MissingExplicitStrictTypeCheckingDetector(),
   new Detectors.BroadPermissionsDetector(),
   new Detectors.FloatingPointPrecisionDetector(),
@@ -100,9 +99,17 @@ export async function processFiles(
       logger.debug(
         `Going to run detectors: ${detectorsToRun.map((d) => d.getName())}`
       );
-
+      let countdetectors = 0;
       for (const detector of detectorsToRun) {
         detector.clearFindings();
+
+        // Skip files that are not supported by the detector
+        if (!detector.allowedFileRegexes.some((regex) => file.getFilePath().match(regex))) {
+          continue;
+        }
+
+        countdetectors++;
+
         logger.debug(`Running detector: ${detector.getName()}`);
 
         // Run the detector and capture its findings

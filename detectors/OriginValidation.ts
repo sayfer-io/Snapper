@@ -1,22 +1,23 @@
-import { dirname, join } from "path";
+import { dirname } from "path";
 import { SourceFile } from "ts-morph";
 
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 import {
-  prepareSnap,
+  buildSnap,
   startAndConnectToSnap,
 } from "../utils/dynamicSnapHelpers";
 
 const DOMAIN = "https://theansweris42.com";
 const METHOD = "hello";
-const ERROR_MESSAGE = "method";
+const ERROR_MESSAGE = "method";  // while seems simple, it covers 95% of the cases
 
 /**
  * Detector for validating the origin of requests.
  */
 class OriginValidation extends DetectorBase {
+  public allowedFileRegexes: RegExp[] = [/package\.json/]; // A hack to run it once
   constructor() {
     super("originValidation", RiskRating.High);
   }
@@ -38,6 +39,7 @@ class OriginValidation extends DetectorBase {
         params: [],
       });
 
+      // Check if the response contains an error that isn't related to the expected method
       return (
         response?.error &&
         !response.error.message.toLowerCase().includes(ERROR_MESSAGE)
@@ -56,13 +58,10 @@ class OriginValidation extends DetectorBase {
   public async run(sourceFile: SourceFile): Promise<Finding[]> {
     const filePath = sourceFile.getFilePath();
 
-    // Only process package.json files
-    if (!filePath.endsWith("package.json")) return [];
-
-    const sourceFileDir = dirname(sourceFile.getFilePath());
+    const sourceFileDir = dirname(filePath);
 
     try {
-      await prepareSnap(sourceFileDir);
+      await buildSnap(sourceFileDir);
       const { request, port } = await startAndConnectToSnap(sourceFileDir);
 
       const isBlocked = await this.isDomainBlocked(request, port);
