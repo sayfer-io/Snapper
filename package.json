@@ -39,8 +39,6 @@
     "yargs": "^17.7.2"
   },
   "resolutions": {
-    "@metamask/snaps-execution-environments": "6.9.1",
-    "@metamask/snaps-controllers/@metamask/snaps-execution-environments": "6.9.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
