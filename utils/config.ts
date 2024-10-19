@@ -17,10 +17,10 @@ export function configureYargs() {
         description: "Project path",
         demandOption: true,
       },
-      detector: {
+      detectors: {
         alias: "d",
         type: "string",
-        description: "Specify which detector to run",
+        description: "Specify which detector to run, specify multiple detectors with a comma",
       },
       verbose: {
         alias: "v",
@@ -49,7 +49,7 @@ export function configureYargs() {
     })
     .help().argv as unknown as {
     path: string;
-    detector?: string;
+    detectors?: string;
     verbose: boolean;
     output?: string;
     logFile?: string;

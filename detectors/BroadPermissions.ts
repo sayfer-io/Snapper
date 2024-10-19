@@ -68,7 +68,6 @@ class BroadPermissionsDetector extends DetectorBase {
     const initialPermissions = jsonData.initialPermissions;
     const permissionsFound: string[] = [];
 
-    console.log(initialPermissions);
     // If initialPermissions exist, check for broad permissions
     if (initialPermissions) {
       for (const [permissionName, permissionValue] of Object.entries(

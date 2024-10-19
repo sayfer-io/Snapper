@@ -31,7 +31,7 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
 
     // Initialize an array to track missing strict type-checking options
     const missingOptions: string[] = [];
-    console.log(compilerOptions);
+
     // Check if the strict option is enabled
     if (!compilerOptions.strict) {
       missingOptions.push("strictOption");
