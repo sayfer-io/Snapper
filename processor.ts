@@ -25,8 +25,8 @@ const detectors = [
   new Detectors.UsedBeforeDefinedInterfacesDetector(),
   new Detectors.UnusedPermissionsDetector(),
   new Detectors.DeprecatedPermissionsDetector(),
-  new Detectors.DependencyOutdatedDetector(),
-  new Detectors.DependencyVersioningDetector(),
+  // new Detectors.DependencyOutdatedDetector(),
+  // new Detectors.DependencyVersioningDetector(),
   new Detectors.LackOfExceptionHandlingDetector(),
   new Detectors.OriginValidation(),
   new Detectors.PotentialOutdatedEngineDetector(),
@@ -100,7 +100,7 @@ export async function processFiles(
       logger.debug(
         `Going to run detectors: ${detectorsToRun.map((d) => d.getName())}`
       );
-
+      let countdetectors = 0;
       for (const detector of detectorsToRun) {
         detector.clearFindings();
 
@@ -108,6 +108,8 @@ export async function processFiles(
         if (!detector.allowedFileRegexes.some((regex) => file.getFilePath().match(regex))) {
           continue;
         }
+
+        countdetectors++;
 
         logger.debug(`Running detector: ${detector.getName()}`);
 
