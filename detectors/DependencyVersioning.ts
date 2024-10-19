@@ -21,6 +21,8 @@ class DependencyVersioningDetector extends DetectorBase {
     super("DependencyVersioning", RiskRating.Medium);
   }
 
+  public allowedFileRegexes = [/package\.json$/];
+
   /**
    * Runs the detector on the given source file to identify any non-exact versioning in dependencies.
    * This method checks both "dependencies" and "devDependencies" in the package.json file.
@@ -30,11 +32,6 @@ class DependencyVersioningDetector extends DetectorBase {
    */
   public run(sourceFile: SourceFile): Finding[] {
     const filePath = sourceFile.getFilePath();
-
-    // Only proceed if the file is package.json
-    if (!this.isPackageJson(filePath)) {
-      return [];
-    }
 
     // Read the contents of package.json
     const packageJsonContent = this.readPackageJson(filePath);
@@ -57,17 +54,6 @@ class DependencyVersioningDetector extends DetectorBase {
     this.checkForNonExactVersions(devDependencies, sourceFile);
 
     return this.getFindings();
-  }
-
-  /**
-   * Checks if the file is a package.json file by comparing its name.
-   * This is to ensure that the detector is only run on the correct files.
-   *
-   * @param {string} filePath - The path of the file.
-   * @returns {boolean} - True if the file is package.json, false otherwise.
-   */
-  private isPackageJson(filePath: string): boolean {
-    return path.basename(filePath) === "package.json";
   }
 
   /**

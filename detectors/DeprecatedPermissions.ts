@@ -32,6 +32,8 @@ class DeprecatedPermissionsDetector extends DetectorBase {
     super("DeprecatedPermissions", RiskRating.High);
   }
 
+  public allowedFileRegexes = [/snap\.manifest\.json$/];
+
   /**
    * Reads the snap.manifest.json file and returns the parsed content as a Manifest object.
    * It retrieves the full text of the file and parses it as JSON.
@@ -52,13 +54,7 @@ class DeprecatedPermissionsDetector extends DetectorBase {
    * @returns {Finding[]} - Array of findings with details about the detected deprecated permissions.
    */
   public run(sourceFile: SourceFile): Finding[] {
-    const findings: Finding[] = []; // Initialize an array to hold findings.
     const filePath = sourceFile.getFilePath(); // Get the file path of the source file.
-
-    // Check if the file is snap.manifest.json; if not, return empty findings.
-    if (path.basename(filePath) !== "snap.manifest.json") {
-      return findings;
-    }
 
     const manifest = this.readManifest(sourceFile); // Read and parse the manifest.
     const permissions = manifest.initialPermissions; // Get the permissions from the manifest.

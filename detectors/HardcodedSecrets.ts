@@ -25,9 +25,9 @@ class HardcodedSecretsDetector extends DetectorBase {
     /-----BEGIN CERTIFICATE-----/, // Certificate Begin
     /\/\/[^\/\s:@]+:[^\/\s:@]+@/, // URL with credentials
     /eyJ[A-Za-z0-9_-]+\.([A-Za-z0-9_-]+\.?){1,2}/, // JWT Token
-
-    // Add more patterns here
   ];
+
+  public allowedFileRegexes = [/\.ts$/];
 
   constructor() {
     super("HardcodedSecrets", RiskRating.High); // Initializes the detector with a name and high risk rating.

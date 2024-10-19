@@ -3,7 +3,7 @@ import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
-const EXCESSIVE_COMMENT_THRESHOLD = 5; // Threshold for excessive comments.
+const EXCESSIVE_COMMENT_THRESHOLD = 7; // Threshold for excessive comments.
 const SINGLE_LINE_COMMENT_PATTERN = /(^\s*\/\/[^*].*$[\r\n]*)+/gm; // Pattern for single-line comments (excluding JSDoc).
 const MULTI_LINE_COMMENT_PATTERN = /\/\*[^*][\s\S]*?\*\//g; // Pattern for multi-line comments (excluding JSDoc).
 

@@ -28,6 +28,8 @@ interface AuditCIFinding {
  * Extends the DetectorBase class to implement detection functionality for dependency vulnerabilities.
  */
 class DependencyOutdatedDetector extends DetectorBase {
+
+  public allowedFileRegexes = [/package\.json$/];
   /**
    * Constructor for the DependencyOutdatedDetector.
    * Initializes the detector with a name and assigns a medium-risk rating.
@@ -205,9 +207,6 @@ class DependencyOutdatedDetector extends DetectorBase {
    */
   public run(sourceFile: SourceFile): Finding[] {
     const filePath = sourceFile.getFilePath();
-
-    // Only proceed if the file is a package.json file
-    if (!filePath.endsWith("package.json")) return [];
 
     const tempDir = createTempDir();
     fsExtra.copySync(path.dirname(filePath), tempDir);
