@@ -37,6 +37,8 @@ const BROAD_PERMISSIONS: { [key: string]: { message: string } } = {
   },
 };
 
+const CONSIDER_AS_TOO_BROAD = 3;
+
 /**
  * Class to detect broad permissions in snap.manifest.json with specific guidance.
  * Extends the DetectorBase class to implement permission detection.
@@ -46,6 +48,8 @@ class BroadPermissionsDetector extends DetectorBase {
    * The constructor initializes the detector with a name and risk rating.
    * @constructor
    */
+  public allowedFileRegexes = [/snap\.manifest\.json$/];
+
   constructor() {
     super("BroadPermissions", RiskRating.High);
   }
@@ -59,15 +63,12 @@ class BroadPermissionsDetector extends DetectorBase {
    * @returns {Finding[]} - A list of findings that flag any detected broad permissions.
    */
   public run(file: SourceFile): Finding[] {
-    // Check if the file is named snap.manifest.json
-    if (file.getBaseName() !== "snap.manifest.json") {
-      return this.getFindings();
-    }
-
     // Find the initialPermissions property node
     const jsonData = JSON.parse(readFileSync(file.getFilePath(), "utf-8"));
     const initialPermissions = jsonData.initialPermissions;
+    const permissionsFound: string[] = [];
 
+    console.log(initialPermissions);
     // If initialPermissions exist, check for broad permissions
     if (initialPermissions) {
       for (const [permissionName, permissionValue] of Object.entries(
@@ -76,15 +77,16 @@ class BroadPermissionsDetector extends DetectorBase {
         const permissionInfo = BROAD_PERMISSIONS[permissionName];
         if (permissionInfo) {
           // Add a finding for the broad permission detected
-          this.addFinding(
-            `Broad permission detected: ${permissionName}. ${permissionInfo.message}`,
-            file.getFilePath(),
-            1 // Line number is not available for snap.manifest.json files
-          );
+          permissionsFound.push(permissionName);
         }
       }
     }
-
+    if (permissionsFound.length >= CONSIDER_AS_TOO_BROAD) {
+      this.addFinding(
+        `Broad permissions detected: ${permissionsFound.join(", ")}`,
+        file.getFilePath()
+      );
+    }
     // Return the list of findings
     return this.getFindings();
   }
