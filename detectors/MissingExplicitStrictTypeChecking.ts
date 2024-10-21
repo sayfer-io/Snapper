@@ -6,6 +6,16 @@ import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
 /**
+ * List of strict type-checking options to check in tsconfig.json.
+ */
+const STRICT_TYPE_CHECKING_OPTIONS = [
+  "strict",
+  "noImplicitAny",
+  "strictBindCallApply",
+  "alwaysStrict",
+];
+
+/**
  * Class to detect missing explicit strict type-checking options in tsconfig.json.
  */
 class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
@@ -21,8 +31,13 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
    * @returns {Finding[]} - Array of findings with details about the detected issues.
    */
   public run(sourceFile: SourceFile): Finding[] {
-    // Get the file path of the source file
     const filePath = sourceFile.getFilePath();
+
+    // Ensure the file is a tsconfig.json file
+    if (!this.allowedFileRegexes.some((regex) => regex.test(filePath))) {
+      return [];
+    }
+
     // Read and parse the tsconfig.json file
     const tsconfig = JSON.parse(fs.readFileSync(filePath, "utf-8"));
     const compilerOptions = tsconfig.compilerOptions || {};
@@ -30,20 +45,12 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
     // Initialize an array to track missing strict type-checking options
     const missingOptions: string[] = [];
 
-    // Check if the strict option is enabled
-    if (!compilerOptions.strict) {
-      missingOptions.push("strictOption");
-    }
     // Check for specific missing options
-    if (compilerOptions.noImplicitAny !== true) {
-      missingOptions.push("noImplicitAny");
-    }
-    if (compilerOptions.strictBindCallApply !== true) {
-      missingOptions.push("strictBindCallApply");
-    }
-    if (compilerOptions.alwaysStrict !== true) {
-      missingOptions.push("alwaysStrict");
-    }
+    STRICT_TYPE_CHECKING_OPTIONS.forEach((option) => {
+      if (compilerOptions[option] !== true) {
+        missingOptions.push(option);
+      }
+    });
 
     // If any options are missing, add a finding
     if (missingOptions.length > 0) {
