@@ -4,19 +4,16 @@ import { SourceFile } from "ts-morph";
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
-import {
-  buildSnap,
-  startAndConnectToSnap,
-} from "../utils/dynamicSnapHelpers";
+import { buildSnap, startAndConnectToSnap } from "../utils/dynamicSnapHelpers";
 
 const DOMAIN = "https://theansweris42.com";
 const METHOD = "hello";
-const ERROR_MESSAGE = "method";  // while seems simple, it covers 95% of the cases
+const ERROR_MESSAGE = "method"; // while seems simple, it covers 95% of the cases
 
 /**
  * Detector for validating the origin of requests.
  */
-class OriginValidation extends DetectorBase {
+class OriginValidationDetector extends DetectorBase {
   public allowedFileRegexes: RegExp[] = [/package\.json/]; // A hack to run it once
   constructor() {
     super("originValidation", RiskRating.High);
@@ -85,4 +82,4 @@ class OriginValidation extends DetectorBase {
   }
 }
 
-export { OriginValidation };
+export { OriginValidationDetector };
