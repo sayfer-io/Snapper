@@ -138,3 +138,30 @@ export function detectPackageManager(workingDir: string): string {
 
   return "npm";
 }
+
+/**
+ * Deletes all package manager lock files (yarn.lock, pnpm-lock.yaml, package-lock.json)
+ * from the given directory.
+ * @param {string} mainDir - The main directory where lock files will be deleted.
+ * @returns {string[]} - An array of the names of the deleted lock files.
+ */
+export function deleteLockFiles(mainDir: string): string[] {
+  const lockFiles = ["yarn.lock", "pnpm-lock.yaml", "package-lock.json"];
+  const deletedFiles: string[] = [];
+
+  lockFiles.forEach((lockFile) => {
+    const lockFilePath = path.resolve(mainDir, lockFile);
+
+    if (fs.existsSync(lockFilePath)) {
+      try {
+        fs.unlinkSync(lockFilePath);
+        logger.debug(`Deleted ${lockFile} from ${mainDir}`);
+        deletedFiles.push(lockFile);
+      } catch (error) {
+        logger.error(`Failed to delete ${lockFile}:`, error);
+      }
+    }
+  });
+
+  return deletedFiles;
+}
