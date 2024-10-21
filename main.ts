@@ -22,7 +22,7 @@ async function main(): Promise<void> {
 
   try {
     const projectPath = argv.path;
-    const detector = argv.detector;
+    const detectors = argv.detectors;
 
     if (!projectPath) {
       throw new Error(
@@ -31,12 +31,12 @@ async function main(): Promise<void> {
     }
 
     logger.info(
-      `Starting processing with path: ${projectPath} and detector: ${
-        detector || "all detectors"
+      `Starting processing with path: ${projectPath} and detectors: ${
+        detectors || "all detectors"
       }`
     );
 
-    const allFindings = await processFiles(projectPath, detector);
+    const allFindings = await processFiles(projectPath, detectors?.split(","));
 
     // Determine the output file name
     const resultFileName =

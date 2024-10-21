@@ -39,15 +39,15 @@ const detectors = [
 ];
 
 /**
- * Processes files in a TypeScript project to find issues based on specified detector.
+ * Processes files in a TypeScript project to find issues based on specified detectors.
  *
  * @param {string} projectPath - The path to the TypeScript project.
- * @param {string} [detectorName] - The specific detector to run. If not provided, all detectors will be applied.
+ * @param {string[]} [detectorNames] - The list of detectors to run. If not provided, all detectors will be applied.
  * @returns {Promise<Finding[]>} - A promise that resolves to an array of findings.
  */
 export async function processFiles(
   projectPath: string,
-  detectorName?: string
+  detectorNames?: string[]
 ): Promise<Finding[]> {
   const tsConfigPaths = await findTsConfig(projectPath);
   if (tsConfigPaths.length === 0) {
@@ -84,14 +84,14 @@ export async function processFiles(
 
       let detectorsToRun = detectors;
 
-      if (detectorName) {
+      if (detectorNames && detectorNames.length > 0) {
         detectorsToRun = detectors.filter((detector) => {
-          return (
-            detector.getName().toLowerCase() === detectorName.toLowerCase()
+          return detectorNames.some(
+            (name) => detector.getName().toLowerCase() === name.toLowerCase()
           );
         });
         if (detectorsToRun.length === 0) {
-          logger.warn(`No detector found with name: ${detectorName}`);
+          logger.warn(`No detectors found with names: ${detectorNames.join(", ")}`);
           return [];
         }
       }
@@ -99,7 +99,7 @@ export async function processFiles(
       logger.debug(
         `Going to run detectors: ${detectorsToRun.map((d) => d.getName())}`
       );
-      let countdetectors = 0;
+
       for (const detector of detectorsToRun) {
         detector.clearFindings();
 
