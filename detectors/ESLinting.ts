@@ -7,61 +7,69 @@ import { DetectorBase } from "./DetectorBase";
 
 // ESLint rules configuration to check for common issues in TypeScript files.
 const ESLINT_RULES: ESLint.ConfigData["rules"] = {
-  "@typescript-eslint/no-explicit-any": "warn", // Warn for usage of 'any' type.
+  "@typescript-eslint/no-explicit-any": "warn",
   "no-unused-vars": [
     "error",
-    { vars: "all", args: "after-used", ignoreRestSiblings: false }, // Error for unused variables.
+    { vars: "all", args: "after-used", ignoreRestSiblings: false },
   ],
-  "no-unused-expressions": "error", // Error for unused expressions.
-  "no-unused-labels": "error", // Error for unused labels.
-};
-
-const ESLINT_BASIC_CONFIG: ESLint.Options = {
-  baseConfig: {
-    languageOptions: {
-      parser: require("@typescript-eslint/parser"),
-      parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: "module",
-        warnOnUnsupportedTypeScriptVersion: false,
-      },
-    },
-    plugins: {
-      "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
-    },
-    rules: ESLINT_RULES,
-  },
-  overrideConfigFile: true,
-  ignore: false,
+  "no-unused-expressions": "error",
+  "no-unused-labels": "error",
 };
 
 /**
- * Detects common TypeScript issues such as 'any' types, unused variables, expressions, and labels.
+ * Detector class that checks a TypeScript file for common issues
+ * such as the use of any types, unused variables, unused expressions, and unused labels.
  */
 class ESLintingDetector extends DetectorBase {
   constructor() {
-    super("ESLinting", RiskRating.Low); // Initializes with a name and low risk rating.
+    super("ESLinting", RiskRating.Low);
   }
 
   /**
-   * Runs the ESLint detector on the provided TypeScript source file.
+   * Analyzes the given TypeScript file for linting issues.
    * @param {SourceFile} file - The source file to analyze.
-   * @returns {Promise<Finding[]>} - A promise that resolves with an array of findings.
+   * @returns {Promise<Finding[]>} - A promise that resolves to an array of findings.
    */
   public async run(file: SourceFile): Promise<Finding[]> {
-    const eslint = new ESLint(ESLINT_BASIC_CONFIG);
+    const eslint = this.createESLintInstance(file);
+    const filePath = file.getFilePath();
 
-    const results = await eslint.lintText(file.getFullText());
+    const results = await eslint.lintFiles([filePath]);
 
-    if (results.length) {
-      results.forEach(({ messages, filePath }) => {
-        messages.forEach(({ message, line }) =>
-          this.addFinding(message, filePath, line)
-        );
+    results.forEach((result) => {
+      result.messages.forEach((message) => {
+        this.addFinding(message.message, result.filePath, message.line);
       });
-    }
+    });
 
-    return this.getFindings(); // Return all findings.
+    return this.getFindings();
+  }
+
+  /**
+   * Creates and configures an ESLint instance for the given source file.
+   * @param {SourceFile} file - The source file for which the ESLint instance is created.
+   * @returns {ESLint} - The configured ESLint instance.
+   */
+  private createESLintInstance(file: SourceFile): ESLint {
+    return new ESLint({
+      cwd: file.getDirectoryPath(),
+      baseConfig: {
+        files: [file.getBaseName()],
+        languageOptions: {
+          parser: require("@typescript-eslint/parser"),
+          parserOptions: {
+            ecmaVersion: 2020,
+            sourceType: "module",
+          },
+        },
+        plugins: {
+          "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
+        },
+        rules: ESLINT_RULES,
+      },
+      overrideConfigFile: true,
+      ignore: false,
+    });
   }
 }
 
