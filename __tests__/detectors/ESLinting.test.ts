@@ -7,9 +7,10 @@ describe("ESLintingDetector", () => {
   let sourceFile: SourceFile;
 
   beforeAll(() => {
+    // Initialize the detector first, ensuring ESLint and its dependencies are loaded
     detector = new ESLintingDetector();
 
-    // Mock the file system with a sample TypeScript file
+    // Now apply mock-fs to mock the file system
     mockFs({
       "/mock/project": {
         "test.ts": `
