@@ -1,14 +1,14 @@
 import fs from "fs";
-import { readdir } from "fs/promises";
-
 import tmp from "tmp";
 import path from "path";
+import { readdir } from "fs/promises";
 
 import logger from "./logger";
 
 /**
  * Creates a temporary directory for the package audit.
  * Automatically cleans up the directory when done.
+ * @returns {string} - The path to the created temporary directory.
  */
 export function createTempDir(): string {
   const tempDir = tmp.dirSync({ unsafeCleanup: true });
@@ -18,7 +18,6 @@ export function createTempDir(): string {
 
 /**
  * Finds all `tsconfig.json` files in the given project path.
- *
  * @param {string} projectPath - The path to the project directory.
  * @returns {Promise<string[]>} - A promise that resolves to an array of paths to `tsconfig.json` files.
  */
@@ -30,7 +29,6 @@ export async function findTsConfig(projectPath: string): Promise<string[]> {
 
 /**
  * Recursively searches for `tsconfig.json` files in the given directory.
- *
  * @param {string} currentPath - The current directory path to search in.
  * @param {string[]} tsConfigPaths - The array to store found `tsconfig.json` file paths.
  * @returns {Promise<void>} - A promise that resolves when the search is complete.
@@ -67,7 +65,6 @@ async function findTsConfigRecursive(
 
 /**
  * Generates a timestamp-based file name.
- *
  * @param {string} [filename='result'] - The base name for the file.
  * @param {string} [extension='json'] - The file extension.
  * @returns {string} - The generated file name.
@@ -84,6 +81,35 @@ export function generateTimestampFileName(
   return `${filename}-${timestamp}.${extension}`;
 }
 
+/**
+ * Detects the package manager version specified in package.json.
+ * It checks for supported package managers: Yarn, npm, and pnpm.
+ * @param {string} workingDir - The directory where package.json is located.
+ * @returns {string} - The package manager version string (e.g., "yarn@3.2.1" or "npm@8.0.0").
+ * @throws Will throw an error if the package manager format is invalid or unsupported.
+ */
+export function detectPackageManagerVersion(workingDir: string): string {
+  const packageJsonPath = path.join(workingDir, "package.json");
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf-8"));
+  const packageManagerVersion = packageJson.packageManager || "";
+  logger.debug(
+    `PackageManager version in package.json: ${packageManagerVersion}`
+  );
+
+  if (/^(yarn|npm|pnpm)@\d+(\.\d+)*$/.test(packageManagerVersion)) {
+    return packageManagerVersion;
+  }
+
+  return "";
+}
+
+/**
+ * Detects the package manager used in the project.
+ * It checks for Yarn, npm, and pnpm based on the package.json and lock files.
+ * @param {string} workingDir - The directory where package.json is located.
+ * @returns {string} - The detected package manager ("yarn", "npm", or "pnpm").
+ * @throws Will throw an error if no package.json is found in the working directory.
+ */
 export function detectPackageManager(workingDir: string): string {
   const packageJsonPath = path.resolve(workingDir, "package.json");
 
@@ -102,7 +128,7 @@ export function detectPackageManager(workingDir: string): string {
     ...packageJson.peerDependencies,
     ...packageJson.optionalDependencies,
   })) {
-    if (version === "workspace:*") {
+    if (version === "workspace:*" || version === "workspace:^") {
       return "yarn";
     }
   }
