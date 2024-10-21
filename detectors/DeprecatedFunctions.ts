@@ -15,7 +15,7 @@ class DeprecatedFunctionsDetector extends DetectorBase {
 
   /**
    * Constructor for the DeprecatedFunctionsDetector.
-   * Initializes the detector with a name and assigns it a low-risk rating, as deprecated functions 
+   * Initializes the detector with a name and assigns it a low-risk rating, as deprecated functions
    * typically pose lower security risks but should still be replaced in the codebase.
    */
   constructor() {

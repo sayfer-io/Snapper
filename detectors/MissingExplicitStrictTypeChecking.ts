@@ -1,16 +1,14 @@
 import * as fs from "fs";
-import * as path from "path";
-import {SourceFile} from "ts-morph";
+import { SourceFile } from "ts-morph";
 
-import {Finding} from "../types";
-import {RiskRating} from "../structures";
-import {DetectorBase} from "./DetectorBase";
+import { Finding } from "../types";
+import { RiskRating } from "../structures";
+import { DetectorBase } from "./DetectorBase";
 
 /**
  * Class to detect missing explicit strict type-checking options in tsconfig.json.
  */
 class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
-
   public allowedFileRegexes: RegExp[] = [/tsconfig\.json/];
 
   constructor() {
@@ -50,7 +48,9 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
     // If any options are missing, add a finding
     if (missingOptions.length > 0) {
       this.addFinding(
-        `Missing explicit strict type-checking options: ${missingOptions.join(", ")}.`,
+        `Missing explicit strict type-checking options: ${missingOptions.join(
+          ", "
+        )}.`,
         filePath,
         1 // Line number is not available for tsconfig.json files
       );
@@ -60,4 +60,4 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
   }
 }
 
-export {MissingExplicitStrictTypeCheckingDetector};
+export { MissingExplicitStrictTypeCheckingDetector };

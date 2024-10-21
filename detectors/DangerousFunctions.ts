@@ -5,6 +5,7 @@
  */
 
 import { SourceFile, SyntaxKind, CallExpression } from "ts-morph";
+
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
@@ -14,7 +15,6 @@ import { DetectorBase } from "./DetectorBase";
  * Extends the DetectorBase class to implement detection functionality for unsafe functions.
  */
 class DangerousFunctionsDetector extends DetectorBase {
-  // List of dangerous function names
   /**
    * @constant {string[]} DANGEROUS_FUNCTIONS - An array of dangerous function names that pose potential risks if used.
    */

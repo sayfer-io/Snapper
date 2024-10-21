@@ -1,16 +1,14 @@
 import * as fs from "fs";
-import * as path from "path";
-import {SourceFile} from "ts-morph";
+import { SourceFile } from "ts-morph";
 
-import {Finding} from "../types";
-import {RiskRating} from "../structures";
-import {DetectorBase} from "./DetectorBase";
+import { Finding } from "../types";
+import { RiskRating } from "../structures";
+import { DetectorBase } from "./DetectorBase";
 
 /**
  * Class to detect potential outdated engine specifications in package.json files.
  */
 class PotentialOutdatedEngineDetector extends DetectorBase {
-
   public allowedFileRegexes: RegExp[] = [/package\.json/];
 
   constructor() {
@@ -40,4 +38,4 @@ class PotentialOutdatedEngineDetector extends DetectorBase {
   }
 }
 
-export {PotentialOutdatedEngineDetector};
+export { PotentialOutdatedEngineDetector };

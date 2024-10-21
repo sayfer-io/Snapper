@@ -1,5 +1,4 @@
 import * as fs from "fs";
-import * as path from "path";
 import { SourceFile } from "ts-morph";
 
 import { Finding } from "../types";
@@ -8,10 +7,12 @@ import { DetectorBase } from "./DetectorBase";
 
 /**
  * Class to detect dependencies with non-exact versions in the package.json file.
- * Non-exact versions (e.g., versions starting with "^" or "~") allow the installation 
+ * Non-exact versions (e.g., versions starting with "^" or "~") allow the installation
  * of newer versions of a dependency, which may introduce breaking changes or vulnerabilities.
  */
 class DependencyVersioningDetector extends DetectorBase {
+  public allowedFileRegexes = [/package\.json$/];
+
   /**
    * Constructor for the DependencyVersioningDetector.
    * Initializes the detector with a name and assigns a medium-risk rating.
@@ -21,12 +22,10 @@ class DependencyVersioningDetector extends DetectorBase {
     super("DependencyVersioning", RiskRating.Medium);
   }
 
-  public allowedFileRegexes = [/package\.json$/];
-
   /**
    * Runs the detector on the given source file to identify any non-exact versioning in dependencies.
    * This method checks both "dependencies" and "devDependencies" in the package.json file.
-   * 
+   *
    * @param {SourceFile} sourceFile - The source file to analyze.
    * @returns {Finding[]} - Array of findings with details about the detected issues.
    */

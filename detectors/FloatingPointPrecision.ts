@@ -5,6 +5,7 @@ import {
   Node,
   ConditionalExpression,
 } from "ts-morph";
+
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";

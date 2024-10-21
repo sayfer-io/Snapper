@@ -1,4 +1,3 @@
-import * as path from "path";
 import { SourceFile } from "ts-morph";
 
 import { Finding } from "../types";

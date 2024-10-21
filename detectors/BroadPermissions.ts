@@ -6,6 +6,7 @@
 
 import { readFileSync } from "fs";
 import { SourceFile } from "ts-morph";
+
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
@@ -44,12 +45,12 @@ const CONSIDER_AS_TOO_BROAD = 3;
  * Extends the DetectorBase class to implement permission detection.
  */
 class BroadPermissionsDetector extends DetectorBase {
+  public allowedFileRegexes = [/snap\.manifest\.json$/];
+
   /**
    * The constructor initializes the detector with a name and risk rating.
    * @constructor
    */
-  public allowedFileRegexes = [/snap\.manifest\.json$/];
-
   constructor() {
     super("BroadPermissions", RiskRating.High);
   }

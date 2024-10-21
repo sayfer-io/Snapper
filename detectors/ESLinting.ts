@@ -1,5 +1,5 @@
-import { SourceFile } from "ts-morph";
 import { ESLint } from "eslint";
+import { SourceFile } from "ts-morph";
 
 import { Finding } from "../types";
 import { RiskRating } from "../structures";

@@ -1,4 +1,5 @@
 import { SourceFile } from "ts-morph";
+
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
@@ -74,7 +75,9 @@ class ExcessiveCommentsDetector extends DetectorBase {
       // If the accumulated lines exceed the threshold, log a finding.
       if (accumulatedLines >= EXCESSIVE_COMMENT_THRESHOLD) {
         this.addFinding(
-          `Large section of commented-out code detected (${startLine}-${startLine + lines - 2}).`, // Record the line range of excessive comments.
+          `Large section of commented-out code detected (${startLine}-${
+            startLine + lines - 2
+          }).`, // Record the line range of excessive comments.
           sourceFile.getFilePath(),
           match.index // Log the position of the finding.
         );

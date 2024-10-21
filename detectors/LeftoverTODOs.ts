@@ -1,4 +1,5 @@
 import { SourceFile, CommentRange, Node } from "ts-morph";
+
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
@@ -67,7 +68,9 @@ class LeftoverTODOsDetector extends DetectorBase {
 
       // Check if the comment is a valid TODO
       if (this.isRealTodoComment(comment)) {
-        const todoLocation = `${sourceFile.getFilePath()}:${sourceFile.getLineAndColumnAtPos(comment.getPos()).line}`;
+        const todoLocation = `${sourceFile.getFilePath()}:${
+          sourceFile.getLineAndColumnAtPos(comment.getPos()).line
+        }`;
 
         // Add finding if this TODO hasn't been reported yet
         if (!reportedTodos.has(todoLocation)) {

@@ -1,32 +1,22 @@
-// TODO:
-// 1. Fix the issue with the isValidBase64 function.
-//    - The current implementation incorrectly identifies strings such as
-//      "location", "filePath", "iconPath", and "registry" as valid base64 strings.
-//    - Ensure that the function accurately validates base64 strings.
-// 2. Add more patterns to the SECRET_PATTERNS array to detect additional types of hardcoded secrets.
-//
-// To reproduce the issue, run the following command in the terminal:
-// $ npx ts-node main.ts --path '.\testcases\Injection Flaws\push-protocol-snaps\snap' --verbose --detector hardcodedSecret
-
 import { SourceFile, SyntaxKind } from "ts-morph";
 
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
 
+// Regular expression patterns to identify different types of hardcoded secrets.
+const SECRET_PATTERNS: RegExp[] = [
+  /^(?=[A-Za-z0-9+/]{40,}$)(?=[A-Za-z0-9+/]*[A-Z])(?=[A-Za-z0-9+/]*[a-z])(?=[A-Za-z0-9+/]*[0-9])(?=[A-Za-z0-9+/]*[+/])(?:[A-Za-z0-9+/]{4})+(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/, // Base64 strings
+  /-----BEGIN (RSA|EC|DSA|OPENSSH) PRIVATE KEY-----/, // Private Key Begin
+  /-----BEGIN CERTIFICATE-----/, // Certificate Begin
+  /\/\/[^\/\s:@]+:[^\/\s:@]+@/, // URL with credentials
+  /eyJ[A-Za-z0-9_-]+\.([A-Za-z0-9_-]+\.?){1,2}/, // JWT Token
+];
+
 /**
  * Detector class for identifying hardcoded secrets in code.
  */
 class HardcodedSecretsDetector extends DetectorBase {
-  // Regular expression patterns to identify different types of hardcoded secrets.
-  private static SECRET_PATTERNS: RegExp[] = [
-    /^(?=[A-Za-z0-9+/]{40,}$)(?=[A-Za-z0-9+/]*[A-Z])(?=[A-Za-z0-9+/]*[a-z])(?=[A-Za-z0-9+/]*[0-9])(?=[A-Za-z0-9+/]*[+/])(?:[A-Za-z0-9+/]{4})+(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/, // Base64 strings
-    /-----BEGIN (RSA|EC|DSA|OPENSSH) PRIVATE KEY-----/, // Private Key Begin
-    /-----BEGIN CERTIFICATE-----/, // Certificate Begin
-    /\/\/[^\/\s:@]+:[^\/\s:@]+@/, // URL with credentials
-    /eyJ[A-Za-z0-9_-]+\.([A-Za-z0-9_-]+\.?){1,2}/, // JWT Token
-  ];
-
   public allowedFileRegexes = [/\.ts$/];
 
   constructor() {
@@ -83,10 +73,11 @@ class HardcodedSecretsDetector extends DetectorBase {
       if (text.length < 16) return; // Skip strings that are too short to be meaningful.
 
       // Check each secret pattern against the string.
-      HardcodedSecretsDetector.SECRET_PATTERNS.forEach((pattern) => {
-        if (pattern.test(text)) { // If the pattern matches the text,
+      SECRET_PATTERNS.forEach((pattern) => {
+        if (pattern.test(text)) {
+          // If the pattern matches the text,
           if (
-            pattern === HardcodedSecretsDetector.SECRET_PATTERNS[0] && // If it's a base64 pattern,
+            pattern === SECRET_PATTERNS[0] && // If it's a base64 pattern,
             !this.isValidBase64(text) // and it's not a valid base64 string,
           ) {
             return; // Skip this iteration.

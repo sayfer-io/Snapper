@@ -15,11 +15,11 @@ class UsedBeforeDefinedFunctionsDetector extends DetectorBase {
   }
 
   /**
-   * Runs the detector on the given source file to identify function expressions 
+   * Runs the detector on the given source file to identify function expressions
    * that are used before they are defined.
    *
    * This method traverses the Abstract Syntax Tree (AST) of the source file to collect
-   * the declarations and usages of function expressions, then checks for any violations 
+   * the declarations and usages of function expressions, then checks for any violations
    * of the declaration-before-use rule.
    *
    * @param {SourceFile} sourceFile - The source file to analyze.
@@ -39,7 +39,7 @@ class UsedBeforeDefinedFunctionsDetector extends DetectorBase {
           const name = node.getName(); // Get the function name
           functionDeclarations[name] = node.getStartLineNumber(); // Store the declaration line number
         }
-      } 
+      }
       // Check for call expressions
       else if (Node.isCallExpression(node)) {
         const expression = node.getExpression();

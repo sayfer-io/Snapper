@@ -1,4 +1,3 @@
-import * as path from "path";
 import { SourceFile, SyntaxKind } from "ts-morph";
 
 import { Finding } from "../types";
@@ -17,7 +16,6 @@ interface Manifest {
  * in the associated code, helping to streamline permissions and enhance security.
  */
 class UnusedPermissionsDetector extends DetectorBase {
-
   public allowedFileRegexes: RegExp[] = [/snap\.manifest\.json/];
 
   // Map of permissions and their corresponding APIs.

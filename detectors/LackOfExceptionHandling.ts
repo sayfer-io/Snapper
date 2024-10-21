@@ -6,8 +6,9 @@ import {
   Node,
   CallExpression,
 } from "ts-morph";
-import { DetectorBase } from "./DetectorBase";
+
 import { Finding } from "../types";
+import { DetectorBase } from "./DetectorBase";
 import { RiskRating } from "../structures";
 
 /**
@@ -36,8 +37,12 @@ class LackOfExceptionHandlingDetector extends DetectorBase {
    */
   public run(sourceFile: SourceFile): Finding[] {
     // Get all function and method declarations in the source file
-    const functions = sourceFile.getDescendantsOfKind(SyntaxKind.FunctionDeclaration);
-    const methods = sourceFile.getDescendantsOfKind(SyntaxKind.MethodDeclaration);
+    const functions = sourceFile.getDescendantsOfKind(
+      SyntaxKind.FunctionDeclaration
+    );
+    const methods = sourceFile.getDescendantsOfKind(
+      SyntaxKind.MethodDeclaration
+    );
 
     // Check each important function and method for lack of exception handling
     functions.forEach((func) => this.checkImportantFunction(func));
@@ -50,7 +55,9 @@ class LackOfExceptionHandlingDetector extends DetectorBase {
    * Checks if the given function or method is important and lacks exception handling.
    * @param {FunctionDeclaration | MethodDeclaration} node - The function or method to check.
    */
-  private checkImportantFunction(node: FunctionDeclaration | MethodDeclaration): void {
+  private checkImportantFunction(
+    node: FunctionDeclaration | MethodDeclaration
+  ): void {
     const name = node.getName();
     // Proceed only if the function is important
     if (name && this.importantFunctions.includes(name)) {
@@ -70,14 +77,18 @@ class LackOfExceptionHandlingDetector extends DetectorBase {
    * @param {FunctionDeclaration | MethodDeclaration} node - The function or method to check.
    * @returns {boolean} - True if exception handling is present, false otherwise.
    */
-  private hasExceptionHandlingInCallStack(node: FunctionDeclaration | MethodDeclaration): boolean {
+  private hasExceptionHandlingInCallStack(
+    node: FunctionDeclaration | MethodDeclaration
+  ): boolean {
     // Check if the node itself has a try statement
     if (this.hasExceptionHandling(node)) {
       return true;
     }
 
     // Traverse up the call stack to check for exception handling
-    const callExpressions = node.getDescendantsOfKind(SyntaxKind.CallExpression);
+    const callExpressions = node.getDescendantsOfKind(
+      SyntaxKind.CallExpression
+    );
     for (const callExpr of callExpressions) {
       const referencedDecl = this.getReferencedDeclaration(callExpr);
       if (referencedDecl && this.hasExceptionHandling(referencedDecl)) {
@@ -102,7 +113,9 @@ class LackOfExceptionHandlingDetector extends DetectorBase {
    * @param {CallExpression} callExpr - The call expression to get the referenced declaration for.
    * @returns {FunctionDeclaration | MethodDeclaration | undefined} - The referenced declaration or undefined if not found.
    */
-  private getReferencedDeclaration(callExpr: CallExpression): FunctionDeclaration | MethodDeclaration | undefined {
+  private getReferencedDeclaration(
+    callExpr: CallExpression
+  ): FunctionDeclaration | MethodDeclaration | undefined {
     const symbol = callExpr.getExpression().getSymbol();
     if (!symbol) return undefined;
 

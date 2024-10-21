@@ -15,11 +15,11 @@ class UsedBeforeDefinedArrowFunctionsDetector extends DetectorBase {
   }
 
   /**
-   * Runs the detector on the given source file to identify arrow functions 
+   * Runs the detector on the given source file to identify arrow functions
    * that are used before they are defined.
    *
    * This method traverses the Abstract Syntax Tree (AST) of the source file to collect
-   * the declarations and usages of arrow functions, then checks for any violations 
+   * the declarations and usages of arrow functions, then checks for any violations
    * of the declaration-before-use rule.
    *
    * @param {SourceFile} sourceFile - The source file to analyze.
@@ -39,7 +39,7 @@ class UsedBeforeDefinedArrowFunctionsDetector extends DetectorBase {
           const name = node.getName(); // Get the function name
           arrowFunctionDeclarations[name] = node.getStartLineNumber(); // Store the declaration line number
         }
-      } 
+      }
       // Check for identifier usages
       else if (Node.isIdentifier(node)) {
         const parent = node.getParent();

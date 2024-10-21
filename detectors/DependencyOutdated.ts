@@ -1,6 +1,6 @@
 /**
  * This file defines a detector that identifies outdated dependencies in the source code.
- * It uses the audit-ci tool to scan for vulnerabilities in the project's dependencies 
+ * It uses the audit-ci tool to scan for vulnerabilities in the project's dependencies
  * and flags them as medium-risk issues.
  */
 
@@ -28,8 +28,8 @@ interface AuditCIFinding {
  * Extends the DetectorBase class to implement detection functionality for dependency vulnerabilities.
  */
 class DependencyOutdatedDetector extends DetectorBase {
-
   public allowedFileRegexes = [/package\.json$/];
+
   /**
    * Constructor for the DependencyOutdatedDetector.
    * Initializes the detector with a name and assigns a medium-risk rating.
@@ -41,7 +41,7 @@ class DependencyOutdatedDetector extends DetectorBase {
 
   /**
    * Creates a lockfile using the specified package manager.
-   * This step is required before running the audit-ci tool to ensure that the 
+   * This step is required before running the audit-ci tool to ensure that the
    * correct dependency versions are installed and locked.
    *
    * @param {string} tempDir - The path to the temporary directory.
@@ -92,7 +92,7 @@ class DependencyOutdatedDetector extends DetectorBase {
 
   /**
    * Runs the audit-ci command and parses the JSON output for vulnerabilities.
-   * This method is used to check the project's dependencies for security issues 
+   * This method is used to check the project's dependencies for security issues
    * and returns an array of findings based on the audit results.
    *
    * @param {string} tempDir - The path to the temporary directory.
@@ -179,7 +179,7 @@ class DependencyOutdatedDetector extends DetectorBase {
 
   /**
    * Maps the severity string to a RiskRating enum.
-   * This method converts the severity level (e.g., 'critical', 'high') into a corresponding 
+   * This method converts the severity level (e.g., 'critical', 'high') into a corresponding
    * RiskRating enumeration for use in the findings.
    *
    * @param {string} severity - The severity string returned from the audit-ci report.
@@ -198,8 +198,8 @@ class DependencyOutdatedDetector extends DetectorBase {
 
   /**
    * Runs the dependency outdated detector on the given source file.
-   * This method first verifies that the source file is a package.json file, then 
-   * it creates a temporary directory to copy the project files and runs the audit-ci tool 
+   * This method first verifies that the source file is a package.json file, then
+   * it creates a temporary directory to copy the project files and runs the audit-ci tool
    * to identify any outdated dependencies or vulnerabilities.
    *
    * @param {SourceFile} sourceFile - The source file to analyze.

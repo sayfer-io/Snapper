@@ -14,7 +14,8 @@ const ERROR_MESSAGE = "method"; // while seems simple, it covers 95% of the case
  * Detector for validating the origin of requests.
  */
 class OriginValidationDetector extends DetectorBase {
-  public allowedFileRegexes: RegExp[] = [/package\.json/]; // A hack to run it once
+  public allowedFileRegexes: RegExp[] = [/package\.json/];
+
   constructor() {
     super("originValidation", RiskRating.High);
   }
