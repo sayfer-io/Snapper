@@ -42,12 +42,9 @@ describe("BroadPermissionsDetector", () => {
     const sourceFile = createMockFile(mockFilePath, mockFileContent);
     const findings = detector.run(sourceFile);
 
-    expect(findings).toHaveLength(2);
+    expect(findings).toHaveLength(1);
     expect(findings[0].description).toContain(
-      "Broad permission detected: snap_manageAccounts"
-    );
-    expect(findings[1].description).toContain(
-      "Broad permission detected: endowment:network-access"
+      "Broad permissions detected: snap_manageAccounts, endowment:network-access"
     );
   });
 
