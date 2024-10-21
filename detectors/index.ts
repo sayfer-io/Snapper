@@ -3,6 +3,11 @@
  */
 
 /**
+ * Exports the abstract base class for all detectors.
+ */
+export { DetectorBase } from "./DetectorBase";
+
+/**
  * Detects usage of console.log statements in the code.
  */
 export { ConsoleLogDetector } from "./ConsoleLog";
