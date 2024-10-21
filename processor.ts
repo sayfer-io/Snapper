@@ -25,10 +25,10 @@ const detectors = [
   new Detectors.UsedBeforeDefinedInterfacesDetector(),
   new Detectors.UnusedPermissionsDetector(),
   new Detectors.DeprecatedPermissionsDetector(),
-  // new Detectors.DependencyOutdatedDetector(),
+  new Detectors.DependencyOutdatedDetector(),
   // new Detectors.DependencyVersioningDetector(),
   new Detectors.LackOfExceptionHandlingDetector(),
-  new Detectors.OriginValidation(),
+  new Detectors.OriginValidationDetector(),
   new Detectors.PotentialOutdatedEngineDetector(),
   new Detectors.MissingExplicitStrictTypeCheckingDetector(),
   new Detectors.BroadPermissionsDetector(),
@@ -50,17 +50,25 @@ export async function processFiles(
   detectorNames?: string[]
 ): Promise<Finding[]> {
   const tsConfigPaths = await findTsConfig(projectPath);
-  if (tsConfigPaths.length === 0) {
+  if (!tsConfigPaths.length) {
     logger.error(`No tsconfig.json files found in: ${projectPath}`);
     return [];
   }
+
+  const detectorsToRun = getDetectorsToRun(detectorNames);
+  if (!detectorsToRun.length) return [];
+
+  logger.debug(
+    `Running detectors: ${detectorsToRun.map((d) => d.getName()).join(", ")}`
+  );
 
   const allFindings: Finding[] = [];
 
   for (const tsConfigPath of tsConfigPaths) {
     const folderPath = path.dirname(tsConfigPath);
     const project = new Project({ tsConfigFilePath: tsConfigPath });
-    logger.debug(`Processing project with tsconfig: ${tsConfigPath}`);
+
+    logger.debug(`Processing project: ${tsConfigPath}`);
 
     const files = project.addSourceFilesAtPaths([
       `${folderPath}/**/*.ts`,
@@ -68,60 +76,80 @@ export async function processFiles(
       `${folderPath}/**/tsconfig.json`,
       `${folderPath}/**/snap.manifest.json`,
     ]);
-    logger.info(`Processing files in path: ${folderPath}`);
-    const sortedFiles = files.sort((a, b) =>
-      a.getFilePath().localeCompare(b.getFilePath())
-    );
-    logger.info(`Total number of files found: ${sortedFiles.length}`);
+
+    const sortedFiles = files
+      .filter((file) => !file.getFilePath().includes("/node_modules/"))
+      .sort((a, b) => a.getFilePath().localeCompare(b.getFilePath()));
+
+    logger.info(`Processing ${sortedFiles.length} files in ${folderPath}`);
 
     for (const file of sortedFiles) {
-      // Skip files in node_modules, could not make it work with the glob pattern
-      if (file.getFilePath().includes("/node_modules/")) {
-        continue;
-      }
-
-      logger.debug(`Processing file: ${file.getFilePath()}`);
-
-      let detectorsToRun = detectors;
-
-      if (detectorNames && detectorNames.length > 0) {
-        detectorsToRun = detectors.filter((detector) => {
-          return detectorNames.some(
-            (name) => detector.getName().toLowerCase() === name.toLowerCase()
-          );
-        });
-        if (detectorsToRun.length === 0) {
-          logger.warn(`No detectors found with names: ${detectorNames.join(", ")}`);
-          return [];
-        }
-      }
-
-      logger.debug(
-        `Going to run detectors: ${detectorsToRun.map((d) => d.getName())}`
-      );
-
-      for (const detector of detectorsToRun) {
-        detector.clearFindings();
-
-        // Skip files that are not supported by the detector
-        if (!detector.allowedFileRegexes.some((regex) => file.getFilePath().match(regex))) {
-          continue;
-        }
-
-        countdetectors++;
-
-        logger.debug(`Running detector: ${detector.getName()}`);
-
-        // Run the detector and capture its findings
-        await detector.run(file as SourceFile);
-        const findings = detector.getFindings();
-
-        logger.debug(`Found ${findings.length} issues`);
-        allFindings.push(...findings);
-      }
+      await runDetectorsOnFile(file, detectorsToRun, allFindings);
     }
   }
 
-  logger.info(`Total number of issues found: ${allFindings.length}`);
+  logger.info(`Total issues found: ${allFindings.length}`);
   return allFindings;
+}
+
+/**
+ * Filters and retrieves detectors to run based on detector names.
+ *
+ * @param {string[]} [detectorNames] - The list of detector names to filter.
+ * @returns {Detector[]} - The filtered list of detectors to run.
+ */
+function getDetectorsToRun(detectorNames?: string[]): Detectors.DetectorBase[] {
+  if (!detectorNames?.length) return detectors;
+
+  const detectorsToRun = detectors.filter((detector) =>
+    detectorNames.some(
+      (name) => detector.getName().toLowerCase() === name.toLowerCase()
+    )
+  );
+
+  const notFoundNames = detectorNames.filter(
+    (name) =>
+      !detectors.some(
+        (detector) => detector.getName().toLowerCase() === name.toLowerCase()
+      )
+  );
+
+  if (notFoundNames.length) {
+    logger.warn(`No detectors found with names: ${notFoundNames.join(", ")}`);
+  }
+
+  if (!detectorsToRun.length) {
+    logger.warn(`No detectors found with names: ${detectorNames.join(", ")}`);
+    return [];
+  }
+
+  return detectorsToRun;
+}
+
+/**
+ * Runs detectors on a single file and collects findings.
+ *
+ * @param {SourceFile} file - The TypeScript file to run detectors on.
+ * @param {Detector[]} detectorsToRun - The list of detectors to run.
+ * @param {Finding[]} allFindings - The array to collect all findings.
+ */
+async function runDetectorsOnFile(
+  file: SourceFile,
+  detectorsToRun: Detectors.DetectorBase[],
+  allFindings: Finding[]
+) {
+  const filePath = file.getFilePath();
+  logger.debug(`Processing file: ${filePath}`);
+
+  for (const detector of detectorsToRun) {
+    detector.clearFindings();
+
+    if (detector.allowedFileRegexes.some((regex) => regex.test(filePath))) {
+      logger.debug(`Running detector: ${detector.getName()}`);
+      await detector.run(file);
+      const findings = detector.getFindings();
+      logger.debug(`Found ${findings.length} issues`);
+      allFindings.push(...findings);
+    }
+  }
 }
