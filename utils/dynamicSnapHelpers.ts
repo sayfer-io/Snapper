@@ -1,9 +1,8 @@
 import { existsSync, cpSync } from "fs";
-import { installSnap } from '@metamask/snaps-simulation';
-
+import { installSnap } from "@metamask/snaps-simulation";
 
 import logger from "./logger";
-import { createTempDir, detectPackageManager } from "./fileUtils";
+import { createTempDir } from "./fileUtils";
 import { runCommandDetached, runCommand } from "./commandUtils";
 
 /**
@@ -72,7 +71,7 @@ export function installDependencies(
       command = `pnpm install --silent --lockfile-only --dir "${tempDir}"`;
       break;
     case "yarn":
-      command = `yarn install --silent`;
+      command = `yarn install --silent --cwd "${tempDir}"`;
       break;
     case "npm":
       command = `npm install --silent --package-lock-only --legacy-peer-deps --prefix "${tempDir}"`;
@@ -82,8 +81,7 @@ export function installDependencies(
   }
 
   // Run the command to install dependencies
-  const output1 = runCommand(command, tempDir);
-  logger.debug(`Dependencies installed: ${output1}`);
+  runCommand(command, tempDir);
 }
 
 /**
@@ -91,9 +89,7 @@ export function installDependencies(
  * @param {string} projectFolderPath - The directory of the Snap.
  */
 export async function buildSnap(projectFolderPath: string): Promise<void> {
-  logger.debug("Building the Snap...");
-  let output = runCommand(`npx mm-snap build`, projectFolderPath);
-  logger.debug(`Snap built: ${output}`);
+  runCommand(`npx mm-snap build`, projectFolderPath);
 }
 
 export async function connectSnapServer(port: number): Promise<any> {
@@ -122,5 +118,5 @@ export async function startAndConnectToSnap(directory: string): Promise<any> {
   await sleep(5000); // Sleep for 5 seconds
 
   // Step 2: Connect to the Snap server
-  return {...await connectSnapServer(port), port};
+  return { ...(await connectSnapServer(port)), port };
 }
