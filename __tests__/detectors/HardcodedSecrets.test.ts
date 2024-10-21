@@ -16,9 +16,13 @@ describe("HardcodedSecretsDetector", () => {
     return project.createSourceFile("testFile.ts", code);
   };
 
+  const toBase64 = (str: string) => Buffer.from(str).toString("base64");
+
   test("should detect base64 strings longer than 12 characters", () => {
+    const secretString = "testlongstring";
+    const base64Secret = toBase64(secretString);
     const code = `
-      const secret = "dGVzdGxvbmdzdHJpbmc="; // base64 for "testlongstring"
+      const secret = "${base64Secret}"; // base64 for "${secretString}"
     `;
     sourceFile = createSourceFileWithCode(code);
 
@@ -74,7 +78,7 @@ describe("HardcodedSecretsDetector", () => {
 
   test("should detect JWT token", () => {
     const code = `
-      const jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9";
+      const jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
     `;
     sourceFile = createSourceFileWithCode(code);
 
