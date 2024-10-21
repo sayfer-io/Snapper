@@ -9,7 +9,7 @@ import { DetectorBase } from "./DetectorBase";
  * Class to detect potential outdated engine specifications in package.json files.
  */
 class PotentialOutdatedEngineDetector extends DetectorBase {
-  public allowedFileRegexes: RegExp[] = [/package\.json/];
+  public allowedFileRegexes: RegExp[] = [/package\.json$/];
 
   constructor() {
     super("PotentialOutdatedEngine", RiskRating.Low);

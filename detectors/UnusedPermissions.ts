@@ -15,7 +15,7 @@ interface Manifest {
  * in the associated code, helping to streamline permissions and enhance security.
  */
 class UnusedPermissionsDetector extends DetectorBase {
-  public allowedFileRegexes: RegExp[] = [/snap\.manifest\.json/];
+  public allowedFileRegexes: RegExp[] = [/snap\.manifest\.json$/];
 
   // Map of permissions and their corresponding APIs.
   private static readonly PERMISSION_API_MAP: { [key: string]: string } = {

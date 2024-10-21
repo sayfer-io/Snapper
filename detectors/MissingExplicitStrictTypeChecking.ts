@@ -19,7 +19,7 @@ const STRICT_TYPE_CHECKING_OPTIONS = [
  * Class to detect missing explicit strict type-checking options in tsconfig.json.
  */
 class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
-  public allowedFileRegexes: RegExp[] = [/tsconfig\.json/];
+  public allowedFileRegexes: RegExp[] = [/tsconfig\.json$/];
 
   constructor() {
     super("MissingExplicitStrictTypeChecking", RiskRating.Medium);
