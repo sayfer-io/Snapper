@@ -1,12 +1,15 @@
-import { SourceFile } from "ts-morph";
+import path from "path";
+import mockFs from "mock-fs";
+import { Project, SourceFile } from "ts-morph";
 import { UnusedPermissionsDetector } from "../../detectors/UnusedPermissions";
 
 describe("UnusedPermissionsDetector", () => {
   let detector: UnusedPermissionsDetector;
-  let mockSourceFile: jest.Mocked<SourceFile>;
+  let project: Project;
+  let sourceFile: SourceFile;
 
-  const MOCK_FILE_PATH = "snap.manifest.json" as any;
-  const MOCK_OTHER_FILE_PATH = "otherfile.json" as any;
+  const getRandomDir = () =>
+    `test-${Math.random().toString(36).substring(2, 15)}`;
   const MOCK_UNUSED_PERMISSION = "endowment:ethereum-provider";
   const MOCK_USED_PERMISSION = "endowment:used-permission";
   const MOCK_UNUSED_API = "window.ethereum";
@@ -14,31 +17,43 @@ describe("UnusedPermissionsDetector", () => {
 
   beforeEach(() => {
     detector = new UnusedPermissionsDetector();
-    mockSourceFile = createMockSourceFile();
+    project = new Project();
+  });
+
+  afterEach(() => {
+    mockFs.restore();
   });
 
   it("should detect unused permissions and not report used permissions", () => {
-    const mockManifestContent = JSON.stringify({
-      initialPermissions: {
-        [MOCK_UNUSED_PERMISSION]: {},
-        [MOCK_USED_PERMISSION]: {},
+    const MOCK_DIR = getRandomDir();
+    const MOCK_FILE_PATH = `${MOCK_DIR}/snap.manifest.json`;
+
+    mockFs({
+      [MOCK_DIR]: {
+        "snap.manifest.json": JSON.stringify({
+          initialPermissions: {
+            [MOCK_UNUSED_PERMISSION]: {},
+            [MOCK_USED_PERMISSION]: {},
+          },
+        }),
+        "index.js": `
+          // Some code that uses window.usedApi
+          console.log(window.usedApi);
+        `,
       },
     });
 
-    mockSourceFile.getFilePath.mockReturnValue(MOCK_FILE_PATH);
-    mockSourceFile.getFullText.mockReturnValue(mockManifestContent);
+    sourceFile = project.addSourceFileAtPath(MOCK_FILE_PATH);
 
-    jest
-      .spyOn(detector as any, "isApiUsed")
-      .mockImplementation((api) => api === MOCK_USED_API);
-
-    const findings = detector.run(mockSourceFile);
+    const findings = detector.run(sourceFile);
 
     expect(findings).toHaveLength(1);
     expect(findings[0].description).toBe(
       `Permission '${MOCK_UNUSED_PERMISSION}' is declared but its corresponding API '${MOCK_UNUSED_API}' is not used.`
     );
-    expect(findings[0].position.filePath).toBe(MOCK_FILE_PATH);
+    expect(path.basename(findings[0].position.filePath)).toBe(
+      path.basename(MOCK_FILE_PATH)
+    );
 
     const usedPermissionFinding = findings.find((finding) =>
       finding.description.includes(MOCK_USED_PERMISSION)
@@ -47,48 +62,88 @@ describe("UnusedPermissionsDetector", () => {
   });
 
   it("should not report used permissions", () => {
-    const mockManifestContent = JSON.stringify({
-      initialPermissions: {
-        [MOCK_USED_PERMISSION]: {},
+    const MOCK_DIR = getRandomDir();
+    const MOCK_FILE_PATH = `${MOCK_DIR}/snap.manifest.json`;
+
+    mockFs({
+      [MOCK_DIR]: {
+        "snap.manifest.json": JSON.stringify({
+          initialPermissions: {
+            [MOCK_USED_PERMISSION]: {},
+          },
+        }),
+        "index.js": `
+          // Some code that uses window.usedApi
+          console.log(window.usedApi);
+        `,
       },
     });
 
-    mockSourceFile.getFilePath.mockReturnValue(MOCK_FILE_PATH);
-    mockSourceFile.getFullText.mockReturnValue(mockManifestContent);
+    sourceFile = project.addSourceFileAtPath(MOCK_FILE_PATH);
 
-    jest.spyOn(detector as any, "isApiUsed").mockReturnValue(true);
-
-    const findings = detector.run(mockSourceFile);
+    const findings = detector.run(sourceFile);
 
     expect(findings).toHaveLength(0);
   });
 
   it("should not run on non-manifest files", () => {
-    mockSourceFile.getFilePath.mockReturnValue(MOCK_OTHER_FILE_PATH);
+    const MOCK_DIR = getRandomDir();
+    const MOCK_OTHER_FILE_PATH = `${MOCK_DIR}/otherfile.json`;
 
-    const findings = detector.run(mockSourceFile);
+    mockFs({
+      [MOCK_DIR]: {
+        "otherfile.json": "{}",
+      },
+    });
+
+    sourceFile = project.addSourceFileAtPath(MOCK_OTHER_FILE_PATH);
+
+    const findings = detector.run(sourceFile);
 
     expect(findings).toHaveLength(0);
   });
 
   it("should handle empty permissions", () => {
-    const mockManifestContent = JSON.stringify({
-      initialPermissions: {},
+    const MOCK_DIR = getRandomDir();
+    const MOCK_FILE_PATH = `${MOCK_DIR}/snap.manifest.json`;
+
+    mockFs({
+      [MOCK_DIR]: {
+        "snap.manifest.json": JSON.stringify({
+          initialPermissions: {},
+        }),
+      },
     });
 
-    mockSourceFile.getFilePath.mockReturnValue(MOCK_FILE_PATH);
-    mockSourceFile.getFullText.mockReturnValue(mockManifestContent);
+    sourceFile = project.addSourceFileAtPath(MOCK_FILE_PATH);
 
-    const findings = detector.run(mockSourceFile);
+    const findings = detector.run(sourceFile);
 
     expect(findings).toHaveLength(0);
   });
 
-  function createMockSourceFile(): jest.Mocked<SourceFile> {
-    return {
-      getFilePath: jest.fn(),
-      getFullText: jest.fn(),
-      getDescendantsOfKind: jest.fn(),
-    } as unknown as jest.Mocked<SourceFile>;
-  }
+  it("should not report findings when the permission is used properly", () => {
+    const MOCK_DIR = getRandomDir();
+    const MOCK_FILE_PATH = `${MOCK_DIR}/snap.manifest.json`;
+
+    mockFs({
+      [MOCK_DIR]: {
+        "snap.manifest.json": JSON.stringify({
+          initialPermissions: {
+            [MOCK_USED_PERMISSION]: {},
+          },
+        }),
+        "index.js": `
+          // Some code that uses window.usedApi
+          console.log(window.usedApi);
+        `,
+      },
+    });
+
+    sourceFile = project.addSourceFileAtPath(MOCK_FILE_PATH);
+
+    const findings = detector.run(sourceFile);
+
+    expect(findings).toHaveLength(0);
+  });
 });
