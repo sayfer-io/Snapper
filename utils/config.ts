@@ -1,13 +1,23 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
+import fs from "fs";
+import path from "path";
+
+interface CliOptions {
+  path: string;
+  detectors: string[];
+  verbose: boolean;
+  output?: string;
+  logFile?: string;
+}
 
 /**
  * Configures command-line arguments using yargs.
  * Only defined options are accepted.
  *
- * @returns {object} - The parsed command-line arguments.
+ * @returns {CliOptions} - The parsed command-line arguments.
  */
-export function configureYargs() {
+export function configureYargs(): CliOptions {
   return yargs(hideBin(process.argv))
     .strict()
     .options({
@@ -16,11 +26,20 @@ export function configureYargs() {
         type: "string",
         description: "Project path",
         demandOption: true,
+        coerce: (arg: string) => {
+          if (!fs.existsSync(arg) || !fs.statSync(arg).isDirectory()) {
+            throw new Error(`Invalid project path: ${arg}`);
+          }
+          return path.resolve(arg);
+        },
       },
       detectors: {
         alias: "d",
-        type: "string",
-        description: "Specify which detector to run, specify multiple detectors with a comma",
+        type: "array",
+        description: "Specify which detectors to run",
+        default: [],
+        coerce: (arg: string | string[]) =>
+          Array.isArray(arg) ? arg : arg.split(","),
       },
       verbose: {
         alias: "v",
@@ -47,11 +66,6 @@ export function configureYargs() {
       console.log(yargs.help());
       process.exit(1);
     })
-    .help().argv as unknown as {
-    path: string;
-    detectors?: string;
-    verbose: boolean;
-    output?: string;
-    logFile?: string;
-  };
+    .help()
+    .parseSync() as CliOptions;
 }

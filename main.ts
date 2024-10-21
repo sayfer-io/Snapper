@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { promises as fs } from "fs";
 
 import logger from "./utils/logger";
@@ -36,7 +38,7 @@ async function main(): Promise<void> {
       }`
     );
 
-    const allFindings = await processFiles(projectPath, detectors?.split(","));
+    const allFindings = await processFiles(projectPath, detectors);
 
     // Determine the output file name
     const resultFileName =
