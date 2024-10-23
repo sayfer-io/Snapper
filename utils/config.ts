@@ -22,6 +22,11 @@ export function configureYargs() {
         type: "string",
         description: "Specify which detector to run, specify multiple detectors with a comma",
       },
+      'ignore-detectors': {
+        alias: "e",
+        type: "string",
+        description: "Specify which detector to ignore, specify multiple detectors with a comma",
+      },
       verbose: {
         alias: "v",
         type: "boolean",
@@ -50,6 +55,7 @@ export function configureYargs() {
     .help().argv as unknown as {
     path: string;
     detectors?: string;
+    ignoreDetectors?: string;
     verbose: boolean;
     output?: string;
     logFile?: string;

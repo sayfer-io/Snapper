@@ -23,6 +23,13 @@ async function main(): Promise<void> {
   try {
     const projectPath = argv.path;
     const detectors = argv.detectors;
+    const ignoreDetectors = argv.ignoreDetectors;
+
+    if (ignoreDetectors && detectors) {
+      throw new Error(
+        "Cannot specify both detectors and ignoreDetectors at the same time."
+      );
+    }
 
     if (!projectPath) {
       throw new Error(
@@ -36,7 +43,7 @@ async function main(): Promise<void> {
       }`
     );
 
-    const allFindings = await processFiles(projectPath, detectors?.split(","));
+    const allFindings = await processFiles(projectPath, detectors?.split(","), ignoreDetectors?.split(","));
 
     // Determine the output file name
     const resultFileName =

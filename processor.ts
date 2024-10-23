@@ -39,15 +39,17 @@ const detectors = [
 ];
 
 /**
- * Processes files in a TypeScript project to find issues based on specified detectors.
+ * Processes files in a Snap project to find issues based on specified detectors.
  *
- * @param {string} projectPath - The path to the TypeScript project.
+ * @param {string} projectPath - The path to the Snap project.
  * @param {string[]} [detectorNames] - The list of detectors to run. If not provided, all detectors will be applied.
+ * @param {string[]} [detectorsNameIgnore] - The list of detectors to ignore.
  * @returns {Promise<Finding[]>} - A promise that resolves to an array of findings.
  */
 export async function processFiles(
   projectPath: string,
-  detectorNames?: string[]
+  detectorNames?: string[],
+  detectorsNameIgnore?: string[]
 ): Promise<Finding[]> {
   const tsConfigPaths = await findTsConfig(projectPath);
   if (tsConfigPaths.length === 0) {
@@ -96,6 +98,14 @@ export async function processFiles(
         }
       }
 
+      if (detectorsNameIgnore && detectorsNameIgnore.length > 0) {
+        detectorsToRun = detectorsToRun.filter((detector) => {
+          return !detectorsNameIgnore.some(
+            (name) => detector.getName().toLowerCase() === name.toLowerCase()
+          );
+        });
+      }
+
       logger.debug(
         `Going to run detectors: ${detectorsToRun.map((d) => d.getName())}`
       );
@@ -107,8 +117,6 @@ export async function processFiles(
         if (!detector.allowedFileRegexes.some((regex) => file.getFilePath().match(regex))) {
           continue;
         }
-
-        countdetectors++;
 
         logger.debug(`Running detector: ${detector.getName()}`);
 

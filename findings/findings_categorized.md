@@ -1,4 +1,4 @@
-# Checlist of Metamask Findings
+# Checklist of Metamask Findings
 
 Listed below are all the findings from previous snap audit reports grouped into several categories.
 
