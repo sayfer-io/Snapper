@@ -1,4 +1,4 @@
-import mock from "mock-fs";
+import mockFs from "mock-fs";
 import { SourceFile, Project } from "ts-morph";
 
 import { BroadPermissionsDetector } from "../../detectors/BroadPermissions";
@@ -13,14 +13,14 @@ describe("BroadPermissionsDetector", () => {
   });
 
   afterEach(() => {
-    mock.restore();
+    mockFs.restore();
   });
 
   const createMockFile = (
     filePath: string,
     fileContent: string
   ): SourceFile => {
-    mock({
+    mockFs({
       [filePath]: fileContent,
     });
 

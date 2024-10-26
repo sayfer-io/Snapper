@@ -1,4 +1,4 @@
-import mock from "mock-fs";
+import mockFs from "mock-fs";
 import { Project } from "ts-morph";
 
 import { ImproperTypeUsageDetector } from "../../detectors/ImproperTypeUsage";
@@ -8,23 +8,19 @@ describe("ImproperTypeUsageDetector", () => {
   let project: Project;
 
   beforeEach(() => {
-    // Instantiate the detector and a new project
     detector = new ImproperTypeUsageDetector();
     project = new Project();
   });
 
   afterEach(() => {
-    // Restore the file system
-    mock.restore();
+    mockFs.restore();
   });
 
   const createMockFile = (filePath: string, fileContent: string) => {
-    // Mock the file system
-    mock({
+    mockFs({
       [filePath]: fileContent,
     });
 
-    // Add the source file to the project
     return project.addSourceFileAtPath(filePath);
   };
 

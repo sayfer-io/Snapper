@@ -1,6 +1,7 @@
 import path from "path";
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
+
 import { UnusedPermissionsDetector } from "../../detectors/UnusedPermissions";
 
 describe("UnusedPermissionsDetector", () => {

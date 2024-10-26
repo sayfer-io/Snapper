@@ -1,5 +1,6 @@
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
+
 import { ESLintingDetector } from "../../detectors/ESLinting";
 
 describe("ESLintingDetector", () => {
@@ -7,10 +8,8 @@ describe("ESLintingDetector", () => {
   let sourceFile: SourceFile;
 
   beforeAll(() => {
-    // Initialize the detector first, ensuring ESLint and its dependencies are loaded
     detector = new ESLintingDetector();
 
-    // Now apply mock-fs to mock the file system
     mockFs({
       "/mock/project": {
         "test.ts": `
@@ -21,19 +20,18 @@ describe("ESLintingDetector", () => {
       },
     });
 
-    // Set up ts-morph project and load the file
     const project = new Project();
     sourceFile = project.addSourceFileAtPath("/mock/project/test.ts");
   });
 
-  afterAll(() => {
-    mockFs.restore(); // Restore the actual file system after the test
+  afterEach(() => {
+    mockFs.restore();
   });
 
   it("should detect ESLint issues in the TypeScript file", async () => {
     const findings = await detector.run(sourceFile);
 
-    expect(findings).toHaveLength(2); // Two findings expected: one for `any` type and one for unused function
+    expect(findings).toHaveLength(2);
     expect(findings[0].description).toContain("no-unused-vars");
     expect(findings[1].description).toContain(
       "@typescript-eslint/no-explicit-any"
