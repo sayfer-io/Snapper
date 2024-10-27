@@ -14,6 +14,8 @@ export abstract class DetectorBase {
   protected name: string;
   protected riskRating: RiskRating;
   protected findings: Finding[] = []; // Array to hold findings detected by the detector.
+
+  // List of file extensions that the detector can analyze.
   public allowedFileRegexes: RegExp[] = [/\.ts$/, /\.tsx$/, /\.js$/, /\.jsx$/];
 
   /**
