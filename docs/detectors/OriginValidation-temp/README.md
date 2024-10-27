@@ -2,9 +2,9 @@
 
 ***
 
-[Snapper Project](../../README.md) / detectors/OriginValidation
+[Snapper Project](../../README.md) / detectors/OriginValidation-temp
 
-# detectors/OriginValidation
+# detectors/OriginValidation-temp
 
 ## Index
 

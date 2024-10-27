@@ -2,13 +2,12 @@
 
 ***
 
-[Snapper Project](../../../README.md) / [detectors/UnhandledPromiseRejection](../README.md) / UnhandledPromiseRejectionDetector
+[Snapper Project](../../../README.md) / [detectors/ESLinting](../README.md) / ESLintingDetector
 
-# Class: UnhandledPromiseRejectionDetector
+# Class: ESLintingDetector
 
-Class to detect unhandled promise rejections in asynchronous functions.
-This detector identifies potential issues where catch clauses do not handle errors properly,
-potentially leading to unhandled promise rejections.
+Detector class that checks a TypeScript file for common issues
+such as the use of any types, unused variables, unused expressions, and unused labels.
 
 ## Extends
 
@@ -16,13 +15,13 @@ potentially leading to unhandled promise rejections.
 
 ## Constructors
 
-### new UnhandledPromiseRejectionDetector()
+### new ESLintingDetector()
 
-> **new UnhandledPromiseRejectionDetector**(): [`UnhandledPromiseRejectionDetector`](UnhandledPromiseRejectionDetector.md)
+> **new ESLintingDetector**(): [`ESLintingDetector`](ESLintingDetector.md)
 
 #### Returns
 
-[`UnhandledPromiseRejectionDetector`](UnhandledPromiseRejectionDetector.md)
+[`ESLintingDetector`](ESLintingDetector.md)
 
 #### Overrides
 
@@ -30,7 +29,7 @@ potentially leading to unhandled promise rejections.
 
 #### Defined in
 
-[detectors/UnhandledPromiseRejection.ts:23](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/UnhandledPromiseRejection.ts#L23)
+[detectors/ESLinting.ts:28](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/ESLinting.ts#L28)
 
 ## Properties
 
@@ -308,24 +307,21 @@ Optional error object to log alongside the message.
 
 ### run()
 
-> **run**(`file`): [`Finding`](../../../types/type-aliases/Finding.md)[]
+> **run**(`file`): `Promise`\<[`Finding`](../../../types/type-aliases/Finding.md)[]\>
 
-Runs the detector on the given source file to identify empty or ineffective catch blocks.
-
-This method traverses all catch clauses within the source file, checks their contents,
-and logs a finding if it detects any empty catch blocks or blocks that contain only ineffective statements.
+Analyzes the given TypeScript file for linting issues.
 
 #### Parameters
 
 • **file**: `SourceFile`
 
-The source file to analyze for unhandled promise rejections.
+The source file to analyze.
 
 #### Returns
 
-[`Finding`](../../../types/type-aliases/Finding.md)[]
+`Promise`\<[`Finding`](../../../types/type-aliases/Finding.md)[]\>
 
-- An array of findings indicating the locations and reasons for potential issues.
+- A promise that resolves to an array of findings.
 
 #### Overrides
 
@@ -333,4 +329,4 @@ The source file to analyze for unhandled promise rejections.
 
 #### Defined in
 
-[detectors/UnhandledPromiseRejection.ts:36](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/UnhandledPromiseRejection.ts#L36)
+[detectors/ESLinting.ts:37](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/ESLinting.ts#L37)

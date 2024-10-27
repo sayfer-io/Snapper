@@ -7,6 +7,8 @@
 # Class: `abstract` DetectorBase
 
 Abstract base class for all detectors.
+This class provides a common structure and utility methods for specific detectors
+that will implement the run method to analyze source files for issues.
 
 ## Extended by
 
@@ -17,6 +19,7 @@ Abstract base class for all detectors.
 - [`DependencyVersioningDetector`](../../DependencyVersioning/classes/DependencyVersioningDetector.md)
 - [`DeprecatedFunctionsDetector`](../../DeprecatedFunctions/classes/DeprecatedFunctionsDetector.md)
 - [`DeprecatedPermissionsDetector`](../../DeprecatedPermissions/classes/DeprecatedPermissionsDetector.md)
+- [`ESLintingDetector`](../../ESLinting/classes/ESLintingDetector.md)
 - [`ExcessiveCommentsDetector`](../../ExcessiveComments/classes/ExcessiveCommentsDetector.md)
 - [`FloatingPointPrecisionDetector`](../../FloatingPointPrecision/classes/FloatingPointPrecisionDetector.md)
 - [`HardcodedSecretsDetector`](../../HardcodedSecrets/classes/HardcodedSecretsDetector.md)
@@ -27,9 +30,9 @@ Abstract base class for all detectors.
 - [`LackOfExceptionHandlingDetector`](../../LackOfExceptionHandling/classes/LackOfExceptionHandlingDetector.md)
 - [`LeftoverTODOsDetector`](../../LeftoverTODOs/classes/LeftoverTODOsDetector.md)
 - [`MissingExplicitStrictTypeCheckingDetector`](../../MissingExplicitStrictTypeChecking/classes/MissingExplicitStrictTypeCheckingDetector.md)
-- [`OriginValidation`](../../OriginValidation/classes/OriginValidation.md)
+- [`OriginValidationDetector`](../../OriginValidation-temp/classes/OriginValidationDetector.md)
+- [`OriginValidationDetector`](../../OriginValidation/classes/OriginValidationDetector.md)
 - [`PotentialOutdatedEngineDetector`](../../PotentialOutdatedEngine/classes/PotentialOutdatedEngineDetector.md)
-- [`StrictNullChecksDetector`](../../StrictNullChecks/classes/StrictNullChecksDetector.md)
 - [`UnhandledPromiseRejectionDetector`](../../UnhandledPromiseRejection/classes/UnhandledPromiseRejectionDetector.md)
 - [`UnusedFunctionsDetector`](../../UnusedFunctions/classes/UnusedFunctionsDetector.md)
 - [`UnusedImportsDetector`](../../UnusedImports/classes/UnusedImportsDetector.md)
@@ -45,11 +48,17 @@ Abstract base class for all detectors.
 
 > **new DetectorBase**(`name`, `riskRating`): [`DetectorBase`](DetectorBase.md)
 
+Constructor to initialize the detector with a name and risk rating.
+
 #### Parameters
 
 • **name**: `string`
 
+The name of the detector.
+
 • **riskRating**: [`RiskRating`](../../../structures/enumerations/RiskRating.md)
+
+The risk rating associated with the findings from this detector.
 
 #### Returns
 
@@ -57,9 +66,19 @@ Abstract base class for all detectors.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:16](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L16)
+[detectors/DetectorBase.ts:26](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L26)
 
 ## Properties
+
+### allowedFileRegexes
+
+> **allowedFileRegexes**: `RegExp`[]
+
+#### Defined in
+
+[detectors/DetectorBase.ts:19](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L19)
+
+***
 
 ### findings
 
@@ -67,7 +86,7 @@ Abstract base class for all detectors.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:14](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L14)
+[detectors/DetectorBase.ts:16](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L16)
 
 ***
 
@@ -77,7 +96,7 @@ Abstract base class for all detectors.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:12](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L12)
+[detectors/DetectorBase.ts:14](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L14)
 
 ***
 
@@ -87,7 +106,7 @@ Abstract base class for all detectors.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:13](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L13)
+[detectors/DetectorBase.ts:15](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L15)
 
 ## Methods
 
@@ -96,6 +115,7 @@ Abstract base class for all detectors.
 > **addFinding**(`description`, `filePath`, `lineNum`): `void`
 
 Adds a finding to the findings array.
+This method creates a Finding object and logs a debug message before adding it to the findings list.
 
 #### Parameters
 
@@ -117,7 +137,7 @@ Line number where the finding was detected (default is 1).
 
 #### Defined in
 
-[detectors/DetectorBase.ts:30](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L30)
+[detectors/DetectorBase.ts:41](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L41)
 
 ***
 
@@ -125,7 +145,8 @@ Line number where the finding was detected (default is 1).
 
 > **clearFindings**(): `void`
 
-Clears the findings.
+Clears all findings from the detector.
+This method resets the findings array to an empty state.
 
 #### Returns
 
@@ -133,7 +154,7 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:47](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L47)
+[detectors/DetectorBase.ts:59](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L59)
 
 ***
 
@@ -141,13 +162,17 @@ Clears the findings.
 
 > **getFindings**(): [`Finding`](../../../types/type-aliases/Finding.md)[]
 
+Retrieves all findings collected by the detector.
+
 #### Returns
 
 [`Finding`](../../../types/type-aliases/Finding.md)[]
 
+- Array of findings.
+
 #### Defined in
 
-[detectors/DetectorBase.ts:55](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L55)
+[detectors/DetectorBase.ts:75](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L75)
 
 ***
 
@@ -155,13 +180,17 @@ Clears the findings.
 
 > **getName**(): `string`
 
+Gets the name of the detector.
+
 #### Returns
 
 `string`
 
+- The name of the detector.
+
 #### Defined in
 
-[detectors/DetectorBase.ts:51](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L51)
+[detectors/DetectorBase.ts:67](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L67)
 
 ***
 
@@ -170,6 +199,7 @@ Clears the findings.
 > **logDebug**(`message`): `void`
 
 Logs a debug message.
+This method formats the message with the detector's name and logs it at the debug level.
 
 #### Parameters
 
@@ -183,7 +213,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:71](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L71)
+[detectors/DetectorBase.ts:93](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L93)
 
 ***
 
@@ -192,6 +222,7 @@ The message to log.
 > **logError**(`message`, `error`?): `void`
 
 Logs an error message.
+This method formats the message with the detector's name and logs it at the error level.
 
 #### Parameters
 
@@ -201,7 +232,7 @@ The message to log.
 
 • **error?**: `Error`
 
-Optional error object to log.
+Optional error object to log alongside the message.
 
 #### Returns
 
@@ -209,7 +240,7 @@ Optional error object to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:80](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L80)
+[detectors/DetectorBase.ts:103](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L103)
 
 ***
 
@@ -218,6 +249,7 @@ Optional error object to log.
 > **logInfo**(`message`): `void`
 
 Logs an informational message.
+This method formats the message with the detector's name and logs it at the info level.
 
 #### Parameters
 
@@ -231,7 +263,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:63](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L63)
+[detectors/DetectorBase.ts:84](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L84)
 
 ***
 
@@ -240,6 +272,7 @@ The message to log.
 > **logWarning**(`message`, `error`?): `void`
 
 Logs a warning message.
+This method formats the message with the detector's name and logs it at the warning level.
 
 #### Parameters
 
@@ -249,7 +282,7 @@ The message to log.
 
 • **error?**: `Error`
 
-Optional error object to log.
+Optional error object to log alongside the message.
 
 #### Returns
 
@@ -257,7 +290,7 @@ Optional error object to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:89](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L89)
+[detectors/DetectorBase.ts:113](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L113)
 
 ***
 
@@ -275,4 +308,4 @@ Optional error object to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:22](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L22)
+[detectors/DetectorBase.ts:32](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L32)

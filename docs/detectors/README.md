@@ -50,6 +50,18 @@ Re-exports [DeprecatedPermissionsDetector](DeprecatedPermissions/classes/Depreca
 
 ***
 
+### DetectorBase
+
+Re-exports [DetectorBase](DetectorBase/classes/DetectorBase.md)
+
+***
+
+### ESLintingDetector
+
+Re-exports [ESLintingDetector](ESLinting/classes/ESLintingDetector.md)
+
+***
+
 ### ExcessiveCommentsDetector
 
 Re-exports [ExcessiveCommentsDetector](ExcessiveComments/classes/ExcessiveCommentsDetector.md)
@@ -110,21 +122,15 @@ Re-exports [MissingExplicitStrictTypeCheckingDetector](MissingExplicitStrictType
 
 ***
 
-### OriginValidation
+### OriginValidationDetector
 
-Re-exports [OriginValidation](OriginValidation/classes/OriginValidation.md)
+Re-exports [OriginValidationDetector](OriginValidation/classes/OriginValidationDetector.md)
 
 ***
 
 ### PotentialOutdatedEngineDetector
 
 Re-exports [PotentialOutdatedEngineDetector](PotentialOutdatedEngine/classes/PotentialOutdatedEngineDetector.md)
-
-***
-
-### StrictNullChecksDetector
-
-Re-exports [StrictNullChecksDetector](StrictNullChecks/classes/StrictNullChecksDetector.md)
 
 ***
 

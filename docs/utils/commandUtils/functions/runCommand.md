@@ -6,7 +6,7 @@
 
 # Function: runCommand()
 
-> **runCommand**(`command`, `workingDir`): `string`
+> **runCommand**(`command`, `workingDir`?): `string`
 
 Runs a command in the specified directory.
 
@@ -16,9 +16,9 @@ Runs a command in the specified directory.
 
 The command to run.
 
-• **workingDir**: `string`
+• **workingDir?**: `string`
 
-The path to the temporary directory.
+The path to the working directory. If not provided, the current directory is used.
 
 ## Returns
 
@@ -28,4 +28,4 @@ The path to the temporary directory.
 
 ## Defined in
 
-[utils/commandUtils.ts:13](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/utils/commandUtils.ts#L13)
+[utils/commandUtils.ts:13](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/utils/commandUtils.ts#L13)

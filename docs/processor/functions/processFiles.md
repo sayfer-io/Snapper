@@ -6,9 +6,9 @@
 
 # Function: processFiles()
 
-> **processFiles**(`projectPath`, `detectorName`?): `Promise`\<[`Finding`](../../types/type-aliases/Finding.md)[]\>
+> **processFiles**(`projectPath`, `detectorNames`?): `Promise`\<[`Finding`](../../types/type-aliases/Finding.md)[]\>
 
-Processes files in a TypeScript project to find issues based on specified detector.
+Processes files in a TypeScript project to find issues based on specified detectors.
 
 ## Parameters
 
@@ -16,9 +16,9 @@ Processes files in a TypeScript project to find issues based on specified detect
 
 The path to the TypeScript project.
 
-• **detectorName?**: `string`
+• **detectorNames?**: `string`[]
 
-The specific detector to run. If not provided, all detectors will be applied.
+The list of detectors to run. If not provided, all detectors will be applied.
 
 ## Returns
 
@@ -28,4 +28,4 @@ The specific detector to run. If not provided, all detectors will be applied.
 
 ## Defined in
 
-[processor.ts:48](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/processor.ts#L48)
+[processor.ts:48](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/processor.ts#L48)
