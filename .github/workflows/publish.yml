@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'packages/snapper/**' # Adjust to the exact path within your repo
+      - 'packages/snapper/**' # Adjust to match the exact path in the repo
 
 jobs:
   publish:
@@ -15,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Optional Debugging Step to List Files in the packages directory
+      # Optional: Confirm directory structure
       - name: List files
         run: ls -la packages
 
@@ -27,14 +27,23 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./packages/snapper # Path to the snapper package
-
-      - name: Run tests
-        run: npm test # Optional: Skip if you don’t need tests
         working-directory: ./packages/snapper
 
-      - name: Publish to NPM
+      - name: Run tests
+        run: npm test # Optional
+        working-directory: ./packages/snapper
+
+      - name: Bump version
+        run: |
+          npm version patch # Use 'patch', 'minor', or 'major' as needed
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -am "Bump version to $(node -p "require('./packages/snapper/package.json').version")"
+          git push origin main
+        working-directory: ./packages/snapper
+
+      - name: Publish Private Package to NPM
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
+        run: npm publish
         working-directory: ./packages/snapper
