@@ -1,4 +1,4 @@
-name: Publish to NPM
+name: Publish @snapper-org/snapper to NPM
 
 on:
   push:
@@ -21,11 +21,14 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./packages/snapper # Specify your exact package directory here
 
       - name: Run tests
         run: npm test # Optional: Skip if you don’t need tests
+        working-directory: ./packages/snapper # Specify your exact package directory here
 
       - name: Publish to NPM
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish
+        run: npm publish --access public
+        working-directory: ./packages/snapper # Specify your exact package directory here
