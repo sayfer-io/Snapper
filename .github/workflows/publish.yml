@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'packages/snapper/**' # Adjust to the exact path within your repo
 
 jobs:
   publish:
@@ -13,22 +15,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Optional Debugging Step to List Files in the packages directory
+      - name: List files
+        run: ls -la packages
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '16' # Specify the Node.js version your project uses
+          node-version: '16'
           registry-url: 'https://registry.npmjs.org/'
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./packages/snapper # Specify your exact package directory here
+        working-directory: ./packages/snapper # Path to the snapper package
 
       - name: Run tests
         run: npm test # Optional: Skip if you don’t need tests
-        working-directory: ./packages/snapper # Specify your exact package directory here
+        working-directory: ./packages/snapper
 
       - name: Publish to NPM
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public
-        working-directory: ./packages/snapper # Specify your exact package directory here
+        working-directory: ./packages/snapper
