@@ -1,4 +1,4 @@
-import mock from "mock-fs";
+import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
 import { FloatingPointPrecisionDetector } from "../../detectors/FloatingPointPrecision";
@@ -13,14 +13,14 @@ describe("FloatingPointPrecisionDetector", () => {
   });
 
   afterEach(() => {
-    mock.restore();
+    mockFs.restore();
   });
 
   const createMockFile = (
     filePath: string,
     fileContent: string
   ): SourceFile => {
-    mock({
+    mockFs({
       [filePath]: fileContent,
     });
 

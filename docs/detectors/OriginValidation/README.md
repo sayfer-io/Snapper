@@ -10,4 +10,4 @@
 
 ### Classes
 
-- [OriginValidation](classes/OriginValidation.md)
+- [OriginValidationDetector](classes/OriginValidationDetector.md)

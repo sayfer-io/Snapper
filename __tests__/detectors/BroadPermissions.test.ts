@@ -1,4 +1,4 @@
-import mock from "mock-fs";
+import mockFs from "mock-fs";
 import { SourceFile, Project } from "ts-morph";
 
 import { BroadPermissionsDetector } from "../../detectors/BroadPermissions";
@@ -13,14 +13,14 @@ describe("BroadPermissionsDetector", () => {
   });
 
   afterEach(() => {
-    mock.restore();
+    mockFs.restore();
   });
 
   const createMockFile = (
     filePath: string,
     fileContent: string
   ): SourceFile => {
-    mock({
+    mockFs({
       [filePath]: fileContent,
     });
 
@@ -42,12 +42,9 @@ describe("BroadPermissionsDetector", () => {
     const sourceFile = createMockFile(mockFilePath, mockFileContent);
     const findings = detector.run(sourceFile);
 
-    expect(findings).toHaveLength(2);
+    expect(findings).toHaveLength(1);
     expect(findings[0].description).toContain(
-      "Broad permission detected: snap_manageAccounts"
-    );
-    expect(findings[1].description).toContain(
-      "Broad permission detected: endowment:network-access"
+      "Broad permissions detected: snap_manageAccounts, endowment:network-access"
     );
   });
 

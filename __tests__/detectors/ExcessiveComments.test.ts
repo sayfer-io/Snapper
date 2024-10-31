@@ -1,7 +1,8 @@
+import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
+
 import { Finding } from "../../types";
 import { ExcessiveCommentsDetector } from "../../detectors/ExcessiveComments";
-import mock from "mock-fs";
 
 describe("ExcessiveComments", () => {
   let project: Project;
@@ -14,20 +15,17 @@ describe("ExcessiveComments", () => {
   });
 
   afterEach(() => {
-    // Restore the file system
-    mock.restore();
+    mockFs.restore();
   });
 
   const createSourceFileWithCode = (
     filePath: string,
     code: string
   ): SourceFile => {
-    // Mock the file system
-    mock({
+    mockFs({
       [filePath]: code,
     });
 
-    // Add the source file to the project
     return project.addSourceFileAtPath(filePath);
   };
 

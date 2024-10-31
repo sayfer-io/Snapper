@@ -1,5 +1,4 @@
-import { SourceFile, SyntaxKind } from "ts-morph";
-
+import { SourceFile } from "ts-morph";
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
@@ -16,7 +15,7 @@ interface Manifest {
  * in the associated code, helping to streamline permissions and enhance security.
  */
 class UnusedPermissionsDetector extends DetectorBase {
-  public allowedFileRegexes: RegExp[] = [/snap\.manifest\.json/];
+  public allowedFileRegexes: RegExp[] = [/snap\.manifest\.json$/];
 
   // Map of permissions and their corresponding APIs.
   private static readonly PERMISSION_API_MAP: { [key: string]: string } = {
@@ -28,48 +27,56 @@ class UnusedPermissionsDetector extends DetectorBase {
   }
 
   /**
-   * Reads the snap.manifest.json file and returns the parsed content.
-   *
-   * This method retrieves the full text of the source file and parses it
-   * as a JSON object to access the manifest details.
-   *
-   * @param {SourceFile} file - The source file representing snap.manifest.json.
-   * @returns {Manifest} - The parsed manifest content, including permissions.
+   * Reads and parses the manifest file.
+   * @param {SourceFile} file - The source file to read.
+   * @returns {Manifest} - The parsed manifest object.
    */
-  private readManifest(file: SourceFile): Manifest {
+  private readManifest(file: SourceFile): Manifest | null {
     const manifestContent = file.getFullText();
-    return JSON.parse(manifestContent); // Parse the JSON content to an object.
+    try {
+      return JSON.parse(manifestContent); // Parse the JSON content to an object.
+    } catch (error) {
+      return null; // Return null if the content is not valid JSON.
+    }
   }
 
   /**
-   * Runs the detector on the given source file to identify unused permissions.
-   *
-   * This method checks if the current source file is the manifest file and,
-   * if so, verifies which permissions are declared but not utilized in the code.
-   *
-   * @param {SourceFile} sourceFile - The source file to analyze.
-   * @returns {Finding[]} - An array of findings detailing unused permissions.
+   * Runs the detector on the given source file.
+   * @param {SourceFile} file - The source file to analyze.
+   * @returns {Finding[]} - Array of findings with details about the detected issues.
    */
-  public run(sourceFile: SourceFile): Finding[] {
-    const filePath = sourceFile.getFilePath();
+  public run(file: SourceFile): Finding[] {
+    const filePath = file.getFilePath();
 
-    const manifest = this.readManifest(sourceFile);
+    // Ensure the file is a manifest file
+    if (!this.allowedFileRegexes.some((regex) => regex.test(filePath))) {
+      return [];
+    }
+
+    const manifest = this.readManifest(file);
+    if (!manifest) {
+      return [];
+    }
+
     const permissions = manifest.initialPermissions;
 
-    // Check each permission against the defined API map.
+    // Return early if no permissions are defined or the object is empty
+    if (!permissions || Object.keys(permissions).length === 0) {
+      return [];
+    }
+
     for (const [permission, api] of Object.entries(
       UnusedPermissionsDetector.PERMISSION_API_MAP
     )) {
-      // If the permission is declared but the API is not used, report it.
-      if (permissions[permission] && !this.isApiUsed(sourceFile, api)) {
+      if (permissions[permission] && !this.isApiUsed(file, api)) {
         this.addFinding(
           `Permission '${permission}' is declared but its corresponding API '${api}' is not used.`,
-          filePath
+          filePath,
+          1 // Line number is not available for manifest files
         );
       }
     }
 
-    // Return all findings collected during the analysis.
     return this.getFindings();
   }
 
@@ -77,16 +84,14 @@ class UnusedPermissionsDetector extends DetectorBase {
    * Checks if the specified API is used in the source file.
    *
    * This method inspects the identifiers in the source file to determine
-   * if the specified API is referenced anywhere in the code.
+   * if the specified API is used.
    *
-   * @param {SourceFile} sourceFile - The source file to analyze.
+   * @param {SourceFile} sourceFile - The source file to inspect.
    * @param {string} api - The API to check for usage.
-   * @returns {boolean} - True if the API is used; false otherwise.
+   * @returns {boolean} - True if the API is used, false otherwise.
    */
   private isApiUsed(sourceFile: SourceFile, api: string): boolean {
-    const identifiers = sourceFile.getDescendantsOfKind(SyntaxKind.Identifier);
-    // Check if any identifier matches the API name.
-    return identifiers.some((identifier) => identifier.getText() === api);
+    return sourceFile.getFullText().includes(api);
   }
 }
 

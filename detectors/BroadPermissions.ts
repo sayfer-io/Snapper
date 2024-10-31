@@ -30,7 +30,7 @@ const BROAD_PERMISSIONS: { [key: string]: { message: string } } = {
   },
   snap_getBip32Entropy: {
     message:
-      "Allows access to BIP32 entropy for generating cryptographic keys, which involves handling sensitive cryptographic keys.",
+      "Allows access to BIP32 entropy for generating cryptographic keys, which involves handling cryptographic keys.",
   },
   "endowment:rpc": {
     message:
@@ -38,7 +38,7 @@ const BROAD_PERMISSIONS: { [key: string]: { message: string } } = {
   },
 };
 
-const CONSIDER_AS_TOO_BROAD = 3;
+const CONSIDER_AS_TOO_BROAD = 2;
 
 /**
  * Class to detect broad permissions in snap.manifest.json with specific guidance.
@@ -64,30 +64,25 @@ class BroadPermissionsDetector extends DetectorBase {
    * @returns {Finding[]} - A list of findings that flag any detected broad permissions.
    */
   public run(file: SourceFile): Finding[] {
-    // Find the initialPermissions property node
     const jsonData = JSON.parse(readFileSync(file.getFilePath(), "utf-8"));
     const initialPermissions = jsonData.initialPermissions;
     const permissionsFound: string[] = [];
 
-    // If initialPermissions exist, check for broad permissions
     if (initialPermissions) {
-      for (const [permissionName, permissionValue] of Object.entries(
-        initialPermissions
-      )) {
-        const permissionInfo = BROAD_PERMISSIONS[permissionName];
-        if (permissionInfo) {
-          // Add a finding for the broad permission detected
+      for (const permissionName of Object.keys(initialPermissions)) {
+        if (BROAD_PERMISSIONS[permissionName]) {
           permissionsFound.push(permissionName);
         }
       }
     }
+
     if (permissionsFound.length >= CONSIDER_AS_TOO_BROAD) {
       this.addFinding(
         `Broad permissions detected: ${permissionsFound.join(", ")}`,
         file.getFilePath()
       );
     }
-    // Return the list of findings
+
     return this.getFindings();
   }
 }

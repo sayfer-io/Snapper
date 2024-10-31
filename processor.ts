@@ -107,6 +107,11 @@ function getDetectorsToRun(detectorNames?: string[]): Detectors.DetectorBase[] {
     )
   );
 
+  if (!detectorsToRun.length) {
+    logger.error(`No detectors found with names: ${detectorNames.join(", ")}`);
+    return [];
+  }
+
   const notFoundNames = detectorNames.filter(
     (name) =>
       !detectors.some(
@@ -115,12 +120,9 @@ function getDetectorsToRun(detectorNames?: string[]): Detectors.DetectorBase[] {
   );
 
   if (notFoundNames.length) {
-    logger.warn(`No detectors found with names: ${notFoundNames.join(", ")}`);
-  }
-
-  if (!detectorsToRun.length) {
-    logger.warn(`No detectors found with names: ${detectorNames.join(", ")}`);
-    return [];
+    logger.warn(
+      `Skipping detector which were not found: ${notFoundNames.join(", ")}`
+    );
   }
 
   return detectorsToRun;

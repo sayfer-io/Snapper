@@ -1,4 +1,4 @@
-import mock from "mock-fs";
+import mockFs from "mock-fs";
 import { Project } from "ts-morph";
 
 import { UnusedImportsDetector } from "../../detectors/UnusedImports";
@@ -13,7 +13,7 @@ describe("UnusedImportsDetector", () => {
   });
 
   afterEach(() => {
-    mock.restore();
+    mockFs.restore();
   });
 
   it("should handle files with no imports", () => {
@@ -22,17 +22,14 @@ describe("UnusedImportsDetector", () => {
       console.log('No imports here');
     `;
 
-    // Mock the file system
-    mock({
+    mockFs({
       [mockFilePath]: mockFileContent,
     });
 
-    // Add the source file to the project
     const sourceFile = project.addSourceFileAtPath(mockFilePath);
 
     const findings = detector.run(sourceFile);
 
-    // Ensure no findings are reported
     expect(findings).toHaveLength(0);
   });
 
@@ -45,7 +42,7 @@ describe("UnusedImportsDetector", () => {
     `;
 
     // Mock the file system
-    mock({
+    mockFs({
       [mockFilePath]: mockFileContent,
     });
 
@@ -54,7 +51,6 @@ describe("UnusedImportsDetector", () => {
 
     const findings = detector.run(sourceFile);
 
-    // Ensure no findings are reported
     expect(findings).toHaveLength(0);
   });
 
@@ -65,17 +61,14 @@ describe("UnusedImportsDetector", () => {
       console.log('This file has an unused import');
     `;
 
-    // Mock the file system
-    mock({
+    mockFs({
       [mockFilePath]: mockFileContent,
     });
 
-    // Add the source file to the project
     const sourceFile = project.addSourceFileAtPath(mockFilePath);
 
     const findings = detector.run(sourceFile);
 
-    // Ensure findings are reported
     expect(findings).toHaveLength(1);
     expect(findings[0].description).toBe(
       "Import 'unusedImport' is declared but never used."
@@ -90,17 +83,14 @@ describe("UnusedImportsDetector", () => {
       console.log(usedImport);
     `;
 
-    // Mock the file system
-    mock({
+    mockFs({
       [mockFilePath]: mockFileContent,
     });
 
-    // Add the source file to the project
     const sourceFile = project.addSourceFileAtPath(mockFilePath);
 
     const findings = detector.run(sourceFile);
 
-    // Ensure findings are reported
     expect(findings).toHaveLength(1);
     expect(findings[0].description).toBe(
       "Import 'unusedImport' is declared but never used."

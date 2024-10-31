@@ -7,26 +7,36 @@ let childProcesses: ChildProcess[] = [];
 /**
  * Runs a command in the specified directory.
  * @param {string} command - The command to run.
- * @param {string} workingDir - The path to the temporary directory.
+ * @param {string} [workingDir] - The path to the working directory. If not provided, the current directory is used.
  * @returns {string} - The command's output.
  */
-export function runCommand(command: string, workingDir: string): string {
+export function runCommand(command: string, workingDir?: string): string {
   let output = "";
   const originalCwd = process.cwd();
   try {
     if (workingDir) {
       process.chdir(workingDir);
     }
-    output = execSync(command, { encoding: "utf-8", stdio: "pipe" });
+    logger.debug(
+      `Running command: '${command}' in ${workingDir || originalCwd}`
+    );
+    output = execSync(command, {
+      encoding: "utf-8",
+      stdio: ["pipe", "pipe", "pipe"],
+    });
   } catch (err: any) {
     if (err.stdout) {
       output = err.stdout.toString();
+    }
+    if (err.stderr) {
+      output = err.stderr.toString();
     }
   } finally {
     if (workingDir) {
       process.chdir(originalCwd);
     }
   }
+  logger.debug(`Command output: ${output}`);
   return output;
 }
 

@@ -7,6 +7,8 @@
 # Class: UnhandledPromiseRejectionDetector
 
 Class to detect unhandled promise rejections in asynchronous functions.
+This detector identifies potential issues where catch clauses do not handle errors properly,
+potentially leading to unhandled promise rejections.
 
 ## Extends
 
@@ -28,9 +30,23 @@ Class to detect unhandled promise rejections in asynchronous functions.
 
 #### Defined in
 
-[detectors/UnhandledPromiseRejection.ts:20](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/UnhandledPromiseRejection.ts#L20)
+[detectors/UnhandledPromiseRejection.ts:23](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/UnhandledPromiseRejection.ts#L23)
 
 ## Properties
+
+### allowedFileRegexes
+
+> **allowedFileRegexes**: `RegExp`[]
+
+#### Inherited from
+
+[`DetectorBase`](../../DetectorBase/classes/DetectorBase.md).[`allowedFileRegexes`](../../DetectorBase/classes/DetectorBase.md#allowedfileregexes)
+
+#### Defined in
+
+[detectors/DetectorBase.ts:19](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L19)
+
+***
 
 ### findings
 
@@ -42,7 +58,7 @@ Class to detect unhandled promise rejections in asynchronous functions.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:14](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L14)
+[detectors/DetectorBase.ts:16](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L16)
 
 ***
 
@@ -56,7 +72,7 @@ Class to detect unhandled promise rejections in asynchronous functions.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:12](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L12)
+[detectors/DetectorBase.ts:14](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L14)
 
 ***
 
@@ -70,7 +86,7 @@ Class to detect unhandled promise rejections in asynchronous functions.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:13](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L13)
+[detectors/DetectorBase.ts:15](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L15)
 
 ## Methods
 
@@ -79,6 +95,7 @@ Class to detect unhandled promise rejections in asynchronous functions.
 > **addFinding**(`description`, `filePath`, `lineNum`): `void`
 
 Adds a finding to the findings array.
+This method creates a Finding object and logs a debug message before adding it to the findings list.
 
 #### Parameters
 
@@ -104,7 +121,7 @@ Line number where the finding was detected (default is 1).
 
 #### Defined in
 
-[detectors/DetectorBase.ts:30](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L30)
+[detectors/DetectorBase.ts:41](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L41)
 
 ***
 
@@ -112,7 +129,8 @@ Line number where the finding was detected (default is 1).
 
 > **clearFindings**(): `void`
 
-Clears the findings.
+Clears all findings from the detector.
+This method resets the findings array to an empty state.
 
 #### Returns
 
@@ -124,7 +142,7 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:47](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L47)
+[detectors/DetectorBase.ts:59](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L59)
 
 ***
 
@@ -132,9 +150,13 @@ Clears the findings.
 
 > **getFindings**(): [`Finding`](../../../types/type-aliases/Finding.md)[]
 
+Retrieves all findings collected by the detector.
+
 #### Returns
 
 [`Finding`](../../../types/type-aliases/Finding.md)[]
+
+- Array of findings.
 
 #### Inherited from
 
@@ -142,7 +164,7 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:55](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L55)
+[detectors/DetectorBase.ts:75](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L75)
 
 ***
 
@@ -150,9 +172,13 @@ Clears the findings.
 
 > **getName**(): `string`
 
+Gets the name of the detector.
+
 #### Returns
 
 `string`
+
+- The name of the detector.
 
 #### Inherited from
 
@@ -160,7 +186,7 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:51](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L51)
+[detectors/DetectorBase.ts:67](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L67)
 
 ***
 
@@ -169,6 +195,7 @@ Clears the findings.
 > **logDebug**(`message`): `void`
 
 Logs a debug message.
+This method formats the message with the detector's name and logs it at the debug level.
 
 #### Parameters
 
@@ -186,7 +213,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:71](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L71)
+[detectors/DetectorBase.ts:93](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L93)
 
 ***
 
@@ -195,6 +222,7 @@ The message to log.
 > **logError**(`message`, `error`?): `void`
 
 Logs an error message.
+This method formats the message with the detector's name and logs it at the error level.
 
 #### Parameters
 
@@ -204,7 +232,7 @@ The message to log.
 
 • **error?**: `Error`
 
-Optional error object to log.
+Optional error object to log alongside the message.
 
 #### Returns
 
@@ -216,7 +244,7 @@ Optional error object to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:80](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L80)
+[detectors/DetectorBase.ts:103](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L103)
 
 ***
 
@@ -225,6 +253,7 @@ Optional error object to log.
 > **logInfo**(`message`): `void`
 
 Logs an informational message.
+This method formats the message with the detector's name and logs it at the info level.
 
 #### Parameters
 
@@ -242,7 +271,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:63](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L63)
+[detectors/DetectorBase.ts:84](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L84)
 
 ***
 
@@ -251,6 +280,7 @@ The message to log.
 > **logWarning**(`message`, `error`?): `void`
 
 Logs a warning message.
+This method formats the message with the detector's name and logs it at the warning level.
 
 #### Parameters
 
@@ -260,7 +290,7 @@ The message to log.
 
 • **error?**: `Error`
 
-Optional error object to log.
+Optional error object to log alongside the message.
 
 #### Returns
 
@@ -272,7 +302,7 @@ Optional error object to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:89](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L89)
+[detectors/DetectorBase.ts:113](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L113)
 
 ***
 
@@ -280,19 +310,22 @@ Optional error object to log.
 
 > **run**(`file`): [`Finding`](../../../types/type-aliases/Finding.md)[]
 
-Runs the detector on the given source file.
+Runs the detector on the given source file to identify empty or ineffective catch blocks.
+
+This method traverses all catch clauses within the source file, checks their contents,
+and logs a finding if it detects any empty catch blocks or blocks that contain only ineffective statements.
 
 #### Parameters
 
 • **file**: `SourceFile`
 
-The source file to analyze.
+The source file to analyze for unhandled promise rejections.
 
 #### Returns
 
 [`Finding`](../../../types/type-aliases/Finding.md)[]
 
-- List of findings.
+- An array of findings indicating the locations and reasons for potential issues.
 
 #### Overrides
 
@@ -300,4 +333,4 @@ The source file to analyze.
 
 #### Defined in
 
-[detectors/UnhandledPromiseRejection.ts:29](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/UnhandledPromiseRejection.ts#L29)
+[detectors/UnhandledPromiseRejection.ts:36](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/UnhandledPromiseRejection.ts#L36)

@@ -4,6 +4,7 @@ import {
   SyntaxKind,
   ForEachDescendantTraversalControl,
 } from "ts-morph";
+
 import { UsedBeforeDefinedInterfacesDetector } from "../../detectors/UsedBeforeDefinedInterfaces";
 
 describe("UsedBeforeDefinedInterfacesDetector", () => {

@@ -14,6 +14,10 @@ const ESLINT_RULES: ESLint.ConfigData["rules"] = {
   ],
   "no-unused-expressions": "error",
   "no-unused-labels": "error",
+  "import/no-unassigned-import": "error",
+  "import/unambiguous": "error",
+  "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+  "no-restricted-globals": ["error", "event", "fdescribe"],
 };
 
 /**
@@ -34,7 +38,7 @@ class ESLintingDetector extends DetectorBase {
     const eslint = this.createESLintInstance(file);
     const filePath = file.getFilePath();
 
-    const results = await eslint.lintFiles([filePath]);
+    const results = await eslint.lintText(file.getFullText(), { filePath });
 
     results.forEach((result) => {
       result.messages.forEach((message) => {
@@ -64,8 +68,12 @@ class ESLintingDetector extends DetectorBase {
         },
         plugins: {
           "@typescript-eslint": require("@typescript-eslint/eslint-plugin"),
+          import: require("eslint-plugin-import"),
         },
         rules: ESLINT_RULES,
+        linterOptions: {
+          reportUnusedDisableDirectives: "off",
+        },
       },
       overrideConfigFile: true,
       ignore: false,

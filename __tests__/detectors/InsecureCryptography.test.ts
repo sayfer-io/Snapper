@@ -1,4 +1,5 @@
 import { Project, SourceFile } from "ts-morph";
+
 import { Finding } from "../../types";
 import { InsecureCryptographyDetector } from "../../detectors/InsecureCryptography";
 

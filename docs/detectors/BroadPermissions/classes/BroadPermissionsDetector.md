@@ -7,6 +7,7 @@
 # Class: BroadPermissionsDetector
 
 Class to detect broad permissions in snap.manifest.json with specific guidance.
+Extends the DetectorBase class to implement permission detection.
 
 ## Extends
 
@@ -18,6 +19,8 @@ Class to detect broad permissions in snap.manifest.json with specific guidance.
 
 > **new BroadPermissionsDetector**(): [`BroadPermissionsDetector`](BroadPermissionsDetector.md)
 
+The constructor initializes the detector with a name and risk rating.
+
 #### Returns
 
 [`BroadPermissionsDetector`](BroadPermissionsDetector.md)
@@ -28,9 +31,23 @@ Class to detect broad permissions in snap.manifest.json with specific guidance.
 
 #### Defined in
 
-[detectors/BroadPermissions.ts:35](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/BroadPermissions.ts#L35)
+[detectors/BroadPermissions.ts:54](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/BroadPermissions.ts#L54)
 
 ## Properties
+
+### allowedFileRegexes
+
+> **allowedFileRegexes**: `RegExp`[]
+
+#### Overrides
+
+[`DetectorBase`](../../DetectorBase/classes/DetectorBase.md).[`allowedFileRegexes`](../../DetectorBase/classes/DetectorBase.md#allowedfileregexes)
+
+#### Defined in
+
+[detectors/BroadPermissions.ts:48](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/BroadPermissions.ts#L48)
+
+***
 
 ### findings
 
@@ -42,7 +59,7 @@ Class to detect broad permissions in snap.manifest.json with specific guidance.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:14](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L14)
+[detectors/DetectorBase.ts:16](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L16)
 
 ***
 
@@ -56,7 +73,7 @@ Class to detect broad permissions in snap.manifest.json with specific guidance.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:12](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L12)
+[detectors/DetectorBase.ts:14](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L14)
 
 ***
 
@@ -70,7 +87,7 @@ Class to detect broad permissions in snap.manifest.json with specific guidance.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:13](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L13)
+[detectors/DetectorBase.ts:15](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L15)
 
 ## Methods
 
@@ -79,6 +96,7 @@ Class to detect broad permissions in snap.manifest.json with specific guidance.
 > **addFinding**(`description`, `filePath`, `lineNum`): `void`
 
 Adds a finding to the findings array.
+This method creates a Finding object and logs a debug message before adding it to the findings list.
 
 #### Parameters
 
@@ -104,7 +122,7 @@ Line number where the finding was detected (default is 1).
 
 #### Defined in
 
-[detectors/DetectorBase.ts:30](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L30)
+[detectors/DetectorBase.ts:41](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L41)
 
 ***
 
@@ -112,7 +130,8 @@ Line number where the finding was detected (default is 1).
 
 > **clearFindings**(): `void`
 
-Clears the findings.
+Clears all findings from the detector.
+This method resets the findings array to an empty state.
 
 #### Returns
 
@@ -124,7 +143,7 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:47](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L47)
+[detectors/DetectorBase.ts:59](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L59)
 
 ***
 
@@ -132,9 +151,13 @@ Clears the findings.
 
 > **getFindings**(): [`Finding`](../../../types/type-aliases/Finding.md)[]
 
+Retrieves all findings collected by the detector.
+
 #### Returns
 
 [`Finding`](../../../types/type-aliases/Finding.md)[]
+
+- Array of findings.
 
 #### Inherited from
 
@@ -142,7 +165,7 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:55](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L55)
+[detectors/DetectorBase.ts:75](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L75)
 
 ***
 
@@ -150,9 +173,13 @@ Clears the findings.
 
 > **getName**(): `string`
 
+Gets the name of the detector.
+
 #### Returns
 
 `string`
+
+- The name of the detector.
 
 #### Inherited from
 
@@ -160,7 +187,7 @@ Clears the findings.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:51](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L51)
+[detectors/DetectorBase.ts:67](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L67)
 
 ***
 
@@ -169,6 +196,7 @@ Clears the findings.
 > **logDebug**(`message`): `void`
 
 Logs a debug message.
+This method formats the message with the detector's name and logs it at the debug level.
 
 #### Parameters
 
@@ -186,7 +214,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:71](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L71)
+[detectors/DetectorBase.ts:93](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L93)
 
 ***
 
@@ -195,6 +223,7 @@ The message to log.
 > **logError**(`message`, `error`?): `void`
 
 Logs an error message.
+This method formats the message with the detector's name and logs it at the error level.
 
 #### Parameters
 
@@ -204,7 +233,7 @@ The message to log.
 
 • **error?**: `Error`
 
-Optional error object to log.
+Optional error object to log alongside the message.
 
 #### Returns
 
@@ -216,7 +245,7 @@ Optional error object to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:80](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L80)
+[detectors/DetectorBase.ts:103](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L103)
 
 ***
 
@@ -225,6 +254,7 @@ Optional error object to log.
 > **logInfo**(`message`): `void`
 
 Logs an informational message.
+This method formats the message with the detector's name and logs it at the info level.
 
 #### Parameters
 
@@ -242,7 +272,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:63](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L63)
+[detectors/DetectorBase.ts:84](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L84)
 
 ***
 
@@ -251,6 +281,7 @@ The message to log.
 > **logWarning**(`message`, `error`?): `void`
 
 Logs a warning message.
+This method formats the message with the detector's name and logs it at the warning level.
 
 #### Parameters
 
@@ -260,7 +291,7 @@ The message to log.
 
 • **error?**: `Error`
 
-Optional error object to log.
+Optional error object to log alongside the message.
 
 #### Returns
 
@@ -272,7 +303,7 @@ Optional error object to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:89](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/DetectorBase.ts#L89)
+[detectors/DetectorBase.ts:113](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L113)
 
 ***
 
@@ -280,7 +311,9 @@ Optional error object to log.
 
 > **run**(`file`): [`Finding`](../../../types/type-aliases/Finding.md)[]
 
-Runs the detector on the given source file.
+Runs the detector on the given source file. It parses the snap.manifest.json file,
+checks for any permissions listed in BROAD_PERMISSIONS, and adds findings for those
+detected permissions.
 
 #### Parameters
 
@@ -292,7 +325,7 @@ The source file to analyze.
 
 [`Finding`](../../../types/type-aliases/Finding.md)[]
 
-- List of findings.
+- A list of findings that flag any detected broad permissions.
 
 #### Overrides
 
@@ -300,4 +333,4 @@ The source file to analyze.
 
 #### Defined in
 
-[detectors/BroadPermissions.ts:44](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/detectors/BroadPermissions.ts#L44)
+[detectors/BroadPermissions.ts:66](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/BroadPermissions.ts#L66)

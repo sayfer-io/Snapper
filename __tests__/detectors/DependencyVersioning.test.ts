@@ -1,8 +1,9 @@
-import { DependencyVersioningDetector } from "../../detectors/DependencyVersioning";
-import mock from "mock-fs";
+import path from "path";
+import mockFs from "mock-fs";
 import { Project } from "ts-morph";
+
 import { Finding } from "../../types";
-import * as path from "path";
+import { DependencyVersioningDetector } from "../../detectors/DependencyVersioning";
 
 describe("DependencyVersioningDetector", () => {
   let detector: DependencyVersioningDetector;
@@ -12,11 +13,11 @@ describe("DependencyVersioningDetector", () => {
   });
 
   afterEach(() => {
-    mock.restore();
+    mockFs.restore();
   });
 
   it("should detect dependencies with non-exact versions", () => {
-    mock({
+    mockFs({
       "test/package.json": `
       {
         "dependencies": {
@@ -57,7 +58,7 @@ describe("DependencyVersioningDetector", () => {
   });
 
   it("should not flag dependencies with exact versions", () => {
-    mock({
+    mockFs({
       "test/package.json": `
       {
         "dependencies": {
@@ -77,7 +78,7 @@ describe("DependencyVersioningDetector", () => {
   });
 
   it("should handle non-package.json files gracefully", () => {
-    mock({
+    mockFs({
       "test/test.ts": "",
     });
 
@@ -90,7 +91,7 @@ describe("DependencyVersioningDetector", () => {
   });
 
   it("should handle empty package.json files gracefully", () => {
-    mock({
+    mockFs({
       "test/package.json": "{}",
     });
 
@@ -103,7 +104,7 @@ describe("DependencyVersioningDetector", () => {
   });
 
   it("should detect dependencies with non-exact versions in devDependencies", () => {
-    mock({
+    mockFs({
       "test/package.json": `
       {
         "devDependencies": {

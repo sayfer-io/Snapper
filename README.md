@@ -61,13 +61,14 @@ npm run start --help
 > npx ts-node main.ts
 
 Options:
-      --version   Show version number                                  [boolean]
-  -p, --path      Project path                               [string] [required]
-  -d, --detector  Specify which detector to run                         [string]
-  -v, --verbose   Enable verbose logging              [boolean] [default: false]
-  -o, --output    Specify output file                                   [string]
-  -l, --logFile   Specify log file path                                 [string]
-      --help      Show help                                            [boolean]
+      --version    Show version number                                 [boolean]
+  -p, --path       Project path                              [string] [required]
+  -d, --detectors  Specify which detector to run, specify multiple detectors
+                   with a comma                                         [string]
+  -v, --verbose    Enable verbose logging             [boolean] [default: false]
+  -o, --output     Specify output file                                  [string]
+  -l, --logFile    Specify log file path                                [string]
+      --help       Show help                                           [boolean]
 ```
 
 3. Run test cases
@@ -75,5 +76,5 @@ Options:
 Run Snapper against test cases in the specified directory:
 
 ```bash
-ts-node main.ts --path testcases
+npm run start -- --path ./testcases
 ```

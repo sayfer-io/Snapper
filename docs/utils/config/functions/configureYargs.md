@@ -17,9 +17,9 @@ Only defined options are accepted.
 
 - The parsed command-line arguments.
 
-### detector?
+### detectors?
 
-> `optional` **detector**: `string`
+> `optional` **detectors**: `string`
 
 ### logFile?
 
@@ -39,4 +39,4 @@ Only defined options are accepted.
 
 ## Defined in
 
-[utils/config.ts:10](https://github.com/sayfer-io/Snapper/blob/4045f2e5717fa308f1c1fd6496d318bda1e3311b/utils/config.ts#L10)
+[utils/config.ts:10](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/utils/config.ts#L10)

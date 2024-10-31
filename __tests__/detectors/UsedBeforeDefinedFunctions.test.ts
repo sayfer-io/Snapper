@@ -4,6 +4,7 @@ import {
   SyntaxKind,
   ForEachDescendantTraversalControl,
 } from "ts-morph";
+
 import { UsedBeforeDefinedFunctionsDetector } from "../../detectors/UsedBeforeDefinedFunctions";
 
 describe("UsedBeforeDefinedFunctionsDetector", () => {
