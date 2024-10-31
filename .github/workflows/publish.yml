@@ -1,49 +1,50 @@
 name: Publish @snapper-org/snapper to NPM
-
 on:
   push:
     branches:
       - main
-    paths:
-      - 'packages/snapper/**' # Adjust to match the exact path in the repo
-
+    
 jobs:
   publish:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      # Optional: Confirm directory structure
-      - name: List files
-        run: ls -la packages
+        uses: actions/checkout@v3  # Updated to v3 for latest features
+        with:
+          fetch-depth: 0
+          persist-credentials: true  # Ensures git push works with GitHub Actions
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3  # Updated to v3
         with:
-          node-version: '16'
+          node-version: '18'  # Updated to more recent Node.js version
           registry-url: 'https://registry.npmjs.org/'
+          scope: '@snapper-org'  # If it's a scoped package
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci  # Recommended over npm install for CI environments
         working-directory: ./packages/snapper
 
       - name: Run tests
-        run: npm test # Optional
+        run: npm test
         working-directory: ./packages/snapper
 
-      - name: Bump version
+      - name: Configure Git
         run: |
-          npm version patch # Use 'patch', 'minor', or 'major' as needed
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -am "Bump version to $(node -p "require('./packages/snapper/package.json').version")"
-          git push origin main
         working-directory: ./packages/snapper
 
-      - name: Publish Private Package to NPM
+      - name: Bump version and push tag
+        run: |
+          npm version patch  # or minor/major as needed
+          git push origin main --follow-tags
+        working-directory: ./packages/snapper
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to NPM
+        run: npm publish --access=public  # Add access flag for scoped packages
+        working-directory: ./packages/snapper
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish
-        working-directory: ./packages/snapper
