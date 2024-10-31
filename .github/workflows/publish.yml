@@ -1,12 +1,14 @@
 name: Publish @snapper-org/snapper to NPM
+
 on:
   push:
     branches:
       - main
-    
+
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -14,9 +16,8 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - name: List all files for debugging
+      - name: List all files (debugging)
         run: ls -R
-        working-directory: .  # Lists files from the root of the repository
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -26,29 +27,24 @@ jobs:
           scope: '@snapper-org'
 
       - name: Install dependencies
-        run: npm ci
-        working-directory: ./packages/snapper  # Adjust path if necessary
+        run: npm ci --prefix packages/snapper  # Install dependencies in subdirectory
 
       - name: Run tests
-        run: npm test
-        working-directory: ./packages/snapper  # Adjust path if necessary
+        run: npm test --prefix packages/snapper  # Run tests in subdirectory
 
       - name: Configure Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-        working-directory: ./packages/snapper  # Adjust path if necessary
 
       - name: Bump version and push tag
         run: |
-          npm version patch
+          npm version patch --prefix packages/snapper
           git push origin main --follow-tags
-        working-directory: ./packages/snapper  # Adjust path if necessary
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Publish to NPM
-        run: npm publish --access=public
-        working-directory: ./packages/snapper  # Adjust path if necessary
+        run: npm publish packages/snapper  # Publish private package without access flag
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
