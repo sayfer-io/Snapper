@@ -1,15 +1,19 @@
 {
-  "name": "snapper",
+  "name": "@snapper-org/snapper",
   "version": "1.0.0",
   "description": "Snapper aims to improve the overall security and reliability of Metamask Snaps by identifying vulnerabilities, potential issues, and ensuring best coding practices",
   "main": "main.js",
+  "bin": {
+    "snapper": "./dist/main.js"
+  },
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "start": "npx ts-node main.ts",
     "postinstall": "node ./scripts/check-dependencies.js",
-    "docs": "npx typedoc --options typedoc.json"
+    "docs": "npx typedoc --options typedoc.json",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "sayfer.io",
