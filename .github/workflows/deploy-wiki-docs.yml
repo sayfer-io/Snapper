@@ -3,7 +3,7 @@ name: Deploy Documentation to Wiki
 on:
   push:
     branches:
-      - main  # or your default branch name
+      - main
   workflow_dispatch:
 
 jobs:
@@ -32,8 +32,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Clone the Wiki repository
-          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git
+          # Clone the Wiki repository using the verified URL
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.GH_TOKEN }}/Snapper.wiki.git || { echo "Failed to clone Wiki repository"; exit 1; }
 
           # Copy generated documentation to the Wiki repository
           rm -rf .wiki/docs
@@ -42,5 +42,5 @@ jobs:
           # Commit and push changes to the Wiki
           cd .wiki
           git add docs
-          git commit -m "Update documentation"
-          git push
+          git commit -m "Update documentation" || echo "Nothing to commit"
+          git push || { echo "Failed to push to Wiki repository"; exit 1; }
