@@ -4,44 +4,61 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
+    paths:
+      - 'docs/**'  # Only trigger when docs folder changes
+  workflow_dispatch:  # Allow manual trigger
 
 jobs:
-  build-and-deploy:
+  deploy-to-wiki:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          path: source
+
+      - name: Checkout wiki
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}.wiki
+          path: wiki
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: source/package-lock.json
 
       - name: Install dependencies
+        working-directory: source
         run: npm ci
 
       - name: Generate documentation
-        run: npm run docs  # Assumes `docs` folder is generated
+        working-directory: source
+        run: npm run docs  # Ensure this script exists in your package.json
 
-      - name: Deploy to GitHub Wiki
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Copy documentation to wiki
+        run: |
+          # Remove old docs if they exist
+          rm -rf wiki/docs
+          # Copy new docs
+          cp -R source/docs wiki/docs
+
+      - name: Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Clone the Wiki repository using the verified URL
-          git clone https://github.com/asifqatar/Snapper.wiki.git
-        #  git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ secrets.GH_TOKEN }}/Snapper.wiki.git || { echo "Failed to clone Wiki repository"; exit 1; }
-
-          # Copy generated documentation to the Wiki repository
-          rm -rf .wiki/docs
-          cp -R docs .wiki/docs
-
-          # Commit and push changes to the Wiki
-          cd .wiki
-          git add docs
-          git commit -m "Update documentation" || echo "Nothing to commit"
-          git push || { echo "Failed to push to Wiki repository"; exit 1; }
+      - name: Commit and push changes
+        working-directory: wiki
+        run: |
+          git add .
+          git diff --staged --quiet || {
+            git commit -m "docs: update documentation from main branch commit ${{ github.sha }}"
+            git push
+          }
