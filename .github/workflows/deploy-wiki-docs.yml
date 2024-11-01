@@ -1,0 +1,46 @@
+name: Deploy Documentation to Wiki
+
+on:
+  push:
+    branches:
+      - main  # or your default branch name
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate documentation
+        run: npm run docs  # Assumes `docs` folder is generated
+
+      - name: Deploy to GitHub Wiki
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Clone the Wiki repository
+          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git
+
+          # Copy generated documentation to the Wiki repository
+          rm -rf .wiki/docs
+          cp -R docs .wiki/docs
+
+          # Commit and push changes to the Wiki
+          cd .wiki
+          git add docs
+          git commit -m "Update documentation"
+          git push
