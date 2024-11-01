@@ -27,13 +27,13 @@ jobs:
 
       - name: Deploy to GitHub Wiki
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
           # Clone the Wiki repository
-          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.wiki.git
+          git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.wiki.git
 
           # Copy generated documentation to the Wiki repository
           rm -rf .wiki/docs
