@@ -1,0 +1,109 @@
+title: "Snapper Project Documentation"
+description: "Documentation for the Snapper Project"
+remote_theme: pmarsceill/just-the-docs
+plugins:
+  - jekyll-remote-theme
+
+# Sidebar configuration for Just the Docs theme
+just_the_docs:
+  # Enable search functionality
+  search_enabled: true
+  # Show the last modified timestamp on pages
+  show_last_modified_time: true
+  # Sidebar navigation structure
+  navigation:
+    - title: "Snapper Project"
+      url: /
+    - title: "Modules"
+      children:
+        - title: "Tests"
+          children:
+            - title: "Broad Permissions"
+              url: /tests__/detectors/BroadPermissions.test/
+            - title: "Console Log"
+              url: /tests__/detectors/ConsoleLog.test/
+            - title: "Dangerous Functions"
+              url: /tests__/detectors/DangerousFunctions.test/
+            # Add more test modules here as needed
+        - title: "Detectors"
+          children:
+            - title: "Broad Permissions"
+              url: /detectors/BroadPermissions/
+            - title: "Console Log"
+              url: /detectors/ConsoleLog/
+            - title: "Dangerous Functions"
+              url: /detectors/DangerousFunctions/
+            - title: "Dependency Outdated"
+              url: /detectors/DependencyOutdated/
+            - title: "Dependency Versioning"
+              url: /detectors/DependencyVersioning/
+            - title: "Deprecated Functions"
+              url: /detectors/DeprecatedFunctions/
+            - title: "Deprecated Permissions"
+              url: /detectors/DeprecatedPermissions/
+            - title: "Detector Base"
+              url: /detectors/DetectorBase/
+            - title: "ESLinting"
+              url: /detectors/ESLinting/
+            - title: "Excessive Comments"
+              url: /detectors/ExcessiveComments/
+            - title: "Floating Point Precision"
+              url: /detectors/FloatingPointPrecision/
+            - title: "Hardcoded Secrets"
+              url: /detectors/HardcodedSecrets/
+            - title: "Improper Type Usage"
+              url: /detectors/ImproperTypeUsage/
+            - title: "Insecure Cryptography"
+              url: /detectors/InsecureCryptography/
+            - title: "Insecure Crypto Libraries"
+              url: /detectors/InsecureCryptoLibraries/
+            - title: "Insecure Randomness"
+              url: /detectors/InsecureRandomness/
+            - title: "Lack of Exception Handling"
+              url: /detectors/LackOfExceptionHandling/
+            - title: "Leftover TODOs"
+              url: /detectors/LeftoverTODOs/
+            - title: "Missing Explicit Strict Type Checking"
+              url: /detectors/MissingExplicitStrictTypeChecking/
+            - title: "Origin Validation"
+              url: /detectors/OriginValidation/
+            - title: "Potential Outdated Engine"
+              url: /detectors/PotentialOutdatedEngine/
+            - title: "Unhandled Promise Rejection"
+              url: /detectors/UnhandledPromiseRejection/
+            - title: "Unused Functions"
+              url: /detectors/UnusedFunctions/
+            - title: "Unused Imports"
+              url: /detectors/UnusedImports/
+            - title: "Unused Permissions"
+              url: /detectors/UnusedPermissions/
+            - title: "Unused Variables"
+              url: /detectors/UnusedVariables/
+            - title: "Used Before Defined Arrow Functions"
+              url: /detectors/UsedBeforeDefinedArrowFunctions/
+            - title: "Used Before Defined Functions"
+              url: /detectors/UsedBeforeDefinedFunctions/
+            - title: "Used Before Defined Interfaces"
+              url: /detectors/UsedBeforeDefinedInterfaces/
+        - title: "Main"
+          url: /main/
+        - title: "Processor"
+          url: /processor/
+        - title: "Structures"
+          url: /structures/
+        - title: "Types"
+          url: /types/
+        - title: "Utils"
+          children:
+            - title: "Command Utils"
+              url: /utils/commandUtils/
+            - title: "Config"
+              url: /utils/config/
+            - title: "Detector Helpers"
+              url: /utils/detectorHelpers/
+            - title: "Dynamic Snap Helpers"
+              url: /utils/dynamicSnapHelpers/
+            - title: "File Utils"
+              url: /utils/fileUtils/
+            - title: "Logger"
+              url: /utils/logger/
