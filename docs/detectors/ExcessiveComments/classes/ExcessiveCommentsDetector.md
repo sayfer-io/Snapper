@@ -1,3 +1,9 @@
+---
+layout: default
+title: "ExcessiveCommentsDetector"
+parent: "classes"
+
+---
 [**Snapper Project**](../../../README.md) • **Docs**
 
 ***
@@ -28,7 +34,7 @@ Detector class for identifying excessive comments in the code.
 
 #### Defined in
 
-[detectors/ExcessiveComments.ts:15](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/ExcessiveComments.ts#L15)
+[detectors/ExcessiveComments.ts:15](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/ExcessiveComments.ts#L15)
 
 ## Properties
 
@@ -42,7 +48,7 @@ Detector class for identifying excessive comments in the code.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:19](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L19)
+[detectors/DetectorBase.ts:19](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L19)
 
 ***
 
@@ -56,7 +62,7 @@ Detector class for identifying excessive comments in the code.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:16](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L16)
+[detectors/DetectorBase.ts:16](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L16)
 
 ***
 
@@ -70,7 +76,7 @@ Detector class for identifying excessive comments in the code.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:14](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L14)
+[detectors/DetectorBase.ts:14](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L14)
 
 ***
 
@@ -84,7 +90,7 @@ Detector class for identifying excessive comments in the code.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:15](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L15)
+[detectors/DetectorBase.ts:15](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L15)
 
 ## Methods
 
@@ -119,7 +125,7 @@ Line number where the finding was detected (default is 1).
 
 #### Defined in
 
-[detectors/DetectorBase.ts:41](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L41)
+[detectors/DetectorBase.ts:41](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L41)
 
 ***
 
@@ -140,7 +146,7 @@ This method resets the findings array to an empty state.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:59](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L59)
+[detectors/DetectorBase.ts:59](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L59)
 
 ***
 
@@ -162,7 +168,7 @@ Retrieves all findings collected by the detector.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:75](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L75)
+[detectors/DetectorBase.ts:75](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L75)
 
 ***
 
@@ -184,7 +190,7 @@ Gets the name of the detector.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:67](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L67)
+[detectors/DetectorBase.ts:67](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L67)
 
 ***
 
@@ -211,7 +217,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:93](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L93)
+[detectors/DetectorBase.ts:93](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L93)
 
 ***
 
@@ -242,7 +248,7 @@ Optional error object to log alongside the message.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:103](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L103)
+[detectors/DetectorBase.ts:103](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L103)
 
 ***
 
@@ -269,7 +275,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:84](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L84)
+[detectors/DetectorBase.ts:84](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L84)
 
 ***
 
@@ -300,7 +306,7 @@ Optional error object to log alongside the message.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:113](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/DetectorBase.ts#L113)
+[detectors/DetectorBase.ts:113](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/DetectorBase.ts#L113)
 
 ***
 
@@ -328,4 +334,4 @@ The source file to analyze.
 
 #### Defined in
 
-[detectors/ExcessiveComments.ts:24](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/detectors/ExcessiveComments.ts#L24)
+[detectors/ExcessiveComments.ts:24](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/detectors/ExcessiveComments.ts#L24)

@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "LackOfExceptionHandling"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***

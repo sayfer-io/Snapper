@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "DependencyVersioning"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***

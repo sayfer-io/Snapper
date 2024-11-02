@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "InsecureCryptography"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***

@@ -1,3 +1,9 @@
+---
+layout: default
+title: "runCommand"
+parent: "functions"
+
+---
 [**Snapper Project**](../../../README.md) • **Docs**
 
 ***
@@ -28,4 +34,4 @@ The path to the working directory. If not provided, the current directory is use
 
 ## Defined in
 
-[utils/commandUtils.ts:13](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/utils/commandUtils.ts#L13)
+[utils/commandUtils.ts:13](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/utils/commandUtils.ts#L13)

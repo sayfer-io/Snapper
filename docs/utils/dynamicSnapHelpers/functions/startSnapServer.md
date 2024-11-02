@@ -1,3 +1,9 @@
+---
+layout: default
+title: "startSnapServer"
+parent: "functions"
+
+---
 [**Snapper Project**](../../../README.md) • **Docs**
 
 ***
@@ -26,4 +32,4 @@ The port number to use for the Snap server.
 
 ## Defined in
 
-[utils/dynamicSnapHelpers.ts:44](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/utils/dynamicSnapHelpers.ts#L44)
+[utils/dynamicSnapHelpers.ts:44](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/utils/dynamicSnapHelpers.ts#L44)

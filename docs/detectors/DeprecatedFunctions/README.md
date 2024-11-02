@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "DeprecatedFunctions"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***

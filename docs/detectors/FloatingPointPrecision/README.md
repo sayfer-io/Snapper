@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "FloatingPointPrecision"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***

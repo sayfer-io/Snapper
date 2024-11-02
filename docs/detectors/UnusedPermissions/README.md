@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "UnusedPermissions"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***

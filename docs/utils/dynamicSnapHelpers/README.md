@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "dynamicSnapHelpers"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***

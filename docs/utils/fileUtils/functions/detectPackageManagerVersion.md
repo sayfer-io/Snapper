@@ -1,3 +1,9 @@
+---
+layout: default
+title: "detectPackageManagerVersion"
+parent: "functions"
+
+---
 [**Snapper Project**](../../../README.md) • **Docs**
 
 ***
@@ -29,4 +35,4 @@ Will throw an error if the package manager format is invalid or unsupported.
 
 ## Defined in
 
-[utils/fileUtils.ts:91](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/utils/fileUtils.ts#L91)
+[utils/fileUtils.ts:91](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/utils/fileUtils.ts#L91)
