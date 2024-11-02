@@ -137,3 +137,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+Gemfile
+Gemfile.lock
+/docs/_site
+/docs/.jekyll-cache
