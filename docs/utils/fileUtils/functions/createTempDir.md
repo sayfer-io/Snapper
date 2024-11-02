@@ -1,3 +1,9 @@
+---
+layout: default
+title: "createTempDir"
+parent: "functions"
+
+---
 [**Snapper Project**](../../../README.md) • **Docs**
 
 ***
@@ -19,4 +25,4 @@ Automatically cleans up the directory when done.
 
 ## Defined in
 
-[utils/fileUtils.ts:13](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/utils/fileUtils.ts#L13)
+[utils/fileUtils.ts:13](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/utils/fileUtils.ts#L13)

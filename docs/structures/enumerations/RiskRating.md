@@ -1,3 +1,9 @@
+---
+layout: default
+title: "RiskRating"
+parent: "enumerations"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***
@@ -16,7 +22,7 @@ Enum representing the risk rating of a finding.
 
 #### Defined in
 
-[structures/index.ts:9](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/structures/index.ts#L9)
+[structures/index.ts:9](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/structures/index.ts#L9)
 
 ***
 
@@ -26,7 +32,7 @@ Enum representing the risk rating of a finding.
 
 #### Defined in
 
-[structures/index.ts:8](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/structures/index.ts#L8)
+[structures/index.ts:8](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/structures/index.ts#L8)
 
 ***
 
@@ -36,7 +42,7 @@ Enum representing the risk rating of a finding.
 
 #### Defined in
 
-[structures/index.ts:5](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/structures/index.ts#L5)
+[structures/index.ts:5](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/structures/index.ts#L5)
 
 ***
 
@@ -46,7 +52,7 @@ Enum representing the risk rating of a finding.
 
 #### Defined in
 
-[structures/index.ts:6](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/structures/index.ts#L6)
+[structures/index.ts:6](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/structures/index.ts#L6)
 
 ***
 
@@ -56,4 +62,4 @@ Enum representing the risk rating of a finding.
 
 #### Defined in
 
-[structures/index.ts:7](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/structures/index.ts#L7)
+[structures/index.ts:7](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/structures/index.ts#L7)

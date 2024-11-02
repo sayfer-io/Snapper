@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+
+
+---
 **Snapper Project** • **Docs**
 
 ***
@@ -64,6 +70,7 @@
 - [detectors/UsedBeforeDefinedInterfaces](detectors/UsedBeforeDefinedInterfaces/README.md)
 - [main](main/README.md)
 - [processor](processor/README.md)
+- [scripts/addFrontMatter](scripts/addFrontMatter/README.md)
 - [structures](structures/README.md)
 - [types](types/README.md)
 - [utils/commandUtils](utils/commandUtils/README.md)

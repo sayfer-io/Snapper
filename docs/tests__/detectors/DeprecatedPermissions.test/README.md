@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "DeprecatedPermissions.test"
+
+---
 [**Snapper Project**](../../../README.md) • **Docs**
 
 ***

@@ -12,7 +12,8 @@
     "test:coverage": "jest --coverage",
     "start": "npx ts-node main.ts",
     "postinstall": "node ./scripts/check-dependencies.js",
-    "docs": "npx typedoc --options typedoc.json",
+    "build:add-front-matter": "tsc scripts/addFrontMatter.ts",
+    "docs": "npx typedoc --options typedoc.json && npm run build:add-front-matter && node scripts/addFrontMatter.js",
     "build": "tsc"
   },
   "keywords": [],

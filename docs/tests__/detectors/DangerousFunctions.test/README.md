@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "DangerousFunctions.test"
+
+---
 [**Snapper Project**](../../../README.md) • **Docs**
 
 ***

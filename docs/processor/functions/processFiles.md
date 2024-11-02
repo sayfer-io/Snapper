@@ -1,3 +1,9 @@
+---
+layout: default
+title: "processFiles"
+parent: "functions"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***
@@ -28,4 +34,4 @@ The list of detectors to run. If not provided, all detectors will be applied.
 
 ## Defined in
 
-[processor.ts:48](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/processor.ts#L48)
+[processor.ts:48](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/processor.ts#L48)

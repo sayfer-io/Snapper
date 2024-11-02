@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "UnhandledPromiseRejection"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***

@@ -1,3 +1,9 @@
+---
+layout: default
+title: "enableLogFile"
+parent: "functions"
+
+---
 [**Snapper Project**](../../../README.md) • **Docs**
 
 ***
@@ -22,4 +28,4 @@ The path to the log file.
 
 ## Defined in
 
-[utils/logger.ts:44](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/utils/logger.ts#L44)
+[utils/logger.ts:44](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/utils/logger.ts#L44)

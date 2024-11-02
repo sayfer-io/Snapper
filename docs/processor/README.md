@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "processor"
+
+---
 [**Snapper Project**](../README.md) • **Docs**
 
 ***

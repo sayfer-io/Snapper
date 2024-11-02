@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "ESLinting"
+
+---
 [**Snapper Project**](../../README.md) • **Docs**
 
 ***

@@ -1,3 +1,9 @@
+---
+layout: default
+title: "configureYargs"
+parent: "functions"
+
+---
 [**Snapper Project**](../../../README.md) • **Docs**
 
 ***
@@ -6,37 +12,17 @@
 
 # Function: configureYargs()
 
-> **configureYargs**(): `object`
+> **configureYargs**(): `CliOptions`
 
 Configures command-line arguments using yargs.
 Only defined options are accepted.
 
 ## Returns
 
-`object`
+`CliOptions`
 
 - The parsed command-line arguments.
 
-### detectors?
-
-> `optional` **detectors**: `string`
-
-### logFile?
-
-> `optional` **logFile**: `string`
-
-### output?
-
-> `optional` **output**: `string`
-
-### path
-
-> **path**: `string`
-
-### verbose
-
-> **verbose**: `boolean`
-
 ## Defined in
 
-[utils/config.ts:10](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/utils/config.ts#L10)
+[utils/config.ts:20](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/utils/config.ts#L20)

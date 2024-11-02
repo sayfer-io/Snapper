@@ -1,3 +1,9 @@
+---
+layout: default
+title: "startAndConnectToSnap"
+parent: "functions"
+
+---
 [**Snapper Project**](../../../README.md) • **Docs**
 
 ***
@@ -24,4 +30,4 @@ The Snap instance if connected successfully.
 
 ## Defined in
 
-[utils/dynamicSnapHelpers.ts:109](https://github.com/sayfer-io/Snapper/blob/45fd256ae6625dc6cb752a8e5374049626d32c8a/utils/dynamicSnapHelpers.ts#L109)
+[utils/dynamicSnapHelpers.ts:109](https://github.com/asifqatar/Snapper/blob/631887a19a78ac303c1e0435e30d78f6439baa45/utils/dynamicSnapHelpers.ts#L109)

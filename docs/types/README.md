@@ -1,3 +1,9 @@
+---
+layout: default
+title: "README"
+parent: "types"
+
+---
 [**Snapper Project**](../README.md) • **Docs**
 
 ***
