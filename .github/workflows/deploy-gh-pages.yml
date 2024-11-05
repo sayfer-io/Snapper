@@ -3,7 +3,7 @@ name: Deploy Docusaurus to GitHub Pages
 on:
   push:
     branches:
-      - implement_docusaurus_docs  # Change this to the branch you're working on for testing
+      - implement_docusaurus_docs
 
 jobs:
   build-deploy:
@@ -18,18 +18,23 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        working-directory: ./docs  # Go into the docs folder where package.json for Docusaurus is located
+        working-directory: ./docs
         run: npm install
 
       - name: Build the site
-        working-directory: ./docs  # Run the build command in the docs folder
+        working-directory: ./docs
         run: npm run build
 
+      - name: Configure Git user
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
       - name: Deploy to GitHub Pages
-        working-directory: ./docs  # Run deploy from the docs folder
+        working-directory: ./docs
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          GIT_USER: ${{ github.actor }}  # Set GIT_USER to the GitHub Actions actor (user triggering the workflow)
+          GIT_USER: ${{ github.actor }}
+          REPOSITORY_URL: "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
           TMPDIR: /tmp
-
         run: npm run deploy
