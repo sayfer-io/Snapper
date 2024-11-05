@@ -1,6 +1,5 @@
 import mockFs from "mock-fs";
 import { SourceFile, Project } from "ts-morph";
-
 import { BroadPermissionsDetector } from "../../detectors/BroadPermissions";
 
 describe("BroadPermissionsDetector", () => {
@@ -13,18 +12,18 @@ describe("BroadPermissionsDetector", () => {
   });
 
   afterEach(() => {
+    // Restore the file system after each test
     mockFs.restore();
   });
 
-  const createMockFile = (
-    filePath: string,
-    fileContent: string
-  ): SourceFile => {
-    mockFs({
-      [filePath]: fileContent,
-    });
-
-    // Add the source file to the project
+  /**
+   * Creates a mock file in the in-memory file system and adds it to the project.
+   * @param filePath - The path of the file to create.
+   * @param fileContent - The content of the file to create.
+   * @returns The created source file added to the project.
+   */
+  const createMockFile = (filePath: string, fileContent: string): SourceFile => {
+    mockFs({ [filePath]: fileContent });
     return project.addSourceFileAtPath(filePath);
   };
 
