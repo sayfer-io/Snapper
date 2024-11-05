@@ -80,9 +80,6 @@ function createConfigFile(): void {
   const configContent = `
 title: "Snapper"
 description: "Documentation for the Snapper Project"
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://just-the-docs.com" # the base hostname & protocol for your site, e.g. http://example.com
-repository: just-the-docs/just-the-docs # for github-metadata
 
 remote_theme: pmarsceill/just-the-docs
 plugins:

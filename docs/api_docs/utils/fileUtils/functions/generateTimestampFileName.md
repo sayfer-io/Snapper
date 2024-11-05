@@ -34,4 +34,4 @@ The file extension.
 
 ## Defined in
 
-[utils/fileUtils.ts:72](https://github.com/asifqatar/Snapper/blob/cfd7a260bee159bf16963ac0f765d267e9b98d84/utils/fileUtils.ts#L72)
+[utils/fileUtils.ts:72](https://github.com/asifqatar/Snapper/blob/86c1eb41f9528d02705503143d7fd9f479592c8a/utils/fileUtils.ts#L72)
