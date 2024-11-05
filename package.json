@@ -14,7 +14,11 @@
     "postinstall": "node ./scripts/check-dependencies.js",
     "build:add-front-matter": "tsc scripts/addFrontMatter.ts",
     "docs": "npx typedoc --options typedoc.json && npm run build:add-front-matter && node scripts/addFrontMatter.js",
-    "build": "tsc"
+    "build": "tsc",
+    "docusaurus:start": "docusaurus start",
+    "docusaurus:build": "docusaurus build",
+    "docusaurus:serve": "docusaurus serve",
+    "docusaurus:deploy": "docusaurus deploy"
   },
   "keywords": [],
   "author": "sayfer.io",
