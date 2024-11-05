@@ -29,4 +29,6 @@ jobs:
         working-directory: ./docs  # Run deploy from the docs folder
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIT_USER: ${{ github.actor }}  # Set GIT_USER to the GitHub Actions actor (user triggering the workflow)
+
         run: npm run deploy
