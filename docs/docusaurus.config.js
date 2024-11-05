@@ -6,14 +6,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 (module.exports = {
   title: 'Snapper',
   tagline: 'Snapper',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'hhttps://github.com/asifqatar/Snapper',
   baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico', 
   organizationName: 'snapper-org',
-  projectName: 'snapper',
+  projectName: 'Snapper',
 
   presets: [
     [
