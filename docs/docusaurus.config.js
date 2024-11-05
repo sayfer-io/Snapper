@@ -8,11 +8,12 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   tagline: 'Snapper',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: '@snapper-org/snapper', // Usually your GitHub org/user name.
-  projectName: '@snapper-org/snapper', // Usually your repo name.
+  favicon: 'img/favicon.ico', 
+  organizationName: 'snapper-org',
+  projectName: 'snapper',
 
   presets: [
     [
