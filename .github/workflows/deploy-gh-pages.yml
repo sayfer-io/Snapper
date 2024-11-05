@@ -3,7 +3,7 @@ name: Deploy Docusaurus to GitHub Pages
 on:
   push:
     branches:
-      - implement_docusaurus_docs
+      - implement_docusaurus_docs  # Your testing branch
 
 jobs:
   build-deploy:
@@ -37,4 +37,7 @@ jobs:
           GIT_USER: ${{ github.actor }}
           REPOSITORY_URL: "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
           TMPDIR: /tmp
-        run: npm run deploy
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          npm run deploy
