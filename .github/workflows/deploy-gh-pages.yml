@@ -3,7 +3,7 @@ name: Deploy Docusaurus to GitHub Pages
 on:
   push:
     branches:
-      - implement_docusaurus_docs  # Deploy when pushing to this branch
+      - implement_docusaurus_docs  # Change this to the branch you're working on for testing
 
 jobs:
   build-deploy:
@@ -18,12 +18,15 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
+        working-directory: ./docs  # Go into the docs folder where package.json for Docusaurus is located
         run: npm install
 
       - name: Build the site
+        working-directory: ./docs  # Run the build command in the docs folder
         run: npm run build
 
       - name: Deploy to GitHub Pages
+        working-directory: ./docs  # Run deploy from the docs folder
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: npm run deploy
