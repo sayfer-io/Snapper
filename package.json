@@ -13,12 +13,12 @@
     "start": "npx ts-node main.ts",
     "postinstall": "node ./scripts/check-dependencies.js",
     "build:add-front-matter": "tsc scripts/addFrontMatter.ts",
-    "docs": "npx typedoc --options typedoc.json && npm run build:add-front-matter && node scripts/addFrontMatter.js",
+    "docs": "npx typedoc --options typedoc.json",
     "build": "tsc",
     "docusaurus:start": "docusaurus start",
-    "docusaurus:build": "docusaurus build",
     "docusaurus:serve": "docusaurus serve",
-    "docusaurus:deploy": "docusaurus deploy"
+    "docusaurus:deploy": "docusaurus deploy",
+    "docusaurus:build": "npm run docs && docusaurus build"
   },
   "keywords": [],
   "author": "sayfer.io",
