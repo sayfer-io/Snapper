@@ -3,7 +3,7 @@ name: Deploy Docusaurus to GitHub Pages
 on:
   push:
     branches:
-      - gh-pages
+      - implement_docusaurus_docs  # Replace with your testing branch
 
 jobs:
   build-deploy:
