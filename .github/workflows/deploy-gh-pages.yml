@@ -3,7 +3,7 @@ name: Deploy Docusaurus to GitHub Pages
 on:
   push:
     branches:
-      - implement_docusaurus_docs  # Replace with your testing branch
+      - gh-pages
 
 jobs:
   build-deploy:
@@ -33,7 +33,7 @@ jobs:
       - name: Deploy to GitHub Pages
         working-directory: ./docs
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GIT_USER: ${{ github.actor }}
           REPOSITORY_URL: "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
           TMPDIR: /tmp
