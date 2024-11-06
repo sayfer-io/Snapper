@@ -11,7 +11,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico', 
+  favicon: 'https://avatars.githubusercontent.com/u/105142204?s=48&v=4', 
   organizationName: 'asifqatar',
   projectName: 'Snapper',
 
@@ -45,7 +45,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         title: 'Snapper',
         logo: {
           alt: 'Snapper',
-          src: 'img/logo.svg',
+          src: 'https://avatars.githubusercontent.com/u/105142204?s=200&v=4',
         },
         items: [
           {
@@ -79,15 +79,15 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             items: [
               {
                 label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                href: 'https://stackoverflow.com/questions/tagged/',
               },
               {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discordapp.com/invite',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                href: 'https://twitter.com',
               },
             ],
           },
@@ -96,11 +96,11 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             items: [
               {
                 label: 'Blog',
-                to: '/blog',
+                to: 'https://sayfer.io/blog',
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/asifqatar/Snapper',
+                href: 'https://github.com/sayfer-io/Snapper',
               },
             ],
           },
