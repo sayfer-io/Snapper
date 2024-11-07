@@ -6,6 +6,11 @@ let childProcesses: ChildProcess[] = [];
 
 /**
  * Runs a command in the specified directory.
+ *
+ * This function executes the given command in the specified working directory.
+ * If no working directory is provided, it uses the current directory. The
+ * function captures the output of the command and returns it as a string.
+ *
  * @param {string} command - The command to run.
  * @param {string} [workingDir] - The path to the working directory. If not provided, the current directory is used.
  * @returns {string} - The command's output.
@@ -42,6 +47,12 @@ export function runCommand(command: string, workingDir?: string): string {
 
 /**
  * Runs a command in a detached process.
+ *
+ * This function spawns a child process to run the given command and arguments in
+ * the specified working directory. The child process is detached from the
+ * parent process, and the output is handled by the provided `onOutput` callback
+ * function.
+ *
  * @param {string} command - The command to run.
  * @param {string[]} args - The arguments for the command.
  * @param {string} cwd - The current working directory for the command.
@@ -80,6 +91,11 @@ export function runCommandDetached(
 
 /**
  * Kills all running child processes.
+ *
+ * This function terminates all child processes that were spawned using the
+ * `runCommandDetached` function. It iterates through the list of child
+ * processes and attempts to kill each one, including the entire process group.
+ * If any errors occur during the termination process, they are logged.
  */
 export function killAllChildProcesses(): void {
   logger.debug("Terminating all child processes...");

@@ -4,6 +4,8 @@ import { TransformableInfo } from "logform";
 /**
  * Generates the log format.
  *
+ * This function creates a custom log format using the `winston` library. The format includes the timestamp, log level, and the log message.
+ *
  * @returns {Format} - The log format.
  */
 const generateLogFormat = () =>
@@ -30,6 +32,8 @@ const logger = createLogger({
 /**
  * Sets up the logger based on the verbosity flag.
  *
+ * This function allows you to enable or disable verbose logging. When `verbose` is set to `true`, the log level is set to `"debug"`, otherwise, it is set to `"info"`.
+ *
  * @param {boolean} verbose - Flag to enable verbose logging.
  */
 export function enableLogVerbosity(verbose: boolean): void {
@@ -38,6 +42,8 @@ export function enableLogVerbosity(verbose: boolean): void {
 
 /**
  * Enables logging to a file.
+ *
+ * This function adds a file transport to the logger, which will write the logs to the specified file path.
  *
  * @param {string} logFilePath - The path to the log file.
  */

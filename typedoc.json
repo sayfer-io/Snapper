@@ -1,7 +1,7 @@
 {
   "name": "Snapper Project",
   "entryPoints": ["./**/*.ts"],
-  "out": "docs/api_docs/",
+  "out": "docs/docs/API/",
   "exclude": [
     "testcases/**/*",
     "**/testcases/**",
@@ -13,5 +13,9 @@
     "**/main.ts",
 
   ],
-  "plugin": ["typedoc-plugin-markdown"]
+  "plugin": ["typedoc-plugin-markdown"],
+  "includeVersion": true,
+  "hideGenerator": true,
+  "excludePrivate": true,
+  "readme": "none"
 }

@@ -1,0 +1,46 @@
+name: Deploy Docusaurus to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Replace with your testing branch
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        working-directory: ./docs
+        run: npm install
+
+      - name: Build the site
+        working-directory: ./docs
+        run: npm run build
+
+      - name: Configure Git user
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Deploy to GitHub Pages
+        working-directory: ./docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIT_USER: ${{ github.actor }}
+          REPOSITORY_URL: "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}"
+          TMPDIR: /tmp
+        run: |
+          # Configure Git to use the GITHUB_TOKEN for authentication
+          git config --global credential.helper store
+          echo "https://${{ github.actor }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+
+          # Deploy with Docusaurus
+          npm run deploy
