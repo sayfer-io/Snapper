@@ -10,6 +10,10 @@
 
 Finds all `tsconfig.json` files in the given project path.
 
+This function recursively searches the given project directory and its subdirectories
+for any `tsconfig.json` files. It returns an array of the full paths to all found
+`tsconfig.json` files.
+
 ## Parameters
 
 • **projectPath**: `string`
@@ -24,4 +28,4 @@ The path to the project directory.
 
 ## Defined in
 
-[utils/fileUtils.ts:24](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/utils/fileUtils.ts#L24)
+[utils/fileUtils.ts:34](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/fileUtils.ts#L34)

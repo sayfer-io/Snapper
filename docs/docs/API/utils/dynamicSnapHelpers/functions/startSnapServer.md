@@ -10,6 +10,10 @@
 
 Starts the Snap server in the background.
 
+This function uses the `runCommandDetached` utility to start the Snap server
+in the background. The Snap server is started using the `npx mm-snap serve`
+command, with the specified port number and `--verboseErrors` flag.
+
 ## Parameters
 
 • **snapDirectory**: `string`
@@ -26,4 +30,4 @@ The port number to use for the Snap server.
 
 ## Defined in
 
-[utils/dynamicSnapHelpers.ts:44](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/utils/dynamicSnapHelpers.ts#L44)
+[utils/dynamicSnapHelpers.ts:63](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/dynamicSnapHelpers.ts#L63)

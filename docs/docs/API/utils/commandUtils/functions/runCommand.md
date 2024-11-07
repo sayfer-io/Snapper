@@ -10,6 +10,10 @@
 
 Runs a command in the specified directory.
 
+This function executes the given command in the specified working directory.
+If no working directory is provided, it uses the current directory. The
+function captures the output of the command and returns it as a string.
+
 ## Parameters
 
 • **command**: `string`
@@ -28,4 +32,4 @@ The path to the working directory. If not provided, the current directory is use
 
 ## Defined in
 
-[utils/commandUtils.ts:13](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/utils/commandUtils.ts#L13)
+[utils/commandUtils.ts:18](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/commandUtils.ts#L18)

@@ -8,6 +8,11 @@
 
 Enum representing the risk rating of a finding.
 
+This enum defines the possible risk ratings for a finding, ranging from
+"Informational" (lowest risk) to "Critical" (highest risk). These risk
+ratings are often used to prioritize and address identified issues in the
+source code.
+
 ## Enumeration Members
 
 ### Critical
@@ -16,7 +21,7 @@ Enum representing the risk rating of a finding.
 
 #### Defined in
 
-[structures/index.ts:9](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L9)
+[structures/index.ts:14](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L14)
 
 ***
 
@@ -26,7 +31,7 @@ Enum representing the risk rating of a finding.
 
 #### Defined in
 
-[structures/index.ts:8](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L8)
+[structures/index.ts:13](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L13)
 
 ***
 
@@ -36,7 +41,7 @@ Enum representing the risk rating of a finding.
 
 #### Defined in
 
-[structures/index.ts:5](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L5)
+[structures/index.ts:10](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L10)
 
 ***
 
@@ -46,7 +51,7 @@ Enum representing the risk rating of a finding.
 
 #### Defined in
 
-[structures/index.ts:6](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L6)
+[structures/index.ts:11](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L11)
 
 ***
 
@@ -56,4 +61,4 @@ Enum representing the risk rating of a finding.
 
 #### Defined in
 
-[structures/index.ts:7](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L7)
+[structures/index.ts:12](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L12)

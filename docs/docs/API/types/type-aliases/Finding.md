@@ -10,6 +10,16 @@
 
 Represents a finding in the source code.
 
+This interface defines the structure of a finding, which is a detected issue or
+problem within the source code. It includes the following properties:
+
+- `type`: The type or category of the finding (e.g., "security vulnerability", "code smell").
+- `description`: A textual description of the finding, providing more details about the issue.
+- `position`: An object that contains information about the location of the finding in the source code:
+  - `filePath`: The full path to the file where the finding is located.
+  - `lineNum`: The line number within the file where the finding is located.
+- `riskRating`: The risk rating associated with the finding, which is an enum of type `RiskRating`.
+
 ## Type declaration
 
 ### description
@@ -38,7 +48,7 @@ The line number where the finding is located.
 
 ### riskRating
 
-> **riskRating**: `RiskRating`
+> **riskRating**: [`RiskRating`](../../structures/enumerations/RiskRating.md)
 
 The risk rating associated with the finding.
 
@@ -50,4 +60,4 @@ The type of the finding.
 
 ## Defined in
 
-[types/index.d.ts:6](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/types/index.d.ts#L6)
+[types/index.d.ts:16](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/types/index.d.ts#L16)

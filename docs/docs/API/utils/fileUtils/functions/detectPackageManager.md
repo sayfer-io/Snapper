@@ -9,7 +9,10 @@
 > **detectPackageManager**(`workingDir`): `string`
 
 Detects the package manager used in the project.
-It checks for Yarn, npm, and pnpm based on the package.json and lock files.
+
+This function detects the package manager used in the project by checking the
+`package.json` file and the presence of lock files (yarn.lock, pnpm-lock.yaml,
+package-lock.json). It supports Yarn, npm, and pnpm.
 
 ## Parameters
 
@@ -29,4 +32,4 @@ Will throw an error if no package.json is found in the working directory.
 
 ## Defined in
 
-[utils/fileUtils.ts:113](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/utils/fileUtils.ts#L113)
+[utils/fileUtils.ts:142](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/fileUtils.ts#L142)

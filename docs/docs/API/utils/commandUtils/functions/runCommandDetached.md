@@ -10,6 +10,11 @@
 
 Runs a command in a detached process.
 
+This function spawns a child process to run the given command and arguments in
+the specified working directory. The child process is detached from the
+parent process, and the output is handled by the provided `onOutput` callback
+function.
+
 ## Parameters
 
 • **command**: `string`
@@ -34,4 +39,4 @@ Callback function to handle the command output.
 
 ## Defined in
 
-[utils/commandUtils.ts:50](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/utils/commandUtils.ts#L50)
+[utils/commandUtils.ts:61](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/commandUtils.ts#L61)

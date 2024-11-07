@@ -9,7 +9,10 @@
 > **detectPackageManagerVersion**(`workingDir`): `string`
 
 Detects the package manager version specified in package.json.
-It checks for supported package managers: Yarn, npm, and pnpm.
+
+This function reads the `package.json` file in the given working directory
+and extracts the `packageManager` field. It supports the following package
+managers: Yarn, npm, and pnpm.
 
 ## Parameters
 
@@ -29,4 +32,4 @@ Will throw an error if the package manager format is invalid or unsupported.
 
 ## Defined in
 
-[utils/fileUtils.ts:91](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/utils/fileUtils.ts#L91)
+[utils/fileUtils.ts:116](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/fileUtils.ts#L116)

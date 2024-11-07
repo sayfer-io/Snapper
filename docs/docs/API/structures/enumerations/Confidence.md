@@ -8,6 +8,11 @@
 
 Enum representing the confidence level of a finding.
 
+This enum defines the possible confidence levels for a finding, ranging from
+"Low" (lowest confidence) to "High" (highest confidence). The confidence
+level indicates the degree of certainty that the finding is accurate and
+represents a real issue.
+
 ## Enumeration Members
 
 ### High
@@ -16,7 +21,7 @@ Enum representing the confidence level of a finding.
 
 #### Defined in
 
-[structures/index.ts:29](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L29)
+[structures/index.ts:44](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L44)
 
 ***
 
@@ -26,7 +31,7 @@ Enum representing the confidence level of a finding.
 
 #### Defined in
 
-[structures/index.ts:27](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L27)
+[structures/index.ts:42](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L42)
 
 ***
 
@@ -36,4 +41,4 @@ Enum representing the confidence level of a finding.
 
 #### Defined in
 
-[structures/index.ts:28](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L28)
+[structures/index.ts:43](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L43)

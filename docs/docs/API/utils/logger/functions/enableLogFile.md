@@ -10,6 +10,8 @@
 
 Enables logging to a file.
 
+This function adds a file transport to the logger, which will write the logs to the specified file path.
+
 ## Parameters
 
 • **logFilePath**: `string`
@@ -22,4 +24,4 @@ The path to the log file.
 
 ## Defined in
 
-[utils/logger.ts:44](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/utils/logger.ts#L44)
+[utils/logger.ts:50](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/logger.ts#L50)

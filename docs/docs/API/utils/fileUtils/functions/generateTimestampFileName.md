@@ -10,6 +10,11 @@
 
 Generates a timestamp-based file name.
 
+This function generates a file name that includes a timestamp in the format
+`HHMMDDMMYYYYresult.json`. The timestamp is generated using the current date
+and time. The base file name and extension can be customized using the
+optional parameters.
+
 ## Parameters
 
 • **filename?**: `string` = `"result"`
@@ -28,4 +33,4 @@ The file extension.
 
 ## Defined in
 
-[utils/fileUtils.ts:72](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/utils/fileUtils.ts#L72)
+[utils/fileUtils.ts:93](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/fileUtils.ts#L93)

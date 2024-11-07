@@ -10,6 +10,11 @@
 
 Starts the Snap server and connects to it.
 
+This function first starts the Snap server in the background using the
+`startSnapServer` function, then waits for a few seconds before attempting
+to connect to the Snap server using the `connectSnapServer` function. It
+returns an object containing the Snap server functions and the port number.
+
 ## Parameters
 
 • **directory**: `string`
@@ -24,4 +29,4 @@ The Snap instance if connected successfully.
 
 ## Defined in
 
-[utils/dynamicSnapHelpers.ts:109](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/utils/dynamicSnapHelpers.ts#L109)
+[utils/dynamicSnapHelpers.ts:154](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/dynamicSnapHelpers.ts#L154)

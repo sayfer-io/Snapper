@@ -6,7 +6,12 @@
 
 # Enumeration: Impact
 
-Enum representing impact of a finding.
+Enum representing the impact of a finding.
+
+This enum defines the possible impact levels for a finding, ranging from
+"Informational" (lowest impact) to "Critical" (highest impact). The impact
+level is a measure of how severely the finding could affect the system or
+its users.
 
 ## Enumeration Members
 
@@ -16,7 +21,7 @@ Enum representing impact of a finding.
 
 #### Defined in
 
-[structures/index.ts:20](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L20)
+[structures/index.ts:30](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L30)
 
 ***
 
@@ -26,7 +31,7 @@ Enum representing impact of a finding.
 
 #### Defined in
 
-[structures/index.ts:19](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L19)
+[structures/index.ts:29](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L29)
 
 ***
 
@@ -36,7 +41,7 @@ Enum representing impact of a finding.
 
 #### Defined in
 
-[structures/index.ts:16](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L16)
+[structures/index.ts:26](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L26)
 
 ***
 
@@ -46,7 +51,7 @@ Enum representing impact of a finding.
 
 #### Defined in
 
-[structures/index.ts:17](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L17)
+[structures/index.ts:27](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L27)
 
 ***
 
@@ -56,4 +61,4 @@ Enum representing impact of a finding.
 
 #### Defined in
 
-[structures/index.ts:18](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/structures/index.ts#L18)
+[structures/index.ts:28](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L28)

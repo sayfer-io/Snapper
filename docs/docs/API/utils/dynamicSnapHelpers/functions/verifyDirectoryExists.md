@@ -10,6 +10,9 @@
 
 Verifies if the specified directory exists.
 
+This function checks if the given directory exists. If the directory does not
+exist, it throws an Error with a message indicating the missing directory.
+
 ## Parameters
 
 • **directory**: `string`
@@ -26,4 +29,4 @@ If the directory does not exist.
 
 ## Defined in
 
-[utils/dynamicSnapHelpers.ts:22](https://github.com/asifqatar/Snapper/blob/efbcec64e60623713bea5b66951928dbe973c565/utils/dynamicSnapHelpers.ts#L22)
+[utils/dynamicSnapHelpers.ts:31](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/dynamicSnapHelpers.ts#L31)
