@@ -55,6 +55,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             label: 'Docs',
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
+          { to: '/team', label: 'Team', position: 'left' },
+          { to: '/about', label: 'About', position: 'left' },
           {
             href: 'https://github.com/asifqatar/Snapper',
             label: 'GitHub',
