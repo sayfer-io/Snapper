@@ -2,34 +2,83 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Snapper 🐠
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Snapper aims to improve the overall security and reliability of Metamask Snaps by identifying vulnerabilities, potential issues, and ensuring best coding practices.
 
 ## Getting Started
 
-Get started by **creating a new site**.
+To set up the environment, follow these steps:
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+1. **Install project dependencies**:
 
-## Generate a new site
+To install the required project dependencies, run:
 
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-npx @docusaurus/init@latest init my-website classic
+```bash
+npm install
 ```
 
-## Start your site
+## Setting Up an Example Test
 
-Run the development server:
+To prepare an example test, follow these steps:
 
-```shell
-cd my-website
+1. **Clone the repository**:
 
-npx docusaurus start
+Clone the example repository for a sample Metamask Snap:
+
+```bash
+git clone https://github.com/Consensys/starknet-snap
 ```
 
-Your site starts at `http://localhost:3000`.
+2. **Navigate to the project directory**:
 
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+```bash
+cd starknet-snap
+```
+
+3. **Reset the repository to a vulnerable commit**:
+
+For consistent results, reset to a vulnerable commit:
+
+```bash
+git reset --hard d9beafe
+```
+
+## Running the Test Case
+
+1. Build the environment
+
+Set up the test environment by running:
+
+```bash
+/bin/bash buildenv.sh
+```
+
+2. Verify the application runs
+
+Get the usage of the Snapper application with:
+
+```bash
+npm run start --help
+
+> snapper@1.0.0 start
+> npx ts-node main.ts
+
+Options:
+      --version    Show version number                                 [boolean]
+  -p, --path       Project path                              [string] [required]
+  -d, --detectors  Specify which detector to run, specify multiple detectors
+                   with a comma                                         [string]
+  -v, --verbose    Enable verbose logging             [boolean] [default: false]
+  -o, --output     Specify output file                                  [string]
+  -l, --logFile    Specify log file path                                [string]
+      --help       Show help                                           [boolean]
+```
+
+3. Run test cases
+
+Run Snapper against test cases in the specified directory:
+
+```bash
+npm run start -- --path ./testcases
+```
