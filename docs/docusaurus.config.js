@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   title: 'Snapper',
   tagline: 'Snapper',
   url: 'https://asifqatar.github.io/Snapper',
-  baseUrl: '/Snapper/',
+  baseUrl: '/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -22,6 +22,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          routeBasePath: '/', // Opens Docs as the homepage
           // Please change this to your repo.
           editUrl: 'https://github.com/sayfer-io/Snapper/blob/main/',
         },
@@ -47,22 +48,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           alt: 'Snapper',
           src: 'https://avatars.githubusercontent.com/u/105142204?s=200&v=4',
         },
-        items: [
-          {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Docs',
-          },
-          // {to: '/blog', label: 'Blog', position: 'left'},
-          { to: '/team', label: 'Team', position: 'left' },
-          { to: '/about', label: 'About', position: 'left' },
-          {
-            href: 'https://github.com/sayfer-io/Snapper',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
+        // items: [
+        //   {
+        //     type: 'doc',
+        //     docId: 'index',
+        //     position: 'left',
+        //     label: 'Docs',
+        //   },
+        // ],
       },
       footer: {
         style: 'dark',
@@ -72,7 +65,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             items: [
               {
                 label: 'API',
-                to: 'docs/API/README',
+                to: '#',
               },
             ],
           },
