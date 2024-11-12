@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   title: 'Snapper',
   tagline: 'Snapper',
   url: 'https://asifqatar.github.io/Snapper',
-  baseUrl: '/',
+  baseUrl: '/Snapper/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
