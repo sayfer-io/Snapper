@@ -21,7 +21,7 @@ represents a real issue.
 
 #### Defined in
 
-[structures/index.ts:44](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L44)
+[structures/index.ts:44](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L44)
 
 ***
 
@@ -31,7 +31,7 @@ represents a real issue.
 
 #### Defined in
 
-[structures/index.ts:42](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L42)
+[structures/index.ts:42](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L42)
 
 ***
 
@@ -41,4 +41,4 @@ represents a real issue.
 
 #### Defined in
 
-[structures/index.ts:43](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L43)
+[structures/index.ts:43](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L43)

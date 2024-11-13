@@ -30,7 +30,7 @@ in the associated code, helping to streamline permissions and enhance security.
 
 #### Defined in
 
-[detectors/UnusedPermissions.ts:25](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/UnusedPermissions.ts#L25)
+[detectors/UnusedPermissions.ts:25](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/UnusedPermissions.ts#L25)
 
 ## Properties
 
@@ -44,7 +44,7 @@ in the associated code, helping to streamline permissions and enhance security.
 
 #### Defined in
 
-[detectors/UnusedPermissions.ts:18](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/UnusedPermissions.ts#L18)
+[detectors/UnusedPermissions.ts:18](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/UnusedPermissions.ts#L18)
 
 ***
 
@@ -58,7 +58,7 @@ in the associated code, helping to streamline permissions and enhance security.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:16](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L16)
+[detectors/DetectorBase.ts:16](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L16)
 
 ***
 
@@ -72,7 +72,7 @@ in the associated code, helping to streamline permissions and enhance security.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:14](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L14)
+[detectors/DetectorBase.ts:14](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L14)
 
 ***
 
@@ -86,7 +86,7 @@ in the associated code, helping to streamline permissions and enhance security.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:15](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L15)
+[detectors/DetectorBase.ts:15](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L15)
 
 ## Methods
 
@@ -121,7 +121,7 @@ Line number where the finding was detected (default is 1).
 
 #### Defined in
 
-[detectors/DetectorBase.ts:41](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L41)
+[detectors/DetectorBase.ts:41](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L41)
 
 ***
 
@@ -142,7 +142,7 @@ This method resets the findings array to an empty state.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:59](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L59)
+[detectors/DetectorBase.ts:59](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L59)
 
 ***
 
@@ -164,7 +164,7 @@ Retrieves all findings collected by the detector.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:75](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L75)
+[detectors/DetectorBase.ts:75](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L75)
 
 ***
 
@@ -186,7 +186,7 @@ Gets the name of the detector.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:67](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L67)
+[detectors/DetectorBase.ts:67](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L67)
 
 ***
 
@@ -213,7 +213,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:93](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L93)
+[detectors/DetectorBase.ts:93](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L93)
 
 ***
 
@@ -244,7 +244,7 @@ Optional error object to log alongside the message.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:103](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L103)
+[detectors/DetectorBase.ts:103](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L103)
 
 ***
 
@@ -271,7 +271,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:84](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L84)
+[detectors/DetectorBase.ts:84](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L84)
 
 ***
 
@@ -302,7 +302,7 @@ Optional error object to log alongside the message.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:113](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/DetectorBase.ts#L113)
+[detectors/DetectorBase.ts:113](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L113)
 
 ***
 
@@ -330,4 +330,4 @@ The source file to analyze.
 
 #### Defined in
 
-[detectors/UnusedPermissions.ts:48](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/detectors/UnusedPermissions.ts#L48)
+[detectors/UnusedPermissions.ts:48](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/UnusedPermissions.ts#L48)

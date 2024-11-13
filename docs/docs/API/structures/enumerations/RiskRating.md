@@ -21,7 +21,7 @@ source code.
 
 #### Defined in
 
-[structures/index.ts:14](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L14)
+[structures/index.ts:14](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L14)
 
 ***
 
@@ -31,7 +31,7 @@ source code.
 
 #### Defined in
 
-[structures/index.ts:13](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L13)
+[structures/index.ts:13](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L13)
 
 ***
 
@@ -41,7 +41,7 @@ source code.
 
 #### Defined in
 
-[structures/index.ts:10](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L10)
+[structures/index.ts:10](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L10)
 
 ***
 
@@ -51,7 +51,7 @@ source code.
 
 #### Defined in
 
-[structures/index.ts:11](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L11)
+[structures/index.ts:11](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L11)
 
 ***
 
@@ -61,4 +61,4 @@ source code.
 
 #### Defined in
 
-[structures/index.ts:12](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/structures/index.ts#L12)
+[structures/index.ts:12](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L12)

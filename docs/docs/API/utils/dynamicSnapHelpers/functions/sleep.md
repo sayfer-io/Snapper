@@ -26,4 +26,4 @@ The number of milliseconds to sleep.
 
 ## Defined in
 
-[utils/dynamicSnapHelpers.ts:18](https://github.com/asifqatar/Snapper/blob/745a7dc53ba74a10939f2917619e05af16a1385f/utils/dynamicSnapHelpers.ts#L18)
+[utils/dynamicSnapHelpers.ts:18](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/utils/dynamicSnapHelpers.ts#L18)
