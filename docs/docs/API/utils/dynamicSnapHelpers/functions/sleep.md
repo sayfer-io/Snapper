@@ -1,8 +1,6 @@
-[**Snapper Project**](../../../README.md) • **Docs**
+**Snapper Project** • **Docs**
 
 ***
-
-[Snapper Project](../../../README.md) / [utils/dynamicSnapHelpers](../README.md) / sleep
 
 # Function: sleep()
 
@@ -26,4 +24,4 @@ The number of milliseconds to sleep.
 
 ## Defined in
 
-[utils/dynamicSnapHelpers.ts:18](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/utils/dynamicSnapHelpers.ts#L18)
+[utils/dynamicSnapHelpers.ts:18](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/utils/dynamicSnapHelpers.ts#L18)

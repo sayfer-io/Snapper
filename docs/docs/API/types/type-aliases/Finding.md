@@ -1,8 +1,6 @@
-[**Snapper Project**](../../README.md) • **Docs**
+**Snapper Project** • **Docs**
 
 ***
-
-[Snapper Project](../../README.md) / [types](../README.md) / Finding
 
 # Type Alias: Finding
 
@@ -60,4 +58,4 @@ The type of the finding.
 
 ## Defined in
 
-[types/index.d.ts:16](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/types/index.d.ts#L16)
+[types/index.d.ts:16](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/types/index.d.ts#L16)

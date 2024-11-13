@@ -1,8 +1,6 @@
-[**Snapper Project**](../../../README.md) • **Docs**
+**Snapper Project** • **Docs**
 
 ***
-
-[Snapper Project](../../../README.md) / [detectors/DeprecatedFunctions](../README.md) / DeprecatedFunctionsDetector
 
 # Class: DeprecatedFunctionsDetector
 
@@ -34,7 +32,7 @@ typically pose lower security risks but should still be replaced in the codebase
 
 #### Defined in
 
-[detectors/DeprecatedFunctions.ts:21](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DeprecatedFunctions.ts#L21)
+[detectors/DeprecatedFunctions.ts:21](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DeprecatedFunctions.ts#L21)
 
 ## Properties
 
@@ -48,7 +46,7 @@ typically pose lower security risks but should still be replaced in the codebase
 
 #### Defined in
 
-[detectors/DetectorBase.ts:19](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L19)
+[detectors/DetectorBase.ts:19](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L19)
 
 ***
 
@@ -62,7 +60,7 @@ typically pose lower security risks but should still be replaced in the codebase
 
 #### Defined in
 
-[detectors/DetectorBase.ts:16](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L16)
+[detectors/DetectorBase.ts:16](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L16)
 
 ***
 
@@ -76,7 +74,7 @@ typically pose lower security risks but should still be replaced in the codebase
 
 #### Defined in
 
-[detectors/DetectorBase.ts:14](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L14)
+[detectors/DetectorBase.ts:14](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L14)
 
 ***
 
@@ -90,7 +88,7 @@ typically pose lower security risks but should still be replaced in the codebase
 
 #### Defined in
 
-[detectors/DetectorBase.ts:15](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L15)
+[detectors/DetectorBase.ts:15](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L15)
 
 ## Methods
 
@@ -125,7 +123,7 @@ Line number where the finding was detected (default is 1).
 
 #### Defined in
 
-[detectors/DetectorBase.ts:41](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L41)
+[detectors/DetectorBase.ts:41](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L41)
 
 ***
 
@@ -146,7 +144,7 @@ This method resets the findings array to an empty state.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:59](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L59)
+[detectors/DetectorBase.ts:59](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L59)
 
 ***
 
@@ -168,7 +166,7 @@ Retrieves all findings collected by the detector.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:75](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L75)
+[detectors/DetectorBase.ts:75](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L75)
 
 ***
 
@@ -190,7 +188,7 @@ Gets the name of the detector.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:67](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L67)
+[detectors/DetectorBase.ts:67](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L67)
 
 ***
 
@@ -217,7 +215,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:93](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L93)
+[detectors/DetectorBase.ts:93](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L93)
 
 ***
 
@@ -248,7 +246,7 @@ Optional error object to log alongside the message.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:103](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L103)
+[detectors/DetectorBase.ts:103](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L103)
 
 ***
 
@@ -275,7 +273,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:84](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L84)
+[detectors/DetectorBase.ts:84](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L84)
 
 ***
 
@@ -306,7 +304,7 @@ Optional error object to log alongside the message.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:113](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L113)
+[detectors/DetectorBase.ts:113](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L113)
 
 ***
 
@@ -335,4 +333,4 @@ The source file to analyze for deprecated function usage.
 
 #### Defined in
 
-[detectors/DeprecatedFunctions.ts:61](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DeprecatedFunctions.ts#L61)
+[detectors/DeprecatedFunctions.ts:61](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DeprecatedFunctions.ts#L61)

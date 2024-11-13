@@ -1,8 +1,6 @@
-[**Snapper Project**](../../../README.md) • **Docs**
+**Snapper Project** • **Docs**
 
 ***
-
-[Snapper Project](../../../README.md) / [utils/logger](../README.md) / enableLogFile
 
 # Function: enableLogFile()
 
@@ -24,4 +22,4 @@ The path to the log file.
 
 ## Defined in
 
-[utils/logger.ts:50](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/utils/logger.ts#L50)
+[utils/logger.ts:50](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/utils/logger.ts#L50)
