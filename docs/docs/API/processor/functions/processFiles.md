@@ -1,8 +1,6 @@
-[**Snapper Project**](../../README.md) • **Docs**
+**Snapper Project** • **Docs**
 
 ***
-
-[Snapper Project](../../README.md) / [processor](../README.md) / processFiles
 
 # Function: processFiles()
 
@@ -28,4 +26,4 @@ The list of detectors to run. If not provided, all detectors will be applied.
 
 ## Defined in
 
-[processor.ts:48](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/processor.ts#L48)
+[processor.ts:48](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/processor.ts#L48)

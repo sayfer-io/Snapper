@@ -1,8 +1,6 @@
-[**Snapper Project**](../../../README.md) • **Docs**
+**Snapper Project** • **Docs**
 
 ***
-
-[Snapper Project](../../../README.md) / [utils/commandUtils](../README.md) / runCommand
 
 # Function: runCommand()
 
@@ -32,4 +30,4 @@ The path to the working directory. If not provided, the current directory is use
 
 ## Defined in
 
-[utils/commandUtils.ts:18](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/utils/commandUtils.ts#L18)
+[utils/commandUtils.ts:18](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/utils/commandUtils.ts#L18)

@@ -1,8 +1,6 @@
-[**Snapper Project**](../../../README.md) • **Docs**
+**Snapper Project** • **Docs**
 
 ***
-
-[Snapper Project](../../../README.md) / [detectors/UsedBeforeDefinedFunctions](../README.md) / UsedBeforeDefinedFunctionsDetector
 
 # Class: UsedBeforeDefinedFunctionsDetector
 
@@ -30,7 +28,7 @@ reporting any instances where a function is called before it is declared.
 
 #### Defined in
 
-[detectors/UsedBeforeDefinedFunctions.ts:13](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/UsedBeforeDefinedFunctions.ts#L13)
+[detectors/UsedBeforeDefinedFunctions.ts:13](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/UsedBeforeDefinedFunctions.ts#L13)
 
 ## Properties
 
@@ -44,7 +42,7 @@ reporting any instances where a function is called before it is declared.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:19](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L19)
+[detectors/DetectorBase.ts:19](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L19)
 
 ***
 
@@ -58,7 +56,7 @@ reporting any instances where a function is called before it is declared.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:16](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L16)
+[detectors/DetectorBase.ts:16](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L16)
 
 ***
 
@@ -72,7 +70,7 @@ reporting any instances where a function is called before it is declared.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:14](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L14)
+[detectors/DetectorBase.ts:14](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L14)
 
 ***
 
@@ -86,7 +84,7 @@ reporting any instances where a function is called before it is declared.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:15](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L15)
+[detectors/DetectorBase.ts:15](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L15)
 
 ## Methods
 
@@ -121,7 +119,7 @@ Line number where the finding was detected (default is 1).
 
 #### Defined in
 
-[detectors/DetectorBase.ts:41](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L41)
+[detectors/DetectorBase.ts:41](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L41)
 
 ***
 
@@ -142,7 +140,7 @@ This method resets the findings array to an empty state.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:59](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L59)
+[detectors/DetectorBase.ts:59](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L59)
 
 ***
 
@@ -164,7 +162,7 @@ Retrieves all findings collected by the detector.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:75](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L75)
+[detectors/DetectorBase.ts:75](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L75)
 
 ***
 
@@ -186,7 +184,7 @@ Gets the name of the detector.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:67](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L67)
+[detectors/DetectorBase.ts:67](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L67)
 
 ***
 
@@ -213,7 +211,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:93](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L93)
+[detectors/DetectorBase.ts:93](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L93)
 
 ***
 
@@ -244,7 +242,7 @@ Optional error object to log alongside the message.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:103](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L103)
+[detectors/DetectorBase.ts:103](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L103)
 
 ***
 
@@ -271,7 +269,7 @@ The message to log.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:84](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L84)
+[detectors/DetectorBase.ts:84](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L84)
 
 ***
 
@@ -302,7 +300,7 @@ Optional error object to log alongside the message.
 
 #### Defined in
 
-[detectors/DetectorBase.ts:113](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/DetectorBase.ts#L113)
+[detectors/DetectorBase.ts:113](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/DetectorBase.ts#L113)
 
 ***
 
@@ -335,4 +333,4 @@ The source file to analyze.
 
 #### Defined in
 
-[detectors/UsedBeforeDefinedFunctions.ts:28](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/detectors/UsedBeforeDefinedFunctions.ts#L28)
+[detectors/UsedBeforeDefinedFunctions.ts:28](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/detectors/UsedBeforeDefinedFunctions.ts#L28)

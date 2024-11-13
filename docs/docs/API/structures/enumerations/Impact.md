@@ -1,8 +1,6 @@
-[**Snapper Project**](../../README.md) • **Docs**
+**Snapper Project** • **Docs**
 
 ***
-
-[Snapper Project](../../README.md) / [structures](../README.md) / Impact
 
 # Enumeration: Impact
 
@@ -21,7 +19,7 @@ its users.
 
 #### Defined in
 
-[structures/index.ts:30](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L30)
+[structures/index.ts:30](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/structures/index.ts#L30)
 
 ***
 
@@ -31,7 +29,7 @@ its users.
 
 #### Defined in
 
-[structures/index.ts:29](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L29)
+[structures/index.ts:29](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/structures/index.ts#L29)
 
 ***
 
@@ -41,7 +39,7 @@ its users.
 
 #### Defined in
 
-[structures/index.ts:26](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L26)
+[structures/index.ts:26](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/structures/index.ts#L26)
 
 ***
 
@@ -51,7 +49,7 @@ its users.
 
 #### Defined in
 
-[structures/index.ts:27](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L27)
+[structures/index.ts:27](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/structures/index.ts#L27)
 
 ***
 
@@ -61,4 +59,4 @@ its users.
 
 #### Defined in
 
-[structures/index.ts:28](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L28)
+[structures/index.ts:28](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/structures/index.ts#L28)

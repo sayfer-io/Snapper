@@ -1,8 +1,6 @@
-[**Snapper Project**](../../README.md) • **Docs**
+**Snapper Project** • **Docs**
 
 ***
-
-[Snapper Project](../../README.md) / [structures](../README.md) / RiskRating
 
 # Enumeration: RiskRating
 
@@ -21,7 +19,7 @@ source code.
 
 #### Defined in
 
-[structures/index.ts:14](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L14)
+[structures/index.ts:14](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/structures/index.ts#L14)
 
 ***
 
@@ -31,7 +29,7 @@ source code.
 
 #### Defined in
 
-[structures/index.ts:13](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L13)
+[structures/index.ts:13](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/structures/index.ts#L13)
 
 ***
 
@@ -41,7 +39,7 @@ source code.
 
 #### Defined in
 
-[structures/index.ts:10](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L10)
+[structures/index.ts:10](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/structures/index.ts#L10)
 
 ***
 
@@ -51,7 +49,7 @@ source code.
 
 #### Defined in
 
-[structures/index.ts:11](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L11)
+[structures/index.ts:11](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/structures/index.ts#L11)
 
 ***
 
@@ -61,4 +59,4 @@ source code.
 
 #### Defined in
 
-[structures/index.ts:12](https://github.com/asifqatar/Snapper/blob/cbd1e990f7eda7e735082611ff93e8f046c82e35/structures/index.ts#L12)
+[structures/index.ts:12](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/structures/index.ts#L12)
