@@ -1,5 +1,3 @@
-**Snapper Project** • **Docs**
-
 ***
 
 # Function: installDependencies()
@@ -29,4 +27,4 @@ The package manager to use.
 
 ## Defined in
 
-[utils/dynamicSnapHelpers.ts:88](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/utils/dynamicSnapHelpers.ts#L88)
+[utils/dynamicSnapHelpers.ts:88](https://github.com/asifqatar/Snapper/blob/906ddfcaf1558e94a3ec8d6df532b24adee091b6/utils/dynamicSnapHelpers.ts#L88)

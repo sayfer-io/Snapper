@@ -1,5 +1,3 @@
-**Snapper Project** • **Docs**
-
 ***
 
 # Function: deleteLockFiles()
@@ -27,4 +25,4 @@ The main directory where lock files will be deleted.
 
 ## Defined in
 
-[utils/fileUtils.ts:182](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/utils/fileUtils.ts#L182)
+[utils/fileUtils.ts:182](https://github.com/asifqatar/Snapper/blob/906ddfcaf1558e94a3ec8d6df532b24adee091b6/utils/fileUtils.ts#L182)
