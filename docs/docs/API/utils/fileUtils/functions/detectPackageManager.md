@@ -1,5 +1,3 @@
-**Snapper Project** • **Docs**
-
 ***
 
 # Function: detectPackageManager()
@@ -30,4 +28,4 @@ Will throw an error if no package.json is found in the working directory.
 
 ## Defined in
 
-[utils/fileUtils.ts:142](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/utils/fileUtils.ts#L142)
+[utils/fileUtils.ts:142](https://github.com/asifqatar/Snapper/blob/906ddfcaf1558e94a3ec8d6df532b24adee091b6/utils/fileUtils.ts#L142)

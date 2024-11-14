@@ -1,5 +1,3 @@
-**Snapper Project** • **Docs**
-
 ***
 
 # Function: killAllChildProcesses()
@@ -19,4 +17,4 @@ If any errors occur during the termination process, they are logged.
 
 ## Defined in
 
-[utils/commandUtils.ts:100](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/utils/commandUtils.ts#L100)
+[utils/commandUtils.ts:100](https://github.com/asifqatar/Snapper/blob/906ddfcaf1558e94a3ec8d6df532b24adee091b6/utils/commandUtils.ts#L100)

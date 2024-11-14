@@ -1,5 +1,3 @@
-**Snapper Project** • **Docs**
-
 ***
 
 # Function: runCommandDetached()
@@ -37,4 +35,4 @@ Callback function to handle the command output.
 
 ## Defined in
 
-[utils/commandUtils.ts:61](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/utils/commandUtils.ts#L61)
+[utils/commandUtils.ts:61](https://github.com/asifqatar/Snapper/blob/906ddfcaf1558e94a3ec8d6df532b24adee091b6/utils/commandUtils.ts#L61)

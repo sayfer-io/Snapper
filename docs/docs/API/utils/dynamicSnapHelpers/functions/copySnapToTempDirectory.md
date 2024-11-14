@@ -1,5 +1,3 @@
-**Snapper Project** • **Docs**
-
 ***
 
 # Function: copySnapToTempDirectory()
@@ -26,4 +24,4 @@ The path to the temporary directory.
 
 ## Defined in
 
-[utils/dynamicSnapHelpers.ts:47](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/utils/dynamicSnapHelpers.ts#L47)
+[utils/dynamicSnapHelpers.ts:47](https://github.com/asifqatar/Snapper/blob/906ddfcaf1558e94a3ec8d6df532b24adee091b6/utils/dynamicSnapHelpers.ts#L47)

@@ -1,5 +1,3 @@
-**Snapper Project** • **Docs**
-
 ***
 
 # Function: sleep()
@@ -24,4 +22,4 @@ The number of milliseconds to sleep.
 
 ## Defined in
 
-[utils/dynamicSnapHelpers.ts:18](https://github.com/asifqatar/Snapper/blob/1d48336393770932279ea1b6ba1c8407a2b1d178/utils/dynamicSnapHelpers.ts#L18)
+[utils/dynamicSnapHelpers.ts:18](https://github.com/asifqatar/Snapper/blob/906ddfcaf1558e94a3ec8d6df532b24adee091b6/utils/dynamicSnapHelpers.ts#L18)
