@@ -12,7 +12,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'https://avatars.githubusercontent.com/u/105142204?s=48&v=4', 
-  organizationName: 'asifqatar',
+  organizationName: 'sayfer-io',
   projectName: 'Snapper',
 
   presets: [
