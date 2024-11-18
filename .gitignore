@@ -4,6 +4,7 @@ localtesting/
 temp/
 result-*.json
 .DS_Store
+docs/
 
 ### Node template
 # Logs
