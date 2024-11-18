@@ -3,12 +3,13 @@ name: Deploy Documentation
 on:
   push:
     branches:
-      - main  # or your default branch name
+      - main # or your default branch name
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -16,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Using Node.js 18 as per your package.json
+          node-version: "18"
 
       - name: Install dependencies
         run: npm ci
@@ -28,4 +29,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs  # Adjust this if your docs are generated in a different directory
+          publish_dir: ./docs
+          publish_branch: gh-pages
