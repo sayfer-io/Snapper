@@ -76,5 +76,5 @@ Options:
 Run Snapper against test cases in the specified directory:
 
 ```bash
-npm run start -- --path ./testcases
+npm run start -- --path ./starknet-snap
 ```
