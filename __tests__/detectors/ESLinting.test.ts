@@ -4,12 +4,20 @@ import { Project, SourceFile } from "ts-morph";
 import { ESLintingDetector } from "../../detectors/ESLinting";
 
 describe("ESLintingDetector", () => {
-  let detector: ESLintingDetector;
+  let project: Project;
   let sourceFile: SourceFile;
+  let detector: ESLintingDetector;
 
   beforeAll(() => {
+    project = new Project();
     detector = new ESLintingDetector();
+  });
 
+  afterEach(() => {
+    mockFs.restore();
+  });
+
+  it("should detect ESLint issues in the TypeScript file", async () => {
     mockFs({
       "/mock/project": {
         "test.ts": `
@@ -20,15 +28,8 @@ describe("ESLintingDetector", () => {
       },
     });
 
-    const project = new Project();
     sourceFile = project.addSourceFileAtPath("/mock/project/test.ts");
-  });
 
-  afterEach(() => {
-    mockFs.restore();
-  });
-
-  it("should detect ESLint issues in the TypeScript file", async () => {
     const findings = await detector.run(sourceFile);
 
     expect(findings).toHaveLength(2);
