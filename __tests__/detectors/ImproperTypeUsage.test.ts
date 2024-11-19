@@ -4,12 +4,12 @@ import { Project } from "ts-morph";
 import { ImproperTypeUsageDetector } from "../../detectors/ImproperTypeUsage";
 
 describe("ImproperTypeUsageDetector", () => {
-  let detector: ImproperTypeUsageDetector;
   let project: Project;
+  let detector: ImproperTypeUsageDetector;
 
   beforeEach(() => {
-    detector = new ImproperTypeUsageDetector();
     project = new Project();
+    detector = new ImproperTypeUsageDetector();
   });
 
   afterEach(() => {
