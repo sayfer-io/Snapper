@@ -1,3 +1,4 @@
+import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
 import { Finding } from "../../types";
@@ -13,19 +14,27 @@ describe("DangerousFunctionsDetector", () => {
     detector = new DangerousFunctionsDetector();
   });
 
+  afterEach(() => {
+    mockFs.restore();
+  });
+
   test("should detect dangerouslySetInnerHTML, eval, and signData function calls", () => {
-    const code = `
-      function test() {
-        dangerouslySetInnerHTML();
-        eval("console.log('test')");
-        signData();
-      }
-    `;
-    sourceFile = project.createSourceFile("testFile.ts", code);
+    mockFs({
+      "testFile.ts": `
+        function test() {
+          dangerouslySetInnerHTML();
+          eval("console.log('test')");
+          signData();
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("testFile.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
-    expect(findings.length).toBe(3); // Three dangerous function calls
+    expect(findings.length).toBe(3);
+
     expect(findings[0].description).toBe(
       "Usage of dangerous function: dangerouslySetInnerHTML"
     );
@@ -36,31 +45,38 @@ describe("DangerousFunctionsDetector", () => {
   });
 
   test("should detect dangerous functions within objects", () => {
-    const code = `
-      const obj = {
-        method: function() {
-          eval("console.log('test')");
-        }
-      };
-    `;
-    sourceFile = project.createSourceFile("testFile.ts", code);
+    mockFs({
+      "testFile.ts": `
+        const obj = {
+          method: function() {
+            eval("console.log('test')");
+          }
+        };
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("testFile.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
-    expect(findings.length).toBe(1); // One dangerous function call
+    expect(findings.length).toBe(1);
+
     expect(findings[0].description).toBe("Usage of dangerous function: eval");
   });
 
   test("should detect dangerous functions within nested functions", () => {
-    const code = `
-      function outer() {
-        function inner() {
-          signData();
+    mockFs({
+      "testFile.ts": `
+        function outer() {
+          function inner() {
+            signData();
+          }
+          inner();
         }
-        inner();
-      }
-    `;
-    sourceFile = project.createSourceFile("testFile.ts", code);
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("testFile.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -71,15 +87,18 @@ describe("DangerousFunctionsDetector", () => {
   });
 
   test("should not detect any dangerous function calls when none are present", () => {
-    const code = `
-      function test() {
-        console.log("This is safe.");
-      }
-    `;
-    sourceFile = project.createSourceFile("testFile.ts", code);
+    mockFs({
+      "testFile.ts": `
+        function test() {
+          console.log("This is safe.");
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("testFile.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
-    expect(findings.length).toBe(0); // No dangerous function calls should be found
+    expect(findings.length).toBe(0);
   });
 });
