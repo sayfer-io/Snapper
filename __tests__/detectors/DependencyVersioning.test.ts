@@ -1,14 +1,17 @@
 import path from "path";
 import mockFs from "mock-fs";
-import { Project } from "ts-morph";
+import { Project, SourceFile } from "ts-morph";
 
 import { Finding } from "../../types";
 import { DependencyVersioningDetector } from "../../detectors/DependencyVersioning";
 
 describe("DependencyVersioningDetector", () => {
+  let project: Project;
+  let sourceFile: SourceFile;
   let detector: DependencyVersioningDetector;
 
   beforeEach(() => {
+    project = new Project();
     detector = new DependencyVersioningDetector();
   });
 
@@ -28,8 +31,7 @@ describe("DependencyVersioningDetector", () => {
     `,
     });
 
-    const project = new Project();
-    const sourceFile = project.addSourceFileAtPath("test/package.json");
+    sourceFile = project.addSourceFileAtPath("test/package.json");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -69,8 +71,7 @@ describe("DependencyVersioningDetector", () => {
     `,
     });
 
-    const project = new Project();
-    const sourceFile = project.addSourceFileAtPath("test/package.json");
+    sourceFile = project.addSourceFileAtPath("test/package.json");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -82,8 +83,7 @@ describe("DependencyVersioningDetector", () => {
       "test/test.ts": "",
     });
 
-    const project = new Project();
-    const sourceFile = project.addSourceFileAtPath("test/test.ts");
+    sourceFile = project.addSourceFileAtPath("test/test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -95,8 +95,7 @@ describe("DependencyVersioningDetector", () => {
       "test/package.json": "{}",
     });
 
-    const project = new Project();
-    const sourceFile = project.addSourceFileAtPath("test/package.json");
+    sourceFile = project.addSourceFileAtPath("test/package.json");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -115,8 +114,7 @@ describe("DependencyVersioningDetector", () => {
     `,
     });
 
-    const project = new Project();
-    const sourceFile = project.addSourceFileAtPath("test/package.json");
+    sourceFile = project.addSourceFileAtPath("test/package.json");
 
     const findings: Finding[] = detector.run(sourceFile);
 
