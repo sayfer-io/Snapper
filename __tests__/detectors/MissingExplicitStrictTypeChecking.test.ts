@@ -6,11 +6,19 @@ import { MissingExplicitStrictTypeCheckingDetector } from "../../detectors/Missi
 
 describe("MissingExplicitStrictTypeCheckingDetector", () => {
   let detector: MissingExplicitStrictTypeCheckingDetector;
+  let project: Project;
   let sourceFile: SourceFile;
 
   beforeEach(() => {
+    project = new Project();
     detector = new MissingExplicitStrictTypeCheckingDetector();
+  });
 
+  afterEach(() => {
+    mockFs.restore();
+  });
+
+  it("should not report any findings for a valid tsconfig.json", () => {
     mockFs({
       "testcases/validTsconfig/": {
         "tsconfig.json": JSON.stringify({
@@ -22,6 +30,18 @@ describe("MissingExplicitStrictTypeCheckingDetector", () => {
           },
         }),
       },
+    });
+
+    sourceFile = project.addSourceFileAtPath(
+      "testcases/validTsconfig/tsconfig.json"
+    );
+
+    const findings = detector.run(sourceFile);
+    expect(findings).toEqual([]);
+  });
+
+  it("should report a finding for a tsconfig.json with missing explicit strict type-checking options", () => {
+    mockFs({
       "testcases/missingOptionsTsconfig/": {
         "tsconfig.json": JSON.stringify({
           compilerOptions: {
@@ -32,40 +52,9 @@ describe("MissingExplicitStrictTypeCheckingDetector", () => {
           },
         }),
       },
-      "testcases/noStrictTsconfig/": {
-        "tsconfig.json": JSON.stringify({
-          compilerOptions: {
-            noImplicitAny: true,
-            strictBindCallApply: true,
-            alwaysStrict: true,
-          },
-        }),
-      },
-      "testcases/noCompilerOptions/": {
-        "tsconfig.json": JSON.stringify({}),
-      },
-      "testcases/someOtherFile/": {
-        "someOtherFile.json": JSON.stringify({}),
-      },
     });
 
-    const project = new Project();
-    sourceFile = project.addSourceFileAtPath(
-      "testcases/validTsconfig/tsconfig.json"
-    );
-  });
-
-  afterEach(() => {
-    mockFs.restore();
-  });
-
-  it("should not report any findings for a valid tsconfig.json", () => {
-    const findings = detector.run(sourceFile);
-    expect(findings).toEqual([]);
-  });
-
-  it("should report a finding for a tsconfig.json with missing explicit strict type-checking options", () => {
-    const missingOptionsSourceFile = new Project().addSourceFileAtPath(
+    const missingOptionsSourceFile = project.addSourceFileAtPath(
       "testcases/missingOptionsTsconfig/tsconfig.json"
     );
     const findings = detector.run(missingOptionsSourceFile);
@@ -87,7 +76,13 @@ describe("MissingExplicitStrictTypeCheckingDetector", () => {
   });
 
   it("should report a finding for a tsconfig.json without compilerOptions", () => {
-    const noCompilerOptionsSourceFile = new Project().addSourceFileAtPath(
+    mockFs({
+      "testcases/noCompilerOptions/": {
+        "tsconfig.json": JSON.stringify({}),
+      },
+    });
+
+    const noCompilerOptionsSourceFile = project.addSourceFileAtPath(
       "testcases/noCompilerOptions/tsconfig.json"
     );
     const findings = detector.run(noCompilerOptionsSourceFile);
@@ -107,7 +102,13 @@ describe("MissingExplicitStrictTypeCheckingDetector", () => {
   });
 
   it("should not detect any findings when the file is not tsconfig.json", () => {
-    const someOtherFileSourceFile = new Project().addSourceFileAtPath(
+    mockFs({
+      "testcases/someOtherFile/": {
+        "someOtherFile.json": JSON.stringify({}),
+      },
+    });
+
+    const someOtherFileSourceFile = project.addSourceFileAtPath(
       "testcases/someOtherFile/someOtherFile.json"
     );
     const findings = detector.run(someOtherFileSourceFile);
