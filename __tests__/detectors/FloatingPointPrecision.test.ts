@@ -4,12 +4,12 @@ import { Project, SourceFile } from "ts-morph";
 import { FloatingPointPrecisionDetector } from "../../detectors/FloatingPointPrecision";
 
 describe("FloatingPointPrecisionDetector", () => {
-  let detector: FloatingPointPrecisionDetector;
   let project: Project;
+  let detector: FloatingPointPrecisionDetector;
 
   beforeEach(() => {
-    detector = new FloatingPointPrecisionDetector();
     project = new Project();
+    detector = new FloatingPointPrecisionDetector();
   });
 
   afterEach(() => {
