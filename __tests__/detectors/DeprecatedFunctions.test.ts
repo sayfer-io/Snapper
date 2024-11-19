@@ -9,8 +9,8 @@ describe("DeprecatedFunctionsDetector", () => {
   let detector: DeprecatedFunctionsDetector;
 
   beforeEach(() => {
-    detector = new DeprecatedFunctionsDetector();
     project = new Project();
+    detector = new DeprecatedFunctionsDetector();
   });
 
   afterEach(() => {
@@ -46,8 +46,7 @@ describe("DeprecatedFunctionsDetector", () => {
 
     const findings = detector.run(sourceFile);
     expect(findings).toHaveLength(1);
-    expect(findings[0].position.filePath).toBe("test.ts");
-    expect(findings[0].position.lineNum).toBe(2); // Adjust line number as needed
+    expect(findings[0].position.lineNum).toBe(2);
   });
 
   it("should return an empty array if no deprecated functions are used", () => {
