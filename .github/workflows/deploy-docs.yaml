@@ -3,7 +3,7 @@ name: Deploy Documentation
 on:
   push:
     branches:
-      - main # or your default branch name
+      - main
   workflow_dispatch:
 
 jobs:
