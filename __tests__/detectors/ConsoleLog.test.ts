@@ -1,3 +1,4 @@
+import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
 import { Finding } from "../../types";
@@ -13,18 +14,25 @@ describe("ConsoleLogDetector", () => {
     detector = new ConsoleLogDetector();
   });
 
+  afterEach(() => {
+    mockFs.restore();
+  });
+
   test("should detect console.log and console.error statements", () => {
-    const code = `
-      function test() {
-        console.log("This is a test log.");
-        console.error("This is an error log."); // This should also be detected
-      }
-    `;
-    sourceFile = project.createSourceFile("testFile.ts", code);
+    mockFs({
+      "testFile.ts": `
+        function test() {
+          console.log("This is a test log.");
+          console.error("This is an error log."); // This should also be detected
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("testFile.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
-    expect(findings.length).toBe(2); // Two findings: console.log and console.error
+    expect(findings.length).toBe(2);
     expect(findings[0].description).toBe(
       "Presence of console log function detected."
     );
@@ -34,17 +42,20 @@ describe("ConsoleLogDetector", () => {
   });
 
   test("should detect console.warn and console.info statements", () => {
-    const code = `
-      function test() {
-        console.warn("This is a warning log.");
-        console.info("This is an info log."); // This should also be detected
-      }
-    `;
-    sourceFile = project.createSourceFile("testFile.ts", code);
+    mockFs({
+      "testFile.ts": `
+        function test() {
+          console.warn("This is a warning log.");
+          console.info("This is an info log."); // This should also be detected
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("testFile.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
-    expect(findings.length).toBe(2); // Two findings: console.warn and console.info
+    expect(findings.length).toBe(2);
     expect(findings[0].description).toBe(
       "Presence of console log function detected."
     );
@@ -54,55 +65,64 @@ describe("ConsoleLogDetector", () => {
   });
 
   test("should not detect console log statements when none are present", () => {
-    const code = `
-      function test() {
-        const message = "No console log here.";
-        alert(message);
-      }
-    `;
-    sourceFile = project.createSourceFile("testFile.ts", code);
+    mockFs({
+      "testFile.ts": `
+        function test() {
+          const message = "No console log here.";
+          alert(message);
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("testFile.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
-    expect(findings.length).toBe(0); // No console log statements should be found
+    expect(findings.length).toBe(0);
   });
 
   test("should detect console statements in nested functions", () => {
-    const code = `
-      function outer() {
-        function inner() {
-          console.log("Nested log.");
+    mockFs({
+      "testFile.ts": `
+        function outer() {
+          function inner() {
+            console.log("Nested log.");
+          }
+          inner();
         }
-        inner();
-      }
-    `;
-    sourceFile = project.createSourceFile("testFile.ts", code);
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("testFile.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
-    expect(findings.length).toBe(1); // One finding: console.log in nested function
+    expect(findings.length).toBe(1);
     expect(findings[0].description).toBe(
       "Presence of console log function detected."
     );
   });
 
   test("should detect multiple console statements in different contexts", () => {
-    const code = `
-      function test() {
-        console.log("Log 1");
-        if (true) {
-          console.error("Error log");
+    mockFs({
+      "testFile.ts": `
+        function test() {
+          console.log("Log 1");
+          if (true) {
+            console.error("Error log");
+          }
+          for (let i = 0; i < 1; i++) {
+            console.warn("Warning log");
+          }
         }
-        for (let i = 0; i < 1; i++) {
-          console.warn("Warning log");
-        }
-      }
-    `;
-    sourceFile = project.createSourceFile("testFile.ts", code);
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("testFile.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
-    expect(findings.length).toBe(3); // Three findings: console.log, console.error, and console.warn
+    expect(findings.length).toBe(3);
     expect(findings[0].description).toBe(
       "Presence of console log function detected."
     );
