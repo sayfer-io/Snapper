@@ -4,8 +4,8 @@ import { SourceFile, Project } from "ts-morph";
 import { BroadPermissionsDetector } from "../../detectors/BroadPermissions";
 
 describe("BroadPermissionsDetector", () => {
-  let detector: BroadPermissionsDetector;
   let project: Project;
+  let detector: BroadPermissionsDetector;
 
   beforeEach(() => {
     detector = new BroadPermissionsDetector();
