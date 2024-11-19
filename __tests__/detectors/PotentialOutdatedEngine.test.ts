@@ -5,12 +5,20 @@ import { Project, SourceFile } from "ts-morph";
 import { PotentialOutdatedEngineDetector } from "../../detectors/PotentialOutdatedEngine";
 
 describe("PotentialOutdatedEngineDetector", () => {
-  let detector: PotentialOutdatedEngineDetector;
+  let project: Project;
   let sourceFile: SourceFile;
+  let detector: PotentialOutdatedEngineDetector;
 
   beforeEach(() => {
+    project = new Project();
     detector = new PotentialOutdatedEngineDetector();
+  });
 
+  afterEach(() => {
+    mockFs.restore();
+  });
+
+  it("should not report any findings for a valid package.json", () => {
     mockFs({
       "testcases/validPackage/": {
         "package.json": JSON.stringify({
@@ -21,37 +29,27 @@ describe("PotentialOutdatedEngineDetector", () => {
           },
         }),
       },
+    });
+
+    project = new Project();
+    sourceFile = project.addSourceFileAtPath(
+      "testcases/validPackage/package.json"
+    );
+
+    const findings = detector.run(sourceFile);
+    expect(findings).toEqual([]);
+  });
+
+  it("should report a finding for a package.json without engines field", () => {
+    mockFs({
       "testcases/invalidPackage/": {
         "package.json": JSON.stringify({
           name: "invalid-package",
           version: "1.0.0",
         }),
       },
-      "testcases/noEnginesPackage/": {
-        "package.json": JSON.stringify({
-          name: "no-engines-package",
-          version: "1.0.0",
-          engines: {},
-        }),
-      },
     });
 
-    const project = new Project();
-    sourceFile = project.addSourceFileAtPath(
-      "testcases/validPackage/package.json"
-    );
-  });
-
-  afterEach(() => {
-    mockFs.restore();
-  });
-
-  it("should not report any findings for a valid package.json", () => {
-    const findings = detector.run(sourceFile);
-    expect(findings).toEqual([]);
-  });
-
-  it("should report a finding for a package.json without engines field", () => {
     const invalidSourceFile = new Project().addSourceFileAtPath(
       "testcases/invalidPackage/package.json"
     );
@@ -72,6 +70,16 @@ describe("PotentialOutdatedEngineDetector", () => {
   });
 
   it("should report a finding for a package.json with an empty engines field", () => {
+    mockFs({
+      "testcases/noEnginesPackage/": {
+        "package.json": JSON.stringify({
+          name: "no-engines-package",
+          version: "1.0.0",
+          engines: {},
+        }),
+      },
+    });
+
     const noEnginesSourceFile = new Project().addSourceFileAtPath(
       "testcases/noEnginesPackage/package.json"
     );
