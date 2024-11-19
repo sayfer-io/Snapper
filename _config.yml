@@ -1,0 +1,10 @@
+title: Snapper Documentation
+description: Documentation for Snapper CLI
+theme: minima
+plugins: []
+markdown: kramdown
+exclude:
+  - node_modules
+  - testcases
+
+jekyll: false
