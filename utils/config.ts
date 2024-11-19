@@ -20,7 +20,8 @@ export function configureYargs() {
       detectors: {
         alias: "d",
         type: "string",
-        description: "Specify which detector to run, specify multiple detectors with a comma",
+        description:
+          "Specify which detector to run, specify multiple detectors with a comma",
       },
       verbose: {
         alias: "v",
@@ -36,7 +37,13 @@ export function configureYargs() {
       logFile: {
         alias: "l",
         type: "string",
-        description: "Specify log file path",
+        description: "Specify log file",
+      },
+      htmlReport: {
+        alias: "h",
+        type: "boolean",
+        description: "Generate HTML report",
+        default: false,
       },
     })
     .fail((msg, err, yargs) => {
@@ -53,5 +60,6 @@ export function configureYargs() {
     verbose: boolean;
     output?: string;
     logFile?: string;
+    htmlReport: boolean;
   };
 }

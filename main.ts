@@ -4,6 +4,7 @@ import logger from "./utils/logger";
 import { enableLogFile, enableLogVerbosity } from "./utils/logger";
 import { configureYargs } from "./utils/config";
 import { processFiles } from "./processor";
+import { generateHtmlReport } from "./utils/htmlReportUtils";
 import { generateTimestampFileName } from "./utils/fileUtils";
 
 /**
@@ -53,6 +54,14 @@ async function main(): Promise<void> {
         JSON.stringify(sortedFindings, null, 2)
       );
       logger.info(`Results saved to ${resultFileName}`);
+
+      // Generate HTML report if specified
+      if (argv.htmlReport) {
+        const htmlFileName = generateTimestampFileName("report", "html");
+        const htmlContent = generateHtmlReport(sortedFindings);
+        await fs.writeFile(htmlFileName, htmlContent);
+        logger.info(`HTML report saved to ${htmlFileName}`);
+      }
     } else {
       logger.info("No findings to report.");
     }
