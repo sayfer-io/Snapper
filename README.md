@@ -2,7 +2,7 @@
 
 ![Release](https://github.com/sayfer-io/Snapper/actions/workflows/release.yaml/badge.svg)
 ![Documentation](https://github.com/sayfer-io/Snapper/actions/workflows/deploy-docs.yaml/badge.svg)
-![Node.js Version](https://img.shields.io/badge/node.js-lts-brightgreen)
+![Node.js Version](https://img.shields.io/badge/node.js-22.3.0-brightgreen)
 ![TypeScript](https://img.shields.io/badge/types-TypeScript-blue)
 ![License](https://img.shields.io/github/license/sayfer-io/Snapper)
 ![Last Commit](https://img.shields.io/github/last-commit/sayfer-io/Snapper)
