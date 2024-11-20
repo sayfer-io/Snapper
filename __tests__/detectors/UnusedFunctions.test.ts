@@ -4,12 +4,12 @@ import { SourceFile, Project } from "ts-morph";
 import { UnusedFunctionsDetector } from "../../detectors/UnusedFunctions";
 
 describe("UnusedFunctionsDetector", () => {
-  let detector: UnusedFunctionsDetector;
   let project: Project;
+  let detector: UnusedFunctionsDetector;
 
   beforeEach(() => {
-    detector = new UnusedFunctionsDetector();
     project = new Project();
+    detector = new UnusedFunctionsDetector();
   });
 
   afterEach(() => {

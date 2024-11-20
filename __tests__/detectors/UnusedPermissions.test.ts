@@ -5,9 +5,9 @@ import { Project, SourceFile } from "ts-morph";
 import { UnusedPermissionsDetector } from "../../detectors/UnusedPermissions";
 
 describe("UnusedPermissionsDetector", () => {
-  let detector: UnusedPermissionsDetector;
   let project: Project;
   let sourceFile: SourceFile;
+  let detector: UnusedPermissionsDetector;
 
   const getRandomDir = () =>
     `test-${Math.random().toString(36).substring(2, 15)}`;
@@ -17,8 +17,8 @@ describe("UnusedPermissionsDetector", () => {
   const MOCK_USED_API = "window.usedApi";
 
   beforeEach(() => {
-    detector = new UnusedPermissionsDetector();
     project = new Project();
+    detector = new UnusedPermissionsDetector();
   });
 
   afterEach(() => {

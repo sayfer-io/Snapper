@@ -4,12 +4,12 @@ import { Project } from "ts-morph";
 import { UnhandledPromiseRejectionDetector } from "../../detectors/UnhandledPromiseRejection";
 
 describe("UnhandledPromiseRejectionDetector", () => {
-  let detector: UnhandledPromiseRejectionDetector;
   let project: Project;
+  let detector: UnhandledPromiseRejectionDetector;
 
   beforeEach(() => {
-    detector = new UnhandledPromiseRejectionDetector();
     project = new Project();
+    detector = new UnhandledPromiseRejectionDetector();
   });
 
   afterEach(() => {

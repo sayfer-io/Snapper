@@ -5,9 +5,9 @@ import { Project, SourceFile } from "ts-morph";
 import { MissingExplicitStrictTypeCheckingDetector } from "../../detectors/MissingExplicitStrictTypeChecking";
 
 describe("MissingExplicitStrictTypeCheckingDetector", () => {
-  let detector: MissingExplicitStrictTypeCheckingDetector;
   let project: Project;
   let sourceFile: SourceFile;
+  let detector: MissingExplicitStrictTypeCheckingDetector;
 
   beforeEach(() => {
     project = new Project();
