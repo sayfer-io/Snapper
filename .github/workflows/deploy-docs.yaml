@@ -52,12 +52,6 @@ jobs:
           name: docs
           path: ./docs
 
-      - name: Debug Token Permissions
-        run: |
-          echo "Testing token access:"
-          curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
-              https://api.github.com/repos/sayfer-io/Snapper/branches
-
       # Step 3: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -65,3 +59,4 @@ jobs:
           personal_token: ${{ secrets.PAT_TOKEN }}
           publish_dir: ./docs
           publish_branch: gh-pages
+          force_orphan: true
