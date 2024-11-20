@@ -52,6 +52,13 @@ jobs:
           name: docs
           path: ./docs
 
+      - name: Debug the environment
+        run: |
+          echo "Working directory content:"
+          ls -la ./docs
+          echo "Testing token access:"
+          curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" https://api.github.com/repos/sayfer-io/Snapper
+
       # Step 3: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
