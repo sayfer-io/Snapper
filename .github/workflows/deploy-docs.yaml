@@ -52,17 +52,6 @@ jobs:
           name: docs
           path: ./docs
 
-      - name: Test Push Permissions
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git clone --branch gh-pages https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/sayfer-io/Snapper.git gh-pages
-          cd gh-pages
-          echo "Test commit" >> test.txt
-          git add test.txt
-          git commit -m "Test push"
-          git push origin gh-pages
-
       # Step 3: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -70,4 +59,3 @@ jobs:
           personal_token: ${{ secrets.PAT_TOKEN }}
           publish_dir: ./docs
           publish_branch: gh-pages
-          force_orphan: true
