@@ -6,8 +6,9 @@ on:
       - main
 
 jobs:
-  release:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       # Step 1: Check out the repository
       - name: Checkout code
@@ -18,7 +19,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
-          cache: "npm" # Cache dependencies for faster builds
+          cache: "npm"
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -32,7 +33,30 @@ jobs:
       - name: Run npm audit
         run: npm audit signatures
 
-      # Step 6: Release using semantic-release
+      # Step 6: Upload build artifact
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: ./dist
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Download build artifact
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: ./dist
+
+      # Step 3: Release using semantic-release
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
