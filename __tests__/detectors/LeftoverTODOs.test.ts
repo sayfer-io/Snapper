@@ -5,12 +5,20 @@ import { Project, SourceFile } from "ts-morph";
 import { LeftoverTODOsDetector } from "../../detectors/LeftoverTODOs";
 
 describe("LeftoverTODOsDetector", () => {
-  let detector: LeftoverTODOsDetector;
+  let project: Project;
   let sourceFile: SourceFile;
+  let detector: LeftoverTODOsDetector;
 
   beforeEach(() => {
+    project = new Project();
     detector = new LeftoverTODOsDetector();
+  });
 
+  afterEach(() => {
+    mockFs.restore();
+  });
+
+  it("should retrieve all TODO comments from the source file", () => {
     mockFs({
       "wallet-guard-snap/": {
         "example.ts": `
@@ -43,41 +51,11 @@ describe("LeftoverTODOsDetector", () => {
 
           // TODO: Buffer allocation TODO
         `,
-        "anotherExample.ts": `
-          // TODO: File-level TODO in another file
-
-          const anotherFunction = () => {
-              // TODO: Inline TODO in arrow function
-              console.log("Another function");
-          };
-
-          /*
-           * TODO: Multiline TODO in another file
-           * that spans multiple lines.
-           */
-
-          class AnotherClass {
-              constructor() {
-                  // TODO: Constructor TODO in another file
-              }
-
-              anotherMethod() {
-                  console.log("Method in AnotherClass"); // TODO: Inline TODO at end of line in another file
-              }
-          }
-        `,
       },
     });
 
-    const project = new Project();
     sourceFile = project.addSourceFileAtPath("wallet-guard-snap/example.ts");
-  });
 
-  afterEach(() => {
-    mockFs.restore();
-  });
-
-  it("should retrieve all TODO comments from the source file", () => {
     const todos = detector.run(sourceFile);
 
     expect(todos).toEqual([
@@ -139,7 +117,35 @@ describe("LeftoverTODOsDetector", () => {
   });
 
   it("should retrieve all TODO comments from another source file", () => {
-    const anotherSourceFile = new Project().addSourceFileAtPath(
+    mockFs({
+      "wallet-guard-snap/": {
+        "anotherExample.ts": `
+          // TODO: File-level TODO in another file
+
+          const anotherFunction = () => {
+              // TODO: Inline TODO in arrow function
+              console.log("Another function");
+          };
+
+          /*
+           * TODO: Multiline TODO in another file
+           * that spans multiple lines.
+           */
+
+          class AnotherClass {
+              constructor() {
+                  // TODO: Constructor TODO in another file
+              }
+
+              anotherMethod() {
+                  console.log("Method in AnotherClass"); // TODO: Inline TODO at end of line in another file
+              }
+          }
+        `,
+      },
+    });
+
+    const anotherSourceFile = project.addSourceFileAtPath(
       "wallet-guard-snap/anotherExample.ts"
     );
     const todos = detector.run(anotherSourceFile);
@@ -201,7 +207,7 @@ describe("LeftoverTODOsDetector", () => {
       },
     });
 
-    const noTodosSourceFile = new Project().addSourceFileAtPath(
+    const noTodosSourceFile = project.addSourceFileAtPath(
       "wallet-guard-snap/noTodos.ts"
     );
     const todos = detector.run(noTodosSourceFile);
@@ -211,22 +217,25 @@ describe("LeftoverTODOsDetector", () => {
 
   it("should handle files with TODOs mentioned later in the text", () => {
     mockFs({
-      "wallet-guard-snap/nonTodoComments.ts": `
-        // This is a regular comment
-        /* Block comment without TODO */
-        function someFunction() {
-            console.log("No TODOs here.");
-        }
-      `,
+      "wallet-guard-snap/": {
+        "nonTodoComments.ts": `
+          // This is a regular comment
+          /* Block comment without TODO */
+          function someFunction() {
+              console.log("No TODOs here.");
+          }
+        `,
+      },
     });
-    const nonTodoFile = new Project().addSourceFileAtPath(
+
+    const TodoFile = project.addSourceFileAtPath(
       "wallet-guard-snap/nonTodoComments.ts"
     );
-    const todos = detector.run(nonTodoFile);
+    const todos = detector.run(TodoFile);
     expect(todos.length).toBe(1);
   });
 
-  // TODO: this test doesn't appear to work becase of mock-fs. Find a workaround.
+  // TODO: this test doesn't appear to work because of mock-fs. Find a workaround.
   // it("should detect TODOs in special scenarios (e.g., nested structures)", () => {
   //   mockFs({
   //     "wallet-guard-snap/specialTodos.ts": `
