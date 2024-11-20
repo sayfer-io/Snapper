@@ -16,7 +16,7 @@ import { DetectorBase } from "./DetectorBase";
  */
 class DangerousFunctionsDetector extends DetectorBase {
   /**
-   * @constant {string[]} DANGEROUS_FUNCTIONS - An array of dangerous function names that pose potential risks if used.
+   * An array of dangerous function names that pose potential risks if used.
    */
   private static DANGEROUS_FUNCTIONS = [
     "dangerouslySetInnerHTML",
