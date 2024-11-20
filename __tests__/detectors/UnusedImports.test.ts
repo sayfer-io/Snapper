@@ -17,16 +17,13 @@ describe("UnusedImportsDetector", () => {
   });
 
   it("should handle files with no imports", () => {
-    const mockFilePath = "mockFilePath1.ts";
-    const mockFileContent = `
-      console.log('No imports here');
-    `;
-
     mockFs({
-      [mockFilePath]: mockFileContent,
+      "mockFilePath1.ts": `
+        console.log('No imports here');
+      `,
     });
 
-    const sourceFile = project.addSourceFileAtPath(mockFilePath);
+    const sourceFile = project.addSourceFileAtPath("mockFilePath1.ts");
 
     const findings = detector.run(sourceFile);
 
@@ -34,20 +31,15 @@ describe("UnusedImportsDetector", () => {
   });
 
   it("should handle files with all used imports", () => {
-    const mockFilePath = "mockFilePath4.ts";
-    const mockFileContent = `
-      import { usedImport1 } from './used1';
-      import { usedImport2 } from './used2';
-      console.log(usedImport1, usedImport2);
-    `;
-
-    // Mock the file system
     mockFs({
-      [mockFilePath]: mockFileContent,
+      "mockFilePath4.ts": `
+        import { usedImport1 } from './used1';
+        import { usedImport2 } from './used2';
+        console.log(usedImport1, usedImport2);
+      `,
     });
 
-    // Add the source file to the project
-    const sourceFile = project.addSourceFileAtPath(mockFilePath);
+    const sourceFile = project.addSourceFileAtPath("mockFilePath4.ts");
 
     const findings = detector.run(sourceFile);
 
@@ -55,17 +47,14 @@ describe("UnusedImportsDetector", () => {
   });
 
   it("should detect unused imports", () => {
-    const mockFilePath = "mockFilePath5.ts";
-    const mockFileContent = `
-      import { unusedImport } from './unused';
-      console.log('This file has an unused import');
-    `;
-
     mockFs({
-      [mockFilePath]: mockFileContent,
+      "mockFilePath5.ts": `
+        import { unusedImport } from './unused';
+        console.log('This file has an unused import');
+      `,
     });
 
-    const sourceFile = project.addSourceFileAtPath(mockFilePath);
+    const sourceFile = project.addSourceFileAtPath("mockFilePath5.ts");
 
     const findings = detector.run(sourceFile);
 
@@ -76,18 +65,15 @@ describe("UnusedImportsDetector", () => {
   });
 
   it("should handle files with mixed used and unused imports", () => {
-    const mockFilePath = "mockFilePath6.ts";
-    const mockFileContent = `
-      import { usedImport } from './used';
-      import { unusedImport } from './unused';
-      console.log(usedImport);
-    `;
-
     mockFs({
-      [mockFilePath]: mockFileContent,
+      "mockFilePath6.ts": `
+        import { usedImport } from './used';
+        import { unusedImport } from './unused';
+        console.log(usedImport);
+      `,
     });
 
-    const sourceFile = project.addSourceFileAtPath(mockFilePath);
+    const sourceFile = project.addSourceFileAtPath("mockFilePath6.ts");
 
     const findings = detector.run(sourceFile);
 
