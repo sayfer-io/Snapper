@@ -1,40 +1,30 @@
 import mockFs from "mock-fs";
-import { SourceFile, Project } from "ts-morph";
+import { Project } from "ts-morph";
 
 import { UsedBeforeDefinedArrowFunctionsDetector } from "../../detectors/UsedBeforeDefinedArrowFunctions";
 
 describe("UsedBeforeDefinedArrowFunctionsDetector", () => {
-  let detector: UsedBeforeDefinedArrowFunctionsDetector;
   let project: Project;
+  let detector: UsedBeforeDefinedArrowFunctionsDetector;
 
   beforeEach(() => {
-    detector = new UsedBeforeDefinedArrowFunctionsDetector();
     project = new Project();
+    detector = new UsedBeforeDefinedArrowFunctionsDetector();
   });
 
   afterEach(() => {
     mockFs.restore();
   });
 
-  const createMockFile = (
-    filePath: string,
-    fileContent: string
-  ): SourceFile => {
+  it("should detect arrow functions used before they are defined", () => {
     mockFs({
-      [filePath]: fileContent,
+      "mockFilePath1.ts": `
+        myArrowFunction();
+        const myArrowFunction = () => {};
+      `,
     });
 
-    return project.addSourceFileAtPath(filePath);
-  };
-
-  it("should detect arrow functions used before they are defined", () => {
-    const mockFilePath = "mockFilePath1.ts";
-    const mockFileContent = `
-          myArrowFunction();
-          const myArrowFunction = () => {};
-        `;
-
-    const sourceFile = createMockFile(mockFilePath, mockFileContent);
+    const sourceFile = project.addSourceFileAtPath("mockFilePath1.ts");
 
     const findings = detector.run(sourceFile);
 
@@ -46,13 +36,14 @@ describe("UsedBeforeDefinedArrowFunctionsDetector", () => {
   });
 
   it("should not report arrow functions used after they are defined", () => {
-    const mockFilePath = "mockFilePath2.ts";
-    const mockFileContent = `
-          const myArrowFunction = () => {};
-      myArrowFunction();
-        `;
+    mockFs({
+      "mockFilePath2.ts": `
+        const myArrowFunction = () => {};
+        myArrowFunction();
+      `,
+    });
 
-    const sourceFile = createMockFile(mockFilePath, mockFileContent);
+    const sourceFile = project.addSourceFileAtPath("mockFilePath2.ts");
 
     const findings = detector.run(sourceFile);
 
@@ -60,15 +51,16 @@ describe("UsedBeforeDefinedArrowFunctionsDetector", () => {
   });
 
   it("should detect multiple arrow functions used before they are defined", () => {
-    const mockFilePath = "mockFilePath3.ts";
-    const mockFileContent = `
-          myArrowFunction1();
-          myArrowFunction2();
-          const myArrowFunction1 = () => {};
-          const myArrowFunction2 = () => {};
-        `;
+    mockFs({
+      "mockFilePath3.ts": `
+        myArrowFunction1();
+        myArrowFunction2();
+        const myArrowFunction1 = () => {};
+        const myArrowFunction2 = () => {};
+      `,
+    });
 
-    const sourceFile = createMockFile(mockFilePath, mockFileContent);
+    const sourceFile = project.addSourceFileAtPath("mockFilePath3.ts");
 
     const findings = detector.run(sourceFile);
 
@@ -82,15 +74,16 @@ describe("UsedBeforeDefinedArrowFunctionsDetector", () => {
   });
 
   it("should not report multiple arrow functions used after they are defined", () => {
-    const mockFilePath = "mockFilePath4.ts";
-    const mockFileContent = `
-          const myArrowFunction1 = () => {};
-          const myArrowFunction2 = () => {};
-          myArrowFunction1();
-          myArrowFunction2();
-    `;
+    mockFs({
+      "mockFilePath4.ts": `
+        const myArrowFunction1 = () => {};
+        const myArrowFunction2 = () => {};
+        myArrowFunction1();
+        myArrowFunction2();
+      `,
+    });
 
-    const sourceFile = createMockFile(mockFilePath, mockFileContent);
+    const sourceFile = project.addSourceFileAtPath("mockFilePath4.ts");
 
     const findings = detector.run(sourceFile);
 
@@ -98,15 +91,16 @@ describe("UsedBeforeDefinedArrowFunctionsDetector", () => {
   });
 
   it("should detect mixed cases of arrow functions used before and after they are defined", () => {
-    const mockFilePath = "mockFilePath5.ts";
-    const mockFileContent = `
-          myArrowFunction1();
-          const myArrowFunction1 = () => {};
-          const myArrowFunction2 = () => {};
-          myArrowFunction2();
-        `;
+    mockFs({
+      "mockFilePath5.ts": `
+        myArrowFunction1();
+        const myArrowFunction1 = () => {};
+        const myArrowFunction2 = () => {};
+        myArrowFunction2();
+      `,
+    });
 
-    const sourceFile = createMockFile(mockFilePath, mockFileContent);
+    const sourceFile = project.addSourceFileAtPath("mockFilePath5.ts");
 
     const findings = detector.run(sourceFile);
 
