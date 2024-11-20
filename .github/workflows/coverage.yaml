@@ -12,13 +12,11 @@ jobs:
     steps:
       # Step 1: Check out the code
       - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
 
       # Step 2: Set up Node.js
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: "lts/*"
           cache: "npm"
