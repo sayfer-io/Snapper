@@ -52,12 +52,11 @@ jobs:
           name: docs
           path: ./docs
 
-      - name: Debug the environment
+      - name: Debug Token Permissions
         run: |
-          echo "Working directory content:"
-          ls -la ./docs
           echo "Testing token access:"
-          curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" https://api.github.com/repos/sayfer-io/Snapper
+          curl -H "Authorization: token ${{ secrets.PAT_TOKEN }}" \
+              https://api.github.com/repos/sayfer-io/Snapper/branches
 
       # Step 3: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
