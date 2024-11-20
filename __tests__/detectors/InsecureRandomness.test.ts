@@ -1,3 +1,4 @@
+import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
 import { Finding } from "../../types";
@@ -10,16 +11,23 @@ describe("InsecureRandomnessDetector", () => {
 
   beforeEach(() => {
     project = new Project();
-    sourceFile = project.createSourceFile("test.ts", "", { overwrite: true });
     detector = new InsecureRandomnessDetector();
   });
 
+  afterEach(() => {
+    mockFs.restore();
+  });
+
   it("should detect insecure randomness functions", () => {
-    sourceFile.addStatements([
-      `function test() {`,
-      `  const randomValue = Math.random();`,
-      `}`,
-    ]);
+    mockFs({
+      "test.ts": `
+        function test() {
+          const randomValue = Math.random();
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -30,11 +38,15 @@ describe("InsecureRandomnessDetector", () => {
   });
 
   it("should not flag secure or unrelated functions", () => {
-    sourceFile.addStatements([
-      `function test() {`,
-      `  const secureValue = crypto.getRandomValues(new Uint32Array(1))[0];`,
-      `}`,
-    ]);
+    mockFs({
+      "test.ts": `
+        function test() {
+          const secureValue = crypto.getRandomValues(new Uint32Array(1))[0];
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -42,12 +54,16 @@ describe("InsecureRandomnessDetector", () => {
   });
 
   it("should detect multiple insecure randomness functions", () => {
-    sourceFile.addStatements([
-      `function test() {`,
-      `  const randomValue1 = Math.random();`,
-      `  const randomValue2 = Math.random();`,
-      `}`,
-    ]);
+    mockFs({
+      "test.ts": `
+        function test() {
+          const randomValue1 = Math.random();
+          const randomValue2 = Math.random();
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -61,16 +77,28 @@ describe("InsecureRandomnessDetector", () => {
   });
 
   it("should handle files with no functions gracefully", () => {
+    mockFs({
+      "test.ts": `
+        // No functions here
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
+
     const findings: Finding[] = detector.run(sourceFile);
 
     expect(findings.length).toBe(0);
   });
 
   it("should not flag comments or strings containing function names", () => {
-    sourceFile.addStatements([
-      `// This is a comment mentioning Math.random`,
-      `const funcName = "Math.random";`,
-    ]);
+    mockFs({
+      "test.ts": `
+        // This is a comment mentioning Math.random
+        const funcName = "Math.random";
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -78,13 +106,17 @@ describe("InsecureRandomnessDetector", () => {
   });
 
   it("should detect insecure randomness in different scopes", () => {
-    sourceFile.addStatements([
-      `function outer() {`,
-      `  function inner() {`,
-      `    const randomValue = Math.random();`,
-      `  }`,
-      `}`,
-    ]);
+    mockFs({
+      "test.ts": `
+        function outer() {
+          function inner() {
+            const randomValue = Math.random();
+          }
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -95,11 +127,15 @@ describe("InsecureRandomnessDetector", () => {
   });
 
   it("should detect insecure randomness in arrow functions", () => {
-    sourceFile.addStatements([
-      `const test = () => {`,
-      `  const randomValue = Math.random();`,
-      `};`,
-    ]);
+    mockFs({
+      "test.ts": `
+        const test = () => {
+          const randomValue = Math.random();
+        };
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -110,13 +146,17 @@ describe("InsecureRandomnessDetector", () => {
   });
 
   it("should detect insecure randomness in class methods", () => {
-    sourceFile.addStatements([
-      `class TestClass {`,
-      `  method() {`,
-      `    const randomValue = Math.random();`,
-      `  }`,
-      `}`,
-    ]);
+    mockFs({
+      "test.ts": `
+        class TestClass {
+          method() {
+            const randomValue = Math.random();
+          }
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
