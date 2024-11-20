@@ -1,128 +1,131 @@
-import {
-  SourceFile,
-  Node,
-  SyntaxKind,
-  ForEachDescendantTraversalControl,
-} from "ts-morph";
+import mockFs from "mock-fs";
+import { Project, SourceFile } from "ts-morph";
 
 import { UsedBeforeDefinedInterfacesDetector } from "../../detectors/UsedBeforeDefinedInterfaces";
 
 describe("UsedBeforeDefinedInterfacesDetector", () => {
+  let project: Project;
+  let sourceFile: SourceFile;
   let detector: UsedBeforeDefinedInterfacesDetector;
-  let mockSourceFile: jest.Mocked<SourceFile>;
-  let mockNode: jest.Mocked<Node>;
 
   beforeEach(() => {
+    project = new Project();
     detector = new UsedBeforeDefinedInterfacesDetector();
-    mockSourceFile = createMockSourceFile();
-    mockNode = createMockNode();
+  });
+
+  afterEach(() => {
+    mockFs.restore();
   });
 
   it("should detect interfaces used before they are defined", () => {
-    const interfaceDeclarationNode = createMockInterfaceDeclarationNode(
-      "MyInterface",
-      10
-    );
-    const interfaceUsageNode = createMockIdentifierNode("MyInterface", 5);
+    mockFs({
+      "test.ts": `
+        const myVar: MyInterface;
+        interface MyInterface {}
+      `,
+    });
 
-    mockSourceFile.forEachDescendant.mockImplementation(
-      (
-        callback: (
-          node: Node,
-          traversal: ForEachDescendantTraversalControl
-        ) => void,
-        traversalOrder
-      ) => {
-        const traversalControl: ForEachDescendantTraversalControl = {
-          stop: jest.fn(),
-          skip: jest.fn(),
-          up: jest.fn(),
-        };
-        callback(interfaceUsageNode, traversalControl);
-        callback(interfaceDeclarationNode, traversalControl);
-      }
-    );
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
-    const findings = detector.run(mockSourceFile);
+    const findings = detector.run(sourceFile);
 
     expect(findings).toHaveLength(1);
     expect(findings[0].description).toBe(
       "Interface 'MyInterface' is used before it is defined."
     );
-    expect(findings[0].position.filePath).toBe(mockSourceFile.getFilePath());
-    expect(findings[0].position.lineNum).toBe(5);
+    expect(findings[0].position.filePath).toBe(sourceFile.getFilePath());
+    expect(findings[0].position.lineNum).toBe(2);
   });
 
   it("should not report interfaces used after they are defined", () => {
-    const interfaceDeclarationNode = createMockInterfaceDeclarationNode(
-      "MyInterface",
-      5
-    );
-    const interfaceUsageNode = createMockIdentifierNode("MyInterface", 10);
+    mockFs({
+      "test.ts": `
+        interface MyInterface {}
+        const myVar: MyInterface;
+      `,
+    });
 
-    mockSourceFile.forEachDescendant.mockImplementation(
-      (
-        callback: (
-          node: Node,
-          traversal: ForEachDescendantTraversalControl
-        ) => void,
-        traversalOrder
-      ) => {
-        const traversalControl: ForEachDescendantTraversalControl = {
-          stop: jest.fn(),
-          skip: jest.fn(),
-          up: jest.fn(),
-        };
-        callback(interfaceDeclarationNode, traversalControl);
-        callback(interfaceUsageNode, traversalControl);
-      }
-    );
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
-    const findings = detector.run(mockSourceFile);
+    const findings = detector.run(sourceFile);
 
     expect(findings).toHaveLength(0);
   });
 
-  function createMockSourceFile(): jest.Mocked<SourceFile> {
-    return {
-      forEachDescendant: jest.fn(),
-      getFilePath: jest.fn().mockReturnValue("mockFilePath.ts"),
-    } as unknown as jest.Mocked<SourceFile>;
-  }
+  it("should detect multiple interfaces used before they are defined", () => {
+    mockFs({
+      "test.ts": `
+        const myVar1: MyInterface1;
+        const myVar2: MyInterface2;
+        interface MyInterface1 {}
+        interface MyInterface2 {}
+      `,
+    });
 
-  function createMockNode(): jest.Mocked<Node> {
-    return {
-      getParent: jest.fn(),
-      getText: jest.fn(),
-      getStartLineNumber: jest.fn(),
-      getKind: jest.fn(), // Add getKind method
-    } as unknown as jest.Mocked<Node>;
-  }
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
-  function createMockInterfaceDeclarationNode(
-    name: string,
-    line: number
-  ): jest.Mocked<Node> & { getName: () => string } {
-    return {
-      ...createMockNode(),
-      getName: jest.fn().mockReturnValue(name),
-      getStartLineNumber: jest.fn().mockReturnValue(line),
-      getKind: jest.fn().mockReturnValue(SyntaxKind.InterfaceDeclaration),
-    } as unknown as jest.Mocked<Node> & { getName: () => string };
-  }
+    const findings = detector.run(sourceFile);
 
-  function createMockIdentifierNode(
-    name: string,
-    line: number
-  ): jest.Mocked<Node> {
-    const mockIdentifierNode = createMockNode();
-    mockIdentifierNode.getText.mockReturnValue(name);
-    mockIdentifierNode.getStartLineNumber.mockReturnValue(line);
-    mockIdentifierNode.getKind.mockReturnValue(SyntaxKind.Identifier);
-    mockIdentifierNode.getParent.mockReturnValue({
-      ...createMockNode(),
-      getKind: jest.fn().mockReturnValue(SyntaxKind.TypeReference),
-    } as unknown as Node);
-    return mockIdentifierNode;
-  }
+    expect(findings).toHaveLength(2);
+    expect(findings[0].description).toBe(
+      "Interface 'MyInterface1' is used before it is defined."
+    );
+    expect(findings[1].description).toBe(
+      "Interface 'MyInterface2' is used before it is defined."
+    );
+  });
+
+  it("should not report multiple interfaces used after they are defined", () => {
+    mockFs({
+      "test.ts": `
+        interface MyInterface1 {}
+        interface MyInterface2 {}
+        const myVar1: MyInterface1;
+        const myVar2: MyInterface2;
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
+
+    const findings = detector.run(sourceFile);
+
+    expect(findings).toHaveLength(0);
+  });
+
+  it("should detect interfaces used before they are defined in nested scopes", () => {
+    mockFs({
+      "test.ts": `
+        function outer() {
+          const myVar: MyInterface;
+          interface MyInterface {}
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
+
+    const findings = detector.run(sourceFile);
+
+    expect(findings).toHaveLength(1);
+    expect(findings[0].description).toBe(
+      "Interface 'MyInterface' is used before it is defined."
+    );
+  });
+
+  it("should not report interfaces used after they are defined in nested scopes", () => {
+    mockFs({
+      "test.ts": `
+        function outer() {
+          interface MyInterface {}
+          const myVar: MyInterface;
+        }
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
+
+    const findings = detector.run(sourceFile);
+
+    expect(findings).toHaveLength(0);
+  });
 });
