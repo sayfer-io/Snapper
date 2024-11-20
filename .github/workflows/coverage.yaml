@@ -40,7 +40,8 @@ jobs:
   upload:
     name: Upload Coverage
     runs-on: ubuntu-latest
-    needs: test
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       # Step 1: Download coverage report artifact
       - name: Download coverage report

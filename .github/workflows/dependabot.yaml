@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  dependabot:
+  build:
     runs-on: ubuntu-latest
 
     steps:
