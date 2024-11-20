@@ -1,4 +1,4 @@
-name: Run Tests and Upload Coverage
+name: Unit Test and Coverage
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
 
 jobs:
   build:
-    name: Build the Project
     runs-on: ubuntu-latest
+
     steps:
       # Step 1: Check out the code
       - name: Checkout code
@@ -38,10 +38,9 @@ jobs:
           path: coverage
 
   upload:
-    name: Upload Coverage
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
     steps:
       # Step 1: Download coverage report artifact
       - name: Download coverage report
