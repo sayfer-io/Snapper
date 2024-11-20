@@ -1,3 +1,13 @@
+/**
+ * Generates an HTML report from the given findings.
+ *
+ * @param {any[]} findings - An array of findings to include in the report. Each finding should have the following properties:
+ *   - type: The type of the finding.
+ *   - description: A description of the finding.
+ *   - position: An object containing the file path and line number of the finding.
+ *   - riskRating: The risk rating of the finding.
+ * @returns {string} - The generated HTML report as a string.
+ */
 export function generateHtmlReport(findings: any[]): string {
   const tableRows = findings
     .map(
