@@ -49,7 +49,6 @@ class BroadPermissionsDetector extends DetectorBase {
 
   /**
    * The constructor initializes the detector with a name and risk rating.
-   * @constructor
    */
   constructor() {
     super("BroadPermissions", RiskRating.High);

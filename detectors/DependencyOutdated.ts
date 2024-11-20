@@ -31,7 +31,6 @@ class DependencyOutdatedDetector extends DetectorBase {
   /**
    * Constructor for the DependencyOutdatedDetector.
    * Initializes the detector with a name and assigns a medium-risk rating.
-   * @constructor
    */
   constructor() {
     super("DependencyOutdated", RiskRating.Medium);

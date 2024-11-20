@@ -16,7 +16,6 @@ class DependencyVersioningDetector extends DetectorBase {
   /**
    * Constructor for the DependencyVersioningDetector.
    * Initializes the detector with a name and assigns a medium-risk rating.
-   * @constructor
    */
   constructor() {
     super("DependencyVersioning", RiskRating.Medium);

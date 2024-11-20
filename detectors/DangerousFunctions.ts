@@ -27,7 +27,6 @@ class DangerousFunctionsDetector extends DetectorBase {
   /**
    * Constructor for the DangerousFunctionsDetector.
    * Initializes the detector with a name and assigns a high-risk rating.
-   * @constructor
    */
   constructor() {
     super("DangerousFunctions", RiskRating.High);

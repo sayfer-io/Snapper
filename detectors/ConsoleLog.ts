@@ -18,7 +18,6 @@ class ConsoleLogDetector extends DetectorBase {
   /**
    * Constructor for the ConsoleLogDetector.
    * Initializes the detector with a name and assigns a low-risk rating.
-   * @constructor
    */
   constructor() {
     super("ConsoleLog", RiskRating.Low);
