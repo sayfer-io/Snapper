@@ -1,5 +1,7 @@
 # Snapper 🐠
 
+![Release](https://github.com/sayfer-io/Snapper/actions/workflows/release.yml/badge.svg)
+
 Snapper aims to improve the overall security and reliability of Metamask Snaps by identifying vulnerabilities, potential issues, and ensuring best coding practices.
 
 ## Getting Started
