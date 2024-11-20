@@ -1,6 +1,11 @@
 # Snapper 🐠
 
 ![Release](https://github.com/sayfer-io/Snapper/actions/workflows/release.yml/badge.svg)
+![Deploy Documentation](https://github.com/sayfer-io/Snapper/actions/workflows/deploy-docs.yml/badge.svg)
+![Node.js Version](https://img.shields.io/badge/node.js-lts-brightgreen)
+![TypeScript](https://img.shields.io/badge/types-TypeScript-blue)
+![License](https://img.shields.io/github/license/sayfer-io/Snapper)
+![Last Commit](https://img.shields.io/github/last-commit/sayfer-io/Snapper)
 
 Snapper aims to improve the overall security and reliability of Metamask Snaps by identifying vulnerabilities, potential issues, and ensuring best coding practices.
 
