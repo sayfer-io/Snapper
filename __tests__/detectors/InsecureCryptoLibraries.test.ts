@@ -1,3 +1,4 @@
+import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
 import { Finding } from "../../types";
@@ -10,14 +11,21 @@ describe("InsecureCryptoLibrariesDetector", () => {
 
   beforeEach(() => {
     project = new Project();
-    sourceFile = project.createSourceFile("test.ts", "", { overwrite: true });
     detector = new InsecureCryptoLibrariesDetector();
   });
 
+  afterEach(() => {
+    mockFs.restore();
+  });
+
   it("should detect non-native cryptography libraries", () => {
-    sourceFile.addImportDeclaration({
-      moduleSpecifier: "crypto-js",
+    mockFs({
+      "test.ts": `
+        import "crypto-js";
+      `,
     });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -28,9 +36,13 @@ describe("InsecureCryptoLibrariesDetector", () => {
   });
 
   it("should not flag native or unrelated libraries", () => {
-    sourceFile.addImportDeclaration({
-      moduleSpecifier: "fs",
+    mockFs({
+      "test.ts": `
+        import "fs";
+      `,
     });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -38,12 +50,14 @@ describe("InsecureCryptoLibrariesDetector", () => {
   });
 
   it("should detect multiple non-native cryptography libraries", () => {
-    sourceFile.addImportDeclaration({
-      moduleSpecifier: "crypto-js",
+    mockFs({
+      "test.ts": `
+        import "crypto-js";
+        import "elliptic";
+      `,
     });
-    sourceFile.addImportDeclaration({
-      moduleSpecifier: "elliptic",
-    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
@@ -57,16 +71,28 @@ describe("InsecureCryptoLibrariesDetector", () => {
   });
 
   it("should handle files with no imports gracefully", () => {
+    mockFs({
+      "test.ts": `
+        // No imports here
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
+
     const findings: Finding[] = detector.run(sourceFile);
 
     expect(findings.length).toBe(0);
   });
 
   it("should not flag comments or strings containing library names", () => {
-    sourceFile.addStatements([
-      `// This is a comment mentioning crypto-js`,
-      `const lib = "crypto-js";`,
-    ]);
+    mockFs({
+      "test.ts": `
+        // This is a comment mentioning crypto-js
+        const lib = "crypto-js";
+      `,
+    });
+
+    sourceFile = project.addSourceFileAtPath("test.ts");
 
     const findings: Finding[] = detector.run(sourceFile);
 
