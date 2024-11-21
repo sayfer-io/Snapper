@@ -12,7 +12,8 @@
     "test:coverage": "jest --coverage",
     "start": "npx ts-node main.ts",
     "postinstall": "node ./scripts/check-dependencies.js",
-    "docs": "npx typedoc --options typedoc.json",
+    "docs": "npm run typedoc",
+    "typedoc": "npx typedoc --options typedoc.json",
     "build": "tsc"
   },
   "keywords": [],
