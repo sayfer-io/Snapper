@@ -3,7 +3,7 @@ name: Deploy Docusaurus Documentation
 on:
   push:
     branches:
-      - publish-github-pages
+      - main
 
 jobs:
   build-and-deploy:
@@ -57,13 +57,13 @@ jobs:
           module.exports = {
             title: 'Snapper',
             tagline: 'Snapper Documentation',
-            url: 'https://asifqatar.github.io',
+            url: 'https://sayfer-io.github.io',
             baseUrl: '/Snapper/',
             trailingSlash: false,
             onBrokenLinks: 'warn',
             onBrokenMarkdownLinks: 'warn',
             favicon: 'https://avatars.githubusercontent.com/u/105142204?s=48&v=4',
-            organizationName: 'asifqatar',
+            organizationName: 'sayfer-io',
             projectName: 'Snapper',
             deploymentBranch: 'gh-pages',
             presets: [
