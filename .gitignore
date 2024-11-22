@@ -5,6 +5,7 @@ temp/
 result-*.json
 .DS_Store
 docs/
+*.html
 
 ### Node template
 # Logs

@@ -40,7 +40,7 @@ export function configureYargs() {
         description: "Specify log file",
       },
       htmlReport: {
-        alias: "h",
+        alias: "hr",
         type: "boolean",
         description: "Generate HTML report",
         default: false,
