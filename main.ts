@@ -9,28 +9,89 @@ import { generateHtmlReport } from "./utils/htmlReportUtils";
 import { generateTimestampFileName } from "./utils/fileUtils";
 
 /**
+ * Groups findings by type for better organization.
+ *
+ * @param {Finding[]} findings - Array of findings.
+ * @returns {Record<string, Finding[]>} - Findings grouped by type.
+ */
+function groupFindingsByType(findings: Finding[]): Record<string, Finding[]> {
+  return findings.reduce((acc, finding) => {
+    const { type } = finding;
+    if (!acc[type]) {
+      acc[type] = [];
+    }
+    acc[type].push(finding);
+    return acc;
+  }, {} as Record<string, Finding[]>);
+}
+
+/**
+ * Saves findings to a JSON file.
+ *
+ * @param {string} fileName - Name of the output file.
+ * @param {Record<string, Finding[]>} findings - Findings grouped by type.
+ * @returns {Promise<void>} - A promise that resolves when the file is saved.
+ */
+async function saveFindingsAsJson(
+  fileName: string,
+  findings: Record<string, Finding[]>
+): Promise<void> {
+  const sortedFindings = Object.keys(findings)
+    .sort((a, b) => a.localeCompare(b))
+    .reduce((acc, type) => {
+      acc[type] = findings[type];
+      return acc;
+    }, {} as Record<string, Finding[]>);
+
+  try {
+    await fs.writeFile(fileName, JSON.stringify(sortedFindings, null, 2));
+    logger.info(`Results saved to ${fileName}`);
+  } catch (error) {
+    logger.error(
+      `Failed to save JSON file: ${
+        error instanceof Error ? error.message : error
+      }`
+    );
+  }
+}
+
+/**
+ * Generates and saves an HTML report.
+ *
+ * @param {Finding[]} findings - Array of findings sorted by type.
+ * @returns {Promise<void>} - A promise that resolves when the file is saved.
+ */
+async function generateAndSaveHtmlReport(findings: Finding[]): Promise<void> {
+  const htmlFileName = generateTimestampFileName("report", "html");
+  const htmlContent = generateHtmlReport(findings);
+
+  try {
+    await fs.writeFile(htmlFileName, htmlContent);
+    logger.info(`HTML report saved to ${htmlFileName}`);
+  } catch (error) {
+    logger.error(
+      `Failed to save HTML report: ${
+        error instanceof Error ? error.message : error
+      }`
+    );
+  }
+}
+
+/**
  * Main function to process TypeScript files based on specified detector(s).
  *
  * @returns {Promise<void>} - A promise that resolves when the processing is complete.
  */
 async function main(): Promise<void> {
   const argv = configureYargs();
-  if (argv.verbose) {
-    enableLogVerbosity(argv.verbose);
-  }
-  if (argv.logFile) {
-    enableLogFile(argv.logFile);
-  }
+
+  // Enable logging configurations
+  if (argv.verbose) enableLogVerbosity(argv.verbose);
+  if (argv.logFile) enableLogFile(argv.logFile);
 
   try {
-    const projectPath = argv.path;
-    const detectors = argv.detectors;
-
-    if (!projectPath) {
-      throw new Error(
-        "Project path must be provided as a command line argument."
-      );
-    }
+    const projectPath = argv.path; // Directly access `path` from argv
+    const detectors = argv.detectors?.split(",");
 
     logger.info(
       `Starting processing with path: ${projectPath} and detectors: ${
@@ -38,58 +99,32 @@ async function main(): Promise<void> {
       }`
     );
 
-    const allFindings = await processFiles(projectPath, detectors?.split(","));
-    // Check if there are any findings
-    if (allFindings.length > 0) {
-      // Determine the output file name
-      const resultFileName =
-        argv.output || generateTimestampFileName("result", "json");
+    const findings = await processFiles(projectPath, detectors);
 
-      // Group findings by type
-      const groupedFindings = allFindings.reduce((acc, finding) => {
-        const { type } = finding;
-        if (!acc[type]) {
-          acc[type] = [];
-        }
-        acc[type].push(finding);
-        return acc;
-      }, {} as Record<string, typeof allFindings>);
-
-      // Save findings to the output file
-      const sortedGroupedFindings = Object.keys(groupedFindings)
-        .sort((a, b) => a.localeCompare(b))
-        .reduce((acc, type) => {
-          acc[type] = groupedFindings[type];
-          return acc;
-        }, {} as Record<string, typeof allFindings>);
-
-      // Variable holding all findings sorted by type
-      const allFindingsSortedByType: Finding[] = Object.values(
-        sortedGroupedFindings
-      ).flat();
-
-      await fs.writeFile(
-        resultFileName,
-        JSON.stringify(sortedGroupedFindings, null, 2)
-      );
-      logger.info(`Results saved to ${resultFileName}`);
-
-      // Generate HTML report if specified
-      if (argv.htmlReport) {
-        const htmlFileName = generateTimestampFileName("report", "html");
-        const htmlContent = generateHtmlReport(allFindingsSortedByType);
-        await fs.writeFile(htmlFileName, htmlContent);
-        logger.info(`HTML report saved to ${htmlFileName}`);
-      }
-    } else {
+    if (findings.length === 0) {
       logger.info("No findings to report.");
+      return;
+    }
+
+    // Process findings
+    const groupedFindings = groupFindingsByType(findings);
+    const allFindingsSortedByType = Object.values(groupedFindings).flat();
+
+    // Save findings to JSON
+    const jsonFileName =
+      argv.output || generateTimestampFileName("result", "json");
+    await saveFindingsAsJson(jsonFileName, groupedFindings);
+
+    // Optionally generate HTML report
+    if (argv.htmlReport) {
+      await generateAndSaveHtmlReport(allFindingsSortedByType);
     }
   } catch (error) {
-    if (error instanceof Error) {
-      logger.error(error.message);
-    } else {
-      logger.error("An unknown error occurred");
-    }
+    logger.error(
+      `Processing failed: ${
+        error instanceof Error ? error.message : "An unknown error occurred"
+      }`
+    );
   }
 }
 
