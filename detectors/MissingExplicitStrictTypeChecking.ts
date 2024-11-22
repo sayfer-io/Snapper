@@ -1,4 +1,5 @@
-import * as fs from "fs";
+import * as fs from "fs/promises";
+import stripJsonComments from "strip-json-comments";
 import { SourceFile } from "ts-morph";
 
 import { Finding } from "../types";
@@ -26,11 +27,24 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
   }
 
   /**
+   * Attempts to safely parse JSON content.
+   * @param {string} content - The JSON content to parse.
+   * @returns {object | null} - Parsed JSON object or null if parsing fails.
+   */
+  private safeParseJson(content: string): object | null {
+    try {
+      return JSON.parse(content);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  /**
    * Runs the detector on the given source file.
    * @param {SourceFile} sourceFile - The source file to analyze.
-   * @returns {Finding[]} - Array of findings with details about the detected issues.
+   * @returns {Promise<Finding[]>} - Array of findings with details about the detected issues.
    */
-  public run(sourceFile: SourceFile): Finding[] {
+  public async run(sourceFile: SourceFile): Promise<Finding[]> {
     const filePath = sourceFile.getFilePath();
 
     // Ensure the file is a tsconfig.json file
@@ -38,9 +52,22 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
       return [];
     }
 
-    // Read and parse the tsconfig.json file
-    const tsconfig = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-    const compilerOptions = tsconfig.compilerOptions || {};
+    // Read the tsconfig.json file
+    const fileContent = await fs.readFile(filePath, "utf-8");
+
+    // Clean the file content with `strip-json-comments`
+    const cleanedContent = stripJsonComments(fileContent).replace(
+      /,(\s*[}\]])/g,
+      "$1"
+    );
+
+    // Safely parse the cleaned JSON
+    const tsconfig = this.safeParseJson(cleanedContent);
+    if (!tsconfig || typeof tsconfig !== "object") {
+      throw new Error("Malformed JSON content");
+    }
+
+    const compilerOptions = (tsconfig as any).compilerOptions || {};
 
     // Initialize an array to track missing strict type-checking options
     const missingOptions: string[] = [];
