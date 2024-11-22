@@ -1,0 +1,23 @@
+name: "Feature Request"
+description: "Request a new feature or suggest an improvement"
+title: "[Feature]: "
+labels: enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Feature Request
+        Provide a clear and concise description of the feature or improvement.
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Motivation and Context
+      description: Why is this feature important, and what problem does it solve?
+      placeholder: "Explain why this feature would be useful."
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Proposed Solution
+      description: Describe the proposed implementation or approach.
