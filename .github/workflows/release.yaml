@@ -18,7 +18,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22.3.0"
+          node-version: "22.x"
           cache: "npm"
 
       # Step 3: Install dependencies
@@ -31,7 +31,7 @@ jobs:
 
       # Step 5: Security check
       - name: Run npm audit
-        run: npm audit signatures
+        run: npm audit --audit-level=moderate
 
       # Step 6: Upload build artifact
       - name: Upload build artifact
@@ -56,7 +56,9 @@ jobs:
           name: build
           path: ./dist
 
+      # Step 3: Run semantic-release
       - name: Semantic Release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release --debug
