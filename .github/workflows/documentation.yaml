@@ -41,9 +41,19 @@ jobs:
             "scripts": {
               "start": "docusaurus start",
               "build": "docusaurus build"
+            },
+            "dependencies": {
+              "@docusaurus/core": "^2.4.0",
+              "@docusaurus/preset-classic": "^2.4.0",
+              "react": "^18.0.0",
+              "react-dom": "^18.0.0"
             }
           }
           EOL
+
+      - name: Install Docusaurus
+        working-directory: docusaurus-site
+        run: npm install
 
       - name: Create custom CSS
         working-directory: docusaurus-site/src/css
