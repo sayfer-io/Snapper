@@ -1,4 +1,4 @@
-import * as fs from "fs/promises";
+import * as fs from "fs";
 import stripJsonComments from "strip-json-comments";
 import { SourceFile } from "ts-morph";
 
@@ -42,9 +42,9 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
   /**
    * Runs the detector on the given source file.
    * @param {SourceFile} sourceFile - The source file to analyze.
-   * @returns {Promise<Finding[]>} - Array of findings with details about the detected issues.
+   * @returns {Finding[]} - Array of findings with details about the detected issues.
    */
-  public async run(sourceFile: SourceFile): Promise<Finding[]> {
+  public run(sourceFile: SourceFile): Finding[] {
     const filePath = sourceFile.getFilePath();
 
     // Ensure the file is a tsconfig.json file
@@ -53,7 +53,7 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
     }
 
     // Read the tsconfig.json file
-    const fileContent = await fs.readFile(filePath, "utf-8");
+    const fileContent = fs.readFileSync(filePath, "utf-8");
 
     // Clean the file content with `strip-json-comments`
     const cleanedContent = stripJsonComments(fileContent).replace(
@@ -86,7 +86,7 @@ class MissingExplicitStrictTypeCheckingDetector extends DetectorBase {
           ", "
         )}.`,
         filePath,
-        1 // Line number is not available for tsconfig.json files
+        1
       );
     }
 
