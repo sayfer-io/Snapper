@@ -1,6 +1,6 @@
 {
   "name": "@snapper-org/snapper",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Snapper aims to improve the overall security and reliability of Metamask Snaps by identifying vulnerabilities, potential issues, and ensuring best coding practices",
   "main": "main.js",
   "bin": {
