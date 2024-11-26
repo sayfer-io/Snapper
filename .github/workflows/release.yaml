@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: Run npm audit
-        run: npm audit signatures
+        run: npm audit
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
@@ -52,4 +52,4 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: npx semantic-release --repository-url https://github.com/sayfer-io/Snapper.git
+        run: npx semantic-release --dry-run
