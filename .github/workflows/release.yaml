@@ -56,7 +56,6 @@ jobs:
           name: build
           path: ./dist
 
-      # Step 3: Release using semantic-release
       - name: Semantic Release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
