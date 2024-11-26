@@ -11,9 +11,9 @@ permissions:
   pull-requests: write
 
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,6 +33,18 @@ jobs:
             echo "SonarCloud report file not found"
             exit 1
           fi
+      - name: Save SonarCloud URL
+        id: save-url
+        run: echo "SONAR_PROJECT_URL=${{ env.SONAR_PROJECT_URL }}" >> $GITHUB_ENV
+
+    outputs:
+      sonar-url: ${{ env.SONAR_PROJECT_URL }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
       - name: Update Check Run with SonarCloud URL
         uses: actions/github-script@v6
         if: always()
@@ -81,5 +93,6 @@ jobs:
             const fs = require('fs');
             fs.writeFileSync(process.env.GITHUB_STEP_SUMMARY, `## SonarCloud Analysis\n[View on SonarCloud](${process.env.SONAR_PROJECT_URL})`);
             core.setOutput('sonar-url', process.env.SONAR_PROJECT_URL);
+
     outputs:
       sonar-url: ${{ steps.create-custom-output.outputs.sonar-url }}
