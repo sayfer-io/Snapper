@@ -53,6 +53,36 @@ jobs:
         working-directory: docusaurus-site
         run: npm install
 
+      - name: Create Docusaurus Config File
+        working-directory: docusaurus-site
+        run: |
+          cat > docusaurus.config.js << 'EOL'
+          module.exports = {
+            title: 'Snapper Docs',
+            tagline: 'Documentation for Snapper',
+            url: 'https://sayfer-io.github.io',
+            baseUrl: '/Snapper/',
+            onBrokenLinks: 'throw',
+            onBrokenMarkdownLinks: 'warn',
+            favicon: 'img/favicon.ico',
+            organizationName: 'sayfer-io',
+            projectName: 'Snapper',
+            presets: [
+              [
+                '@docusaurus/preset-classic',
+                {
+                  docs: {
+                    sidebarPath: require.resolve('./sidebars.js'),
+                  },
+                  theme: {
+                    customCss: require.resolve('./src/css/custom.css'),
+                  },
+                },
+              ],
+            ],
+          };
+          EOL
+
       - name: Create custom CSS
         working-directory: docusaurus-site/src/css
         run: echo "/* Custom CSS */" > custom.css
