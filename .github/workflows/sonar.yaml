@@ -1,4 +1,5 @@
-name: Build
+name: Sonar
+
 on:
   push:
     branches: [main, develop, building-ci-cd]
@@ -16,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
