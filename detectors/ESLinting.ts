@@ -48,7 +48,7 @@ class ESLintingDetector extends DetectorBase {
         });
       })
       .catch((error) => {
-        console.error("Error linting file:", error);
+        this.logError("Error linting file:", error);
       });
 
     return this.getFindings();
