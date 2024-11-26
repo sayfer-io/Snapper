@@ -28,7 +28,6 @@ jobs:
       # Step 4: Run tests with coverage
       - name: Run tests
         run: npx jest --coverage
-        continue-on-error: true
 
       # Step 5: Save coverage report
       - name: Archive coverage report
