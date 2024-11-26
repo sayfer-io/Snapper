@@ -43,10 +43,8 @@ jobs:
               "build": "docusaurus build"
             },
             "dependencies": {
-              "@docusaurus/core": "^2.4.0",
-              "@docusaurus/preset-classic": "^2.4.0",
-              "react": "^18.0.0",
-              "react-dom": "^18.0.0"
+              "@docusaurus/core": "^3.6.3",
+              "@docusaurus/preset-classic": "^3.6.3"
             }
           }
           EOL
@@ -64,14 +62,13 @@ jobs:
 
       - name: Run Cleanup Script
         run: |
-          echo "
+          cat > cleanup.js << 'EOL'
           const fs = require('fs');
           const path = require('path');
-          // Script omitted for brevity
-          " > cleanup.js
+          EOL
           node cleanup.js
 
-      - name: Remove intro.md Page
+      - name: Remove Unnecessary Pages
         run: rm -f docusaurus-site/docs/intro.md
 
       - name: Build Docusaurus Documentation
