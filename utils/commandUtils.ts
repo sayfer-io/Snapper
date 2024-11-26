@@ -107,15 +107,13 @@ export function killAllChildProcesses(): void {
         logger.debug(`Child process ${child.pid} terminated.`);
       } catch (error) {
         if (error instanceof Error) {
-          console.error(
-            `Failed to kill process ${child.pid}: ${error.message}`
-          );
+          logger.error(`Failed to kill process ${child.pid}: ${error.message}`);
         } else {
-          console.error(`Failed to kill process ${child.pid}: Unknown error`);
+          logger.error(`Failed to kill process ${child.pid}: Unknown error`);
         }
       }
     } else {
-      console.warn("Attempted to kill a child process without a valid PID.");
+      logger.warn("Attempted to kill a child process without a valid PID.");
     }
   });
   childProcesses = [];
