@@ -67,9 +67,9 @@ class DependencyVersioningDetector extends DetectorBase {
       return packageJsonContent ? JSON.parse(packageJsonContent) : null;
     } catch (error) {
       if (error instanceof Error) {
-        console.error(`Error reading package.json file: ${error.message}`);
+        this.logError(`Error reading package.json file: ${error.message}`);
       } else {
-        console.error(`Unknown error reading package.json file: ${error}`);
+        this.logError(`Unknown error reading package.json file: ${error}`);
       }
       return null;
     }

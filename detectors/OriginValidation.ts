@@ -79,7 +79,7 @@ class OriginValidationDetector extends DetectorBase {
    * @param error - The error object.
    */
   private handleError(message: string, error: any): void {
-    console.error(message, error);
+    this.logError(message, error);
   }
 }
 
