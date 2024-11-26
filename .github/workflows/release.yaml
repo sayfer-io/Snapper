@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - npm-semantic-release
+      - main
 
 jobs:
   build:
