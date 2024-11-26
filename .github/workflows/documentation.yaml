@@ -64,22 +64,8 @@ jobs:
             baseUrl: '/Snapper/',
             onBrokenLinks: 'throw',
             onBrokenMarkdownLinks: 'warn',
-            favicon: 'img/favicon.ico',
             organizationName: 'sayfer-io',
-            projectName: 'Snapper',
-            presets: [
-              [
-                '@docusaurus/preset-classic',
-                {
-                  docs: {
-                    sidebarPath: require.resolve('./sidebars.js'),
-                  },
-                  theme: {
-                    customCss: require.resolve('./src/css/custom.css'),
-                  },
-                },
-              ],
-            ],
+            projectName: 'Snapper'
           };
           EOL
 
