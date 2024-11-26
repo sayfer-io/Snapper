@@ -3,7 +3,7 @@ name: Deploy Docusaurus Documentation
 on:
   push:
     branches:
-      - npm-semantic-release
+      - main
 
 jobs:
   build-and-deploy:
