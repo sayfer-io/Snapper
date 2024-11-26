@@ -32,19 +32,24 @@ class ESLintingDetector extends DetectorBase {
   /**
    * Analyzes the given TypeScript file for linting issues.
    * @param {SourceFile} file - The source file to analyze.
-   * @returns {Promise<Finding[]>} - A promise that resolves to an array of findings.
+   * @returns {Finding[]} - An array of findings.
    */
-  public async run(file: SourceFile): Promise<Finding[]> {
+  public run(file: SourceFile): Finding[] {
     const eslint = this.createESLintInstance(file);
     const filePath = file.getFilePath();
 
-    const results = await eslint.lintText(file.getFullText(), { filePath });
-
-    results.forEach((result) => {
-      result.messages.forEach((message) => {
-        this.addFinding(message.message, result.filePath, message.line);
+    eslint
+      .lintText(file.getFullText(), { filePath })
+      .then((results) => {
+        results.forEach((result) => {
+          result.messages.forEach((message) => {
+            this.addFinding(message.message, result.filePath, message.line);
+          });
+        });
+      })
+      .catch((error) => {
+        console.error("Error linting file:", error);
       });
-    });
 
     return this.getFindings();
   }
