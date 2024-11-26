@@ -18,7 +18,7 @@ describe("ESLintingDetector", () => {
 
   it("should detect ESLint issues in the TypeScript file", async () => {
     mockFs({
-      "/mock/project": {
+      "mock/project": {
         "test.ts": `
           const a: any = 5; // Rule: "@typescript-eslint/no-explicit-any"
           console.log(a);
@@ -26,7 +26,7 @@ describe("ESLintingDetector", () => {
       },
     });
 
-    const sourceFile = project.addSourceFileAtPath("/mock/project/test.ts");
+    const sourceFile = project.addSourceFileAtPath("mock/project/test.ts");
 
     const findings = await detector.run(sourceFile);
 

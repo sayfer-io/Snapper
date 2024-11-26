@@ -65,11 +65,14 @@ class ESLintingDetector extends DetectorBase {
   public async run(file: SourceFile): Promise<Finding[]> {
     const eslint = new ESLint({
       baseConfig: modernConfig,
+      cwd: __dirname,
       overrideConfigFile: true,
       ignore: false,
     });
 
-    const results = await eslint.lintText(file.getFullText());
+    const filePath = file.getFilePath();
+
+    const results = await eslint.lintText(file.getFullText(), { filePath });
 
     results.forEach((result) => {
       result.messages.forEach((message) => {
