@@ -2,7 +2,8 @@ name: Sonar
 
 on:
   push:
-    branches: [main, develop, building-ci-cd]
+    branches:
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 
