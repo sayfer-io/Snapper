@@ -10,11 +10,11 @@
                 "releaseRules": [
                     {
                         "type": "feat",
-                        "release": "minor"
+                        "release": "patch"
                     },
                     {
                         "type": "fix",
-                        "release": "minor"
+                        "release": "patch"
                     },
                     {
                         "type": "perf",
@@ -30,7 +30,7 @@
                     },
                     {
                         "type": "chore",
-                        "release": "minor"
+                        "release": "patch"
                     },
                     {
                         "type": "changelog",
