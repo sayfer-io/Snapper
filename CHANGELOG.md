@@ -1,3 +1,5 @@
+# [0.10.0](https://github.com/sayfer-io/Snapper/compare/v0.9.0...v0.10.0) (2024-12-04)
+
 # [0.9.0](https://github.com/sayfer-io/Snapper/compare/v0.8.0...v0.9.0) (2024-12-04)
 
 
