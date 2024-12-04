@@ -14,7 +14,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "start": "npx ts-node main.ts",
+    "start": "node ./dist/main.js",
     "postinstall": "node ./scripts/check-dependencies.js",
     "docs": "npm run typedoc",
     "typedoc": "npx typedoc --options typedoc.json",
