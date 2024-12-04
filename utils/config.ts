@@ -23,6 +23,11 @@ export function configureYargs() {
         description:
           "Specify which detector to run, specify multiple detectors with a comma",
       },
+      ignoreDetectors: {
+        type: "string",
+        description:
+          "Specify which detector to ignore, specify multiple detectors with a comma",
+      },
       verbose: {
         alias: "v",
         type: "boolean",
@@ -40,10 +45,14 @@ export function configureYargs() {
         description: "Specify log file",
       },
       htmlReport: {
-        alias: "hr",
         type: "boolean",
         description: "Generate HTML report",
         default: false,
+      },
+      help: {
+        alias: "h",
+        type: "boolean",
+        description: "Show help",
       },
     })
     .fail((msg, err, yargs) => {
@@ -54,9 +63,11 @@ export function configureYargs() {
       console.log(yargs.help());
       process.exit(1);
     })
-    .help().argv as unknown as {
+    .help()
+    .alias("help", "h").argv as unknown as {
     path: string;
     detectors?: string;
+    ignoreDetectors?: string;
     verbose: boolean;
     output?: string;
     logFile?: string;

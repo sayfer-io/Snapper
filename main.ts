@@ -90,16 +90,23 @@ async function main(): Promise<void> {
   if (argv.logFile) enableLogFile(argv.logFile);
 
   try {
-    const projectPath = argv.path; // Directly access `path` from argv
-    const detectors = argv.detectors?.split(",");
+    const projectPath = argv.path;
+    const detectors = argv.detectors?.split(",") ?? [];
+    const ignoreDetectors = argv.ignoreDetectors?.split(",") ?? [];
+    if (detectors.some((d) => ignoreDetectors.includes(d)))
+      throw new Error("Overlap between 'detectors' and 'ignoreDetectors'");
+
+    const filteredDetectors = detectors.filter(
+      (d) => !ignoreDetectors.includes(d)
+    );
 
     logger.info(
       `Starting processing with path: ${projectPath} and detectors: ${
-        detectors || "all detectors"
+        filteredDetectors || "all detectors"
       }`
     );
 
-    const findings = await processFiles(projectPath, detectors);
+    const findings = await processFiles(projectPath, filteredDetectors);
 
     if (findings.length === 0) {
       logger.info("No findings to report.");
