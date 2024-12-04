@@ -1,4 +1,4 @@
-import { dirname } from "path";
+import { join, dirname } from "path";
 import { SourceFile } from "ts-morph";
 
 import { Finding } from "../types";
@@ -8,6 +8,7 @@ import {
   startAndConnectToSnap,
   snapBuildExists,
 } from "../utils/dynamicSnapHelpers";
+import { existsSync } from "fs";
 
 const DOMAIN = "https://theansweris42.com";
 const METHOD = "hello";
@@ -60,6 +61,12 @@ class OriginValidationDetector extends DetectorBase {
     const filePath = sourceFile.getFilePath();
 
     const sourceFileDir = dirname(filePath);
+
+    // Check if this is a snap folder
+    if (!existsSync(join(sourceFileDir, "snap.config.js"))) {
+      this.logInfo("Not a snap project");
+      return this.getFindings();
+    }
 
     // Check if snap is built
     if (!snapBuildExists(sourceFileDir)) {
