@@ -28,7 +28,7 @@ const detectors = [
   new Detectors.DependencyOutdatedDetector(),
   new Detectors.DependencyVersioningDetector(),
   new Detectors.LackOfExceptionHandlingDetector(),
-  // new Detectors.OriginValidationDetector(),
+  new Detectors.OriginValidationDetector(),
   new Detectors.PotentialOutdatedEngineDetector(),
   new Detectors.MissingExplicitStrictTypeCheckingDetector(),
   new Detectors.BroadPermissionsDetector(),

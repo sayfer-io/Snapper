@@ -4,7 +4,10 @@ import { SourceFile } from "ts-morph";
 import { Finding } from "../types";
 import { RiskRating } from "../structures";
 import { DetectorBase } from "./DetectorBase";
-import { buildSnap, startAndConnectToSnap } from "../utils/dynamicSnapHelpers";
+import {
+  startAndConnectToSnap,
+  snapBuildExists,
+} from "../utils/dynamicSnapHelpers";
 
 const DOMAIN = "https://theansweris42.com";
 const METHOD = "hello";
@@ -58,8 +61,13 @@ class OriginValidationDetector extends DetectorBase {
 
     const sourceFileDir = dirname(filePath);
 
+    // Check if snap is built
+    if (!snapBuildExists(sourceFileDir)) {
+      this.logError("Snap not built");
+      return this.getFindings();
+    }
+
     try {
-      await buildSnap(sourceFileDir);
       const { request, port } = await startAndConnectToSnap(sourceFileDir);
 
       const isBlocked = await this.isDomainBlocked(request, port);

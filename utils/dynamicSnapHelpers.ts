@@ -1,3 +1,4 @@
+import * as path from "path";
 import { existsSync, cpSync } from "fs";
 import { installSnap } from "@metamask/snaps-simulation";
 
@@ -119,6 +120,17 @@ export function installDependencies(
  */
 export async function buildSnap(projectFolderPath: string): Promise<void> {
   runCommand(`npx mm-snap build`, projectFolderPath);
+}
+
+/**
+ * Checks if the build directory exists within the specified project folder path.
+ *
+ * @param {string} projectFolderPath - The path to the project folder.
+ * @returns {boolean} - Returns true if the build directory exists, otherwise false.
+ */
+export function snapBuildExists(projectFolderPath: string): boolean {
+  const buildPath = path.join(projectFolderPath, "build");
+  return existsSync(buildPath);
 }
 
 /**
