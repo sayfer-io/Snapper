@@ -88,3 +88,7 @@ To prepare an example test, follow these steps:
    ```bash
    npm run start -- --path ./starknet-snap
    ```
+
+## Contributing
+
+We welcome contributions to Snapper! If you would like to contribute, please follow the guidelines outlined in our [CONTRIBUTING.md](CONTRIBUTING.md) file.
