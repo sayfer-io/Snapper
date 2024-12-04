@@ -61,8 +61,8 @@
     "mock-fs": "^5.4.1",
     "npm-force-resolutions": "^0.0.10",
     "ts-jest": "^29.2.5",
-    "typedoc": "^0.26.11",
-    "typedoc-plugin-markdown": "^4.2.10"
+    "typedoc": "^0.27.3",
+    "typedoc-plugin-markdown": "^4.3.1"
   },
   "engines": {
     "node": ">=18.18.0",
