@@ -14,7 +14,7 @@
                     },
                     {
                         "type": "fix",
-                        "release": "patch"
+                        "release": "minor"
                     },
                     {
                         "type": "perf",
@@ -30,7 +30,7 @@
                     },
                     {
                         "type": "chore",
-                        "release": false
+                        "release": "minor"
                     },
                     {
                         "type": "refactor",
@@ -46,7 +46,7 @@
                     },
                     {
                         "type": "*",
-                        "release": "patch"
+                        "release": "minor"
                     }
                 ],
                 "parserOpts": {
