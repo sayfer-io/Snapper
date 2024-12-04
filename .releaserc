@@ -2,7 +2,6 @@
     "branches": [
         "main"
     ],
-    "tagFormat": "1.0.x",
     "plugins": [
         [
             "@semantic-release/commit-analyzer",
@@ -51,7 +50,7 @@
                     },
                     {
                         "type": "*",
-                        "release": "minor"
+                        "release": "patch"
                     }
                 ],
                 "parserOpts": {
@@ -99,7 +98,7 @@
                     "package-lock.json",
                     "CHANGELOG.md"
                 ],
-                "message": "changelog(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+                "message": "changelog(release): ${nextRelease.version}\n\n${nextRelease.notes}"
             }
         ]
     ]
