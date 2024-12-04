@@ -1,6 +1,6 @@
 # Snapper 🐠
 
-![Version](https://img.shields.io/npm/v/@snapper-org/snapper)
+![Version](https://img.shields.io/npm/v/@sayfer_io/snapper)
 ![Release](https://github.com/sayfer-io/Snapper/actions/workflows/release.yaml/badge.svg)
 ![Documentation](https://github.com/sayfer-io/Snapper/actions/workflows/documentation.yaml/badge.svg)
 ![Node.js Version](https://img.shields.io/badge/Node.js-v22.3.0-brightgreen)
