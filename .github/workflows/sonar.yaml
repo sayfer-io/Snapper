@@ -13,7 +13,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  test:
+  sonarcloud:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,22 +22,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Java
-        uses: actions/setup-java@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          distribution: "zulu"
-          java-version: "11"
-
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          node-version: 16
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Run tests with coverage
+        run: jest --coverage --coverageReporters=lcov
 
       - name: Run SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
