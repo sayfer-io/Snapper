@@ -13,7 +13,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  sonarcloud:
+  test:
     runs-on: ubuntu-latest
 
     steps:
