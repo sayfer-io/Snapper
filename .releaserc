@@ -88,7 +88,7 @@
                         "label": "Changelog"
                     }
                 ],
-                "successComment": "🎉 This ${issue.pull_request ? 'pull request is included' : 'issue is fixed'} in version ${nextRelease.version}! You can install it with `npm install @your/package@${nextRelease.version}`."
+                "successComment": "🎉 This ${issue.pull_request ? 'pull request is included' : 'issue is fixed'} in version ${nextRelease.version}! You can install it with `npm install @sayfer_io/snapper@${nextRelease.version}`."
             }
         ],
         [
