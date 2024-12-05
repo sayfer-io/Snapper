@@ -11,20 +11,28 @@
         commit.notes.forEach((note) => {
           note.title = "BREAKING CHANGES";
         });
-        if (commit.type === "feat") {
-          commit.type = "Features";
-        } else if (commit.type === "fix") {
-          commit.type = "Bug Fixes";
-        } else if (commit.type === "chore") {
-          commit.type = "Chores";
-        } else if (commit.type === "refactor") {
-          commit.type = "Refactors";
-        } else if (commit.type === "test") {
-          commit.type = "Tests";
-        } else if (commit.type === "ci") {
-          commit.type = "CI/CD";
-        } else if (!commit.type || commit.type === "*") {
-          commit.type = "Miscellaneous";
+        switch (commit.type) {
+          case "feat":
+            commit.type = "Features";
+            break;
+          case "fix":
+            commit.type = "Bug Fixes";
+            break;
+          case "chore":
+            commit.type = "Chores";
+            break;
+          case "refactor":
+            commit.type = "Refactors";
+            break;
+          case "test":
+            commit.type = "Tests";
+            break;
+          case "ci":
+            commit.type = "CI/CD";
+            break;
+          default:
+            commit.type = "Miscellaneous";
+            break;
         }
         if (commit.scope === "*") {
           commit.scope = "";
@@ -47,6 +55,9 @@
         }
         return commit;
       },
+      groupBy: "type",
+      commitGroupsSort: "title",
+      commitsSort: ["scope", "subject"],
     },
   };
 })();
