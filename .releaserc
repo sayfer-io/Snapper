@@ -3,13 +3,6 @@
         "main"
     ],
     "plugins": [
-        "./scripts/custom-release-notes-generator.js",
-        [
-            "@semantic-release/changelog",
-            {
-                "changelogFile": "CHANGELOG.md"
-            }
-        ],
         [
             "@semantic-release/commit-analyzer",
             {
@@ -62,6 +55,13 @@
                         "BREAKING CHANGES"
                     ]
                 }
+            }
+        ],
+        "./scripts/custom-release-notes-generator.js",
+        [
+            "@semantic-release/changelog",
+            {
+                "changelogFile": "CHANGELOG.md"
             }
         ],
         [
