@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 import { promises as fs } from "fs";
 
-import logger from "./utils/logger";
 import { Finding } from "./types";
-import { enableLogFile, enableLogVerbosity } from "./utils/logger";
+import logger, { enableLogFile, enableLogVerbosity } from "./utils/logger";
 import { configureYargs } from "./utils/config";
 import { processFiles } from "./processor";
 import { generateHtmlReport } from "./utils/htmlReportUtils";
@@ -103,7 +102,7 @@ async function main(): Promise<void> {
 
     logger.info(
       `Starting processing with path: ${projectPath} and detectors: ${
-        filteredDetectors || "all detectors"
+        filteredDetectors ?? "all detectors"
       }`
     );
 
@@ -120,7 +119,7 @@ async function main(): Promise<void> {
 
     // Save findings to JSON
     const jsonFileName =
-      argv.output || generateTimestampFileName("result", "json");
+      argv.output ?? generateTimestampFileName("result", "json");
     await saveFindingsAsJson(jsonFileName, groupedFindings);
 
     // Optionally generate HTML report
