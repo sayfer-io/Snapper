@@ -88,7 +88,7 @@ class FloatingPointPrecisionDetector extends DetectorBase {
    * @returns {boolean} - True if it contains floating-point literals or scientific notation, false otherwise.
    */
   private containsDecimalOrExponent(node: Node): boolean {
-    return /\d+\.\d+|e[\+\-]?\d+/i.test(node.getText()); // Regex test for decimals or scientific notation.
+    return /\d+\.\d+|e[+-]?\d+/i.test(node.getText()); // Regex test for decimals or scientific notation.
   }
 
   /**

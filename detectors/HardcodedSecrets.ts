@@ -9,7 +9,7 @@ const SECRET_PATTERNS: RegExp[] = [
   /^(?:[A-Za-z0-9+/]{4}){3,}(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$/, // Base64 strings
   /-----BEGIN (RSA|EC|DSA|OPENSSH) PRIVATE KEY-----/, // Private Key Begin
   /-----BEGIN CERTIFICATE-----/, // Certificate Begin
-  /\/\/[^\/\s:@]+:[^\/\s:@]+@/, // URL with credentials
+  /\/\/[^/\s:@]+:[^/\s:@]+@/, // URL with credentials
   /eyJ[A-Za-z0-9_-]+\.([A-Za-z0-9_-]+\.?){1,2}/, // JWT Token
 ];
 
