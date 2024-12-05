@@ -221,7 +221,7 @@ class DependencyOutdatedDetector extends DetectorBase {
           packageName: advisory.module_name,
           description: advisory.title,
           severity: this.mapSeverityToRiskRating(advisory.severity),
-          recommendation: advisory.recommendation || "No fix available",
+          recommendation: advisory.recommendation ?? "No fix available",
           affectedVersion: advisory.vulnerable_versions,
           link: advisory.references
             .split("\n")
@@ -243,7 +243,7 @@ class DependencyOutdatedDetector extends DetectorBase {
                 vulnerability.via
                   .filter((via: any) => typeof via === "object" && via.url)
                   .map((via: any) => via.url)
-                  .join(", ") ||
+                  .join(", ") ??
                 `https://www.npmjs.com/package/${vulnerability.name}`,
             });
           }
@@ -268,7 +268,7 @@ class DependencyOutdatedDetector extends DetectorBase {
         high: RiskRating.High,
         moderate: RiskRating.Medium,
         low: RiskRating.Low,
-      }[severity] || RiskRating.Informational
+      }[severity] ?? RiskRating.Informational
     );
   }
 
