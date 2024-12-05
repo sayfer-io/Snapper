@@ -40,13 +40,13 @@ class LeftoverTODOsDetector extends DetectorBase {
   }
 
   /**
-   * Checks if the comment contains a real "TODO" and not just the keyword in a string or non-TODO usage.
+   * Checks if the comment contains the keyword and not just the keyword in a string or non-TODO usage.
    * @param {CommentRange} comment - The comment range to check.
    * @returns {boolean} - True if the comment includes an actionable TODO, false otherwise.
    */
   private isRealTodoComment(comment: CommentRange): boolean {
     const commentText = comment.getText();
-    // Ensure "TODO" appears as a standalone word
+    // Ensure it appears as a standalone word
     return /\bTODO\b/i.test(commentText);
   }
 
