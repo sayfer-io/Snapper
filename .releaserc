@@ -4,7 +4,6 @@
     ],
     "plugins": [
         [
-            "./scripts/custom-release-notes-generator.js",
             "@semantic-release/commit-analyzer",
             {
                 "preset": "angular",
@@ -61,6 +60,10 @@
                     ]
                 }
             }
+        ],
+        [
+            "./scripts/custom-release-notes-generator.js",
+            {}
         ],
         [
             "@semantic-release/changelog",
