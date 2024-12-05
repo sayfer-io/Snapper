@@ -10,7 +10,7 @@
                 "releaseRules": [
                     {
                         "type": "feat",
-                        "release": "patch"
+                        "release": "minor"
                     },
                     {
                         "type": "fix",
@@ -22,19 +22,15 @@
                     },
                     {
                         "type": "docs",
-                        "release": false
+                        "release": "patch"
                     },
                     {
                         "type": "style",
-                        "release": false
+                        "release": "patch"
                     },
                     {
                         "type": "chore",
                         "release": "patch"
-                    },
-                    {
-                        "type": "changelog",
-                        "release": false
                     },
                     {
                         "type": "refactor",
@@ -42,11 +38,11 @@
                     },
                     {
                         "type": "test",
-                        "release": false
+                        "release": "patch"
                     },
                     {
                         "type": "ci",
-                        "release": false
+                        "release": "patch"
                     },
                     {
                         "type": "*",
@@ -101,7 +97,7 @@
                     "package-lock.json",
                     "CHANGELOG.md"
                 ],
-                "message": "changelog(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+                "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
             }
         ]
     ]
