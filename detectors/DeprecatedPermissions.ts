@@ -17,7 +17,7 @@ interface Manifest {
  */
 class DeprecatedPermissionsDetector extends DetectorBase {
   // List of deprecated permissions to check against.
-  private static DEPRECATED_PERMISSIONS: string[] = [
+  private static readonly DEPRECATED_PERMISSIONS: string[] = [
     "endowment:long-running", // Example of a deprecated permission.
     // Add more deprecated permissions here as needed.
   ];

@@ -9,7 +9,7 @@ import { DetectorBase } from "./DetectorBase";
  */
 class InsecureCryptoLibrariesDetector extends DetectorBase {
   // List of non-native cryptography libraries to detect
-  private static NON_NATIVE_CRYPTO_LIBRARIES = [
+  private static readonly NON_NATIVE_CRYPTO_LIBRARIES = [
     "crypto-js",
     "CryptoJS",
     "elliptic",
