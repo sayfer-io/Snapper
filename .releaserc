@@ -61,12 +61,15 @@
                 }
             }
         ],
-        "@semantic-release/release-notes-generator",
         [
             "@semantic-release/changelog",
             {
                 "changelogFile": "CHANGELOG.md"
             }
+        ],
+        [
+            "@semantic-release/release-notes-generator",
+            "./scripts/custom-release-notes-generator.js"
         ],
         [
             "@semantic-release/npm",
