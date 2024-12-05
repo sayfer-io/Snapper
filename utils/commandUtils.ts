@@ -23,7 +23,7 @@ export function runCommand(command: string, workingDir?: string): string {
       process.chdir(workingDir);
     }
     logger.debug(
-      `Running command: '${command}' in ${workingDir || originalCwd}`
+      `Running command: '${command}' in ${workingDir ?? originalCwd}`
     );
     output = execSync(command, {
       encoding: "utf-8",
