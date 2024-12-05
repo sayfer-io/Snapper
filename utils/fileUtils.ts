@@ -151,7 +151,7 @@ export function detectPackageManager(workingDir: string): string {
   if (packageJson.packageManager?.startsWith("pnpm")) return "pnpm";
 
   // Check for "workspace:*" in dependencies
-  for (const [dep, version] of Object.entries({
+  for (const version of Object.values({
     ...packageJson.dependencies,
     ...packageJson.devDependencies,
     ...packageJson.peerDependencies,
