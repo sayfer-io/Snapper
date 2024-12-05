@@ -4,6 +4,7 @@
     ],
     "plugins": [
         [
+            "./scripts/custom-release-notes-generator.js",
             "@semantic-release/commit-analyzer",
             {
                 "preset": "angular",
@@ -66,10 +67,6 @@
             {
                 "changelogFile": "CHANGELOG.md"
             }
-        ],
-        [
-            "@semantic-release/release-notes-generator",
-            "./scripts/custom-release-notes-generator.js"
         ],
         [
             "@semantic-release/npm",

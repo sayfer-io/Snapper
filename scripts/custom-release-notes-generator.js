@@ -1,4 +1,7 @@
+const releaseNotesGenerator = require("@semantic-release/release-notes-generator");
+
 module.exports = {
+  ...releaseNotesGenerator,
   writerOpts: {
     transform: (commit, context) => {
       const issues = [];
