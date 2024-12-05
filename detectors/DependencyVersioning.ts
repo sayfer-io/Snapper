@@ -59,9 +59,9 @@ class DependencyVersioningDetector extends DetectorBase {
    * If the file is empty or there's an error reading it, the method returns null.
    *
    * @param {string} filePath - The path of the package.json file.
-   * @returns {object|null} - The parsed content of the package.json file or null if the file is empty or unreadable.
+   * @returns {Record<string, any> | null} - The parsed content of the package.json file or null if the file is empty or unreadable.
    */
-  private readPackageJson(filePath: string): any | null {
+  private readPackageJson(filePath: string): Record<string, any> | null {
     try {
       const packageJsonContent = fs.readFileSync(filePath, "utf-8");
       return packageJsonContent ? JSON.parse(packageJsonContent) : null;
@@ -79,12 +79,12 @@ class DependencyVersioningDetector extends DetectorBase {
    * Extracts all dependencies from the package.json file for a given section.
    * It can extract either "dependencies" or "devDependencies" as specified by the section argument.
    *
-   * @param {object} packageJsonContent - The content of the package.json file.
+   * @param {Record<string, any>} packageJsonContent - The content of the package.json file.
    * @param {string} section - The section to extract (e.g., 'dependencies', 'devDependencies').
-   * @returns {object} - An object containing the extracted dependencies.
+   * @returns {Record<string, string>} - An object containing the extracted dependencies.
    */
   private extractDependencies(
-    packageJsonContent: any,
+    packageJsonContent: Record<string, any>,
     section: string
   ): Record<string, string> {
     return packageJsonContent[section] || {};
