@@ -18,7 +18,7 @@ class DangerousFunctionsDetector extends DetectorBase {
   /**
    * An array of dangerous function names that pose potential risks if used.
    */
-  private static DANGEROUS_FUNCTIONS = [
+  private static readonly DANGEROUS_FUNCTIONS = [
     "dangerouslySetInnerHTML",
     "eval",
     "signData",

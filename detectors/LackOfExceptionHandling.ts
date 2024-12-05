@@ -16,7 +16,7 @@ import { RiskRating } from "../structures";
  */
 class LackOfExceptionHandlingDetector extends DetectorBase {
   // List of important functions that require exception handling
-  private importantFunctions: string[] = [
+  private readonly importantFunctions: string[] = [
     "ethereum.request",
     "snap_manageAccounts",
     "snap_getBip32Entropy",

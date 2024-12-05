@@ -11,7 +11,7 @@ import { DetectorBase } from "./DetectorBase";
  */
 class DeprecatedFunctionsDetector extends DetectorBase {
   // List of deprecated function names to detect in the code
-  private static DEPRECATED_FUNCTIONS = ["atob", "btoa"];
+  private static readonly DEPRECATED_FUNCTIONS = ["atob", "btoa"];
 
   /**
    * Constructor for the DeprecatedFunctionsDetector.

@@ -12,7 +12,7 @@ import { DetectorBase } from "./DetectorBase";
  */
 class InsecureRandomnessDetector extends DetectorBase {
   // List of notable functions considered insecure
-  private static NOTABLE_FUNCTIONS: string[] = ["Math.random"];
+  private static readonly NOTABLE_FUNCTIONS: string[] = ["Math.random"];
 
   constructor() {
     super("InsecureRandomness", RiskRating.Medium);
