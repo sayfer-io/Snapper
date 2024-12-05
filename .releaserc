@@ -41,6 +41,10 @@
                         "release": "patch"
                     },
                     {
+                        "type": "changebot",
+                        "release": false
+                    },
+                    {
                         "type": "ci",
                         "release": "patch"
                     },
@@ -94,7 +98,7 @@
                     "package-lock.json",
                     "CHANGELOG.md"
                 ],
-                "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+                "message": "changebot(release): ${nextRelease.version}\n\n${nextRelease.notes}"
             }
         ]
     ]
