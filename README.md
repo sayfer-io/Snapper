@@ -71,9 +71,9 @@ To prepare an example test, follow these steps:
         --version          Show version number                           [boolean]
     -p, --path             Project path                        [string] [required]
     -d, --detectors        Specify which detector to run, specify multiple
-                            detectors with a comma                         [string]
+                            detectors with a comma                        [string]
         --ignoreDetectors  Specify which detector to ignore, specify multiple
-                            detectors with a comma                         [string]
+                            detectors with a comma                        [string]
     -v, --verbose          Enable verbose logging       [boolean] [default: false]
     -o, --output           Specify output file                            [string]
     -l, --logFile          Specify log file                               [string]
