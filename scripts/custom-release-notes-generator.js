@@ -7,7 +7,9 @@
     ...releaseNotesGenerator,
     writerOpts: {
       transform: (commit, context) => {
-        // const issues = [];
+        // Log the commit being processed for debugging purposes
+        console.log("Processing commit:", commit);
+
         commit.notes.forEach((note) => {
           note.title = "BREAKING CHANGES";
         });
@@ -34,6 +36,10 @@
             commit.type = "Miscellaneous";
             break;
         }
+
+        // Log the updated commit type for debugging
+        console.log("Updated commit type:", commit.type);
+
         if (commit.scope === "*") {
           commit.scope = "";
         }
@@ -41,17 +47,17 @@
           commit.shortHash = commit.hash.substring(0, 7);
         }
         if (typeof commit.subject === "string") {
+          console.log("Original commit subject:", commit.subject);
+
           const match = commit.subject.match(/#(\d+)/g);
-          //   if (match) {
-          //     match.forEach((issue) => {
-          //       issues.push(issue);
-          //     });
-          //   }
           commit.subject = commit.subject.replace(
             /#(\d+)/g,
             (_, issue) =>
               `[#${issue}](https://github.com/${context.owner}/${context.repository}/issues/${issue})`
           );
+
+          // Log the updated commit subject for debugging
+          console.log("Updated commit subject:", commit.subject);
         }
         return commit;
       },
