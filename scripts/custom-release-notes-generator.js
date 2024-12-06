@@ -7,7 +7,7 @@
     ...releaseNotesGenerator,
     writerOpts: {
       transform: (commit, context) => {
-        const issues = [];
+        // const issues = [];
         commit.notes.forEach((note) => {
           note.title = "BREAKING CHANGES";
         });
@@ -42,11 +42,11 @@
         }
         if (typeof commit.subject === "string") {
           const match = commit.subject.match(/#(\d+)/g);
-          if (match) {
-            match.forEach((issue) => {
-              issues.push(issue);
-            });
-          }
+          //   if (match) {
+          //     match.forEach((issue) => {
+          //       issues.push(issue);
+          //     });
+          //   }
           commit.subject = commit.subject.replace(
             /#(\d+)/g,
             (_, issue) =>
