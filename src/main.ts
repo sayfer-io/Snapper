@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import { promises as fs } from "fs";
 
-import { Finding } from "./src/types";
-import logger, { enableLogFile, enableLogVerbosity } from "./src/utils/logger";
-import { configureYargs } from "./src/utils/config";
-import { processFiles } from "./src/processor";
-import { generateHtmlReport } from "./src/utils/htmlReportUtils";
-import { generateTimestampFileName } from "./src/utils/fileUtils";
+import { Finding } from "./types";
+import logger, { enableLogFile, enableLogVerbosity } from "./utils/logger";
+import { configureYargs } from "./utils/config";
+import { processFiles } from "./processor";
+import { generateHtmlReport } from "./utils/htmlReportUtils";
+import { generateTimestampFileName } from "./utils/fileUtils";
 
 /**
  * Groups findings by type for better organization.
