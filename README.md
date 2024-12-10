@@ -66,16 +66,16 @@ This will show you the available options for **Snapper**. Here's an example outp
 > npx ts-node main.ts
 
 Options:
-    --version          Show version number                           [boolean]
+        --version          Show version number                           [boolean]
     -p, --path             Project path                        [string] [required]
     -d, --detectors        Specify which detector to run, specify multiple
                             detectors with a comma                        [string]
-    --ignoreDetectors  Specify which detector to ignore, specify multiple
+        --ignoreDetectors  Specify which detector to ignore, specify multiple
                             detectors with a comma                        [string]
     -v, --verbose          Enable verbose logging       [boolean] [default: false]
     -o, --output           Specify output file                            [string]
     -l, --logFile          Specify log file                               [string]
-    --htmlReport       Generate HTML report         [boolean] [default: false]
+        --htmlReport       Generate HTML report         [boolean] [default: false]
     -h, --help             Show help                                     [boolean]
 ```
 
