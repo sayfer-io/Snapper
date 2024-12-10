@@ -15,11 +15,11 @@
     "snapper": "./dist/main.js"
   },
   "files": [
-    "dist",
     "src",
+    "dist",
     "scripts",
-    "tsconfig.json",
     "package.json",
+    "tsconfig.json",
     "README.md",
     "CHANGELOG.md",
     "LICENSE"
