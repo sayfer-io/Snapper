@@ -10,7 +10,7 @@
       "*": ["types/*"]
     },
     "types": ["node", "jest"],
-    "typeRoots": ["node_modules/@types", "node_modules"],
+    "typeRoots": ["node_modules/@types"],
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
