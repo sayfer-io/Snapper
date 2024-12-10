@@ -102,17 +102,11 @@ async function main(): Promise<void> {
     if (detectors.some((d) => ignoreDetectors.includes(d)))
       throw new Error("Overlap between 'detectors' and 'ignoreDetectors'");
 
-    const filteredDetectors = detectors.filter(
-      (d) => !ignoreDetectors.includes(d)
+    const findings = await processFiles(
+      projectPath,
+      detectors,
+      ignoreDetectors
     );
-
-    logger.info(
-      `Starting processing with path: ${projectPath} and detectors: ${
-        filteredDetectors ?? "all detectors"
-      }`
-    );
-
-    const findings = await processFiles(projectPath, filteredDetectors);
 
     if (findings.length === 0) {
       logger.info("No findings to report.");

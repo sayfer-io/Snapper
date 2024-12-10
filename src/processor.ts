@@ -7,7 +7,7 @@ import { findTsConfig } from "./utils/fileUtils";
 import * as Detectors from "./detectors";
 
 // List of detector instances
-const detectors = [
+const detectorInstances = [
   new Detectors.ConsoleLogDetector(),
   new Detectors.DangerousFunctionsDetector(),
   new Detectors.DeprecatedFunctionsDetector(),
@@ -39,15 +39,17 @@ const detectors = [
 ];
 
 /**
- * Processes files in a TypeScript project to find issues based on specified detectors.
+ * Processes the files in the given project path using the specified detectors.
  *
  * @param {string} projectPath - The path to the TypeScript project.
- * @param {string[]} [detectorNames] - The list of detectors to run. If not provided, all detectors will be applied.
+ * @param {string[]} [detectorsToUse] - The list of detectors to run. If not provided, all detectors will be applied.
+ * @param {string[]} [detectorsToIgnore] - The list of detectors to ignore.
  * @returns {Promise<Finding[]>} - A promise that resolves to an array of findings.
  */
 export async function processFiles(
   projectPath: string,
-  detectorNames?: string[]
+  detectorsToUse: string[] = [],
+  detectorsToIgnore: string[] = []
 ): Promise<Finding[]> {
   const tsConfigPaths = await findTsConfig(projectPath);
   if (!tsConfigPaths.length) {
@@ -55,37 +57,19 @@ export async function processFiles(
     return [];
   }
 
-  const detectorsToRun = getDetectorsToRun(detectorNames);
-  if (!detectorsToRun.length) return [];
+  const detectorsToRun = getDetectorsToRun(detectorsToUse, detectorsToIgnore);
+  if (!detectorsToRun.length) {
+    logger.warn("No detectors to run.");
+    return [];
+  }
 
   logger.debug(
     `Running detectors: ${detectorsToRun.map((d) => d.getName()).join(", ")}`
   );
 
   const allFindings: Finding[] = [];
-
   for (const tsConfigPath of tsConfigPaths) {
-    const folderPath = path.dirname(tsConfigPath);
-    const project = new Project({ tsConfigFilePath: tsConfigPath });
-
-    logger.debug(`Processing project: ${tsConfigPath}`);
-
-    const files = project.addSourceFilesAtPaths([
-      `${folderPath}/**/*.ts`,
-      `${folderPath}/**/package.json`,
-      `${folderPath}/**/tsconfig.json`,
-      `${folderPath}/**/snap.manifest.json`,
-    ]);
-
-    const sortedFiles = files
-      .filter((file) => !file.getFilePath().includes("/node_modules/"))
-      .sort((a, b) => a.getFilePath().localeCompare(b.getFilePath()));
-
-    logger.info(`Processing ${sortedFiles.length} files in ${folderPath}`);
-
-    for (const file of sortedFiles) {
-      await runDetectorsOnFile(file, detectorsToRun, allFindings);
-    }
+    await processProject(tsConfigPath, detectorsToRun, allFindings);
   }
 
   logger.info(`Total issues found: ${allFindings.length}`);
@@ -93,46 +77,71 @@ export async function processFiles(
 }
 
 /**
- * Filters and retrieves detectors to run based on detector names.
+ * Filters the detectors based on specific criteria.
  *
- * @param {string[]} [detectorNames] - The list of detector names to filter.
- * @returns {Detector[]} - The filtered list of detectors to run.
+ * @param {string[]} detectorsToUse - The list of detectors to use.
+ * @param {string[]} detectorsToIgnore - The list of detectors to ignore.
+ * @returns {Detectors.DetectorBase[]} - The filtered list of detectors.
  */
-function getDetectorsToRun(detectorNames?: string[]): Detectors.DetectorBase[] {
-  if (!detectorNames?.length) return detectors;
+function getDetectorsToRun(
+  detectorsToUse: string[] = [],
+  detectorsToIgnore: string[] = []
+): Detectors.DetectorBase[] {
+  if (!detectorsToUse.length) {
+    detectorsToUse = detectorInstances.map((d) => d.getName());
+  }
 
-  const detectorsToRun = detectors.filter((detector) =>
-    detectorNames.some(
+  const filteredDetectors = detectorsToUse.filter(
+    (d) => !detectorsToIgnore.includes(d)
+  );
+
+  return detectorInstances.filter((detector) =>
+    filteredDetectors.some(
       (name) => detector.getName().toLowerCase() === name.toLowerCase()
     )
   );
+}
 
-  if (!detectorsToRun.length) {
-    logger.error(`No detectors found with names: ${detectorNames.join(", ")}`);
-    return [];
+/**
+ * Processes a single TypeScript project.
+ *
+ * @param {string} tsConfigPath - The path to the tsconfig.json file.
+ * @param {Detectors.DetectorBase[]} detectorsToRun - The list of detectors to run.
+ * @param {Finding[]} allFindings - The array to collect all findings.
+ */
+async function processProject(
+  tsConfigPath: string,
+  detectorsToRun: Detectors.DetectorBase[],
+  allFindings: Finding[]
+) {
+  const folderPath = path.dirname(tsConfigPath);
+  const project = new Project({ tsConfigFilePath: tsConfigPath });
+
+  logger.debug(`Processing project: ${tsConfigPath}`);
+
+  const files = project.addSourceFilesAtPaths([
+    `${folderPath}/**/*.ts`,
+    `${folderPath}/**/package.json`,
+    `${folderPath}/**/tsconfig.json`,
+    `${folderPath}/**/snap.manifest.json`,
+  ]);
+
+  const sortedFiles = files
+    .filter((file) => !file.getFilePath().includes("/node_modules/"))
+    .sort((a, b) => a.getFilePath().localeCompare(b.getFilePath()));
+
+  logger.info(`Processing ${sortedFiles.length} files in ${folderPath}`);
+
+  for (const file of sortedFiles) {
+    await runDetectorsOnFile(file, detectorsToRun, allFindings);
   }
-
-  const notFoundNames = detectorNames.filter(
-    (name) =>
-      !detectors.some(
-        (detector) => detector.getName().toLowerCase() === name.toLowerCase()
-      )
-  );
-
-  if (notFoundNames.length) {
-    logger.warn(
-      `Skipping detector which were not found: ${notFoundNames.join(", ")}`
-    );
-  }
-
-  return detectorsToRun;
 }
 
 /**
  * Runs detectors on a single file and collects findings.
  *
  * @param {SourceFile} file - The TypeScript file to run detectors on.
- * @param {Detector[]} detectorsToRun - The list of detectors to run.
+ * @param {Detectors.DetectorBase[]} detectorsToRun - The list of detectors to run.
  * @param {Finding[]} allFindings - The array to collect all findings.
  */
 async function runDetectorsOnFile(
