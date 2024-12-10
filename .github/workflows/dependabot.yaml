@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - "**"
+  workflow_run:
+    workflows: ["Release"]
+    types:
+      - completed
 
 jobs:
   check:
