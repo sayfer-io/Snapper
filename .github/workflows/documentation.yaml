@@ -177,8 +177,7 @@ jobs:
 
       - name: Run Cleanup Script
         run: |
-          # Create cleanup.js file
-          echo "
+          cat > cleanup.js << 'EOF'
           const fs = require('fs');
           const path = require('path');
 
@@ -231,7 +230,7 @@ jobs:
 
           removeReadmeFiles('docusaurus-site/docs/API');
           removeCustomHeader('docusaurus-site/docs/API');
-          " > cleanup.js
+          EOF
 
           # Run the cleanup script with Node.js
           node cleanup.js
