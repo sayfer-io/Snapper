@@ -7,88 +7,84 @@
 ![TypeScript](https://img.shields.io/badge/types-TypeScript-blue)
 ![Last Commit](https://img.shields.io/github/last-commit/sayfer-io/Snapper)
 
-Snapper aims to improve the overall security and reliability of Metamask Snaps by identifying vulnerabilities, potential issues, and ensuring best coding practices.
+Snapper aims to improve the overall security and reliability of **Metamask Snaps** by identifying vulnerabilities, potential issues, and ensuring best coding practices.
+
+---
 
 ## Getting Started
 
-To set up the environment, follow these steps:
+### 1. **Installation**
 
-1. **Install project dependencies**:
+To install **Snapper**, you have multiple options depending on your preferred setup.
 
-To install the required project dependencies, run:
+#### **Using npm**
+
+To install Snapper globally, run the following command:
 
 ```bash
+npm install -g @sayfer_io/snapper
+```
+
+#### **Using GitHub**
+
+You can also clone the repository and run **Snapper** from your local machine. First, clone the repository:
+
+```bash
+git clone https://github.com/sayfer-io/Snapper.git
+cd Snapper
 npm install
 ```
 
-## Setting Up an Example Test
+#### **Using Docker**
 
-To prepare an example test, follow these steps:
+To use **Snapper** with Docker, run the following commands:
 
-1. **Clone the repository**:
+```bash
+git clone https://github.com/sayfer-io/Snapper.git
+docker build -t snapper .
+docker run snapper --help
+```
 
-   Clone the example repository for a sample Metamask Snap:
+---
 
-   ```bash
-   git clone https://github.com/Consensys/starknet-snap
-   ```
+### 2. **Usage**
 
-2. **Navigate to the project directory**:
+Once **Snapper** is installed, you can run it in various ways. Below are the usage instructions for npm, GitHub, and Docker.
 
-   ```bash
-   cd starknet-snap
-   ```
+#### **Using Snapper**
 
-3. **Reset the repository to a vulnerable commit**:
+To run **Snapper** using npm, you can use the following command:
 
-   For consistent results, reset to a vulnerable commit:
+```bash
+npx snapper --help
+```
 
-   ```bash
-   git reset --hard d9beafe
-   ```
+This will show you the available options for **Snapper**. Here's an example output:
 
-## Running the Test Case
+```bash
+> snapper@1.0.0 start
+> npx ts-node main.ts
 
-1. Build the environment
-
-   Set up the test environment by running:
-
-   ```bash
-   /bin/bash buildenv.sh
-   ```
-
-2. Verify the application runs
-
-   Get the usage of the Snapper application with:
-
-   ```bash
-   npm run start --help
-
-   > snapper@1.0.0 start
-   > npx ts-node main.ts
-
-    Options:
-        --version          Show version number                           [boolean]
+Options:
+    --version          Show version number                           [boolean]
     -p, --path             Project path                        [string] [required]
     -d, --detectors        Specify which detector to run, specify multiple
                             detectors with a comma                        [string]
-        --ignoreDetectors  Specify which detector to ignore, specify multiple
+    --ignoreDetectors  Specify which detector to ignore, specify multiple
                             detectors with a comma                        [string]
     -v, --verbose          Enable verbose logging       [boolean] [default: false]
     -o, --output           Specify output file                            [string]
     -l, --logFile          Specify log file                               [string]
-        --htmlReport       Generate HTML report         [boolean] [default: false]
+    --htmlReport       Generate HTML report         [boolean] [default: false]
     -h, --help             Show help                                     [boolean]
-   ```
+```
 
-3. Run test cases
+To run a test case:
 
-   Run Snapper against test cases in the specified directory:
-
-   ```bash
-   npm run start -- --path ./starknet-snap
-   ```
+```bash
+npm run start -- --path ./starknet-snap
+```
 
 ## Contributing
 
-We welcome contributions to Snapper! If you would like to contribute, please follow the guidelines outlined in our [CONTRIBUTING.md](CONTRIBUTING.md) file.
+We welcome contributions to **Snapper**! If you would like to contribute, please follow the guidelines outlined in our [CONTRIBUTING.md](CONTRIBUTING.md) file.
