@@ -17,15 +17,7 @@
                         "release": "patch"
                     },
                     {
-                        "type": "perf",
-                        "release": "patch"
-                    },
-                    {
                         "type": "docs",
-                        "release": "patch"
-                    },
-                    {
-                        "type": "style",
                         "release": "patch"
                     },
                     {
@@ -37,28 +29,14 @@
                         "release": "patch"
                     },
                     {
-                        "type": "test",
-                        "release": "patch"
-                    },
-                    {
                         "type": "changebot",
                         "release": false
-                    },
-                    {
-                        "type": "ci",
-                        "release": "patch"
                     },
                     {
                         "type": "*",
                         "release": "patch"
                     }
-                ],
-                "parserOpts": {
-                    "noteKeywords": [
-                        "BREAKING CHANGE",
-                        "BREAKING CHANGES"
-                    ]
-                }
+                ]
             }
         ],
         "./scripts/custom-release-notes-generator.js",
@@ -94,9 +72,9 @@
             "@semantic-release/git",
             {
                 "assets": [
+                    "CHANGELOG.md",
                     "package.json",
-                    "package-lock.json",
-                    "CHANGELOG.md"
+                    "package-lock.json"
                 ],
                 "message": "changebot(release): ${nextRelease.version}\n\n${nextRelease.notes}"
             }
