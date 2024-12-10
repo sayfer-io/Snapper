@@ -17,6 +17,7 @@
   "files": [
     "dist",
     "src",
+    "scripts",
     "tsconfig.json",
     "package.json",
     "README.md",
