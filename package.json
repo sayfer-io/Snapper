@@ -6,6 +6,10 @@
     "url": "https://github.com/sayfer-io/Snapper.git"
   },
   "description": "Snapper aims to improve the overall security and reliability of Metamask Snaps by identifying vulnerabilities, potential issues, and ensuring best coding practices",
+  "homepage": "https://github.com/sayfer-io/Snapper#readme",
+  "bugs": {
+    "url": "https://github.com/sayfer-io/Snapper/issues"
+  },
   "main": "main.js",
   "bin": {
     "snapper": "./dist/main.js"
@@ -57,17 +61,14 @@
   },
   "resolutions": {},
   "devDependencies": {
-    "@eslint/compat": "^1.2.3",
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.5.14",
     "@types/mock-fs": "^4.13.4",
     "@types/node": "^22.9.0",
     "@types/tmp": "^0.2.6",
     "@types/yargs": "^17.0.33",
-    "eslint-plugin-import": "^2.31.0",
     "jest": "^29.7.0",
     "mock-fs": "^5.4.1",
-    "npm-force-resolutions": "^0.0.10",
     "ts-jest": "^29.2.5",
     "typedoc": "^0.27.3",
     "typedoc-plugin-markdown": "^4.3.1"
@@ -77,6 +78,7 @@
     "yarn": "^1.22.22"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
