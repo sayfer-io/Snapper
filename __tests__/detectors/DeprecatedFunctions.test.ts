@@ -1,7 +1,7 @@
 import mockFs from "mock-fs";
 import { SourceFile, Project } from "ts-morph";
 
-import { DeprecatedFunctionsDetector } from "../../detectors/DeprecatedFunctions";
+import { DeprecatedFunctionsDetector } from "../../src/detectors/DeprecatedFunctions";
 
 describe("DeprecatedFunctionsDetector", () => {
   let project: Project;

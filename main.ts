@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import { promises as fs } from "fs";
 
-import { Finding } from "./types";
-import logger, { enableLogFile, enableLogVerbosity } from "./utils/logger";
-import { configureYargs } from "./utils/config";
-import { processFiles } from "./processor";
-import { generateHtmlReport } from "./utils/htmlReportUtils";
-import { generateTimestampFileName } from "./utils/fileUtils";
+import { Finding } from "./src/types";
+import logger, { enableLogFile, enableLogVerbosity } from "./src/utils/logger";
+import { configureYargs } from "./src/utils/config";
+import { processFiles } from "./src/processor";
+import { generateHtmlReport } from "./src/utils/htmlReportUtils";
+import { generateTimestampFileName } from "./src/utils/fileUtils";
 
 /**
  * Groups findings by type for better organization.
@@ -15,14 +15,17 @@ import { generateTimestampFileName } from "./utils/fileUtils";
  * @returns {Record<string, Finding[]>} - Findings grouped by type.
  */
 function groupFindingsByType(findings: Finding[]): Record<string, Finding[]> {
-  return findings.reduce((acc, finding) => {
-    const { type } = finding;
-    if (!acc[type]) {
-      acc[type] = [];
-    }
-    acc[type].push(finding);
-    return acc;
-  }, {} as Record<string, Finding[]>);
+  return findings.reduce(
+    (acc, finding) => {
+      const { type } = finding;
+      if (!acc[type]) {
+        acc[type] = [];
+      }
+      acc[type].push(finding);
+      return acc;
+    },
+    {} as Record<string, Finding[]>
+  );
 }
 
 /**
@@ -38,10 +41,13 @@ async function saveFindingsAsJson(
 ): Promise<void> {
   const sortedFindings = Object.keys(findings)
     .sort((a, b) => a.localeCompare(b))
-    .reduce((acc, type) => {
-      acc[type] = findings[type];
-      return acc;
-    }, {} as Record<string, Finding[]>);
+    .reduce(
+      (acc, type) => {
+        acc[type] = findings[type];
+        return acc;
+      },
+      {} as Record<string, Finding[]>
+    );
 
   try {
     await fs.writeFile(fileName, JSON.stringify(sortedFindings, null, 2));

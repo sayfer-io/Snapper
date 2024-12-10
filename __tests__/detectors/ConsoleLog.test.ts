@@ -1,8 +1,8 @@
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { Finding } from "../../types";
-import { ConsoleLogDetector } from "../../detectors/ConsoleLog";
+import { Finding } from "../../src/types";
+import { ConsoleLogDetector } from "../../src/detectors/ConsoleLog";
 
 describe("ConsoleLogDetector", () => {
   let project: Project;

@@ -1,7 +1,7 @@
 import { Project, SourceFile } from "ts-morph";
 
-import { Finding } from "../../types";
-import { InsecureCryptographyDetector } from "../../detectors/InsecureCryptography";
+import { Finding } from "../../src/types";
+import { InsecureCryptographyDetector } from "../../src/detectors/InsecureCryptography";
 
 describe("InsecureCryptographyDetector", () => {
   let project: Project;

@@ -1,7 +1,7 @@
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { FloatingPointPrecisionDetector } from "../../detectors/FloatingPointPrecision";
+import { FloatingPointPrecisionDetector } from "../../src/detectors/FloatingPointPrecision";
 
 describe("FloatingPointPrecisionDetector", () => {
   let project: Project;

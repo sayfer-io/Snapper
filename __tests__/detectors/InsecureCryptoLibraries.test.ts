@@ -1,8 +1,8 @@
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { Finding } from "../../types";
-import { InsecureCryptoLibrariesDetector } from "../../detectors/InsecureCryptoLibraries";
+import { Finding } from "../../src/types";
+import { InsecureCryptoLibrariesDetector } from "../../src/detectors/InsecureCryptoLibraries";
 
 describe("InsecureCryptoLibrariesDetector", () => {
   let project: Project;

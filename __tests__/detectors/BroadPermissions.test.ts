@@ -1,7 +1,7 @@
 import mockFs from "mock-fs";
 import { SourceFile, Project } from "ts-morph";
 
-import { BroadPermissionsDetector } from "../../detectors/BroadPermissions";
+import { BroadPermissionsDetector } from "../../src/detectors/BroadPermissions";
 
 describe("BroadPermissionsDetector", () => {
   let project: Project;

@@ -1,8 +1,8 @@
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { Finding } from "../../types";
-import { InsecureRandomnessDetector } from "../../detectors/InsecureRandomness";
+import { Finding } from "../../src/types";
+import { InsecureRandomnessDetector } from "../../src/detectors/InsecureRandomness";
 
 describe("InsecureRandomnessDetector", () => {
   let project: Project;

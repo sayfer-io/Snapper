@@ -2,8 +2,8 @@ import path from "path";
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { Finding } from "../../types";
-import { DependencyVersioningDetector } from "../../detectors/DependencyVersioning";
+import { Finding } from "../../src/types";
+import { DependencyVersioningDetector } from "../../src/detectors/DependencyVersioning";
 
 describe("DependencyVersioningDetector", () => {
   let project: Project;

@@ -14,6 +14,15 @@
   "bin": {
     "snapper": "./dist/main.js"
   },
+  "files": [
+    "dist",
+    "src",
+    "tsconfig.json",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",

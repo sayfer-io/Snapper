@@ -1,6 +1,6 @@
 import { SourceFile, Node, SyntaxKind, VariableDeclaration } from "ts-morph";
 
-import { UnusedVariablesDetector } from "../../detectors/UnusedVariables";
+import { UnusedVariablesDetector } from "../../src/detectors/UnusedVariables";
 
 describe("UnusedVariablesDetector", () => {
   let detector: UnusedVariablesDetector;

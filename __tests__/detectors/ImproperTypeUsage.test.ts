@@ -1,7 +1,7 @@
 import mockFs from "mock-fs";
 import { Project } from "ts-morph";
 
-import { ImproperTypeUsageDetector } from "../../detectors/ImproperTypeUsage";
+import { ImproperTypeUsageDetector } from "../../src/detectors/ImproperTypeUsage";
 
 describe("ImproperTypeUsageDetector", () => {
   let project: Project;

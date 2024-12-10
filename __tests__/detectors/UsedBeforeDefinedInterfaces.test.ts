@@ -1,7 +1,7 @@
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { UsedBeforeDefinedInterfacesDetector } from "../../detectors/UsedBeforeDefinedInterfaces";
+import { UsedBeforeDefinedInterfacesDetector } from "../../src/detectors/UsedBeforeDefinedInterfaces";
 
 describe("UsedBeforeDefinedInterfacesDetector", () => {
   let project: Project;

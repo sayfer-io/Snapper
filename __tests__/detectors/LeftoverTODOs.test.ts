@@ -2,7 +2,7 @@ import path from "path";
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { LeftoverTODOsDetector } from "../../detectors/LeftoverTODOs";
+import { LeftoverTODOsDetector } from "../../src/detectors/LeftoverTODOs";
 
 describe("LeftoverTODOsDetector", () => {
   let project: Project;

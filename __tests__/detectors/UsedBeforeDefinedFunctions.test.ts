@@ -1,7 +1,7 @@
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { UsedBeforeDefinedFunctionsDetector } from "../../detectors/UsedBeforeDefinedFunctions";
+import { UsedBeforeDefinedFunctionsDetector } from "../../src/detectors/UsedBeforeDefinedFunctions";
 
 describe("UsedBeforeDefinedFunctionsDetector", () => {
   let project: Project;

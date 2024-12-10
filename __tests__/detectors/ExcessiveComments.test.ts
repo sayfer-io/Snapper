@@ -1,8 +1,8 @@
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { Finding } from "../../types";
-import { ExcessiveCommentsDetector } from "../../detectors/ExcessiveComments";
+import { Finding } from "../../src/types";
+import { ExcessiveCommentsDetector } from "../../src/detectors/ExcessiveComments";
 
 describe("ExcessiveComments", () => {
   let project: Project;

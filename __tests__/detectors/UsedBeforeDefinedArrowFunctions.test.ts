@@ -1,7 +1,7 @@
 import mockFs from "mock-fs";
 import { Project } from "ts-morph";
 
-import { UsedBeforeDefinedArrowFunctionsDetector } from "../../detectors/UsedBeforeDefinedArrowFunctions";
+import { UsedBeforeDefinedArrowFunctionsDetector } from "../../src/detectors/UsedBeforeDefinedArrowFunctions";
 
 describe("UsedBeforeDefinedArrowFunctionsDetector", () => {
   let project: Project;

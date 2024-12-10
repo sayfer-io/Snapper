@@ -2,7 +2,7 @@ import path from "path";
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { MissingExplicitStrictTypeCheckingDetector } from "../../detectors/MissingExplicitStrictTypeChecking";
+import { MissingExplicitStrictTypeCheckingDetector } from "../../src/detectors/MissingExplicitStrictTypeChecking";
 
 describe("MissingExplicitStrictTypeCheckingDetector", () => {
   let project: Project;

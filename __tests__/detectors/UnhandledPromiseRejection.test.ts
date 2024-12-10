@@ -1,7 +1,7 @@
 import mockFs from "mock-fs";
 import { Project } from "ts-morph";
 
-import { UnhandledPromiseRejectionDetector } from "../../detectors/UnhandledPromiseRejection";
+import { UnhandledPromiseRejectionDetector } from "../../src/detectors/UnhandledPromiseRejection";
 
 describe("UnhandledPromiseRejectionDetector", () => {
   let project: Project;

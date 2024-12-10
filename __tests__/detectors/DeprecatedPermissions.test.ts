@@ -1,7 +1,7 @@
 import { Project, SourceFile } from "ts-morph";
 
-import { Finding } from "../../types";
-import { DeprecatedPermissionsDetector } from "../../detectors/DeprecatedPermissions";
+import { Finding } from "../../src/types";
+import { DeprecatedPermissionsDetector } from "../../src/detectors/DeprecatedPermissions";
 
 describe("DeprecatedPermissionsDetector", () => {
   let project: Project;

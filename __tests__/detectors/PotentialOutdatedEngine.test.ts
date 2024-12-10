@@ -2,7 +2,7 @@ import path from "path";
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { PotentialOutdatedEngineDetector } from "../../detectors/PotentialOutdatedEngine";
+import { PotentialOutdatedEngineDetector } from "../../src/detectors/PotentialOutdatedEngine";
 
 describe("PotentialOutdatedEngineDetector", () => {
   let project: Project;

@@ -1,8 +1,8 @@
 import mockFs from "mock-fs";
 import { Project, SourceFile } from "ts-morph";
 
-import { Finding } from "../../types";
-import { DangerousFunctionsDetector } from "../../detectors/DangerousFunctions";
+import { Finding } from "../../src/types";
+import { DangerousFunctionsDetector } from "../../src/detectors/DangerousFunctions";
 
 describe("DangerousFunctionsDetector", () => {
   let project: Project;

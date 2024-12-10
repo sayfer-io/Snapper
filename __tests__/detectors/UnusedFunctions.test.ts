@@ -1,7 +1,7 @@
 import mockFs from "mock-fs";
 import { Project } from "ts-morph";
 
-import { UnusedFunctionsDetector } from "../../detectors/UnusedFunctions";
+import { UnusedFunctionsDetector } from "../../src/detectors/UnusedFunctions";
 
 describe("UnusedFunctionsDetector", () => {
   let project: Project;

@@ -1,7 +1,7 @@
 import { Project, SourceFile } from "ts-morph";
 
-import { Finding } from "../../types";
-import { HardcodedSecretsDetector } from "../../detectors/HardcodedSecrets";
+import { Finding } from "../../src/types";
+import { HardcodedSecretsDetector } from "../../src/detectors/HardcodedSecrets";
 
 describe("HardcodedSecretsDetector", () => {
   let project: Project;
