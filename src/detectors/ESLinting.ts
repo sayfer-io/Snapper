@@ -1,3 +1,4 @@
+import path from "path";
 import { ESLint } from "eslint";
 import { SourceFile } from "ts-morph";
 
@@ -36,7 +37,7 @@ class ESLintingDetector extends DetectorBase {
     const eslint = new ESLint({
       baseConfig: typescriptConfig,
       overrideConfigFile: true,
-      cwd: process.cwd(),
+      cwd: path.dirname(file.getFilePath()),
       ignore: false,
     });
 

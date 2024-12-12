@@ -119,12 +119,13 @@ async function processProject(
 
   logger.debug(`Processing project: ${tsConfigPath}`);
 
-  const files = project.addSourceFilesAtPaths([
-    `${folderPath}/**/*.ts`,
-    `${folderPath}/**/package.json`,
-    `${folderPath}/**/tsconfig.json`,
-    `${folderPath}/**/snap.manifest.json`,
-  ]);
+  // const files = project.addSourceFilesAtPaths([
+  //   `${folderPath}/**/*.ts`,
+  //   `${folderPath}/**/package.json`,
+  //   `${folderPath}/**/tsconfig.json`,
+  //   `${folderPath}/**/snap.manifest.json`,
+  // ]);
+  const files = project.addSourceFilesFromTsConfig(tsConfigPath);
 
   const sortedFiles = files
     .filter((file) => !file.getFilePath().includes("/node_modules/"))
