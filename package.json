@@ -10,7 +10,7 @@
   "bugs": {
     "url": "https://github.com/sayfer-io/Snapper/issues"
   },
-  "main": "src/main.js",
+  "main": "dist/main.js",
   "bin": {
     "snapper": "./dist/main.js"
   },
