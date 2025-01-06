@@ -57,6 +57,9 @@ To run **Snapper** using npm, you can use the following command:
 
 ```bash
 npx snapper --help
+
+# Or, if installed globally
+snapper --help
 ```
 
 This will show you the available options for **Snapper**. Here's an example output:
@@ -77,6 +80,24 @@ Options:
     -l, --logFile          Specify log file                               [string]
         --htmlReport       Generate HTML report         [boolean] [default: false]
     -h, --help             Show help                                     [boolean]
+```
+
+To run on a Snap:
+```bash
+# Basic scan
+snapper --path /path/to/snap
+
+# Ignore detectors when they aren't relevant or too verbose.
+snapper --path /path/to/snap --ignoreDetectors detector1,detector2
+
+# Run only specific detectors, useful for development when fixing a specific issue.
+snapper --path /path/to/snap --detectors detector1,detector2
+
+# Generate HTML report
+snapper --path /path/to/snap --htmlReport
+
+# Log output to a file
+snapper --path /path/to/snap --logFile /path/to/logs.txt
 ```
 
 To run a test case:
