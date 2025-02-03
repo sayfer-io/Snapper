@@ -128,7 +128,21 @@ async function processProject(
   const files = project.addSourceFilesFromTsConfig(tsConfigPath);
 
   const sortedFiles = files
-    .filter((file) => !file.getFilePath().includes("/node_modules/"))
+    .filter((file) => {
+      const filePath = file.getFilePath();
+      const isTestFile = filePath.includes('.test.') || 
+                        filePath.includes('.spec.') || 
+                        filePath.includes('/__tests__/') ||
+                        filePath.includes('/__test__/') ||
+                        filePath.includes('/test/') ||
+                        filePath.includes('/tests/');
+      
+      if (isTestFile) {
+        logger.debug(`Skipping test file: ${filePath}`);
+      }
+      
+      return !filePath.includes("/node_modules/") && !isTestFile;
+    })
     .sort((a, b) => a.getFilePath().localeCompare(b.getFilePath()));
 
   logger.info(`Processing ${sortedFiles.length} files in ${folderPath}`);
