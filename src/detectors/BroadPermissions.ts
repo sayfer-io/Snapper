@@ -38,7 +38,7 @@ const BROAD_PERMISSIONS: { [key: string]: { message: string } } = {
   },
 };
 
-const CONSIDER_AS_TOO_BROAD = 2;
+const CONSIDER_AS_TOO_BROAD = 3;
 
 /**
  * Class to detect broad permissions in snap.manifest.json with specific guidance.
